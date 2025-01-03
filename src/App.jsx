@@ -17,6 +17,7 @@ import {
   Users,
 } from './pages';
 import MasterController from './components/MasterController';
+import './css/app.css'
 
 function App() {
   return (

@@ -9,8 +9,8 @@ const Dashboard = () => {
 
       <Side_Bar />
 
-      <section>
-        
+      <section className='glassmorphism shadow'>
+
       </section>
     </>
   )
