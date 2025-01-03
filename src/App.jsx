@@ -22,7 +22,7 @@ import './css/app.css'
 function App() {
   return (
     <div className="wrapper">
-      <BrowserRouter basename="/dental_software">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         {/* MasterController component outside Routes for global navigation */}
         <MasterController />
         <Routes>
