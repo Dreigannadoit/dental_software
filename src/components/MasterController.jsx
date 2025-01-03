@@ -30,22 +30,36 @@ const MasterController = () => {
             </button>
 
             {/* Navigation Menu */}
-            <nav>
+            <nav id='master-controller'>
                 <ul>
+                    <li><p><b> Master Navigation </b></p></li>
                     <li><Link to="/">Login/Registration</Link></li>
+                    <li><Link to="/profile">Profile</Link></li>
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/calendar">Calendar</Link></li>
-                    <li><Link to="/patients">Patients</Link></li>
+                    <li><Link to="/patients">User Patients</Link></li>
                     <li><Link to="/chart">Chart</Link></li>
                     <li><Link to="/eligibility">Eligibility</Link></li>
                     <li><Link to="/distribution">Distribution</Link></li>
+
+                    <br />
+
                     <li><Link to="/reports">Reports</Link></li>
+                    <li><Link to="/reports/case_management">Case Management</Link></li>
+                    <li><Link to="/reports/activity">Activity</Link></li>
+                    <li><Link to="/reports/statistics_reports">Statistic Reports</Link></li>
+                    <li><Link to="/reports/state_reports_grade">State Reports Grade</Link></li>
+                    <li><Link to="/reports/end_of_year">End Of Year Report</Link></li>
+
+                    <br />
+
                     <li><Link to="/schools">Schools</Link></li>
                     <li><Link to="/grade">Grade</Link></li>
                     <li><Link to="/program">Program</Link></li>
                     <li><Link to="/dental_codes">Dental Codes</Link></li>
                     <li><Link to="/procedure_codes">Procedure Codes</Link></li>
                     <li><Link to="/users">Users</Link></li>
+                    <li><Link to="/import">Import</Link></li>
                 </ul>
             </nav>
         </div>
