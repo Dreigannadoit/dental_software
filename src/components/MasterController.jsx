@@ -45,11 +45,13 @@ const MasterController = () => {
                     <br />
 
                     <li><Link to="/reports">Reports</Link></li>
-                    <li><Link to="/reports/case_management">Case Management</Link></li>
-                    <li><Link to="/reports/activity">Activity</Link></li>
-                    <li><Link to="/reports/statistics_reports">Statistic Reports</Link></li>
-                    <li><Link to="/reports/state_reports_grade">State Reports Grade</Link></li>
-                    <li><Link to="/reports/end_of_year">End Of Year Report</Link></li>
+                    <ul>
+                        <li><Link to="/reports/case_management">Case Management</Link></li>
+                        <li><Link to="/reports/activity">Activity</Link></li>
+                        <li><Link to="/reports/statistics_reports">Statistic Reports</Link></li>
+                        <li><Link to="/reports/state_reports_grade">State Reports Grade</Link></li>
+                        <li><Link to="/reports/end_of_year">End Of Year Report</Link></li>
+                    </ul>
 
                     <br />
 

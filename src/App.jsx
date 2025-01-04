@@ -23,8 +23,8 @@ import {
   User_Profile,
   Users,
 } from './pages';
+import ProtectedLayout from './pages/ProtectedLayout';
 import MasterController from './components/MasterController';
-import ProtectedLayout from './components/ProtectedLayout';
 import './css/app.css';
 
 function App() {

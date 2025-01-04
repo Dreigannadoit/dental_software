@@ -155,8 +155,12 @@ body:has(.user_content) .master-controller.active {
     padding: 10% 0;
 }
 
-.master-controller nav ul {
+.master-controller nav>ul {
     list-style: none;
+}
+
+.master-controller nav>ul ul{
+    transform: translateX(10%);
 }
 
 .master-controller nav ul li {

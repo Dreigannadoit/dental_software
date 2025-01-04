@@ -5,70 +5,70 @@ import { navIcon } from '../assets/icons/INDEX.JS'
 import UserProfileDropdown from './UserProfileDropdown'
 import { useLocation } from 'react-router-dom'
 
-const Header = () => {
+// Map route paths to readable page names
+const pageNames = {
+    '/profile': 'User Profile',
+    '/dashboard': 'Dashboard',
+    '/calendar': 'Calendar',
+    '/patients': 'Patients',
+    '/chart': 'Chart',
+    '/eligibility': 'Eligibility',
+    '/distribution': 'Distribution',
+    '/reports': 'Reports',
+    '/reports/case_management': 'Case Management',
+    '/reports/activity': 'Activity',
+    '/reports/statistics_reports': 'Statistics Reports',
+    '/reports/state_reports_grade': 'State Reports Grade',
+    '/reports/end_of_year': 'End Of Year Report',
+    '/schools': 'Schools',
+    '/grade': 'Grade',
+    '/program': 'Program',
+    '/dental_codes': 'Dental Codes',
+    '/procedure_codes': 'Procedure Codes',
+    '/users': 'Users',
+    '/import': 'Import',
+};
+
+const Header = ({ toggleSideNav }) => {
     const location = useLocation();
     const [showdropdown, setShowDropdown] = useState(false);
-  
-    // Map route paths to readable page names
-    const pageNames = {
-      '/profile': 'User Profile',
-      '/dashboard': 'Dashboard',
-      '/calendar': 'Calendar',
-      '/patients': 'Patients',
-      '/chart': 'Chart',
-      '/eligibility': 'Eligibility',
-      '/distribution': 'Distribution',
-      '/reports': 'Reports',
-      '/reports/case_management': 'Case Management',
-      '/reports/activity': 'Activity',
-      '/reports/statistics_reports': 'Statistics Reports',
-      '/reports/state_reports_grade': 'State Reports Grade',
-      '/reports/end_of_year': 'End Of Year Report',
-      '/schools': 'Schools',
-      '/grade': 'Grade',
-      '/program': 'Program',
-      '/dental_codes': 'Dental Codes',
-      '/procedure_codes': 'Procedure Codes',
-      '/users': 'Users',
-      '/import': 'Import',
-    };
-  
+
     const current_page = pageNames[location.pathname] || 'Page Not Found';
-  
+
     const toggleDropdown = () => {
-      setShowDropdown((prev) => !prev);
+        setShowDropdown((prev) => !prev);
     };
-  
+
     return (
-      <>
-        <div className={`header glassmorphism shadow ${showdropdown ? 'show_dropdown' : ''}`}>
-          <div className="logo">
-            <Logo_svg />
-          </div>
-  
-          <div className="side_nav_controller f-center">
-            <button>
-              <img src={navIcon} alt="Navigation Icon" />
-            </button>
-          </div>
-  
-          <div className="current_page f-center">
-            <h2>{current_page}</h2>
-          </div>
-  
-          <div
-            className="user_avatar f-center"
-            onMouseEnter={toggleDropdown}
-            onMouseLeave={toggleDropdown}
-          >
-            <img src={userAvatar} alt="User Avatar" />
-          </div>
-        </div>
-  
-        <UserProfileDropdown toggleDropdown={toggleDropdown} />
-      </>
+        <>
+            <div className={`header glassmorphism shadow ${showdropdown ? 'show_dropdown' : ''}`}>
+                <div className="logo">
+                    <Logo_svg />
+                </div>
+
+                <div className="side_nav_controller f-center">
+                    <button aria-label="Toggle Side Navigation" onClick={toggleSideNav}>
+                        <img src={navIcon} alt="Navigation Icon" />
+                    </button>
+                </div>
+
+                <div className="current_page f-center">
+                    <h2>{current_page}</h2>
+                </div>
+
+                <div
+                    className="user_avatar f-center"
+                    onMouseEnter={toggleDropdown}
+                    onMouseLeave={toggleDropdown}
+                >
+                    <img src={userAvatar} alt="User Avatar" />
+                </div>
+            </div>
+
+            <UserProfileDropdown toggleDropdown={toggleDropdown} />
+        </>
     );
-  };
+};
 
 const Logo_svg = () => {
     return (
