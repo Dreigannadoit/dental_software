@@ -1,0 +1,65 @@
+.dashboard{
+    height: auto;
+    width: 100%;
+}
+
+.dashboard .initals{
+    height: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dashboard .welcome_block{
+    width: 100%;
+    height: 40vh;
+    background: var(--pink-grad);
+    border-radius: 10px;
+}
+
+.dashboard .welcome_block div{
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+
+    background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
+    background-size: 15px 15px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 30px;
+    overflow: hidden;
+}
+
+.dashboard .welcome_block div img{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 130%;
+
+}
+
+.dashboard .active_data{
+    transform: translateY(-20%);
+    padding: 25px;
+    border-radius: 10px;
+
+    color: #fff;
+
+    background-color: var(--backgrounds-color);
+}
+
+.dashboard .active_data.active_schools{
+    background-color: #7DA0FA;
+}
+.dashboard .active_data.active_students{
+    background-color: #F3797E;
+}
+.dashboard .active_data.total_screened{
+    background-color: #4747A1;
+}

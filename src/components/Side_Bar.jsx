@@ -38,7 +38,7 @@ const Side_Bar = ({ isNavOpen }) => {
 
   return (
     <>
-      <div id="side_nav" className={`side_nav glassmorphism shadow ${isNavOpen ? "open" : ""}`}>
+      <div id="side_nav" className={`side_nav glassmorphism shadow ${isNavOpen ? "" : "open"}`}>
         <nav>
           <ul>
             <li>

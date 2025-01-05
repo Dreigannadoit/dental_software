@@ -7,6 +7,7 @@
     --dark-color: #1E1E1E;
 
     --blue-grad: linear-gradient(153deg, rgba(185,227,252,1) 0%, rgba(55,172,220,1) 55%);
+    --pink-grad: linear-gradient(135deg, rgba(249,202,167,1) 0%, rgba(254,178,168,1) 100%);;
 }
 
 *,
@@ -22,10 +23,26 @@ body {
     height: 100vh;
     width: 100vw;
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     background: url(../assets/bg/main.png);
 }
+
+body:active::-webkit-scrollbar-thumb,
+body:focus::-webkit-scrollbar-thumb,
+body:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    visibility: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+    transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
+}
+
 
 #root {
     height: 100%;
@@ -34,8 +51,9 @@ body {
 
 .wrapper {
     position: relative;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
+    padding-bottom: 20px;
 }
 
 body:has(.user_content) .wrapper {
