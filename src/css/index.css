@@ -7,7 +7,7 @@
     --dark-color: #1E1E1E;
 
     --blue-grad: linear-gradient(153deg, rgba(185,227,252,1) 0%, rgba(55,172,220,1) 55%);
-    --pink-grad: linear-gradient(135deg, rgba(249,202,167,1) 0%, rgba(254,178,168,1) 100%);;
+    --pink-grad: linear-gradient(135deg, rgba(249,202,167,1) 0%, rgba(254,178,168,1) 100%);
 }
 
 *,
@@ -91,6 +91,31 @@ a {
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(5px);
 }
+
+.dotted-bg {
+    background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
+    background-size: 15px 15px;
+}
+
+.graph{
+    width: 100%;
+    height: 350px;
+    flex-direction: column;
+    padding: 3%;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.graph.pie_chart{
+    background: var(--blue-grad);
+}
+
+.graph h1{
+    position: absolute;
+    color: #F5F5F5;
+}
+
 
 
 

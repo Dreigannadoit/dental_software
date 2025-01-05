@@ -17,7 +17,11 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.3.1",
     "@mui/x-charts": "^7.23.2",
+    "apexcharts": "^4.3.0",
+    "chart.js": "^4.4.7",
     "react": "^18.3.1",
+    "react-apexcharts": "^1.7.0",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1"
   },

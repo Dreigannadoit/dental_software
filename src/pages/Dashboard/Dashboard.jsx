@@ -1,9 +1,11 @@
 import React from 'react'
-import { test_user } from '../../test_data'
+import { csdpProgramTrendsSeries, test_user, csdpProgramTrendsSeriesLabels, oralHealthStatusSummaryLabels, oralHealthStatusSummarySeries, childrenReceivingServiceSeries, childrenReceivingServiceLabels, gradeData, ageData, raceData } from '../../test_data'
 import '../../css/dashboard.css'
 import DateTime from '../../components/DateTime'
 import { bannerFull } from '../../assets/img'
-import CSDP_Program_Trends from '../../components/CSDP_Program_Trends_Line_Graph'
+import Dental_Charts from '../../components/Dental_Charts'
+import Pie_Dental_Charts from '../../components/Pie_Dental_Charts'
+import DashboardTable from '../../components/DashboardTable'
 
 const Dashboard = () => {
   return (
@@ -15,27 +17,49 @@ const Dashboard = () => {
         <Total_Screened />
       </div>
 
-      <div className="graphs">
-        <div className="line_charts">
-          <CSDP_Program_Trends />
-        </div>
-        <div className="pie_charts">
+      <div className="statistic_charts">
+        <div className="line_charts f-center">
+          <Dental_Charts
+            chartLabel="CSDP Program Trends"
+            chartType="line"
+            series={csdpProgramTrendsSeries}
+            xLabels={csdpProgramTrendsSeriesLabels}
+          />
 
+          <Dental_Charts
+            chartLabel="Oral Health Status (%) Summary"
+            chartType="bar"
+            series={oralHealthStatusSummarySeries}
+            xLabels={oralHealthStatusSummaryLabels}
+          />
+          
+          <Dental_Charts
+            chartLabel="% Of Children Receiving The Following Service"
+            chartType="bar"
+            series={childrenReceivingServiceSeries}
+            xLabels={childrenReceivingServiceLabels}
+          />
+        </div>
+        
+        <div className="pie_charts f-center">
+          <Pie_Dental_Charts chartLabel="Grade" series={gradeData} />
+          <Pie_Dental_Charts chartLabel="Age" series={ageData} />
+          <Pie_Dental_Charts chartLabel="Race" series={raceData} />
         </div>
       </div>
 
       <div className="tables">
-
+        <DashboardTable />
       </div>
     </div>
-  )
+  );
 }
 
 const Welcome_Block = () => {
   return (
-    <div className="welcome_block shadow">
+    <div className="welcome_block shadow ">
       {test_user.map((user, index) => (
-        <div key={index}>
+        <div key={index} className='dotted-bg'>
           <img src={bannerFull} alt="" />
           <DateTime />
           <h1>Welcom Back!</h1>

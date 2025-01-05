@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { logo } from '../assets/icons/INDEX.JS'
 import { userAvatar } from '../assets/icons/INDEX.JS'
 import { navIcon } from '../assets/icons/INDEX.JS'
@@ -31,7 +31,8 @@ const pageNames = {
 
 const Header = ({ toggleSideNav }) => {
     const location = useLocation();
-    const [showdropdown, setShowDropdown] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const current_page = pageNames[location.pathname] || 'Page Not Found';
 
@@ -39,9 +40,24 @@ const Header = ({ toggleSideNav }) => {
         setShowDropdown((prev) => !prev);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+        if (window.scrollY > 10) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <>
-            <div className={`header glassmorphism shadow ${showdropdown ? 'show_dropdown' : ''}`}>
+            <div className={`header glassmorphism shadow ${showDropdown ? 'show_dropdown' : ''} ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="logo">
                     <Logo_svg />
                 </div>

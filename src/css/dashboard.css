@@ -3,6 +3,8 @@
     width: 100%;
 }
 
+/* Top Part of the Website */
+
 .dashboard .initals{
     height: auto;
     width: 100%;
@@ -22,10 +24,6 @@
 
     height: 100%;
     width: 100%;
-
-    background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
-    background-size: 15px 15px;
-
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -51,8 +49,8 @@
 
     color: #fff;
 
-    background-color: var(--backgrounds-color);
 }
+
 
 .dashboard .active_data.active_schools{
     background-color: #7DA0FA;
@@ -63,3 +61,39 @@
 .dashboard .active_data.total_screened{
     background-color: #4747A1;
 }
+
+
+
+/*------------------*/
+/* Charts and Stuff */
+/*------------------*/
+
+.dashboard .statistic_charts{
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.dashboard .statistic_charts .line_charts,
+.dashboard .statistic_charts .pie_charts{
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dashboard .statistic_charts .line_charts{
+    width: 68%;
+}
+.dashboard .statistic_charts .pie_charts{
+    width: 30%;
+}
+
+
+
+/*-----------------*/
+/* Dashboard Table */
+/*-----------------*/
+
+

@@ -4,12 +4,11 @@
     --side-nav-width: 240px;
 }
 
-@media only screen 
-   and (min-width : 1600px) {
-   :root {
-    --bellow-height: calc(96% - (var(--head-height)));
-    --side-nav-width: 270px;
-}
+@media only screen and (min-width : 1600px) {
+    :root {
+        --bellow-height: calc(96% - (var(--head-height)));
+        --side-nav-width: 270px;
+    }
 
 }
 
@@ -19,16 +18,33 @@
 
 
 .header {
-    position: relative;
+    position: fixed;
+    top: 15px;
+    left: 15px;
     height: var(--head-height);
-    width: 100%;
+    width: calc(100% - 30px);
+    z-index: 999;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
 
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 10px;    
+    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+
+}
+
+.header.scrolled {
+    top: 0;
+    left: 0;
+    width: calc(100%);
+    height: calc(var(--head-height ) + 15px);
+    background-color: aliceblue;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 30px;
+
+    border-radius: 0px 0px 20px 20px;  
 }
 
 
@@ -39,7 +55,7 @@
 
 .header .logo {
     height: 100%;
-    width: calc(var(--side-nav-width) );
+    width: calc(var(--side-nav-width));
     padding: 10px 0;
     transition: 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
@@ -169,6 +185,7 @@ body:has(.side_nav.open) .side_nav {
 .side_nav:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
+
 .side_nav::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     visibility: hidden;
@@ -248,24 +265,24 @@ body:has(.side_nav.open) .side_nav {
 
 
 .reports_sub_menus {
-  position: fixed;
-  left: 230px;
-  width: 200px;
-  height: 250px;
-  background-color: aliceblue;
-  z-index: -1;
-  border-radius: 10px;
-  overflow: hidden;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    position: fixed;
+    left: 230px;
+    width: 200px;
+    height: 250px;
+    background-color: aliceblue;
+    z-index: -1;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
 body:has(.reports_subnav_show) .reports_sub_menus {
-  transform: translateX(-10%);
-  opacity: 1;
-  z-index: 9999;
-  transition: 300ms 0ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    transform: translateX(-10%);
+    opacity: 1;
+    z-index: 9999;
+    transition: 300ms 0ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
 
@@ -309,7 +326,8 @@ body:has(.reports_subnav_show) .reports_sub_menus {
     border-radius: 10px;
 
     margin: 15px;
-    margin-bottom: 20px; /* Additional bottom spacing */
+    margin-bottom: 20px;
+    /* Additional bottom spacing */
     padding: 2%;
     z-index: 1;
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
@@ -319,9 +337,8 @@ body:has(.side_nav.open) .user_content {
     width: calc(96.5% - var(--side-nav-width));
 }
 
-@media only screen 
-   and (min-width : 1600px) {
+@media only screen and (min-width : 1600px) {
     body:has(.side_nav.open) .user_content {
         width: calc(97.5% - var(--side-nav-width));
-    }    
+    }
 }
