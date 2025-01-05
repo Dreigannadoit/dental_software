@@ -32,7 +32,10 @@ const Pie_Dental_Charts = ({ chartLabel, series }) => {
   return (
     <div className="graph f-center glassmorphism shadow pie_chart">
       <h1>{chartLabel}</h1>
-      <PieChart {...pieParams} />
+      <PieChart  
+        colors={['#7577EF', '#A5B94E', '#BE29C6', '#D1FFF7', '#F14D4D', '#FFCB78']}  
+        {...pieParams} 
+      />
     </div>
   );
 };

@@ -6,8 +6,8 @@
     --backgrounds-color: #F9E6E2;
     --dark-color: #1E1E1E;
 
-    --blue-grad: linear-gradient(153deg, rgba(185,227,252,1) 0%, rgba(55,172,220,1) 55%);
-    --pink-grad: linear-gradient(135deg, rgba(249,202,167,1) 0%, rgba(254,178,168,1) 100%);
+    --blue-grad: linear-gradient(153deg, rgba(185, 227, 252, 1) 0%, rgba(55, 172, 220, 1) 55%);
+    --pink-grad: linear-gradient(135deg, rgba(249, 202, 167, 1) 0%, rgba(254, 178, 168, 1) 100%);
 }
 
 *,
@@ -28,18 +28,19 @@ body {
     background: url(../assets/bg/main.png);
 }
 
-body:active::-webkit-scrollbar-thumb,
-body:focus::-webkit-scrollbar-thumb,
-body:hover::-webkit-scrollbar-thumb {
+*:active::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb,
+*:hover::-webkit-scrollbar-thumb {
     visibility: visible;
 }
-body::-webkit-scrollbar-thumb {
+
+*::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     visibility: hidden;
 }
 
-body::-webkit-scrollbar {
-    width: 0px;
+*::-webkit-scrollbar {
+    width: 6px;
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
 
@@ -51,9 +52,8 @@ body::-webkit-scrollbar {
 
 .wrapper {
     position: relative;
-    min-height: 100%;
+    height: 100%;
     width: 100%;
-    padding-bottom: 20px;
 }
 
 body:has(.user_content) .wrapper {
@@ -68,6 +68,58 @@ section {
 a {
     text-decoration: none;
     color: var(--dark-color);
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    font-size: small;
+    border-radius: 20px;
+    table-layout: fixed;
+    padding: 5px 15px 0 15px;
+}
+
+thead {
+    border-radius: 20px;
+}
+
+tr:has(th) {
+    background: var(--blue-grad);
+    height: 100%;
+}
+
+tr{
+    border-radius: 20px;
+}
+
+th,
+td {
+    text-align: left;
+    width: auto;
+}
+
+th {
+    background-color: transparent;
+    padding: 22px 16px;
+}
+
+td {
+    background-color: #ffffff;
+    padding: 16px 16px;
+}
+
+td:first-child,
+th:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+td:last-child,
+th:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .f-center {
@@ -97,7 +149,7 @@ a {
     background-size: 15px 15px;
 }
 
-.graph{
+.graph {
     width: 100%;
     height: 350px;
     flex-direction: column;
@@ -107,11 +159,12 @@ a {
     border-radius: 10px;
     overflow: hidden;
 }
-.graph.pie_chart{
+
+.graph.pie_chart {
     background: var(--blue-grad);
 }
 
-.graph h1{
+.graph h1 {
     position: absolute;
     color: #F5F5F5;
 }
@@ -202,7 +255,7 @@ body:has(.user_content) .master-controller.active {
     list-style: none;
 }
 
-.master-controller nav>ul ul{
+.master-controller nav>ul ul {
     transform: translateX(10%);
 }
 
