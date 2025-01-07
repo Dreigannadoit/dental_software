@@ -19,16 +19,22 @@ const PatientTable = ({ data }) => {
         <tbody>
           {data.length > 0 ? (
             data.map((patient, index) => (
-              <tr key={index} className="shadow">
+              <tr
+                key={index}
+                className={`shadow`}
+              >
                 <td>{patient.id}</td>
                 <td>{patient.name}</td>
                 <td>{patient.gender}</td>
                 <td>{patient.birthdate}</td>
                 <td>{patient.age}</td>
-                <td>{patient.status}</td>
+                <td className={`${patient.status === "Active" ? "active" : "inactive"}`}>
+                  <span>
+                    {patient.status}
+                  </span>
+                </td>
                 <td className="crud_controlls">
-                  <NavLink to="">Edit</NavLink>
-                  <button>Delete</button>
+                  
                 </td>
               </tr>
             ))

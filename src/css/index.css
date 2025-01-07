@@ -80,6 +80,11 @@ button{
     cursor: pointer;
 }
 
+
+/* --------------------- */
+/* default table styling */
+/* --------------------- */
+
 .table table {
     height: 100%;
     width: 100%;
@@ -131,6 +136,21 @@ button{
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
+
+.table table td.inactive span,
+.table table td.active span{
+    padding: 8px;
+    border-radius: 10px;
+}
+.table table td.active span{
+    background-color: rgb(35, 150, 35);
+    color: #F5F5F5;
+}
+.table table td.inactive span{
+    background-color: rgb(255, 75, 75);
+}
+
+
 
 .f-center {
     display: flex;

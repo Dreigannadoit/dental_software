@@ -389,5 +389,62 @@ body:has(.side_nav.open) .user_content {
 
 .filter_block .filer_fields div{
     width: 100%;
-
 }
+
+
+
+/* Rowsper page */
+
+.rows_per_page {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+  }
+  
+  .rows_per_page label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .rows_per_page select {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none; /* Removes default arrow */
+    -webkit-appearance: none; /* Removes default arrow for Safari */
+    -moz-appearance: none; /* Removes default arrow for Firefox */
+    outline: none;
+  }
+  
+  .rows_per_page select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .rows_per_page select::-ms-expand {
+    display: none; /* Hides dropdown arrow in IE */
+  }
+  
+  /* Custom arrow for select */
+  .rows_per_page select::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #888;
+  }

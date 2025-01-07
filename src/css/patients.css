@@ -13,17 +13,6 @@
     align-items: center;
 }
 
-.patients .rows_per_page{
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.patients .rows_per_page label{
-    display: flex;
-    gap: 10px;
-}
-
 .patients .table_area{
     width: 100%;
 }
