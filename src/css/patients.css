@@ -1,0 +1,64 @@
+.patients .user_buttons{
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.patients .table_controls{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patients .rows_per_page{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.patients .rows_per_page label{
+    display: flex;
+    gap: 10px;
+}
+
+.patients .table_area{
+    width: 100%;
+}
+
+.patients .table th:nth-child(1),
+.patients .table td:nth-child(1) {
+    width: 5%; /* ID column */
+}
+
+.patients .table th:nth-child(2),
+.patients .table td:nth-child(2) {
+    width: 25%; /* Patient Name column */
+}
+
+.patients .table th:nth-child(3),
+.patients .table td:nth-child(3) {
+    width: 10%; /* Gender column */
+}
+
+.patients .table th:nth-child(4),
+.patients .table td:nth-child(4) {
+    width: 15%; /* Date of Birth column */
+}
+
+.patients .table th:nth-child(5),
+.patients .table td:nth-child(5) {
+    width: 10%; /* Age column */
+}
+
+.patients .table th:nth-child(6),
+.patients .table td:nth-child(6) {
+    width: 10%; /* Status column */
+}
+
+.patients .table th:nth-child(7),
+.patients .table td:nth-child(7) {
+    width: 25%; /* Controls column */
+}

@@ -115,6 +115,137 @@ export const raceData = [
     { id: 4, value: 20, label: 'English' },
 ];
 
+const calculateAge = (birthdate) => {
+    const birthDate = new Date(birthdate);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+};
+
+export const patientInfo = [
+    {
+        id: 1,
+        name: "Johnny J. Johnson",
+        school: "Gilbert Mary School",
+        year: "2023-2024",
+        grade: 7,
+        status: "Active",
+        birthdate: "2016-04-18",
+        gender: "Male",
+    },
+    {
+        id: 2,
+        name: "Sophia R. Martinez",
+        school: "Bright Future Academy",
+        year: "2023-2024",
+        grade: 6,
+        status: "Active",
+        birthdate: "2017-01-12",
+        gender: "Female",
+    },
+    {
+        id: 3,
+        name: "Liam K. Anderson",
+        school: "Oak Valley Elementary",
+        year: "2022-2023",
+        grade: 8,
+        status: "Inactive",
+        birthdate: "2015-09-03",
+        gender: "Male",
+    },
+    {
+        id: 4,
+        name: "Olivia P. Brown",
+        school: "Hillside Middle School",
+        year: "2023-2024",
+        grade: 7,
+        status: "Active",
+        birthdate: "2016-06-22",
+        gender: "Female",
+    },
+    {
+        id: 5,
+        name: "Ethan W. Smith",
+        school: "Riverside Academy",
+        year: "2021-2022",
+        grade: 5,
+        status: "Inactive",
+        birthdate: "2018-11-09",
+        gender: "Male",
+    },
+    {
+        id: 6,
+        name: "Ava J. Wilson",
+        school: "Sunrise Primary School",
+        year: "2023-2024",
+        grade: 4,
+        status: "Active",
+        birthdate: "2019-02-14",
+        gender: "Female",
+    },
+    {
+        id: 7,
+        name: "William H. Lee",
+        school: "Cedarwood International",
+        year: "2022-2023",
+        grade: 6,
+        status: "Inactive",
+        birthdate: "2017-07-05",
+        gender: "Male",
+    },
+    {
+        id: 8,
+        name: "Emily A. Davis",
+        school: "Greenfield Academy",
+        year: "2023-2024",
+        grade: 7,
+        status: "Active",
+        birthdate: "2016-10-30",
+        gender: "Female",
+    },
+    {
+        id: 9,
+        name: "Michael T. Garcia",
+        school: "Summit Hill School",
+        year: "2020-2021",
+        grade: 9,
+        status: "Inactive",
+        birthdate: "2014-03-19",
+        gender: "Male",
+    },
+    {
+        id: 10,
+        name: "Isabella M. Harris",
+        school: "Maple Grove Elementary",
+        year: "2023-2024",
+        grade: 5,
+        status: "Active",
+        birthdate: "2018-05-07",
+        gender: "Female",
+    },
+    {
+        id: 11,
+        name: "Benjamin R. Clark",
+        school: "Willow Creek High School",
+        year: "2023-2024",
+        grade: 10,
+        status: "Active",
+        birthdate: "2013-08-15",
+        gender: "Male",
+    },
+];
+
+// Add age property to each patient
+export const updatedPatientInfo = patientInfo.map((patient) => ({
+    ...patient,
+    age: calculateAge(patient.birthdate),
+}));
+
+
 
 export const csdpsStatisticsBySchool = [
     {

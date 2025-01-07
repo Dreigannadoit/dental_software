@@ -6,7 +6,15 @@ const Pie_Dental_Charts = ({ chartLabel, series }) => {
     height: 200,
     width: 400,
     margin: { right: 5 },
-    slotProps: { legend: { hidden: true } },
+    slotProps: { 
+      legend: { hidden: true },
+      tooltip: {
+        sx: {
+          backgroundColor: "#000000", // Set tooltip background color to dark grey
+          color: "white", // Optional: Make text white for contrast
+        },
+      },
+    },
     series: [
       {
         data: series,

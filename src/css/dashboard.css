@@ -1,8 +1,3 @@
-.dashboard{
-    height: auto;
-    width: 100%;
-}
-
 /* Top Part of the Website */
 
 .dashboard .initals{
@@ -19,33 +14,62 @@
     border-radius: 10px;
 }
 
-.dashboard .welcome_block div{
+.dashboard .welcome_block>div{
     position: relative;
 
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: space-between;
     flex-direction: column;
 
     padding: 30px;
     overflow: hidden;
 }
 
-.dashboard .welcome_block div img{
+.dashboard .welcome_block>div img{
     position: absolute;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
     height: 130%;
+    flex-direction: row;
+    z-index: 1;
+}
 
+.dashboard .welcome_block>div .greetings{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    line-height: 100%;
+    z-index: 9;
+}
+
+.dashboard .welcome_block>div .greetings p{
+    font-size: 3vh;
+}
+.dashboard .welcome_block>div .greetings h1{
+    font-size: 6vh;
+}
+.dashboard .welcome_block>div .greetings h2{
+    font-size: 5vh;
+}
+
+
+.dashboard .numerical_data{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 999;
+    gap: 15px;margin-top: 30px;
 }
 
 .dashboard .active_data{
-    transform: translateY(-20%);
-    padding: 25px;
+    padding: 15px;
     border-radius: 10px;
+    height: 100%;
 
     color: #fff;
 
@@ -73,6 +97,7 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
 }
 
 
@@ -120,4 +145,37 @@
     overflow-y: auto;
 }
 
+:root{
+    --school-container-width: 30%;
+    --the-rest: calc(( 100% - var( --school-container-width ) ) / 5 );
+}
 
+.dashboard .table th:nth-child(1),
+.dashboard .table td:nth-child(1) {
+    width: var(--school-container-width)
+}
+
+.dashboard .table th:nth-child(2),
+.dashboard .table td:nth-child(2) {
+    width: var(--the-rest);
+}
+
+.dashboard .table th:nth-child(3),
+.dashboard .table td:nth-child(3) {
+    width: var(--the-rest);
+}
+
+.dashboard .table th:nth-child(4),
+.table td:nth-child(4) {
+    width: var(--the-rest);
+}
+
+.dashboard .table th:nth-child(5),
+.table td:nth-child(5) {
+    width: var(--the-rest);
+}
+
+.dashboard .table th:nth-child(6),
+.table td:nth-child(6) {
+    width: var(--the-rest);
+}

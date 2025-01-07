@@ -7,7 +7,11 @@
     --dark-color: #1E1E1E;
 
     --blue-grad: linear-gradient(153deg, rgba(185, 227, 252, 1) 0%, rgba(55, 172, 220, 1) 55%);
-    --pink-grad: linear-gradient(135deg, rgba(249, 202, 167, 1) 0%, rgba(254, 178, 168, 1) 100%);
+    --pink-grad: linear-gradient(-135deg, rgba(249, 202, 167, 1) 0%, rgba(254, 178, 168, 1) 100%);
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 *,
@@ -70,54 +74,60 @@ a {
     color: var(--dark-color);
 }
 
-table {
+button{
+    border: none;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.table table {
     height: 100%;
     width: 100%;
     border-collapse: separate;
     border-spacing: 0px 10px;
     font-size: small;
     border-radius: 20px;
-    table-layout: fixed;
+    table-layout: fixed; /* Ensures fixed column widths */
     padding: 5px 15px 0 15px;
 }
 
-thead {
+.table thead {
     border-radius: 20px;
 }
 
-tr:has(th) {
+.table tr:has(th) {
     background: var(--blue-grad);
     height: 100%;
 }
 
-tr{
+.table tr{
     border-radius: 20px;
 }
 
-th,
-td {
+.table th,
+.table td {
     text-align: left;
-    width: auto;
+    width: auto; /* Adjust this to customize */
 }
 
-th {
+.table th {
     background-color: transparent;
     padding: 22px 16px;
 }
 
-td {
+.table td {
     background-color: #ffffff;
     padding: 16px 16px;
 }
 
-td:first-child,
-th:first-child {
+.table td:first-child,
+.table th:first-child {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
 
-td:last-child,
-th:last-child {
+.table td:last-child,
+.table th:last-child {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -131,7 +141,11 @@ th:last-child {
 .f-beside {
     display: flex;
     flex-direction: row;
+}
 
+.auto-sizing{
+    height: auto;
+    width: 100%;
 }
 
 .shadow {
@@ -167,6 +181,93 @@ th:last-child {
 .graph h1 {
     position: absolute;
     color: #F5F5F5;
+}
+
+/* ------------------------------------- */
+/* Custome Buttun Properties and Styling */
+/* ------------------------------------- */
+
+.dental_costume_button {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 10px;
+    
+    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+.dental_costume_button:hover {
+    width: 200px;
+}
+
+.dental_costume_button button,
+.dental_costume_button a{
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.dental_costume_button button img,
+.dental_costume_button a img{
+    position: absolute;
+    width: 25px;
+
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
+    
+    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+/* Edit position of image when on hover section */
+
+.dental_costume_button.new_patient:hover button img,
+.dental_costume_button.new_patient:hover a img{
+    left: calc(40% - 30px);
+}
+.dental_costume_button.import_btn:hover button img,
+.dental_costume_button.import_btn:hover a img{
+    left: calc(48% - 30px);
+}
+.dental_costume_button.download_template:hover button img,
+.dental_costume_button.download_template:hover a img{
+    width: 25px;
+    left: calc(27% - 30px);
+}
+
+.dental_costume_button button span,
+.dental_costume_button a span{
+    position: absolute;
+    top: 50%;
+    left: 150%;
+    opacity: 0;
+    width: 150px;
+    font-size: 16px;
+    transform: translate(-50%, -45%);
+    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+/* Edit position of text when on hover section */
+.dental_costume_button:hover button span,
+.dental_costume_button:hover a span{
+    opacity: 1;
+}
+
+.dental_costume_button.new_patient:hover button span,
+.dental_costume_button.new_patient:hover a span{
+    left: calc(45% + 30px);
+}
+.dental_costume_button.import_btn:hover button span,
+.dental_costume_button.import_btn:hover a span{
+    left: calc(45% + 30px);
+}
+.dental_costume_button.download_template:hover button span,
+.dental_costume_button.download_template:hover a span{
+    left: calc(74% - 30px);
 }
 
 

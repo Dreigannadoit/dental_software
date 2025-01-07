@@ -20,6 +20,11 @@ import User from "./User.svg"
 import Import from "./Import.svg"
 
 
+import Save from "./save.svg"
+import Upload from "./upload.svg"
+import User_Add from "./User_Add.svg"
+
+
 export {
     Dashboard,
     Calendar,
@@ -39,4 +44,7 @@ export {
     navIcon,
     userAvatar,
     exit,
+    Save,
+    Upload,
+    User_Add
 }

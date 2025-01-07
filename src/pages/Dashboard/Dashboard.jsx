@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { csdpProgramTrendsSeries, test_user, csdpProgramTrendsSeriesLabels, oralHealthStatusSummaryLabels, oralHealthStatusSummarySeries, childrenReceivingServiceSeries, childrenReceivingServiceLabels, gradeData, ageData, raceData } from "../../test_data";
+import { csdpProgramTrendsSeries, test_user, csdpProgramTrendsSeriesLabels, oralHealthStatusSummaryLabels, oralHealthStatusSummarySeries, childrenReceivingServiceSeries, childrenReceivingServiceLabels, gradeData, ageData, raceData, csdpsStatisticsBySchool } from "../../test_data";
 import "../../css/dashboard.css";
 import DateTime from "../../components/DateTime";
 import { bannerFull } from "../../assets/img";
@@ -10,15 +10,19 @@ const DashboardTable = lazy(() => import("../../components/DashboardTable"));
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
+    <div className="dashboard auto-sizing">
       <div className="initals f-center">
         <Welcome_Block />
-        <Active_Schools />
-        <Active_Students />
-        <Total_Screened />
+
+        <div className="numerical_data">
+          <Active_Schools />
+          <Active_Students />
+          <Total_Screened />
+        </div>
       </div>
 
       <div className="statistic_charts">
+        {/* TODO: Add suspende to components not in the pages later */}
         <Suspense fallback={<div>Loading Charts...</div>}>
           <div className="line_charts f-center">
             <Dental_Charts
@@ -53,13 +57,13 @@ const Dashboard = () => {
         <Suspense fallback={<div>Loading Table...</div>}>
           <h1>CSDP's Statistics By School</h1>
           <br />
-          <DashboardTable tableTitle="CSDP's Statistics By School" />
+          <DashboardTable tableTitle="CSDP's Statistics By School" data={csdpsStatisticsBySchool} />
         </Suspense>
 
         <Suspense fallback={<div>Loading Table...</div>}>
           <h1>CSDP's Statistics By School</h1>
           <br />
-          <DashboardTable tableTitle="CSDP's Statistics By Facilities" />
+          <DashboardTable tableTitle="CSDP's Statistics By Facilities" data={csdpsStatisticsBySchool}/>
         </Suspense>
       </div>
     </div>
@@ -72,9 +76,11 @@ const Welcome_Block = () => {
       {test_user.map((user, index) => (
         <div key={index} className='dotted-bg'>
           <img src={bannerFull} alt="" />
-          <DateTime />
-          <h1>Welcom Back!</h1>
-          <h2>{user.username}</h2>
+          <div className="greetings">
+            <DateTime />
+            <h1>Welcome Back!</h1>
+            <h2>{user.username}</h2>
+          </div>
         </div>
       ))}
     </div>

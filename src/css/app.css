@@ -343,3 +343,51 @@ body:has(.side_nav.open) .user_content {
         width: calc(97.5% - var(--side-nav-width));
     }
 }
+
+
+/* 
+-- Filter Block --
+*/
+
+.filter_block {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: var(--pink-grad);
+    padding: 25px;
+
+    border-radius: 10px;
+}
+
+.filter_block p{
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.filter_block input, .filter_block .MuiSelect-select{
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.filter_block .search_field{
+    width: 100%;
+    margin-bottom: 20px;
+}   
+
+.filter_block .filer_fields{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2%;
+}
+
+.filter_block .filer_fields div{
+    width: 100%;
+
+}

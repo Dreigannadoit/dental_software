@@ -1,7 +1,6 @@
 import React from "react";
-import { csdpsStatisticsBySchool } from "../test_data";
 
-const DashboardTable = () => {
+const DashboardTable = ({ data }) => {
     return (
         <div className="table">
             <table>
@@ -16,8 +15,8 @@ const DashboardTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {csdpsStatisticsBySchool.length > 0 ? (
-                        csdpsStatisticsBySchool.map((school, index) => (
+                    {data.length > 0 ? (
+                        data.map((school, index) => (
                             <tr key={index} className="shadow">
                                 <td>{school.school}</td>
                                 <td>{school.numStudentsServed}</td>
