@@ -30,7 +30,7 @@
     align-items: center;
     padding: 0 15px;
 
-    border-radius: 10px 10px 10px 10px;    
+    border-radius: 10px 10px 10px 10px;
     transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 
 }
@@ -39,12 +39,12 @@
     top: 0;
     left: 0;
     width: calc(100%);
-    height: calc(var(--head-height ) + 15px);
+    height: calc(var(--head-height) + 15px);
     background-color: aliceblue;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 5px 30px;
 
-    border-radius: 0px 0px 20px 20px;  
+    border-radius: 0px 0px 20px 20px;
 }
 
 
@@ -368,30 +368,31 @@ body:has(.side_nav.open) .user_content {
     border-radius: 10px;
 }
 
-.filter_block p{
+.filter_block p {
     padding-bottom: 10px;
     font-weight: 700;
 }
 
-.filter_block input, .filter_block .MuiSelect-select{
+.filter_block input,
+.filter_block .MuiSelect-select {
     background: #fff;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
-.filter_block .search_field{
+.filter_block .search_field {
     width: 100%;
     margin-bottom: 20px;
-}   
+}
 
-.filter_block .filer_fields{
+.filter_block .filer_fields {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2%;
 }
 
-.filter_block .filer_fields div{
+.filter_block .filer_fields div {
     width: 100%;
 }
 
@@ -405,9 +406,9 @@ body:has(.side_nav.open) .user_content {
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
-  }
-  
-  .rows_per_page label {
+}
+
+.rows_per_page label {
     font-weight: 600;
     font-size: 14px;
     color: #333;
@@ -416,9 +417,9 @@ body:has(.side_nav.open) .user_content {
     justify-content: flex-end;
     flex-direction: row;
     gap: 10px;
-  }
-  
-  .rows_per_page select {
+}
+
+.rows_per_page select {
     padding: 10px 20px;
     font-size: 14px;
     border-radius: 5px;
@@ -427,23 +428,27 @@ body:has(.side_nav.open) .user_content {
     color: #333;
     cursor: pointer;
     transition: all 0.3s ease;
-    appearance: none; /* Removes default arrow */
-    -webkit-appearance: none; /* Removes default arrow for Safari */
-    -moz-appearance: none; /* Removes default arrow for Firefox */
+    appearance: none;
+    /* Removes default arrow */
+    -webkit-appearance: none;
+    /* Removes default arrow for Safari */
+    -moz-appearance: none;
+    /* Removes default arrow for Firefox */
     outline: none;
-  }
-  
-  .rows_per_page select:focus {
+}
+
+.rows_per_page select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-  }
-  
-  .rows_per_page select::-ms-expand {
-    display: none; /* Hides dropdown arrow in IE */
-  }
-  
-  /* Custom arrow for select */
-  .rows_per_page select::after {
+}
+
+.rows_per_page select::-ms-expand {
+    display: none;
+    /* Hides dropdown arrow in IE */
+}
+
+/* Custom arrow for select */
+.rows_per_page select::after {
     content: '▼';
     position: absolute;
     right: 15px;
@@ -451,4 +456,87 @@ body:has(.side_nav.open) .user_content {
     transform: translateY(-50%);
     font-size: 10px;
     color: #888;
-  }
+}
+
+
+
+/*----------------------
+--------Pop-ups---------
+----------------------*/
+
+.pop-up {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999999;
+    background-color: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: top 500ms cubic-bezier(0.68, -0.25, 0.27, 1.05), opacity 500ms ease;
+}
+
+.pop-up.show {
+    top: 0;
+    opacity: 1;
+}
+
+.pop-up.hide {
+    top: -100%;
+    opacity: 0;
+}
+
+
+.pop-up.delete>div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 544px;
+    width: 508px;
+    background-color: #333;
+    background: url("../assets/img/tooth_bg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 4% 4% 11% 4%;
+}
+
+.pop-up.delete>div>div{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4%;
+}
+
+.pop-up.delete>div>div img{
+    height: 40%;
+}
+
+.pop-up .actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pop-up .confirm-button {
+    background-color: #ff4d4f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pop-up .cancel-button {
+    background-color: #ccc;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

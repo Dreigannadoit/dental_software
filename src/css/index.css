@@ -225,7 +225,7 @@ button{
     overflow: hidden;
     border-radius: 10px;
     
-    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    transition: 700ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
 .dental_costume_button.download_template,
@@ -265,7 +265,7 @@ button{
 
     overflow: hidden;
     
-    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    transition: 800ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
 /* Edit position of image when on hover section */
@@ -283,6 +283,15 @@ button{
     width: 20px;
     left: calc(27% - 30px);
 }
+.dental_costume_button.view_patient:hover a img{
+    left: 27%;
+}
+.dental_costume_button.edit_patient:hover a img{
+    left: 27%;
+}
+.dental_costume_button.delete_patient:hover button img{
+    left: 20%;
+}
 
 .dental_costume_button button span,
 .dental_costume_button a span{
@@ -293,7 +302,7 @@ button{
     width: 150px;
     font-size: 16px;
     transform: translate(-50%, -45%);
-    transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    transition: 800ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
 /* Edit position of text when on hover section */
@@ -305,6 +314,7 @@ button{
 .dental_costume_button.new_patient:hover button span,
 .dental_costume_button.new_patient:hover a span{
     left: calc(45% + 30px);
+    color: #F5F5F5;
 }
 .dental_costume_button.import_btn:hover button span,
 .dental_costume_button.import_btn:hover a span{
@@ -314,6 +324,21 @@ button{
 .dental_costume_button.download_template:hover a span{
     left: calc(74% - 30px);
 }
+.dental_costume_button.view_patient:hover a span{
+    transform: translate(-50%, -40%);
+    left: 130%;
+}
+.dental_costume_button.edit_patient:hover a span{
+    transform: translate(-50%, -40%);
+    left: 130%;
+    color: white;
+}
+.dental_costume_button.delete_patient:hover button span{
+    transform: translate(-50%, -40%);
+    left: 65%;
+    color: white;
+}
+
 
 
 

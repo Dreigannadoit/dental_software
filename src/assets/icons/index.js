@@ -26,6 +26,7 @@ import User_Add from "./User_Add.svg"
 import Delete from "./delete.svg"
 import View from "./eye-open.svg"
 import File_Edit from "./File_Edit.svg"
+import Alert from "./Alert.svg"
 
 
 export {
@@ -52,5 +53,6 @@ export {
     User_Add,
     Delete,
     View,
-    File_Edit
+    File_Edit,
+    Alert
 }
