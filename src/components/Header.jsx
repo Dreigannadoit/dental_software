@@ -33,6 +33,7 @@ const Header = ({ toggleSideNav }) => {
     const location = useLocation();
     const [showDropdown, setShowDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false)
 
     const current_page = pageNames[location.pathname] || 'Page Not Found';
 
@@ -72,12 +73,21 @@ const Header = ({ toggleSideNav }) => {
                     <h2>{current_page}</h2>
                 </div>
 
-                <div
-                    className="user_avatar f-center"
-                    onMouseEnter={toggleDropdown}
-                    onMouseLeave={toggleDropdown}
-                >
-                    <img src={userAvatar} alt="User Avatar" />
+                
+                <div className="user_avatar f-center">
+                    {/* Remove For Official Site */}
+                    <button
+                        className={isDarkMode ? 'dark-mode-active' : ''}
+                        onClick={() => setIsDarkMode((prev) => !prev)}
+                    >
+                        Dark Mode
+                    </button>
+                    <img 
+                        src={userAvatar} 
+                        alt="User Avatar" 
+                        onMouseEnter={toggleDropdown}
+                        onMouseLeave={toggleDropdown}
+                    />
                 </div>
             </div>
 

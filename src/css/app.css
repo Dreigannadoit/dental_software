@@ -86,7 +86,11 @@
 
 .header .user_avatar {
     height: 100%;
-    width: var(--head-height);
+    width: calc(var(--side-nav-width) - 90px);
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
 }
 
 .header .user_avatar img {

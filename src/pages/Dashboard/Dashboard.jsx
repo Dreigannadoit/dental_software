@@ -4,9 +4,10 @@ import "../../css/dashboard.css";
 import DateTime from "../../components/DateTime";
 import { bannerFull } from "../../assets/img";
 
-const Dental_Charts = lazy(() => import("../../components/Dental_Charts"));
-const Pie_Dental_Charts = lazy(() => import("../../components/Pie_Dental_Charts"));
-const DashboardTable = lazy(() => import("../../components/DashboardTable"));
+
+const Dental_Charts  = lazy(() => import("../../components/Charts/Dental_Charts"));
+const Pie_Dental_Charts  = lazy(() => import("../../components/Charts/Pie_Dental_Charts"));
+const DashboardTable = lazy(() => import("../../components/Table/DashboardTable"));
 
 const Dashboard = () => {
   return (

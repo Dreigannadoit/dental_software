@@ -45,9 +45,5 @@
 .patients .table th:nth-child(6),
 .patients .table td:nth-child(6) {
     width: 10%; /* Status column */
-}
-
-.patients .table th:nth-child(7),
-.patients .table td:nth-child(7) {
-    width: 25%; /* Controls column */
+    text-align: center;
 }

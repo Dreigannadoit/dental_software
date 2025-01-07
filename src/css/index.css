@@ -32,6 +32,10 @@ body {
     background: url(../assets/bg/main.png);
 }
 
+body:has(.dark-mode-active) {
+    background: url(../assets/bg/main_dark.png);
+}
+
 *:active::-webkit-scrollbar-thumb,
 *:focus::-webkit-scrollbar-thumb,
 *:hover::-webkit-scrollbar-thumb {
@@ -137,17 +141,25 @@ button{
     border-bottom-right-radius: 15px;
 }
 
-.table table td.inactive span,
-.table table td.active span{
+.table table td.inactive span button,
+.table table td.active span button{
     padding: 8px;
     border-radius: 10px;
 }
-.table table td.active span{
+.table table td.active span button{
     background-color: rgb(35, 150, 35);
     color: #F5F5F5;
 }
-.table table td.inactive span{
+.table table td.inactive span button{
     background-color: rgb(255, 75, 75);
+}
+
+.table table .crud_controlls{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 15%;
+    width: 100%;
 }
 
 
@@ -208,15 +220,28 @@ button{
 /* ------------------------------------- */
 
 .dental_costume_button {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     overflow: hidden;
     border-radius: 10px;
     
     transition: 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
+.dental_costume_button.download_template,
+.dental_costume_button.import_btn,
+.dental_costume_button.new_patient {
+    height: 40px;
+    width: 40px;
+}
+
 .dental_costume_button:hover {
+    width: 100px;
+}
+
+.dental_costume_button.download_template:hover,
+.dental_costume_button.import_btn:hover,
+.dental_costume_button.new_patient:hover {
     width: 200px;
 }
 
@@ -255,7 +280,7 @@ button{
 }
 .dental_costume_button.download_template:hover button img,
 .dental_costume_button.download_template:hover a img{
-    width: 25px;
+    width: 20px;
     left: calc(27% - 30px);
 }
 

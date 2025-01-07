@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AnimatedButton = ({ type, classLabel, label, icon, backgroundColor, url }) => {
+const AnimatedButton = ({ type, classLabel, label, icon, backgroundColor, url, method }) => {
     const renderButton = () => {
         switch (type) {
             case "button":
                 return (
-                    <CustomButton classLabel={classLabel} label={label} icon={icon} backgroundColor={backgroundColor} />
+                    <CustomButton classLabel={classLabel} label={label} icon={icon} backgroundColor={backgroundColor} method={method} />
                 );
             case "routerLink":
                 return (
@@ -27,10 +27,10 @@ const AnimatedButton = ({ type, classLabel, label, icon, backgroundColor, url })
     );
 };
 
-const CustomButton = ({ classLabel, label, icon, backgroundColor }) => {
+const CustomButton = ({ classLabel, label, icon, backgroundColor, method }) => {
     return (
         <div className={`${classLabel} dental_costume_button`}>
-            <button style={{ background: `${backgroundColor}` }}>
+            <button style={{ background: `${backgroundColor}` }} onClick={ method }>
                 <img src={icon} alt="" />
                 <span>{label}</span>
             </button>

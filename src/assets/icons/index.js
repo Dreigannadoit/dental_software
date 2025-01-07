@@ -19,10 +19,13 @@ import Procedure_Codes from "./Procedure_Codes.svg"
 import User from "./User.svg"
 import Import from "./Import.svg"
 
-
 import Save from "./save.svg"
 import Upload from "./upload.svg"
 import User_Add from "./User_Add.svg"
+
+import Delete from "./delete.svg"
+import View from "./eye-open.svg"
+import File_Edit from "./File_Edit.svg"
 
 
 export {
@@ -46,5 +49,8 @@ export {
     exit,
     Save,
     Upload,
-    User_Add
+    User_Add,
+    Delete,
+    View,
+    File_Edit
 }
