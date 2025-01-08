@@ -1,32 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import AnimatedButton from "../AnimatedButton";
-import { Delete, File_Edit, View } from "../../assets/icons";
-import DeleteData from "../PopUps/DeleteData";
+import { Delete, File_Edit, View, Alert } from "../../assets/icons"; // Import Alert icon
+import ChangeStatus from "../PopUps/ChangeStatus";
+import useUpdateStatus from "../../hooks/useUpdateStatus";
+import usePopup from "../../hooks/usePopUp";
+import Popup from "../PopUps/Popup";
 
 const PatientTable = ({ data }) => {
-  const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const [isExiting, setIsExiting] = useState(false);
-  const [selectedPatient, setSelectedPatient] = useState(null);
-
-  const openDeletePopup = (patient) => {
-    setSelectedPatient(patient);
-    setShowDeletePopup(true);
-
-    // Reset exiting state when opening
-    setTimeout(() => {
-      setIsExiting(false); 
-    }, 100); 
-  };
-
-  const closeDeletePopup = () => {
-    setIsExiting(true); // Trigger the exit animation
-
-    // After the exit animation finishes, hide the pop-up
-    setTimeout(() => {
-      setShowDeletePopup(false); // Hide the pop-up
-      setSelectedPatient(null); // Clear the selected patient
-    }, 500); // Match this duration with the CSS transition time
-  };
+  const { updateStatus, setChangeStatusRef } = useUpdateStatus();
+  const {
+    isVisible: showDeletePopup,
+    isExiting,
+    popupData: selectedPatient,
+    openPopup: openDeletePopup,
+    closePopup: closeDeletePopup,
+  } = usePopup();
 
   const confirmDelete = () => {
     if (selectedPatient) {
@@ -38,14 +26,24 @@ const PatientTable = ({ data }) => {
 
   return (
     <>
+      {/* Delete Popup */}
       {showDeletePopup && (
-        <DeleteData
-          patient={selectedPatient}
+        <Popup
+          type="Inform"
+          title="Are You Sure?"
+          message={`You are about to delete ${selectedPatient?.name}. This action cannot be undone.`}
+          icon={Alert}
           onConfirm={confirmDelete}
           onCancel={closeDeletePopup}
+          confirmLabel="Yes, Delete it!"
+          cancelLabel="Cancel"
           isExiting={isExiting}
+          customClass="delete-popup"
         />
       )}
+
+      {/* Status Popups */}
+      <ChangeStatus ref={(ref) => setChangeStatusRef(ref)} />
 
       <div className="table">
         <table>
@@ -75,7 +73,9 @@ const PatientTable = ({ data }) => {
                     }`}
                   >
                     <span>
-                      <button>{patient.status === "Active" ? "Inactive" : "Active"}</button>
+                      <button onClick={() => updateStatus(patient)}>
+                        {patient.status === "Active" ? "Inactive" : "Active"}
+                      </button>
                     </span>
                   </td>
                   <td className="crud_controlls">

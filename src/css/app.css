@@ -466,42 +466,49 @@ body:has(.side_nav.open) .user_content {
 
 .pop-up {
     position: fixed;
-    top: -100%;
+    top: 100%;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 9999999999;
     background-color: rgba(0, 0, 0, 0.35);
     opacity: 0;
-    transition: top 500ms cubic-bezier(0.68, -0.25, 0.27, 1.05), opacity 500ms ease;
+    clip-path: polygon(50% 100%, 54% 100%, 61% 100%, 41% 100%);
+    transition: all 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+
 }
 
 .pop-up.show {
     top: 0;
     opacity: 1;
+    transition: all 400ms 100ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
 }
 
-.pop-up.hide {
-    top: -100%;
-    opacity: 0;
-}
-
-
-.pop-up.delete>div{
+.pop-up>div {
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 544px;
     width: 508px;
+    opacity: 0;
     background-color: #333;
     background: url("../assets/img/tooth_bg.png");
     background-size: contain;
     background-repeat: no-repeat;
     padding: 4% 4% 11% 4%;
+    transition: all 400ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
-.pop-up.delete>div>div{
+.pop-up.show>div {
+    top: 50%;
+    opacity: 1;
+    transition: all 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+.pop-up>div>div {
     height: 100%;
     width: 100%;
 
@@ -509,18 +516,64 @@ body:has(.side_nav.open) .user_content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4%;
+    text-align: center;
+    gap: 1%;
 }
 
-.pop-up.delete>div>div img{
-    height: 40%;
+.pop-up>div>div h1 {
+    font-size: 28px;
+}
+
+.pop-up>div>div p {
+    font-size: 18px;
+}
+
+.pop-up>div>div img {
+    height: 35%;
+    margin-bottom: 5px;
+}
+
+.pop-up input[type="file"] {
+    display: none;
+    /* Hide the default file input */
+}
+
+.pop-up .file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pop-up .file-input-label:hover {
+    background-color: #0056b3;
+}
+
+.pop-up .file-input-label:active {
+    background-color: #004085;
+}
+
+.pop-up .file-input-preview {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #666;
+    border: solid 1px var(--dark-color);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .pop-up .actions {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 15px;
 }
 
 .pop-up .confirm-button {
@@ -539,4 +592,25 @@ body:has(.side_nav.open) .user_content {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.status-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    z-index: 9999999;
+}
+
+.status-popup {
+    background: var(--green-grad);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    margin-top: 10px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }

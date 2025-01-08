@@ -8,6 +8,7 @@
 
     --blue-grad: linear-gradient(153deg, rgba(185, 227, 252, 1) 0%, rgba(55, 172, 220, 1) 55%);
     --pink-grad: linear-gradient(-135deg, rgba(249, 202, 167, 1) 0%, rgba(254, 178, 168, 1) 100%);
+    --green-grad: linear-gradient(325deg, rgba(30,134,49,1) 0%, rgba(0,199,36,1) 100%);
 }
 
 html{

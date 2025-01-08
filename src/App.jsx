@@ -26,7 +26,7 @@ import {
 import ProtectedLayout from './pages/ProtectedLayout';
 import MasterController from './components/MasterController';
 import './css/app.css';
-import DeleteData from './components/PopUps/DeleteData';
+import DeleteData from './components/PopUps/Popup';
 
 function App() {
   return (

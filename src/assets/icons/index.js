@@ -27,6 +27,7 @@ import Delete from "./delete.svg"
 import View from "./eye-open.svg"
 import File_Edit from "./File_Edit.svg"
 import Alert from "./Alert.svg"
+import ImportIcon from "./ImportIcon.svg"
 
 
 export {
@@ -54,5 +55,6 @@ export {
     Delete,
     View,
     File_Edit,
-    Alert
+    Alert,
+    ImportIcon
 }

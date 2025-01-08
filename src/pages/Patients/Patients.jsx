@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from "react";
 import "../../css/patients.css";
 import FilterBlock from "../../components/FilterBlock";
-import { Save, Upload, User_Add } from "../../assets/icons";
+import { ImportIcon, Save, Upload, User_Add } from "../../assets/icons";
 import AnimatedButton from "../../components/AnimatedButton";
 import PatientTable from "../../components/Table/PatientTable";
 import { patientInfo, updatedPatientInfo } from "../../test_data";
 import useDebounce from "../../hooks/useDebounce";
 import RowsPerPage from "../../components/RowsPerPage";
+import Popup from "../../components/PopUps/Popup";
+import usePopup from "../../hooks/usePopUp";
+import { Alert } from "bootstrap";
 
 const Patients = () => {
   const [filters, setFilters] = useState({
@@ -86,35 +89,58 @@ const Patients = () => {
   const currentPagePatients = filteredPatients.slice(startIndex, startIndex + rowsPerPage); // Get the patients for the current page by slicing the filtered patients array
   const totalPages = Math.ceil(filteredPatients.length / rowsPerPage); // Calculate the total number of pages based on the length of the filtered patients and rows per page
 
-  const openImportPopUp = () => {
-    console.log("Opened")
-  }
+  const {
+    isVisible: showImportPopup,
+    isExiting,
+    openPopup: openImportPopUp,
+    closePopup: closeImportPopUp,
+  } = usePopup();
 
   return (
-    <div className="patients auto-sizing">
-      <FilterBlock filters={filters} onFilterChange={handleFilterChange} patientInfo={updatedPatientInfo} />
-
-      <div className="table_controls">
-        <UserButtons openImportPopUp={openImportPopUp} />
-        <RowsPerPage rowsPerPage={rowsPerPage} handleRowsPerPageChange={handleRowsPerPageChange} />
-      </div>
-
-      <div className="table_area">
-        <PatientTable data={currentPagePatients} />
-      </div>
-
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>Page {currentPage} of {totalPages}</span>
-          <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-            Next
-          </button>
-        </div>
+    <>
+      {/* Import File Popup */}
+      {showImportPopup && (
+          <Popup
+            type="Import"
+            title="Import Patient List"
+            message={`This action can be only done once`}
+            icon={ImportIcon}
+            onConfirm={closeImportPopUp}
+            onCancel={closeImportPopUp}
+            confirmLabel="Confirm"
+            cancelLabel="Cancel"
+            isExiting={isExiting}
+            customClass="import-popup"
+        />
       )}
-    </div>
+
+
+        
+      <div className="patients auto-sizing">
+        <FilterBlock filters={filters} onFilterChange={handleFilterChange} patientInfo={updatedPatientInfo} />
+
+        <div className="table_controls">
+          <UserButtons openImportPopUp={openImportPopUp} />
+          <RowsPerPage rowsPerPage={rowsPerPage} handleRowsPerPageChange={handleRowsPerPageChange} />
+        </div>
+
+        <div className="table_area">
+          <PatientTable data={currentPagePatients} />
+        </div>
+
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+              Previous
+            </button>
+            <span>Page {currentPage} of {totalPages}</span>
+            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
