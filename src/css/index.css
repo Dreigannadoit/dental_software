@@ -53,7 +53,6 @@ body:has(.dark-mode-active) {
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
 
-
 #root {
     height: 100%;
     width: 100%;
@@ -85,6 +84,14 @@ button{
     cursor: pointer;
 }
 
+
+/* The Menu item in the mui plugin does not work properly, this is the fix */
+.css-pa188r-MuiModal-root-MuiPopover-root-MuiMenu-root,
+.css-189ousr-MuiPopper-root-MuiPickersPopper-root,
+.MuiPopper-root, 
+.MuiPickersPopper-root{
+    z-index: 9999999999;
+}
 
 /* --------------------- */
 /* default table styling */

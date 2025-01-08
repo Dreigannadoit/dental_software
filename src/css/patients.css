@@ -47,3 +47,86 @@
     width: 10%; /* Status column */
     text-align: center;
 }
+
+/* ---------------- */
+/* New Patient Form */
+/* ---------------- */
+
+.new_patient_containter{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.30);
+    padding: 2%;
+    overflow: auto;
+}
+
+.new_patients{
+    height: 100%;
+    width: 70%;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 4%;
+}
+
+.new_patient_containter form{
+    width: 100%;
+}
+
+.new_patient_containter form h3{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.new_patient_containter form .container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.new_patient_containter form .container>div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.new_patient_containter form .container .fname{
+    width: 40%
+}
+.new_patient_containter form .container .lname{
+    width: calc(40% - 20px)
+}
+.new_patient_containter form .container .gender{
+    width: 20%
+}
+.new_patient_containter form .container .birthdate{
+    width: 25%
+}
+.new_patient_containter form .container .race{
+    width: calc(40% - 20px)
+}
+.new_patient_containter form .container .insurance{
+    width: 35%
+}
+.new_patient_containter form .container .language_spoken{
+    width: calc(50% - 10px)
+}
+.new_patient_containter form .container .language_spoken_at_hone{
+    width: 50%
+}
+.new_patient_containter form .container .allergies{
+    width: 100%;
+}
+.new_patient_containter form .container .allergies .css-1iw3t7y-MuiFormControl-root{
+    width: 100%;
+}
