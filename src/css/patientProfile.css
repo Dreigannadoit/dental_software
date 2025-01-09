@@ -13,7 +13,8 @@
     gap: 10px;
     flex-wrap: wrap;
     background-color: aliceblue;
-    padding: 3%;
+    padding: 2%;
+    border-radius: 10px;
 }
 
 .userInfo .block .info{
@@ -27,3 +28,11 @@
     margin-bottom: 15px;
 }
 
+
+.userInfo .block .Yes{
+    color: green;
+}
+
+.userInfo .block .No{
+    color: red;
+}

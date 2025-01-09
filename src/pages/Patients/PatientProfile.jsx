@@ -14,7 +14,7 @@ const PatientProfile = ({ id = 1 }) => {
     return (
         <>
             <div className="userInfo">
-                <div className="block patient_details">
+                <div className="block patient_details shadow">
                     <h2>Patient Details</h2>
                     <div className="info">
                         <div>
@@ -50,7 +50,7 @@ const PatientProfile = ({ id = 1 }) => {
                     </div>
                 </div>
 
-                <div className="block school_details">
+                <div className="block school_details shadow">
                     <h2>School Details</h2>
                     <div className="info">
                         <div>
@@ -86,7 +86,7 @@ const PatientProfile = ({ id = 1 }) => {
                     </div>
                 </div>
 
-                <div className="block guardian_details">
+                <div className="block guardian_details shadow">
                     <h2>Parent/Guardian Details</h2>
                     <div className="info">
                         <div>
@@ -123,10 +123,16 @@ const PatientProfile = ({ id = 1 }) => {
                     </div>
                 </div>
 
-                <div className="block dr">
+                <div className="block approval_details shadow">
                     <h2>Consented: <span className={`${patient.consented === true ? "Yes" : "No"}`}>{patient.consented === true ? "Yes" : "No"}</span></h2>
-                    <p>{}</p>
-                    <h2>Signed: <span className={`${patient.signed === true ? "Yes" : "No"}`}>{patient.consented === true ? "Yes" : "No"}</span></h2>
+                    <p>Notes: {patient.consentedNotes}</p>
+                    <h2>
+                        Signed: 
+                        <span className={`${patient.signed === true ? "Yes" : "No"}`}>
+                            {patient.signed === true ? " Yes" : " No"}
+                        </span>
+                    </h2>
+                    <p>Notes: {patient.signedNotes}</p>
                 </div>
             </div>
         </>

@@ -146,7 +146,9 @@ export const patientInfo = [
         parent_gauridian_email: "woodlenecharles12@gmail.com",
         dentistName: "Dr Shahishichkchie",
         consented: true,
-        signed: true
+        consentedNotes: "The Worst teeth I have Ever seen",
+        signed: false,
+        signedNotes: "Has Insuarance",
     },
     {
         id: 2,
