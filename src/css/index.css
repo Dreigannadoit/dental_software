@@ -112,6 +112,16 @@ button{
     border-radius: 20px;
 }
 
+.table thead th div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.table thead th div button{
+    background-color: transparent;
+    transform: translateX(5px) rotate(-90deg);
+}
+
 .table tr:has(th) {
     background: var(--blue-grad);
     height: 100%;
@@ -349,7 +359,64 @@ button{
 
 
 
+/* ------------------------------- */
+/* Input Style for uploading image */
+/* ------------------------------- */
 
+.set_image_container{
+    height: 240px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.set_image_container h2{
+    margin-bottom: 20px;
+}
+
+.set_image{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border: dashed 1px var(--dark-color);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.set_image label,
+.set_image img,
+.set_image input{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.set_image label{
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.set_image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+}
+
+.set_image input{
+    height: 100%;
+    width: 100%;
+    opacity:0;
+    background-color: #007bff;
+    z-index: 100;
+}
 
 /* Master Controller Styling */
 

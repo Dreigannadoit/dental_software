@@ -397,6 +397,23 @@ body:has(.side_nav.open) .user_content {
 }
 
 
+.pagination{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.pagination button{
+    background: var(--pink-grad);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
 
 /* Rowsper page */
 

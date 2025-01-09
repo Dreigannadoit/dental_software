@@ -1,0 +1,29 @@
+.userInfo{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.userInfo .block{
+    width: calc(50% - 5px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding: 3%;
+}
+
+.userInfo .block .info{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userInfo .block .info>div{
+    width: 50%;
+    margin-bottom: 15px;
+}
+

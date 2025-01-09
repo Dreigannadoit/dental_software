@@ -27,6 +27,7 @@ import ProtectedLayout from './pages/ProtectedLayout';
 import MasterController from './components/MasterController';
 import './css/app.css';
 import DeleteData from './components/PopUps/Popup';
+import PatientProfile from './pages/Patients/PatientProfile';
 
 function App() {
   return (
@@ -42,7 +43,13 @@ function App() {
             <Route path="profile" element={<User_Profile />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="calendar" element={<Calendar />} />
+
             <Route path="patients" element={<Patients />} />
+            <Route path="patients/patient_profile" element={<PatientProfile />} />
+
+            {/* TODO: Use this route when implementing the database, loads the patient through id  */}
+            {/* <Route path="patients/patient_profile/:id" element={<Patients />} /> */} 
+
             <Route path="chart" element={<Chart />} />
             <Route path="eligibility" element={<Eligibility />} />
             <Route path="distribution" element={<Distribution />} />

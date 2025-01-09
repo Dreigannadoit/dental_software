@@ -18,6 +18,7 @@ const FilterBlock = ({ filters, onFilterChange, patientInfo }) => {
   const uniqueGrades = getUniqueValues("grade");
   const uniqueYears = getUniqueValues("year");
   const uniqueStatuses = getUniqueValues("status");
+  const uniqueTeachers = getUniqueValues("teacher");
 
   return (
     <div className="filter_block">
@@ -92,6 +93,22 @@ const FilterBlock = ({ filters, onFilterChange, patientInfo }) => {
               {uniqueStatuses.map((status) => (
                 <MenuItem key={status} value={status}>
                   {status}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className="filter_status">
+          <p>Teacher</p>
+          <FormControl fullWidth>
+            <Select
+              value={filters.teacher}
+              onChange={handleInputChange("teacher")}
+            >
+              <MenuItem value="">All</MenuItem>
+              {uniqueTeachers.map((teacher) => (
+                <MenuItem key={teacher} value={teacher}>
+                  {teacher}
                 </MenuItem>
               ))}
             </Select>

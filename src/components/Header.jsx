@@ -11,6 +11,7 @@ const pageNames = {
     '/dashboard': 'Dashboard',
     '/calendar': 'Calendar',
     '/patients': 'Patients',
+    '/patients/patient_profile': 'Patient Profile',
     '/chart': 'Chart',
     '/eligibility': 'Eligibility',
     '/distribution': 'Distribution',

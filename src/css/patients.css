@@ -124,9 +124,49 @@
 .new_patient_containter form .container .language_spoken_at_hone{
     width: 50%
 }
-.new_patient_containter form .container .allergies{
+
+.new_patient_containter form .gaurdian_info>div{
+    width: calc(50% - 10px);
+}
+.new_patient_containter form .school_info>div{
+    width: calc(50% - 10px);
+}
+
+.new_patient_containter form .container .full,
+.new_patient_containter form .container .full .css-1iw3t7y-MuiFormControl-root{
     width: 100%;
 }
-.new_patient_containter form .container .allergies .css-1iw3t7y-MuiFormControl-root{
+
+.new_patient_containter form .container .text_input{
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.new_patient_containter form .container .text_input .dtext{
+    width: 60%;
+}
+.new_patient_containter form .container .text_input .dinput{
+    padding-top: 2%;
+    width: 35%;
+}
+.new_patient_containter form .form-buttons {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    gap: 15px;
+} 
+.new_patient_containter form .form-buttons button{
+    padding: 2% 5%;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.new_patient_containter form .form-buttons button.submit-btn{
+    background-color: #ff4d4f;
+}
+.new_patient_containter form .form-buttons button.cancel-btn{
+    background-color: #ccc;
 }

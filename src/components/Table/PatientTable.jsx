@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimatedButton from "../AnimatedButton";
-import { Delete, File_Edit, View, Alert } from "../../assets/icons"; // Import Alert icon
+import { Delete, File_Edit, View, Alert } from "../../assets/icons";
 import ChangeStatus from "../PopUps/ChangeStatus";
 import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
 const PatientTable = ({ data }) => {
+  const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
     isVisible: showDeletePopup,
@@ -23,6 +24,11 @@ const PatientTable = ({ data }) => {
     }
     closeDeletePopup();
   };
+
+  // Sort data by ID
+  const sortedData = [...data].sort((a, b) => {
+    return isAscending ? a.id - b.id : b.id - a.id;
+  });
 
   return (
     <>
@@ -49,7 +55,17 @@ const PatientTable = ({ data }) => {
         <table>
           <thead className="shadow">
             <tr>
-              <th>#</th>
+              <th>
+                <div>
+                  #
+                  <button
+                    onClick={() => setIsAscending(!isAscending)} // Toggle sorting order
+                    className={`${isAscending ? "Ascending" : "Descending"}`}
+                  >
+                    ⪡
+                  </button>
+                </div>
+              </th>
               <th>Patient Name</th>
               <th>Gender</th>
               <th>Date of Birth</th>
@@ -59,8 +75,8 @@ const PatientTable = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.length > 0 ? (
-              data.map((patient, index) => (
+            {sortedData.length > 0 ? (
+              sortedData.map((patient, index) => (
                 <tr key={index} className="shadow">
                   <td>{patient.id}</td>
                   <td>{patient.name}</td>
@@ -69,12 +85,12 @@ const PatientTable = ({ data }) => {
                   <td>{patient.age}</td>
                   <td
                     className={`${
-                      patient.status === "Active" ? "inactive" : "active"
+                      patient.status === "Active" ? "active" : "inactive "
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(patient)}>
-                        {patient.status === "Active" ? "Inactive" : "Active"}
+                        {patient.status === "Active" ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>
