@@ -18,8 +18,11 @@ function ProtectedLayout({ children }) {
 
       <Side_Bar isNavOpen={isNavOpen}  />
 
-      <div className={`user_content glassmorphism shadow`} >
+      <div className={`user_content`} >
+        <div className="glassmorphism shadow">
+          
         <Outlet />
+        </div>
       </div>
     </>
   );

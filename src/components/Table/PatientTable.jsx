@@ -103,6 +103,7 @@ const PatientTable = ({ data }) => {
                       backgroundColor="#8BE5FE"
                       url="#"
                     />
+                    {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
                       type="routerLink"
                       classLabel="edit_patient"

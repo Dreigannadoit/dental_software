@@ -64,7 +64,7 @@ const Side_Bar = ({ isNavOpen }) => {
                   <span>Calendar</span>
                 </span></Link>
             </li>
-            <li className={isActive("/patients") ? "active" : ""}>
+            <li className={isActive("/patients") || isActive("/patients/patient_profile") ? "active" : ""}>
               <Link to="/patients">
 
                 <span>

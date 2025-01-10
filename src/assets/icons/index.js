@@ -29,6 +29,9 @@ import File_Edit from "./File_Edit.svg"
 import Alert from "./Alert.svg"
 import ImportIcon from "./ImportIcon.svg"
 
+import Arrow_right from "./Arrow_right.svg"
+import Arrow_left from "./Arrow_left.svg"
+
 
 export {
     Dashboard,
@@ -56,5 +59,7 @@ export {
     View,
     File_Edit,
     Alert,
-    ImportIcon
+    ImportIcon,
+    Arrow_right,
+    Arrow_left
 }
