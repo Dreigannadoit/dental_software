@@ -38,7 +38,25 @@ const MasterController = () => {
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/calendar">Calendar</Link></li>
                     <li><Link to="/patients">Patients</Link></li>
+
+                    <br />
+
                     <li><Link to="/patients/patient_profile">Patient Profile</Link></li>
+                    <ul>
+                        <li><Link to="/patients/patient_profile#Medical_History">Medical History</Link></li>
+                        <li><Link to="/patients/patient_profile#Program_Participants">Program Participants</Link></li>
+                        <li><Link to="/patients/patient_profile#Appointments">Appointments</Link></li>
+                        <li><Link to="/patients/patient_profile#Perio_Chart">Perio Chart</Link></li>
+                        <li><Link to="/patients/patient_profile#Treatment_History">Treatment History</Link></li>
+
+                        <li><Link to="/patients/patient_profile#Patient_Details_History">Patient Details History</Link></li>
+                        <li><Link to="/patients/patient_profile#Communications">Communications</Link></li>
+                        <li><Link to="/patients/patient_profile#Guardians">Guardians</Link></li>
+                        <li><Link to="/patients/patient_profile#Attachments">Attachments</Link></li>
+                    </ul>
+
+                    <br />
+
                     <li><Link to="/chart">Chart</Link></li>
                     <li><Link to="/eligibility">Eligibility</Link></li>
                     <li><Link to="/distribution">Distribution</Link></li>

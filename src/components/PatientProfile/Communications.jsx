@@ -3,6 +3,8 @@ import { FormControlLabel, FormGroup, Radio, RadioGroup, TextField } from '@mui/
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import React, { useState } from 'react'
+import AnimatedButton from '../AnimatedButton';
+import { File_Edit } from '../../assets/icons';
 
 const Communications = () => {
   const [ReferelCompleteSatus, setReferelCompleteSatus] = useState(null);
@@ -36,7 +38,14 @@ const Communications = () => {
               id="outlined-basic"
               variant="outlined"
               fullWidth
-              placeholder=""
+              value="Csdp Program Sy 2024 - 2025"
+              disabled
+              sx={{
+                '& .MuiInputBase-input': {
+                  color: '#000000', // Input text color
+                  '&::placeholder': { color: '#000000' }, // Placeholder color (if placeholder is used)
+                },
+              }}
             />
           </div>
           <div className="current_dentist">
@@ -76,13 +85,12 @@ const Communications = () => {
               id="outlined-basic"
               variant="outlined"
               fullWidth
-              placeholder="Super Admin"
+              value="Super Admin"
               disabled
               sx={{
-                input: {
+                '& .MuiInputBase-input': {
                   color: '#000000', // Input text color
-                  '&::placeholder': { color: '#000000' }, // Placeholder color
-                  textFillColor: 'rgba(0, 0, 0, 1)',
+                  '&::placeholder': { color: '#000000' }, // Placeholder color (if placeholder is used)
                 },
               }}
             />
@@ -119,6 +127,44 @@ const Communications = () => {
 
           <button type="submit" className='main_btn_style' onSubmit={(e) => { e.preventDefault() }}>Save</button>
         </form>
+      </div>
+
+      <div className="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Referral Complete</th>
+              <th>School Year</th>
+              <th>Current Dentist</th>
+              <th>Date Called</th>
+              <th>Created by</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="shadow">
+              <td>Yes</td>
+              <td>Csdp Program Sy 2024 - 2025</td>
+              <td>Cinelli, Kristin L</td>
+              <td>2025-01-15</td>
+              <td>Super Admin</td>
+              <td>
+                <div>
+                  <AnimatedButton
+                    type="button"
+                    classLabel="edit_patient"
+                    label="Edit"
+                    icon={File_Edit}
+                    backgroundColor="#1E8631"
+                    method={() => { console.log("button Clicked") }}
+                  />
+
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
       </div>
     </div>
   )

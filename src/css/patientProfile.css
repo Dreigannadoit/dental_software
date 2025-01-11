@@ -60,7 +60,7 @@
 }
 
 .patientInfoAction .title{
-    font-size: 20px;
+    font-size: 12px;
     line-height:300%;
     overflow: hidden;
 }
@@ -284,12 +284,34 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 
 
 
-/* ----------------- */
-/* Communications History */
-/* ----------------- */
+/* -------------- */
+/* Communications */
+/* -------------- */
 
 
 .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{
     -webkit-text-fill-color: rgba(0, 0, 0, 1) !important;
     text-fill-color: rgba(0, 0, 0, 1) !important;
+}
+
+.communications .table th:nth-child(1),
+.communications .table td:nth-child(1) {
+    width: 10%;
+    text-align: center;
+}
+.communications .table th:nth-child(2),
+.communications .table td:nth-child(2) {
+    width: 25%;
+}
+.communications .table th:nth-child(3),
+.communications .table td:nth-child(3) {
+    width: 20%;
+}
+.communications .table th:nth-child(4),
+.communications .table td:nth-child(4) {
+    width: 12%;
+}
+.communications .table th:nth-child(5),
+.communications .table td:nth-child(5) {
+    width: 15%;
 }
