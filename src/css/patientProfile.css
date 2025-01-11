@@ -1,7 +1,6 @@
 .patientInfo{
     width: 100%;
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -12,13 +11,13 @@
     flex-direction: column;
     gap: 10px;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     padding: 1rem;
-    border-radius: 10px;
 }
 
 .patientInfo .block h2{
     border-bottom: solid 1px var(--dark-color);
+    font-size: 20px;
     padding: 10px 0;
 }
 
@@ -126,26 +125,6 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     transform: translateY(5%);
 }
 
-
-
-/* -------------------- */
-/* Program Participants */
-/* -------------------- */
-
-.patient_profile_block,
-.patient_profile_block .form,
-.patient_profile_block .form form{
-    width: 100%;
-}
-
-.patient_profile_block .save_btn{
-    padding: 15px 5%;
-    border-radius: 10px;
-    background: var(--green-grad);
-    color: #fff;
-    font-size: 16px;
-}
-
 .patient_profile_block .form form{
     display: flex;
     flex-wrap: wrap;
@@ -157,46 +136,97 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     width: calc(50% - 10px);
 }
 
+.patient_profile_block,
+.patient_profile_block .form,
+.patient_profile_block .form form,
 .patientInfoAction .table{
     width: 100%;
 }
 
-.patientInfoAction .table th
-.patientInfoAction .table td{
-   font-size: 20px; 
-}
-
-.patientInfoAction .table th:nth-child(1),
-.patientInfoAction .table td:nth-child(1) {
-    width: 25%;
-}
-
-.patientInfoAction .table th:nth-child(2),
-.patientInfoAction .table td:nth-child(2) {
-    width: 25%;
-}
-
-.patientInfoAction .table th:nth-child(3),
-.patientInfoAction .table td:nth-child(3) {
-    width: 5%; 
-}
-
-.patientInfoAction .table th:nth-child(4),
-.patientInfoAction .table td:nth-child(4) {
-    width: 15%; 
-}
-
-.patientInfoAction .table th:nth-child(5),
-.patientInfoAction .table td:nth-child(5) {
-    width: 6%; 
-}
-
-.patientInfoAction .table th:nth-child(6),
-.patientInfoAction .table td:nth-child(6) {
-    width: 8%; 
-}
 .patientInfoAction .table td>div{
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
 }
+
+/* -------------------- */
+/* Program Participants */
+/* -------------------- */
+
+.program_participants .table th
+.program_participants .table td{
+   font-size: 20px; 
+}
+
+.program_participants .table th:nth-child(1),
+.program_participants .table td:nth-child(1) {
+    width: 25%;
+}
+
+.program_participants .table th:nth-child(2),
+.program_participants .table td:nth-child(2) {
+    width: 25%;
+}
+
+.program_participants .table th:nth-child(3),
+.program_participants .table td:nth-child(3) {
+    width: 7%;
+    text-align: center;
+}
+
+.program_participants .table th:nth-child(4),
+.program_participants .table td:nth-child(4) {
+    width: 15%; 
+}
+
+.program_participants .table th:nth-child(5),
+.program_participants .table td:nth-child(5) {
+    width: 8%; 
+}
+
+.program_participants .table th:nth-child(6),
+.program_participants .table td:nth-child(6) {
+    width: 8%; 
+}
+
+
+
+/* ------------ */
+/* Appointments */
+/* ------------ */
+
+.appointments .table th:nth-child(1),
+.appointments .table td:nth-child(1) {
+    width: 23%;
+}
+.appointments .table th:nth-child(2),
+.appointments .table td:nth-child(2) {
+    width: 20%;
+}
+.appointments .table th:nth-child(3),
+.appointments .table td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+.appointments .table th:nth-child(4),
+.appointments .table td:nth-child(4) {
+    width: 9%;
+    text-align: center;
+}
+.appointments .table th:nth-child(5),
+.appointments .table td:nth-child(5) {
+    width: 9%;
+    text-align: center;
+}
+.appointments .table th:nth-child(6),
+.appointments .table td:nth-child(6) {
+    width: 5%;
+    text-align: center;
+}
+.appointments .table th:nth-child(7),
+.appointments .table td:nth-child(7) {
+    width: 9%;
+    text-align: center;
+}
+

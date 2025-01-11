@@ -88,7 +88,7 @@ const ProgramParticipants = () => {
             </FormControl>
           </div>
 
-          <button type="submit" className='save_btn' onSubmit={(e) => {e.preventDefault()}}>Save</button>
+          <button type="submit" className='main_btn_style' onSubmit={(e) => {e.preventDefault()}}>Save</button>
         </form>
       </div>
 

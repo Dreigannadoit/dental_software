@@ -56,7 +56,7 @@ const PatientProfile = ({ id = 1 }) => {
 
 
     const renderInfoSection = (title, details) => (
-        <div className={`block ${title.toLowerCase().replace(" ", "_")} shadow`}>
+        <div className={`block ${title.toLowerCase().replace(" ", "_")} `}>
             <h2>{title}</h2>
             <div className="info">
                 {details.map(({ label, value }) => (
@@ -96,7 +96,7 @@ const PatientProfile = ({ id = 1 }) => {
                     { label: "Dentist Name", value: patient.dentistName },
                 ])}
 
-                <div className="block approval_details shadow">
+                <div className="block approval_details">
                     <h2>
                         Consented: <span className={patient.consented ? "Yes" : "No"}>{patient.consented ? "Yes" : "No"}</span>
                     </h2>
