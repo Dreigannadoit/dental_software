@@ -3,16 +3,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
 }
 
-.patientInfo .block{
-    width: calc(50% - 5px);
+.patientInfo>.block{
+    width: calc(50% - 20px);
     display: flex;
     flex-direction: column;
     gap: 10px;
     flex-wrap: wrap;
     /* background-color: aliceblue; */
-    padding: 1rem;
 }
 
 .patientInfo .block h2{
@@ -25,6 +25,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding: 0 10px;
 }
 
 .patientInfo .block .info>div{
@@ -121,6 +122,13 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     object-fit: contain;
 }
 
+.patient_profile_block,
+.patient_profile_block .form,
+.patient_profile_block .form form,
+.patientInfoAction .table{
+    width: 100%;
+}
+
 .patientInfoAction .selector button span{
     transform: translateY(5%);
 }
@@ -134,13 +142,6 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 
 .patient_profile_block .form form>div{
     width: calc(50% - 10px);
-}
-
-.patient_profile_block,
-.patient_profile_block .form,
-.patient_profile_block .form form,
-.patientInfoAction .table{
-    width: 100%;
 }
 
 .patientInfoAction .table td>div{
@@ -229,4 +230,50 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     width: 9%;
     text-align: center;
 }
+
+
+
+/* ----------------- */
+/* Treatment History */
+/* ----------------- */
+
+.treatment_history .table th:nth-child(1),
+.treatment_history .table td:nth-child(1) {
+    width: 10%;
+}
+.treatment_history .table th:nth-child(2),
+.treatment_history .table td:nth-child(2) {
+    width: 10%;
+}
+.treatment_history .table th:nth-child(3),
+.treatment_history .table td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+.treatment_history .table th:nth-child(4),
+.treatment_history .table td:nth-child(4) {
+    width: 10%;
+    text-align: center;
+}
+.treatment_history .table th:nth-child(5),
+.treatment_history .table td:nth-child(5) {
+    width: 10%;
+    text-align: center;
+}
+.treatment_history .table th:nth-child(6),
+.treatment_history .table td:nth-child(6) {
+    width: 14%;
+    text-align: center;
+}
+.treatment_history .table th:nth-child(7),
+.treatment_history .table td:nth-child(7) {
+    width: 14%;
+    text-align: center;
+}
+.treatment_history .table th:nth-child(8),
+.treatment_history .table td:nth-child(8) {
+    width: 14%;
+    text-align: center;
+}
+
 

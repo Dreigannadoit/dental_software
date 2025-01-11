@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import AnimatedButton from '../AnimatedButton';
 import { Delete, File_Edit } from '../../assets/icons';
-import { AccordionDetails, AccordionSummary } from '../CustumeAccordian';
+import { Accordion, AccordionDetails, AccordionSummary } from '../CustumeAccordian';
 
 const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
   const [expanded, setExpanded] = useState(false);
@@ -48,9 +48,9 @@ const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
                 <td>BAKER ELEMENTARY SCHOOL</td>
                 <td>Yes</td>
                 <td>Yes</td>
-                <td>Jan 20, 2024</td>
+                <td>2025-01-10</td>
                 <td>No</td>
-                <td>Jan 20, 2024</td>
+                <td>2025-01-10</td>
                 <td>
                   <div>
                     <AnimatedButton

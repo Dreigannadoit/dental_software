@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
-import AnimatedButton from '../AnimatedButton';
-import { Delete, File_Edit } from '../../assets/icons';
 import { Accordion, AccordionDetails, AccordionSummary } from '../CustumeAccordian';
+import { Checkbox } from '@mui/material';
 
 
 const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
@@ -26,44 +25,31 @@ const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
           <table>
             <thead>
               <tr>
-                <th>Type</th>
-                <th>Screening</th>
-                <th>Prophy History</th>
-                <th>Flouride History</th>
-                <th>Sealant Placed</th>
-                <th>SDF</th>
-                <th>Fillings Placed</th>
                 <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th> </th>
+                <th>Completed</th>
+                <th>Submitted</th>
+                <th>Other Dentist</th>
               </tr>
             </thead>
             <tbody>
               <tr className="shadow">
-                <td>Csdp Program Sy 2024 - 2025</td>
-                <td>BAKER ELEMENTARY SCHOOL</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Jan 20, 2024</td>
-                <td>No</td>
-                <td>Jan 20, 2024</td>
+                <td>Initial Visit</td>
+                <td>2025-01-10</td>
+                <td>D1120</td>
+                <td>Prophlaxis </td>
+                <td>$55.00</td>
                 <td>
-                  <div>
-                    <AnimatedButton
-                      type="button"
-                      classLabel="edit_patient"
-                      label="Edit"
-                      icon={File_Edit}
-                      backgroundColor="#1E8631"
-                      method={() => { console.log("button Clicked") }}
-                    />
-                    <AnimatedButton
-                      type="button"
-                      classLabel="delete_patient"
-                      label="Delete"
-                      icon={Delete}
-                      backgroundColor="#FF1A1A"
-                      method={() => { console.log("button Clicked") }}
-                    />
-                  </div>
+                  <Checkbox inputProps={{ 'aria-label': 'Completed Checkbox' }}  />
+                </td>
+                <td>
+                  <Checkbox inputProps={{ 'aria-label': 'Submitted Checkbox' }}  />
+                </td>
+                <td>
+                  <Checkbox inputProps={{ 'aria-label': 'Other Dentist Checkbox' }}  />
                 </td>
               </tr>
             </tbody>
