@@ -82,8 +82,7 @@ const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
 };
 
 
-
-const Appointments = () => {
+const Appointments = ({ id =null }) => {
   return (
     <div className='patient_profile_block appointments'>
       <button className='main_btn_style'>Add New Button</button>

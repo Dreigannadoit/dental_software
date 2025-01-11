@@ -16,7 +16,7 @@ const Guardians = ({ id = null }) => {
               <th>Relationship</th>
               <th>Phone</th>
               <th>Email</th>
-              <th>Email</th>
+              <th>Primary</th>
             </tr>
           </thead>
           <tbody>

@@ -28,6 +28,7 @@ import MasterController from './components/MasterController';
 import './css/app.css';
 import DeleteData from './components/PopUps/Popup';
 import PatientProfile from './pages/Patients/PatientProfile';
+import ChartDictionary from './pages/Chart/ChartDictionary';
 
 function App() {
   return (
@@ -50,7 +51,12 @@ function App() {
             {/* TODO: Use this route when implementing the database, loads the patient through id  */}
             {/* <Route path="patients/patient_profile/:id" element={<Patients />} /> */} 
 
-            <Route path="chart" element={<Chart />} />
+            <Route path="chart" element={<ChartDictionary />} />
+            <Route path="chart/chartOfPatient" element={<Chart />} />
+
+            {/* TODO: Use this route when implementing the database, loads the patient through id  */}
+            {/* <Route path="chart/chartOfPatient/:id" element={<Chart />} /> */} 
+
             <Route path="eligibility" element={<Eligibility />} />
             <Route path="distribution" element={<Distribution />} />
             <Route path="reports" element={<Reports />} />

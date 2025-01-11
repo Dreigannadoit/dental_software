@@ -61,7 +61,7 @@ const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
   );
 };
 
-const TreatmentHistory = () => {
+const TreatmentHistory = ({ id = null }) => {
   return (
     <div className='patient_profile_block treatment_history'>
       <AccordianBlock schoolyear="CSDP Program Sy 2024-2025" panel="panel1" />

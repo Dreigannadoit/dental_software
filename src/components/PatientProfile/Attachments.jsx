@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Attachments = () => {
+const Attachments = ({ id = null }) => {
   return (
     <div>Attachments</div>
   )

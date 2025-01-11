@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MedicalHistory = () => {
+const MedicalHistory = ({ id =null }) => {
   return (
     <div>MedicalHistory</div>
   )

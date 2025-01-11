@@ -57,7 +57,8 @@ const MasterController = () => {
 
                     <br />
 
-                    <li><Link to="/chart">Chart</Link></li>
+                    <li><Link to="/chart">Chart Dictionary</Link></li>
+                    <li><Link to="/chart/chartOfPatient">Chart</Link></li>
                     <li><Link to="/eligibility">Eligibility</Link></li>
                     <li><Link to="/distribution">Distribution</Link></li>
 

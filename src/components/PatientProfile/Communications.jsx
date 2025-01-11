@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import AnimatedButton from '../AnimatedButton';
 import { File_Edit } from '../../assets/icons';
 
-const Communications = () => {
+const Communications = ({ id = null }) => {
   const [ReferelCompleteSatus, setReferelCompleteSatus] = useState(null);
   const [dateCalled, setDateCalled] = useState(null);
   const [dateEmailed, setDateEmailed] = useState(null);

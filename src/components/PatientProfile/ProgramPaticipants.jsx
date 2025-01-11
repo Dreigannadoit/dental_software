@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import AnimatedButton from '../AnimatedButton';
 import { File_Edit } from '../../assets/icons';
 
-const ProgramParticipants = () => {
+const ProgramParticipants = ({ id =null }) => {
   const [school, setSchool] = useState("");
   const [grade, setGrade] = useState("");
   const [active, setActive] = useState("");

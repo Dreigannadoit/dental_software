@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PerioChart = () => {
+const PerioChart = ({ id =null }) => {
   return (
     <div>PerioChart</div>
   )

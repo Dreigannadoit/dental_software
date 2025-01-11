@@ -45,7 +45,7 @@ const AccordianBlock = ({ schoolyear, panel = "panel1" }) => {
   );
 };
 
-const PatientDetailsHistory = () => {
+const PatientDetailsHistory = ({ id = null }) => {
   return (
     <div className='patient_profile_block patient_details_history'>
       <AccordianBlock schoolyear="2025-01-09" panel="panel1" />
