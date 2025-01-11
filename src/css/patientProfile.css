@@ -315,3 +315,37 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 .communications .table td:nth-child(5) {
     width: 15%;
 }
+
+
+
+/* ----------------- */
+/* Treatment History */
+/* ----------------- */
+
+.gaurdians .table th:nth-child(1),
+.gaurdians .table td:nth-child(1) {
+    width: 4%;
+}
+.gaurdians .table th:nth-child(2),
+.gaurdians .table td:nth-child(2) {
+    width: 10%;
+}
+.gaurdians .table th:nth-child(3),
+.gaurdians .table td:nth-child(3) {
+    width: 10%;
+    text-align: center;
+}
+.gaurdians .table th:nth-child(4),
+.gaurdians .table td:nth-child(4) {
+    width: 10%;
+    text-align: center;
+}
+.gaurdians .table th:nth-child(5),
+.gaurdians .table td:nth-child(5) {
+    width: 20%;
+}
+.gaurdians .table th:nth-child(6),
+.gaurdians .table td:nth-child(6) {
+    width: 10%;
+    text-align: center;
+}

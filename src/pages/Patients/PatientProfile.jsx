@@ -30,7 +30,7 @@ const PatientProfile = ({ id = 1 }) => {
         { label: "Treatment History", component: <TreatmentHistory /> },
         { label: "Patient Details History", component: <PatientDetailsHistory /> },
         { label: "Communications", component: <Communications /> },
-        { label: "Guardians", component: <Guardians /> },
+        { label: "Guardians", component: <Guardians id={id}/> },
         { label: "Attachments", component: <Attachments /> },
     ];
 
