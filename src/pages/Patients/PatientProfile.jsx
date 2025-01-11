@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { updatedPatientInfo } from "../../test_data";
 import "../../css/patientProfile.css";
 import AnimatedButton from "../../components/AnimatedButton";
@@ -12,13 +11,14 @@ import Communications from "../../components/PatientProfile/Communications";
 import Guardians from "../../components/PatientProfile/Guardians";
 import Attachments from "../../components/PatientProfile/Attachments";
 import ProgramParticipants from "../../components/PatientProfile/ProgramPaticipants";
+import React, { useState, useEffect } from "react";
+// Imports remain unchanged
 
 const PatientProfile = ({ id = 1 }) => {
     const [renderSection, setRenderSection] = useState("Select A Section");
     const patient = updatedPatientInfo.find((p) => p.id === id);
 
     if (!patient) return <p>Patient not found.</p>;
-
 
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -52,8 +52,30 @@ const PatientProfile = ({ id = 1 }) => {
 
     const handleSectionClick = (label) => {
         setRenderSection(label);
+        // Update the URL hash
+        window.location.hash = label.replace(/\s+/g, "_");
     };
 
+    // Effect to update state based on URL hash
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash.slice(1).replace(/_/g, " ");
+            if (sections.some((section) => section.label === hash)) {
+                setRenderSection(hash);
+            }
+        };
+
+        // Check the hash when the component mounts
+        handleHashChange();
+
+        // Listen for hash changes
+        window.addEventListener("hashchange", handleHashChange);
+
+        // Cleanup the event listener
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+        };
+    }, [sections]);
 
     const renderInfoSection = (title, details) => (
         <div className={`block ${title.toLowerCase().replace(" ", "_")} `}>
@@ -119,9 +141,6 @@ const PatientProfile = ({ id = 1 }) => {
 
             <div className="patientInfoAction">
                 <div className="top">
-                    <div className="title">
-                        <h1>{renderSection || "Select a Section"}</h1>
-                    </div>
                     <div className="selector">
                         <button className="prev pag shadow f-center" onClick={handlePrevious} disabled={currentPage === 0}>
                             <img src={Arrow_left} alt="" />
@@ -130,7 +149,7 @@ const PatientProfile = ({ id = 1 }) => {
                             <button 
                                 className={`shadow f-center ${renderSection === label ? "active" : "inactive"}`}
                                 key={index} 
-                                onClick={() => setRenderSection(label)}
+                                onClick={() => handleSectionClick(label)}
                             >
                                 <span>
                                     {label}
@@ -140,6 +159,11 @@ const PatientProfile = ({ id = 1 }) => {
                         <button className="next pag shadow f-center" onClick={handleNext} disabled={currentPage === totalPages - 1}>
                             <img src={Arrow_right} alt="" />
                         </button>
+                    </div>
+                    <br />
+                    <br />
+                    <div className="title">
+                        <h1>{renderSection || "Select a Section"}</h1>
                     </div>
                 </div>
                 {sections.find((section) => section.label === renderSection)?.component}

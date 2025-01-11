@@ -122,6 +122,10 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     object-fit: contain;
 }
 
+.patient_profile_block{
+    margin-top: 0px;
+}
+
 .patient_profile_block,
 .patient_profile_block .form,
 .patient_profile_block .form form,
@@ -142,6 +146,8 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 
 .patient_profile_block .form form>div{
     width: calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
 }
 
 .patientInfoAction .table td>div{
@@ -277,3 +283,13 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 }
 
 
+
+/* ----------------- */
+/* Communications History */
+/* ----------------- */
+
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{
+    -webkit-text-fill-color: rgba(0, 0, 0, 1) !important;
+    text-fill-color: rgba(0, 0, 0, 1) !important;
+}

@@ -123,6 +123,7 @@ const AddPatients = ({ exitUser }) => {
 
   return ReactDOM.createPortal(
     <div className="new_patient_containter f-center">
+      <button className="background" onClick={handleCancel}></button>
       <div className="new_patients glassmorphism shadow">
         <form action="">
           <h1>New Patient</h1>
@@ -262,7 +263,7 @@ const AddPatients = ({ exitUser }) => {
                   displayEmpty
                 >
                   <MenuItem value="" disabled>
-                    Select Ethnicity
+                    Select Grade
                   </MenuItem>
                   <MenuItem value="White">Grade 1</MenuItem>
                   <MenuItem value="African_American">Grade 2</MenuItem>
@@ -275,7 +276,7 @@ const AddPatients = ({ exitUser }) => {
               <label htmlFor="gname">Teacher</label>
               <TextField
                 id="outlined-basic"
-                label="Gaurdian Name"
+                label=""
                 variant="outlined"
                 fullWidth
               />
@@ -285,7 +286,7 @@ const AddPatients = ({ exitUser }) => {
               <label htmlFor="gname">Room</label>
               <TextField
                 id="outlined-basic"
-                label="Gaurdian Name"
+                label=""
                 variant="outlined"
                 fullWidth
               />

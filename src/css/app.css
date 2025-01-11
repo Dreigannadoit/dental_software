@@ -620,7 +620,7 @@ body:has(.side_nav.open) .user_content {
 .status-container {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px;
     display: flex;
     flex-direction: column-reverse;
     z-index: 9999999;
