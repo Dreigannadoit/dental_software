@@ -151,6 +151,11 @@ const Patients = () => {
           filters={filters}
           onFilterChange={handleFilterChange}
           patientInfo={updatedPatientInfo}
+          hasSchoolFilter
+          hasGradeFilter
+          hasYearFilter
+          hasStatusfilter
+          hasTeacherFilter
         />
 
         <div className="table_controls">

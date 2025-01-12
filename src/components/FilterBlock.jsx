@@ -1,7 +1,16 @@
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import React from "react";
 
-const FilterBlock = ({ filters, onFilterChange, patientInfo }) => {
+const FilterBlock = ({
+  filters,
+  onFilterChange,
+  patientInfo,
+  hasSchoolFilter,
+  hasGradeFilter,
+  hasYearFilter,
+  hasStatusfilter,
+  hasTeacherFilter,
+}) => {
   const handleInputChange = (filterName) => (event) => {
     onFilterChange(filterName, event.target.value);
   };
@@ -33,87 +42,108 @@ const FilterBlock = ({ filters, onFilterChange, patientInfo }) => {
           placeholder="Search by name, gender, id, birthdate (e.g. Birthdate: 2016-04-18)"
         />
       </div>
+
       <div className="filer_fields">
-        <div className="filter_school">
-          <p>School</p>
-          <FormControl fullWidth>
-            <Select
-              value={filters.school}
-              onChange={handleInputChange("school")}
-            >
-              <MenuItem value="">All</MenuItem>
-              {uniqueSchools.map((school) => (
-                <MenuItem key={school} value={school}>
-                  {school}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="filter_grade">
-          <p>Grade</p>
-          <FormControl fullWidth>
-            <Select
-              value={filters.grade}
-              onChange={handleInputChange("grade")}
-            >
-              <MenuItem value="">All</MenuItem>
-              {uniqueGrades.map((grade) => (
-                <MenuItem key={grade} value={grade}>
-                  {grade}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="filter_year">
-          <p>Year</p>
-          <FormControl fullWidth>
-            <Select
-              value={filters.year}
-              onChange={handleInputChange("year")}
-            >
-              <MenuItem value="">All</MenuItem>
-              {uniqueYears.map((year) => (
-                <MenuItem key={year} value={year}>
-                  {year}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="filter_status">
-          <p>Status</p>
-          <FormControl fullWidth>
-            <Select
-              value={filters.status}
-              onChange={handleInputChange("status")}
-            >
-              <MenuItem value="">All</MenuItem>
-              {uniqueStatuses.map((status) => (
-                <MenuItem key={status} value={status}>
-                  {status}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="filter_status">
-          <p>Teacher</p>
-          <FormControl fullWidth>
-            <Select
-              value={filters.teacher}
-              onChange={handleInputChange("teacher")}
-            >
-              <MenuItem value="">All</MenuItem>
-              {uniqueTeachers.map((teacher) => (
-                <MenuItem key={teacher} value={teacher}>
-                  {teacher}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
+        {hasSchoolFilter &&
+          <div className="filter_school">
+            <p>School</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.school}
+                onChange={handleInputChange("school")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueSchools.map((school) => (
+                  <MenuItem key={school} value={school}>
+                    {school}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        }
+
+        {hasGradeFilter &&
+
+          <div className="filter_grade">
+            <p>Grade</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.grade}
+                onChange={handleInputChange("grade")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueGrades.map((grade) => (
+                  <MenuItem key={grade} value={grade}>
+                    {grade}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+
+
+        }
+
+        {hasYearFilter &&
+          <div className="filter_year">
+            <p>Year</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.year}
+                onChange={handleInputChange("year")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueYears.map((year) => (
+                  <MenuItem key={year} value={year}>
+                    {year}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        }
+
+        {hasStatusfilter &&
+          <div className="filter_status">
+            <p>Status</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.status}
+                onChange={handleInputChange("status")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueStatuses.map((status) => (
+                  <MenuItem key={status} value={status}>
+                    {status}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+
+        }
+
+        {hasTeacherFilter &&
+          <div className="filter_status">
+            <p>Teacher</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.teacher}
+                onChange={handleInputChange("teacher")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueTeachers.map((teacher) => (
+                  <MenuItem key={teacher} value={teacher}>
+                    {teacher}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+
+        }
+
       </div>
     </div>
   );
