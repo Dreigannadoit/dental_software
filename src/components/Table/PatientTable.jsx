@@ -62,7 +62,7 @@ const PatientTable = ({ data }) => {
                     onClick={() => setIsAscending(!isAscending)} // Toggle sorting order
                     className={`${isAscending ? "Ascending" : "Descending"}`}
                   >
-                    ⪡
+                    {isAscending ? "➤" : "➤"}
                   </button>
                 </div>
               </th>
