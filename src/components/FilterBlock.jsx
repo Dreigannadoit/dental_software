@@ -1,15 +1,16 @@
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const FilterBlock = ({
   filters,
   onFilterChange,
-  patientInfo,
+  data,
   hasSchoolFilter,
   hasGradeFilter,
   hasYearFilter,
   hasStatusfilter,
   hasTeacherFilter,
+  hasTypeFilter
 }) => {
   const handleInputChange = (filterName) => (event) => {
     onFilterChange(filterName, event.target.value);
@@ -17,8 +18,9 @@ const FilterBlock = ({
 
   // Function to get unique values from an array and filter out empty values
   const getUniqueValues = (field) => {
-    const values = patientInfo
-      .map((patient) => String(patient[field])) // Ensure value is a string
+    if (!Array.isArray(data)) return []; // Ensure data is an array
+    const values = data
+      .map((school) => String(school[field])) // Ensure value is a string
       .filter((value) => value.trim() !== ""); // Filter out empty values
     return [...new Set(values)]; // Ensure uniqueness
   };
@@ -28,6 +30,11 @@ const FilterBlock = ({
   const uniqueYears = getUniqueValues("year");
   const uniqueStatuses = getUniqueValues("status");
   const uniqueTeachers = getUniqueValues("teacher");
+  const uniqueType = getUniqueValues("type");
+
+  // Debugging: Check if uniqueStatuses and uniqueType have values
+  console.log("Unique Statuses:", uniqueStatuses);
+  console.log("Unique Types:", uniqueType);
 
   return (
     <div className="filter_block">
@@ -44,72 +51,31 @@ const FilterBlock = ({
       </div>
 
       <div className="filer_fields">
-        {hasSchoolFilter &&
+        {hasTypeFilter && uniqueType.length > 0 && (
           <div className="filter_school">
-            <p>School</p>
+            <p>Type</p>
             <FormControl fullWidth>
               <Select
-                value={filters.school}
-                onChange={handleInputChange("school")}
+                value={filters.type || ""}
+                onChange={handleInputChange("type")}
               >
                 <MenuItem value="">All</MenuItem>
-                {uniqueSchools.map((school) => (
-                  <MenuItem key={school} value={school}>
-                    {school}
+                {uniqueType.map((type) => (
+                  <MenuItem key={type} value={type}>
+                    {type}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </div>
-        }
+        )}
 
-        {hasGradeFilter &&
-
-          <div className="filter_grade">
-            <p>Grade</p>
-            <FormControl fullWidth>
-              <Select
-                value={filters.grade}
-                onChange={handleInputChange("grade")}
-              >
-                <MenuItem value="">All</MenuItem>
-                {uniqueGrades.map((grade) => (
-                  <MenuItem key={grade} value={grade}>
-                    {grade}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-
-
-        }
-
-        {hasYearFilter &&
-          <div className="filter_year">
-            <p>Year</p>
-            <FormControl fullWidth>
-              <Select
-                value={filters.year}
-                onChange={handleInputChange("year")}
-              >
-                <MenuItem value="">All</MenuItem>
-                {uniqueYears.map((year) => (
-                  <MenuItem key={year} value={year}>
-                    {year}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </div>
-        }
-
-        {hasStatusfilter &&
+        {hasStatusfilter && uniqueStatuses.length > 0 && (
           <div className="filter_status">
             <p>Status</p>
             <FormControl fullWidth>
               <Select
-                value={filters.status}
+                value={filters.status || ""}
                 onChange={handleInputChange("status")}
               >
                 <MenuItem value="">All</MenuItem>
@@ -121,15 +87,71 @@ const FilterBlock = ({
               </Select>
             </FormControl>
           </div>
+        )}
 
-        }
+        {hasSchoolFilter && uniqueSchools.length > 0 && (
+          <div className="filter_school">
+            <p>School</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.school || ""}
+                onChange={handleInputChange("school")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueSchools.map((school) => (
+                  <MenuItem key={school} value={school}>
+                    {school}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        )}
 
-        {hasTeacherFilter &&
-          <div className="filter_status">
+        {hasGradeFilter && uniqueGrades.length > 0 && (
+          <div className="filter_grade">
+            <p>Grade</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.grade || ""}
+                onChange={handleInputChange("grade")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueGrades.map((grade) => (
+                  <MenuItem key={grade} value={grade}>
+                    {grade}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        )}
+
+        {hasYearFilter && uniqueYears.length > 0 && (
+          <div className="filter_year">
+            <p>Year</p>
+            <FormControl fullWidth>
+              <Select
+                value={filters.year || ""}
+                onChange={handleInputChange("year")}
+              >
+                <MenuItem value="">All</MenuItem>
+                {uniqueYears.map((year) => (
+                  <MenuItem key={year} value={year}>
+                    {year}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+        )}
+
+        {hasTeacherFilter && uniqueTeachers.length > 0 && (
+          <div className="filter_teacher">
             <p>Teacher</p>
             <FormControl fullWidth>
               <Select
-                value={filters.teacher}
+                value={filters.teacher || ""}
                 onChange={handleInputChange("teacher")}
               >
                 <MenuItem value="">All</MenuItem>
@@ -141,9 +163,7 @@ const FilterBlock = ({
               </Select>
             </FormControl>
           </div>
-
-        }
-
+        )}
       </div>
     </div>
   );

@@ -5,62 +5,8 @@ import ReactDOM from "react-dom";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { CssVarsProvider, Textarea } from "@mui/joy";
 import { MuiTelInput } from "mui-tel-input";
-
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const allergiedList = [
-  { value: 'colophonium', label: 'Colophonium' },
-  { value: 'latex', label: 'Latex' },
-  { value: 'tree_nuts', label: 'Tree Nuts' },
-  { value: 'resins', label: 'Resins' },
-  { value: 'food', label: 'Food' },
-  { value: 'artificial_flavoring', label: 'Artificial Flavoring' },
-  { value: 'red_dye', label: 'Red Dye' },
-  { value: 'none', label: 'None' },
-]
-
-
-const animatedComponents = makeAnimated();
-
-const illnessList = [
-  "ADD/ADHD",
-  "Diabetes",
-  "Epilepsy/Seizure",
-  "Asthma",
-  "Heart Murmur",
-  "Plavix (chopidogerel)",
-  "Blood Disorder / Hemophilia",
-  "Congenital Heart Disease/Defect",
-  "Heart Atteck/Heart Failure",
-  "Artificial Heart Valve",
-  "Tuberculosis",
-  "Hepatitis/Liver Disease",
-  "Biophosphonate Thearapy (Oral or IV)",
-  "Costisone - Corticosteroid Thearapy",
-  "Systemic Lupus Erythematosus",
-  "None",
-];
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight: personName.includes(name)
-      ? theme.typography.fontWeightMedium
-      : theme.typography.fontWeightRegular,
-  };
-}
+import MultiSelectField from "../MultiSelectField";
+import { allergiedList, illnessList } from "../../test_data";
 
 const AddPatients = ({ exitUser }) => {
   const [ gender, setGender ] = useState(""); // State to track the selected gender
@@ -76,7 +22,6 @@ const AddPatients = ({ exitUser }) => {
   const [ hasSigned, setHasSigned ] = useState(null);
   const [ hasConsented, setHasConsented ] = useState(null);
 
-  const theme = useTheme();
   const [ alergieName, setAlergieName ] = useState([]);
   const [ illnessName, setIllnessName ] = useState([]);
   const [ patientPhotoFile, setPatientPhotoFile ] = useState();
@@ -86,14 +31,11 @@ const AddPatients = ({ exitUser }) => {
     setPatientPhotoFile(URL.createObjectURL(event.target.files[0]));
   }
 
-  const handleAlergieNameChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setAlergieName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+  const handleAlergieNameChange = (selected) => {
+
+    setAlergieName(alergieName);
+    
+    console.log("Selected items:", alergieName);
   };
 
   const handleDoctorCheckupChange = (event) => {
@@ -106,14 +48,9 @@ const AddPatients = ({ exitUser }) => {
     console.log("Has Regular Checkup:", event.target.value === "yes");
   };
 
-  const handleIlnessNameChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setIllnessName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+  const handleIlnessNameChange = (selected) => {
+    setIllnessName(illnessName);
+    console.log("Selected items:", illnessName);
   };
   
 
@@ -406,12 +343,11 @@ const AddPatients = ({ exitUser }) => {
           <div className="medical_history container">
             <div className="allergies full">
               <label htmlFor="allergies">Allergies</label>
-              <Select
+              <MultiSelectField
                   closeMenuOnSelect={false}
-                  components={animatedComponents}
-                  defaultValue={[allergiedList[4], allergiedList[5]]}
-                  isMulti
                   options={allergiedList}
+                  value={alergieName}
+                  onChange={handleAlergieNameChange}
               />
             </div>
 
@@ -472,38 +408,13 @@ const AddPatients = ({ exitUser }) => {
             <div className="illness full">
 
               <label htmlFor="illness full">Illness</label>
-              <FormControl fullwidth>
-                <MuiSelect
-                  labelId="demo-multiple-chip-label"
-                  id="demo-multiple-chip"
-                  multiple
-                  value={illnessName}
+              <MultiSelectField
+                  closeMenuOnSelect={false}
+                  options={illnessList}
                   onChange={handleIlnessNameChange}
-                  input={<OutlinedInput id="select-multiple-chip" fullwidth />}
-                  renderValue={(selected) => (
-                    <Box
-                      fullwidth
-                      sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
-                    >
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} fullwidth />
-                      ))}
-                    </Box>
-                  )}
-                  MenuProps={MenuProps}
-                  fullwidth
-                >
-                  {illnessList.map((illness) => (
-                    <MenuItem
-                      key={illness}
-                      value={illness}
-                      style={getStyles(illness, illnessName, theme)}
-                    >
-                      {illness}
-                    </MenuItem>
-                  ))}
-                </MuiSelect>
-              </FormControl>
+                  value={illnessName}
+              />
+
             </div>
           </div>
 

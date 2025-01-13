@@ -360,7 +360,8 @@ export const patientInfo = [
         parent_gauridian_email: "woodlenecharles12@gmail.com",
         dentistName: "Dr Shahishichkchie",
         consented: true,
-        signed: true
+        signed: true, 
+        sdf: true
     },
 ];
 
@@ -370,8 +371,9 @@ export const updatedPatientInfo = patientInfo.map((patient) => ({
     age: calculateAge(patient.birthdate),
 }));
 
-export const schoolNames = [
+export const schoolData = [
     {
+        id: 1,
         name: "GILMORE ELEMENTARY SCHOOL",
         address: "240 Center St, Brockton, MA",
         type: "School",
@@ -379,6 +381,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 2,
         name: "WEST MIDDLE SCHOOL",
         address: "271 West St, Brockton, MA",
         type: "School",
@@ -386,6 +389,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 3,
         name: "SOUTH MIDDLE SCHOOL",
         address: "105 Keith Ave, Brockton, MA",
         type: "School",
@@ -393,6 +397,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 4,
         name: "RAYMOND ELEMENTARY SCHOOL",
         address: "125 Oak St, Brockton, MA",
         type: "School",
@@ -400,6 +405,7 @@ export const schoolNames = [
         status: "inactive",
     },
     {
+        id: 5,
         name: "PLOUFFE MIDDLE SCHOOL",
         address: "250 Crescent St, Brockton, MA",
         type: "School",
@@ -407,6 +413,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 6,
         name: "NORTH MIDDLE SCHOOL",
         address: "108 Oak St, Brockton, MA",
         type: "School",
@@ -414,6 +421,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 7,
         name: "KENNEDY ELEMENTARY SCHOOL",
         address: "900 Ash St, Brockton, MA",
         type: "School",
@@ -421,6 +429,7 @@ export const schoolNames = [
         status: "inactive",
     },
     {
+        id: 8,
         name: "BROCKTON THERAPEUTIC SCHOOL",
         address: "75 Warren Ave, Brockton, MA",
         type: "Facility",
@@ -428,6 +437,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 9,
         name: "HANCOCK ELEMENTARY SCHOOL",
         address: "125 Pearl St, Brockton, MA",
         type: "School",
@@ -435,6 +445,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 10,
         name: "ANGELO ELEMENTARY SCHOOL",
         address: "135 Belmont St, Brockton, MA",
         type: "School",
@@ -442,6 +453,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 11,
         name: "GEORGE ELEMENTARY SCHOOL",
         address: "180 Ash St, Brockton, MA",
         type: "School",
@@ -449,6 +461,7 @@ export const schoolNames = [
         status: "inactive",
     },
     {
+        id: 12,
         name: "EAST MIDDLE SCHOOL",
         address: "155 Adams St, Brockton, MA",
         type: "School",
@@ -456,6 +469,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 13,
         name: "BROOKFIELD ELEMENTARY SCHOOL",
         address: "200 West St, Brockton, MA",
         type: "School",
@@ -463,6 +477,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 14,
         name: "BARRETT RUSSELL",
         address: "100 North Ave, Brockton, MA",
         type: "School",
@@ -470,6 +485,7 @@ export const schoolNames = [
         status: "inactive",
     },
     {
+        id: 15,
         name: "BAKER ELEMENTARY SCHOOL",
         address: "125 Baker St, Brockton, MA",
         type: "School",
@@ -477,6 +493,7 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 16,
         name: "ASHFIELD MIDDLE SCHOOL",
         address: "300 Central St, Brockton, MA",
         type: "School",
@@ -484,12 +501,86 @@ export const schoolNames = [
         status: "active",
     },
     {
+        id: 17,
         name: "ARNONE SCHOOL",
         address: "135 Belmont St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
         status: "active",
     },
+];
+
+export const listOfDradeData = [
+    {
+        id: "1",
+        name: "Pre K",
+        description: ""
+    },
+    {
+        id: "2",
+        name: "K",
+        description: ""
+    },
+    {
+        id: "3",
+        name: "1",
+        description: ""
+    },
+    {
+        id: "4",
+        name: "2",
+        description: ""
+    },
+    {
+        id: "5",
+        name: "3",
+        description: ""
+    },
+    {
+        id: "6",
+        name: "4",
+        description: ""
+    },
+    {
+        id: "7",
+        name: "5",
+        description: ""
+    },
+    {
+        id: "8",
+        name: "6",
+        description: ""
+    },
+    {
+        id: "9",
+        name: "7",
+        description: ""
+    },
+    {
+        id: "10",
+        name: "8",
+        description: ""
+    },
+    {
+        id: "11",
+        name: "9",
+        description: ""
+    },
+    {
+        id: "12",
+        name: "10",
+        description: ""
+    },
+    {
+        id: "13",
+        name: "11",
+        description: ""
+    },
+    {
+        id: "14",
+        name: "12",
+        description: ""
+    }
 ];
 
 
@@ -592,3 +683,33 @@ export const csdpsStatisticsBySchool = [
     }
 
 ]
+
+export const illnessList = [
+    { value: 'None', label: 'None' },
+    { value: 'ADD/ADHD', label: 'ADD/ADHD' },
+    { value: 'Diabetes', label: 'Diabetes' },
+    { value: 'Epilepsy/Seizure', label: 'Epilepsy/Seizure' },
+    { value: 'Heart Murmur', label: 'Heart Murmur' },
+    { value: 'Plavix (chopidogerel)', label: 'Plavix (chopidogerel)' },
+    { value: 'Blood Disorder / Hemophilia', label: 'Blood Disorder / Hemophilia' },
+    { value: 'Congenital Heart Disease/Defect', label: 'Congenital Heart Disease/Defect' },
+    { value: 'Heart Atteck/Heart Failure', label: 'Heart Atteck/Heart Failure' },
+    { value: 'Artificial Heart Valve', label: 'Artificial Heart Valve' },
+    { value: 'Tuberculosis', label: 'Tuberculosis' },
+    { value: 'Hepatitis/Liver Disease', label: 'Hepatitis/Liver Disease' },
+    { value: 'Biophosphonate Thearapy (Oral or IV)', label: 'Biophosphonate Thearapy (Oral or IV)' },
+    { value: 'Heart Atteck/Heart Failure', label: 'Heart Atteck/Heart Failure' },
+    { value: 'Costisone - Corticosteroid Thearapy', label: 'Costisone - Corticosteroid Thearapy' },
+    { value: 'Systemic Lupus Erythematosus', label: 'Systemic Lupus Erythematosus' },
+  ];
+
+export const allergiedList = [
+    { value: 'none', label: 'None' },
+    { value: 'colophonium', label: 'Colophonium' },
+    { value: 'latex', label: 'Latex' },
+    { value: 'tree_nuts', label: 'Tree Nuts' },
+    { value: 'resins', label: 'Resins' },
+    { value: 'food', label: 'Food' },
+    { value: 'artificial_flavoring', label: 'Artificial Flavoring' },
+    { value: 'red_dye', label: 'Red Dye' },
+];

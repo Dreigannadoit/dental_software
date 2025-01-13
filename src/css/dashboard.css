@@ -176,6 +176,6 @@
 }
 
 .dashboard .table th:nth-child(6),
-.table td:nth-child(6) {
+.dashboard .table td:nth-child(6) {
     width: var(--the-rest);
 }

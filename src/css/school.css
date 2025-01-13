@@ -1,0 +1,21 @@
+.schools .table th:nth-child(1),
+.schools .table td:nth-child(1) {
+    width: 4%;
+}
+.schools .table th:nth-child(2),
+.schools .table td:nth-child(2) {
+    width: 28%;
+}
+.schools .table th:nth-child(3),
+.schools .table td:nth-child(3) {
+    width: 24%;
+}
+.schools .table th:nth-child(4),
+.schools .table td:nth-child(4) {
+    width: 9%;
+}
+.schools .table th:nth-child(5),
+.schools .table td:nth-child(5) {
+    width: 10%;
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../css/registrationAndLogin.css";
-import Login_Section from '../components/Login_Section';
-import Registration_Section from '../components/Registration_Section';
+import Login_Section from '../components/Forms/Login_Section';
+import Registration_Section from '../components/Forms/Registration_Section';
 import { banner } from '../assets/img';
 
 const Login = () => {

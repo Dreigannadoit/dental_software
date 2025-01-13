@@ -151,11 +151,13 @@ button{
 .table th {
     background-color: transparent;
     padding: 22px 16px;
+    height: 100%;
 }
 
 .table td {
     background-color: #ffffff;
     padding: 16px 16px;
+    height: 100%;
 }
 
 .table td:first-child,
@@ -445,6 +447,8 @@ button{
     background-color: #007bff;
     z-index: 100;
 }
+
+
 
 /* Master Controller Styling */
 
