@@ -12,6 +12,59 @@
 
 }
 
+/* Modern Multiselect Styling */
+.modern-multiselect .p-multiselect {
+    border-radius: 10px;
+    border: 1px solid #cce7ff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.modern-multiselect .p-multiselect:hover {
+    border-color: #40a9ff;
+}
+
+.modern-multiselect .p-multiselect .p-multiselect-label {
+    color: #2a2a2a;
+    font-weight: 500;
+}
+
+.modern-multiselect .p-multiselect-token {
+    background-color: #e6f7ff;
+    border-radius: 20px;
+    color: #1890ff;
+    font-weight: bold;
+}
+
+.modern-multiselect .p-multiselect-token-icon {
+    color: #1890ff;
+}
+
+.modern-multiselect .p-multiselect-panel {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modern-multiselect .p-multiselect-item {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.modern-multiselect .p-multiselect-item:hover {
+    background-color: #f0f5ff;
+    color: #1890ff;
+    font-weight: bold;
+}
+
+.modern-multiselect .p-multiselect-footer {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+
 /* 
 -- Header --
 */

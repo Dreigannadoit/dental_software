@@ -1,10 +1,13 @@
-import { Box, Chip, FormControl, FormControlLabel, FormGroup, MenuItem, OutlinedInput, Radio, RadioGroup, Select, TextareaAutosize, TextField, useTheme } from "@mui/material";
+import { Box, Chip, FormControl, FormControlLabel, FormGroup, MenuItem, OutlinedInput, Radio, RadioGroup, Select as MuiSelect , TextareaAutosize, TextField, useTheme } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { useState } from "react";
 import ReactDOM from "react-dom";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { CssVarsProvider, Textarea } from "@mui/joy";
 import { MuiTelInput } from "mui-tel-input";
+
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,15 +22,18 @@ const MenuProps = {
 };
 
 const allergiedList = [
-  "Colophonium",
-  "Latex",
-  "Tree Nuts",
-  "Resins",
-  "Food",
-  "Artificial Flavoring",
-  "Red Dye",
-  "None",
-];
+  { value: 'colophonium', label: 'Colophonium' },
+  { value: 'latex', label: 'Latex' },
+  { value: 'tree_nuts', label: 'Tree Nuts' },
+  { value: 'resins', label: 'Resins' },
+  { value: 'food', label: 'Food' },
+  { value: 'artificial_flavoring', label: 'Artificial Flavoring' },
+  { value: 'red_dye', label: 'Red Dye' },
+  { value: 'none', label: 'None' },
+]
+
+
+const animatedComponents = makeAnimated();
 
 const illnessList = [
   "ADD/ADHD",
@@ -152,7 +158,7 @@ const AddPatients = ({ exitUser }) => {
             <div className="gender">
               <label htmlFor="lname">Gender</label>
               <FormControl fullWidth>
-                <Select
+                <MuiSelect
                   labelId="gender-label"
                   value={gender}
                   onChange={(event) => setGender(event.target.value)}
@@ -163,7 +169,7 @@ const AddPatients = ({ exitUser }) => {
                   </MenuItem>
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
 
@@ -182,7 +188,7 @@ const AddPatients = ({ exitUser }) => {
             <div className="race">
               <label htmlFor="race">Ethnicity</label>
               <FormControl fullWidth>
-                <Select
+                <MuiSelect
                   labelId="race-label"
                   value={race}
                   onChange={(event) => setRace(event.target.value)}
@@ -195,14 +201,14 @@ const AddPatients = ({ exitUser }) => {
                   <MenuItem value="African_American">African American</MenuItem>
                   <MenuItem value="Hispanic">Hispanic</MenuItem>
                   <MenuItem value="Asian">Asian</MenuItem>
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
 
             <div className="insurance">
               <label htmlFor="insurance">Insurance</label>
               <FormControl fullWidth>
-                <Select
+                <MuiSelect
                   labelId="insurance-label"
                   value={insurance}
                   onChange={(event) => setInsurance(event.target.value)}
@@ -215,7 +221,7 @@ const AddPatients = ({ exitUser }) => {
                   <MenuItem value="insurance_2">insurance_2</MenuItem>
                   <MenuItem value="insurance_3">insurance_3</MenuItem>
                   <MenuItem value="insurance_4">insurance_4</MenuItem>
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
 
@@ -237,7 +243,7 @@ const AddPatients = ({ exitUser }) => {
             <div className="school">
               <label htmlFor="gname">School</label>
               <FormControl fullWidth>
-                <Select
+                <MuiSelect
                   labelId="race-label"
                   value={school}
                   onChange={(event) => setSchool(event.target.value)}
@@ -250,13 +256,13 @@ const AddPatients = ({ exitUser }) => {
                   <MenuItem value="African_American">School 2</MenuItem>
                   <MenuItem value="Hispanic">School 3</MenuItem>
                   <MenuItem value="Asian">School 4</MenuItem>
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
             <div className="grade">
               <label htmlFor="gname">Grade</label>
               <FormControl fullWidth>
-                <Select
+                <MuiSelect
                   labelId="race-label"
                   value={grade}
                   onChange={(event) => setGrade(event.target.value)}
@@ -269,7 +275,7 @@ const AddPatients = ({ exitUser }) => {
                   <MenuItem value="African_American">Grade 2</MenuItem>
                   <MenuItem value="Hispanic">Grade 3</MenuItem>
                   <MenuItem value="Asian">Grade 4</MenuItem>
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
             <div className="teacher">
@@ -400,38 +406,13 @@ const AddPatients = ({ exitUser }) => {
           <div className="medical_history container">
             <div className="allergies full">
               <label htmlFor="allergies">Allergies</label>
-              <FormControl fullwidth>
-                <Select
-                  labelId="demo-multiple-chip-label"
-                  id="demo-multiple-chip"
-                  multiple
-                  value={alergieName}
-                  onChange={handleAlergieNameChange}
-                  input={<OutlinedInput id="select-multiple-chip" fullwidth />}
-                  renderValue={(selected) => (
-                    <Box
-                      fullwidth
-                      sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
-                    >
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} fullwidth />
-                      ))}
-                    </Box>
-                  )}
-                  MenuProps={MenuProps}
-                  fullwidth
-                >
-                  {allergiedList.map((allergie) => (
-                    <MenuItem
-                      key={allergie}
-                      value={allergie}
-                      style={getStyles(allergie, alergieName, theme)}
-                    >
-                      {allergie}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <Select
+                  closeMenuOnSelect={false}
+                  components={animatedComponents}
+                  defaultValue={[allergiedList[4], allergiedList[5]]}
+                  isMulti
+                  options={allergiedList}
+              />
             </div>
 
             <div className="doctor text_input">
@@ -492,7 +473,7 @@ const AddPatients = ({ exitUser }) => {
 
               <label htmlFor="illness full">Illness</label>
               <FormControl fullwidth>
-                <Select
+                <MuiSelect
                   labelId="demo-multiple-chip-label"
                   id="demo-multiple-chip"
                   multiple
@@ -521,7 +502,7 @@ const AddPatients = ({ exitUser }) => {
                       {illness}
                     </MenuItem>
                   ))}
-                </Select>
+                </MuiSelect>
               </FormControl>
             </div>
           </div>

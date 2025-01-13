@@ -93,7 +93,7 @@ const generateRandomData = (numItems, label, range) => {
     for (let i = 0; i < numItems; i++) {
         data.push({
             id: i,
-            value: Math.floor(Math.random() * `${range}`) + 1,  
+            value: Math.floor(Math.random() * `${range}`) + 1,
             label: `${label} ${i + 1}`,
             highlight: { additionalRadius: 10 },
         });
@@ -370,6 +370,127 @@ export const updatedPatientInfo = patientInfo.map((patient) => ({
     age: calculateAge(patient.birthdate),
 }));
 
+export const schoolNames = [
+    {
+        name: "GILMORE ELEMENTARY SCHOOL",
+        address: "240 Center St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "WEST MIDDLE SCHOOL",
+        address: "271 West St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "SOUTH MIDDLE SCHOOL",
+        address: "105 Keith Ave, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "RAYMOND ELEMENTARY SCHOOL",
+        address: "125 Oak St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "inactive",
+    },
+    {
+        name: "PLOUFFE MIDDLE SCHOOL",
+        address: "250 Crescent St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "NORTH MIDDLE SCHOOL",
+        address: "108 Oak St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "KENNEDY ELEMENTARY SCHOOL",
+        address: "900 Ash St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "inactive",
+    },
+    {
+        name: "BROCKTON THERAPEUTIC SCHOOL",
+        address: "75 Warren Ave, Brockton, MA",
+        type: "Facility",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "HANCOCK ELEMENTARY SCHOOL",
+        address: "125 Pearl St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "ANGELO ELEMENTARY SCHOOL",
+        address: "135 Belmont St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "GEORGE ELEMENTARY SCHOOL",
+        address: "180 Ash St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "inactive",
+    },
+    {
+        name: "EAST MIDDLE SCHOOL",
+        address: "155 Adams St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "BROOKFIELD ELEMENTARY SCHOOL",
+        address: "200 West St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "BARRETT RUSSELL",
+        address: "100 North Ave, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "inactive",
+    },
+    {
+        name: "BAKER ELEMENTARY SCHOOL",
+        address: "125 Baker St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+    {
+        name: "ASHFIELD MIDDLE SCHOOL",
+        address: "300 Central St, Brockton, MA",
+        type: "School",
+        grade: ["7", "8", "9", "10", "11", "12"],
+        status: "active",
+    },
+    {
+        name: "ARNONE SCHOOL",
+        address: "135 Belmont St, Brockton, MA",
+        type: "School",
+        grade: ["K", "1", "2", "3", "4", "5", "6"],
+        status: "active",
+    },
+];
 
 
 export const csdpsStatisticsBySchool = [
@@ -469,5 +590,5 @@ export const csdpsStatisticsBySchool = [
         numReceivingPhrophy: 400,
         numReferals: 400,
     }
-    
+
 ]

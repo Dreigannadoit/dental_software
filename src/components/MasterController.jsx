@@ -33,6 +33,8 @@ const MasterController = () => {
             <nav id='master-controller'>
                 <ul>
                     <li><p><b> Master Navigation </b></p></li>
+                    
+                    <li><Link to="/test/aaaaaa/test_a/098123asd098/23897sdf48293asd7">Test</Link></li>
                     <li><Link to="/">Login/Registration</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
                     <li><Link to="/dashboard">Dashboard</Link></li>

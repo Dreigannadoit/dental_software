@@ -29,6 +29,7 @@ import './css/app.css';
 import DeleteData from './components/PopUps/Popup';
 import PatientProfile from './pages/Patients/PatientProfile';
 import ChartDictionary from './pages/Chart/ChartDictionary';
+import Test from './pages/Test';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
 
           {/* Protected Routes */}
           <Route element={<ProtectedLayout />}>
+          <Route path="test/aaaaaa/test_a/098123asd098/23897sdf48293asd7" element={<Test />} /> {/* do not render */}
             <Route path="profile" element={<User_Profile />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="calendar" element={<Calendar />} />
