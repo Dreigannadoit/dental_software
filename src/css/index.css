@@ -146,18 +146,18 @@ button{
 .table td {
     text-align: left;
     width: auto; /* Adjust this to customize */
+    height: 100%;
+    font-size: 15px;
 }
 
 .table th {
     background-color: transparent;
     padding: 22px 16px;
-    height: 100%;
 }
 
 .table td {
     background-color: #ffffff;
     padding: 16px 16px;
-    height: 100%;
 }
 
 .table td:first-child,

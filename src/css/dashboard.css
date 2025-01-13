@@ -166,12 +166,12 @@
 }
 
 .dashboard .table th:nth-child(4),
-.table td:nth-child(4) {
+.dashboard .table td:nth-child(4) {
     width: var(--the-rest);
 }
 
 .dashboard .table th:nth-child(5),
-.table td:nth-child(5) {
+.dashboard .table td:nth-child(5) {
     width: var(--the-rest);
 }
 

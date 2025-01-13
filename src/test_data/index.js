@@ -514,7 +514,7 @@ export const listOfDradeData = [
     {
         id: "1",
         name: "Pre K",
-        description: ""
+        description: "Veniam eiusmod incididunt fugiat officia reprehenderit ullamco reprehenderit aliquip reprehenderit culpa dolore anim nisi aute. Eiusmod Lorem irure laboris ipsum quis."
     },
     {
         id: "2",

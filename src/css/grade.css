@@ -1,0 +1,15 @@
+.grade .table th:nth-child(1),
+.grade .table td:nth-child(1) {
+    width: 10%;
+}
+
+.grade .table th:nth-child(2),
+.grade .table td:nth-child(2) {
+    width: 10%;
+}
+
+.grade .table th:nth-child(3),
+.grade .table td:nth-child(3) {
+    width: 50%;
+    font-family: "Montserrat", serif;
+}
