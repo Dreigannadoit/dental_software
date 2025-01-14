@@ -67,6 +67,7 @@ function App() {
             <Route path="reports/statistics_reports" element={<Statistics_Reports />} />
             <Route path="reports/state_reports_grade" element={<State_Reports_Grade />} />
             <Route path="reports/end_of_year" element={<End_Of_Year_Report />} />
+            
             <Route path="schools" element={<Schools />} />
             <Route path="grade" element={<Grade />} />
             <Route path="program" element={<Program />} />

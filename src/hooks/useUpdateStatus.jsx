@@ -7,13 +7,13 @@ const useUpdateStatus = () => {
     changeStatusRef.current = ref;
   };
 
-  const updateStatus = (patient) => {
-    const newStatus = patient.status === "Active" ? "Inactive" : "Active";
-    console.log(`Updating status of ${patient.name} to ${newStatus}`);
+  const updateStatus = (data) => {
+    const newStatus = data.status === "Active" ? "Inactive" : "Active" ;
+    console.log(`Updating status of ${data.name} to ${newStatus}`);
 
     // Trigger status message if ChangeStatus ref is set
     if (changeStatusRef.current) {
-      changeStatusRef.current.addStatusMessage(patient.name, newStatus);
+      changeStatusRef.current.addStatusMessage(data.name || data.code, newStatus);
     }
 
     // Add logic to update the status in the backend here

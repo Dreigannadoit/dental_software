@@ -6,7 +6,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const GradeTable = ({ data }) => {
+const ProgramTable = ({ data }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -67,17 +67,33 @@ const GradeTable = ({ data }) => {
                 </div>
               </th>
               <th>Name</th>
-              <th>Description</th>
+              <th>School Year</th>
+              <th>Start Month</th>
+              <th>End Month</th>
+              <th>Status</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {sortedData.length > 0 ? (
-              sortedData.map((grade, index) => (
+              sortedData.map((program, index) => (
                 <tr key={index} className="shadow">
-                  <td>{grade.id}</td>
-                  <td>{grade.name}</td>
-                  <td>{grade.description}</td>
+                  <td>{program.id}</td>
+                  <td>{program.name}</td>
+                  <td>{program.school_year}</td>
+                  <td>{program.start_month}</td>
+                  <td>{program.end_month}</td>
+                  <td
+                    className={`${
+                        program.status === "Active"|| program.status === "active" ? "active" : "inactive "
+                    }`}
+                  >
+                    <span>
+                      <button onClick={() => updateStatus(program)}>
+                        {program.status === "Active" || program.status === "active" ? "Active" : "Inactive"}
+                      </button>
+                    </span>
+                  </td>
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
@@ -94,7 +110,7 @@ const GradeTable = ({ data }) => {
                       label="Delete"
                       icon={Delete}
                       backgroundColor="#FF1A1A"
-                      method={() => openDeletePopup(grade)}
+                      method={() => openDeletePopup(program)}
                     />
                   </td>
                 </tr>
@@ -111,4 +127,4 @@ const GradeTable = ({ data }) => {
   );
 };
 
-export default GradeTable;
+export default ProgramTable;

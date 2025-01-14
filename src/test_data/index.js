@@ -517,70 +517,247 @@ export const listOfDradeData = [
         description: "Veniam eiusmod incididunt fugiat officia reprehenderit ullamco reprehenderit aliquip reprehenderit culpa dolore anim nisi aute. Eiusmod Lorem irure laboris ipsum quis."
     },
     {
-        id: "2",
+        id: 2,
         name: "K",
         description: ""
     },
     {
-        id: "3",
-        name: "1",
+        id: 3,
+        name: 1,
         description: ""
     },
     {
-        id: "4",
-        name: "2",
+        id: 4,
+        name: 2,
         description: ""
     },
     {
-        id: "5",
+        id: 5,
         name: "3",
         description: ""
     },
     {
-        id: "6",
+        id: 6,
         name: "4",
         description: ""
     },
     {
-        id: "7",
+        id: 7,
         name: "5",
         description: ""
     },
     {
-        id: "8",
+        id: 8,
         name: "6",
         description: ""
     },
     {
-        id: "9",
+        id: 9,
         name: "7",
         description: ""
     },
     {
-        id: "10",
+        id: 10,
         name: "8",
         description: ""
     },
     {
-        id: "11",
+        id: 11,
         name: "9",
         description: ""
     },
     {
-        id: "12",
+        id: 12,
         name: "10",
         description: ""
     },
     {
-        id: "13",
+        id: 13,
         name: "11",
         description: ""
     },
     {
-        id: "14",
+        id: 14,
         name: "12",
         description: ""
     }
+];
+
+export const programDataList = [
+    {
+        id: 1,
+        name: "Csdp Program Sy 2020 - 2021",
+        school_year: "2020 - 2021",
+        start_month: "September",
+        end_month: "June",
+        status: "Inactive"
+    },
+    {
+        id: 2,
+        name: "Csdp Program Sy 2021 - 2022",
+        school_year: "2021 - 2022",
+        start_month: "September",
+        end_month: "June",
+        status: "Inactive"
+    },
+    {
+        id: 3,
+        name: "Csdp Program Sy 2022 - 2023",
+        school_year: "2022 - 2023",
+        start_month: "September",
+        end_month: "June",
+        status: "Inactive"
+    },
+    {
+        id: 4,
+        name: "Csdp Program Sy 2023 - 2024",
+        school_year: "2023 - 2024",
+        start_month: "September",
+        end_month: "June",
+        status: "Inactive"
+    },
+    {
+        id: 6,
+        name: "Csdp Program Sy 2024 - 2025",
+        school_year: "2024 - 2025",
+        start_month: "September",
+        end_month: "June",
+        status: "Active"
+    },
+]
+
+export const listOfDentalCodesData = [
+    {
+        id: 1,
+        code: "D",
+        description: "Decay",
+        status: "Active"
+    },
+    {
+        id: 2,
+        code: "F",
+        description: "Filled",
+        status: "Active"
+    },
+    {
+        id: 3,
+        code: "M",
+        description: "Missing",
+        status: "Active"
+    },
+    {
+        id: 4,
+        code: "S",
+        description: "Sealant",
+        status: "Active"
+    },
+    {
+        id: 5,
+        code: "PS",
+        description: "Sealant Place",
+        status: "Active"
+    },
+    {
+        id: 6,
+        code: "RS",
+        description: "Retained Sealant",
+        status: "Active"
+    },
+    {
+        id: 7,
+        code: "PE",
+        description: "Partial Eruption",
+        status: "Active"
+    },
+    {
+        id: 8,
+        code: "UE",
+        description: "Unerepted",
+        status: "Active"
+    },
+    {
+        id: 9,
+        code: "SS",
+        description: "Stainless Steel Crown",
+        status: "Active"
+    },
+    {
+        id: 10,
+        code: "A",
+        description: "Abscess",
+        status: "Active"
+    },
+    {
+        id: 11,
+        code: "UC",
+        description: "Untreated Caries	",
+        status: "Active"
+    },
+    {
+        id: 12,
+        code: "SDF",
+        description: "Silver Diamine Flouride	",
+        status: "Active"
+    },
+];
+
+export const listOfProcedureCodesData = [
+    {
+        id: 1,
+        code: "D0190",
+        description: "Oral Screening",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 2,
+        code: "D0191",
+        description: "Limited Clinical assessment",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 3,
+        code: "D1110",
+        description: "Prohylaxis Child 15 - 21	",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 4,
+        code: "D1120",
+        description: "Prohylaxis Child 14 and under	",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 5,
+        code: "D1206",
+        description: "Flouride varnish",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 6,
+        code: "D1351",
+        description: "Sealant",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 7,
+        code: "D1354",
+        description: "Silver Diamine Flouride",
+        price: "$90.90",
+        status: "Active"
+    },
+    {
+        id: 8,
+        code: "D9410",
+        description: "Facility code One per day",
+        price: "$90.90",
+        status: "Active"
+    },
 ];
 
 

@@ -6,7 +6,7 @@ import { listOfDradeData, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import GradeTable from "../../components/Table/gradetable";
 
-const filterSchools = (data, filters) => {
+const filterGrade = (data, filters) => {
   const safeToLowerCase = (value) =>
     value ? value.toString().toLowerCase() : "";
 
@@ -15,7 +15,7 @@ const filterSchools = (data, filters) => {
     const matchesSearch =
       !filters.search ||
       [
-        grade.name,
+        grade.name?.toString(),
         grade.id?.toString(),
         grade.description,
       ].some((field) => safeToLowerCase(field).includes(searchQuery));
@@ -37,7 +37,7 @@ const Grade = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
-  } = useTableData(listOfDradeData, { search : "" }, filterSchools);
+  } = useTableData(listOfDradeData, { search : "" }, filterGrade);
 
   return (
     <div className="grade auto-sizing">
@@ -45,6 +45,7 @@ const Grade = () => {
         filters={filters} 
         onFilterChange={handleFilterChange} 
         data={listOfDradeData}
+        hasAddToTableButton
       />
       <div className="table_controls">
         <RowsPerPage

@@ -75,32 +75,24 @@ const SchoolTable = ({ data }) => {
           </thead>
           <tbody>
             {sortedData.length > 0 ? (
-              sortedData.map((patient, index) => (
+              sortedData.map((school, index) => (
                 <tr key={index} className="shadow">
-                  <td>{patient.id}</td>
-                  <td>{patient.name}</td>
-                  <td>{patient.address}</td>
-                  <td>{patient.type}</td>
+                  <td>{school.id}</td>
+                  <td>{school.name}</td>
+                  <td>{school.address}</td>
+                  <td>{school.type}</td>
                   <td
                     className={`${
-                      patient.status === "Active"|| patient.status === "active" ? "active" : "inactive "
+                      school.status === "Active"|| school.status === "active" ? "active" : "inactive "
                     }`}
                   >
                     <span>
-                      <button onClick={() => updateStatus(patient)}>
-                        {patient.status === "Active" || patient.status === "active" ? "Active" : "Inactive"}
+                      <button onClick={() => updateStatus(school)}>
+                        {school.status === "Active" || school.status === "active" ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>
                   <td className="crud_controlls">
-                    <AnimatedButton
-                      type="routerLink"
-                      classLabel="view_patient"
-                      label="View"
-                      icon={View}
-                      backgroundColor="#8BE5FE"
-                      url="#"
-                    />
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
                       type="routerLink"
@@ -116,7 +108,7 @@ const SchoolTable = ({ data }) => {
                       label="Delete"
                       icon={Delete}
                       backgroundColor="#FF1A1A"
-                      method={() => openDeletePopup(patient)}
+                      method={() => openDeletePopup(school)}
                     />
                   </td>
                 </tr>

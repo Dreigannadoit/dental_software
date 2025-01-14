@@ -259,12 +259,22 @@ button{
     transition: 700ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
+.program .dental_costume_button:hover,
+.program .dental_costume_button:hover{
+    height: 30px;
+    width: 30px;
+}
+
 .dental_costume_button.download_template,
 .dental_costume_button.import_btn,
 .dental_costume_button.new_patient,
-.dental_costume_button.view_chart {
+.dental_costume_button.view_chart,
+.dental_costume_button.add_new {
     height: 45px;
     width: 45px;
+}
+.dental_costume_button.add_new {
+    width: 50px;
 }
 
 .dental_costume_button:hover {
@@ -274,7 +284,8 @@ button{
 .dental_costume_button.download_template:hover,
 .dental_costume_button.import_btn:hover,
 .dental_costume_button.new_patient:hover,
-.dental_costume_button.view_chart:hover {
+.dental_costume_button.view_chart:hover,
+.dental_costume_button.add_new:hover {
     width: 200px;
 }
 
@@ -329,6 +340,14 @@ button{
 .dental_costume_button.view_chart:hover a img{
     left: 25%;
 }
+.dental_costume_button.add_new:hover button img{
+    left: 20%;
+}
+.program .dental_costume_button:hover button img,
+.program .dental_costume_button:hover a img{
+    left: 50%;
+}
+
 
 .dental_costume_button button span,
 .dental_costume_button a span{
@@ -385,6 +404,17 @@ button{
     transform: translate(-50%, -40%);
     left: 73%;
 }
+.dental_costume_button.add_new:hover button span{
+    transform: translate(-50%, -40%);
+    left: 60%;
+}
+.program .dental_costume_button button span,
+.program .dental_costume_button a span{
+    left: 150%;
+    opacity: 0;
+}
+
+
 
 
 

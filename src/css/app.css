@@ -384,6 +384,8 @@ body:has(.side_nav.open) .user_content {
 
     background: var(--pink-grad);
     padding: 25px;
+    
+    margin-bottom: 20px;
 
     border-radius: 10px;
 }
@@ -398,6 +400,15 @@ body:has(.side_nav.open) .user_content {
     background: #fff;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.filter_block .general_fields{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
 }
 
 .filter_block .search_field {
@@ -443,10 +454,6 @@ body:has(.side_nav.open) .user_content {
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
-}
-
-.schools .rows_per_page{
-    margin-top: 20px;
 }
 
 .rows_per_page label {

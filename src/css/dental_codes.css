@@ -1,0 +1,21 @@
+.dental_code .table th:nth-child(1),
+.dental_code .table td:nth-child(1) {
+    width: 7%;
+}
+
+.dental_code .table th:nth-child(2),
+.dental_code .table td:nth-child(2) {
+    width: 15%;
+    text-align: center;
+}
+
+.dental_code .table th:nth-child(3),
+.dental_code .table td:nth-child(3) {
+    width: 30%;
+    text-align: center;
+}
+
+.dental_code .table th:nth-child(4),
+.dental_code .table td:nth-child(4) {
+    text-align: center;
+}

@@ -60,6 +60,7 @@ const Schools = () => {
         data={schoolData}
         hasTypeFilter
         hasStatusfilter
+        hasAddToTableButton
       />
       <div className="table_controls">
         <RowsPerPage

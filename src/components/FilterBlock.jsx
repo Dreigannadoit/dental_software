@@ -1,5 +1,7 @@
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import React, { useState } from "react";
+import AnimatedButton from "./AnimatedButton";
+import { User_Add } from "../assets/icons";
 
 const FilterBlock = ({
   filters,
@@ -10,7 +12,8 @@ const FilterBlock = ({
   hasYearFilter,
   hasStatusfilter,
   hasTeacherFilter,
-  hasTypeFilter
+  hasTypeFilter,
+  hasAddToTableButton
 }) => {
   const handleInputChange = (filterName) => (event) => {
     onFilterChange(filterName, event.target.value);
@@ -32,22 +35,30 @@ const FilterBlock = ({
   const uniqueTeachers = getUniqueValues("teacher");
   const uniqueType = getUniqueValues("type");
 
-  // Debugging: Check if uniqueStatuses and uniqueType have values
-  console.log("Unique Statuses:", uniqueStatuses);
-  console.log("Unique Types:", uniqueType);
-
   return (
     <div className="filter_block">
-      <div className="search_field">
-        <p>Search</p>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          fullWidth
-          value={filters.search}
-          onChange={(e) => onFilterChange("search", e.target.value)}
-          placeholder="Search by name, gender, id, birthdate (e.g. Birthdate: 2016-04-18)"
-        />
+      <div className="general_fields">
+        <div className="search_field">
+          <p>Search</p>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            fullWidth
+            value={filters.search}
+            onChange={(e) => onFilterChange("search", e.target.value)}
+            placeholder="Search by name, gender, id, birthdate (e.g. Birthdate: 2016-04-18)"
+          />
+        </div>
+        {hasAddToTableButton &&
+          <AnimatedButton
+            type="button"
+            classLabel="add_new"
+            label="Add To List"
+            icon={User_Add}
+            backgroundColor="#8BE5FE"
+            url="#"
+          />
+        }
       </div>
 
       <div className="filer_fields">

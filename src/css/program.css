@@ -1,0 +1,30 @@
+.program .table th:nth-child(1),
+.program .table td:nth-child(1) {
+    width: 7%;
+}
+
+.program .table th:nth-child(2),
+.program .table td:nth-child(2) {
+    width: 25%;
+}
+
+.program .table th:nth-child(3),
+.program .table td:nth-child(3) {
+    width: 15%;
+    text-align: center;
+}
+
+.program .table th:nth-child(4),
+.program .table td:nth-child(4) {
+    text-align: center;
+}
+
+.program .table th:nth-child(5),
+.program .table td:nth-child(5) {
+    text-align: center;
+}
+
+.program .table th:nth-child(6),
+.program .table td:nth-child(6) {
+    text-align: center;
+}
