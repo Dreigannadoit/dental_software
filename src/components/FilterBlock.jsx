@@ -45,7 +45,7 @@ const FilterBlock = ({
             variant="outlined"
             fullWidth
             value={filters.search}
-            onChange={(e) => onFilterChange({ ...filters, search: e.target.value })}
+            onChange={(e) => onFilterChange("search", e.target.value)}
             placeholder="Search by name, gender, id, birthdate (e.g. Birthdate: 2016-04-18)"
           />
         </div>

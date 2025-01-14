@@ -1,55 +1,56 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
+import useDebounce from "./useDebounce";
 
-const useTableData = (data, initialFilters, filterFunction) => {
-  const [filters, setFilters] = useState(initialFilters);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState([]);
-  const [loading, setLoading] = useState(false);
+const useTableData = (data, initialFilters, filterFunction, rowsPerPageDefault = 5) => {
+    const [filters, setFilters] = useState(initialFilters);
+    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageDefault);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true); // Start loading animation
-      // Simulate a delay for data loading (e.g., API call)
-      await new Promise((resolve) => setTimeout(resolve, 500));
+    const debouncedFilters = useDebounce(filters, 500);
 
-      const filtered = filterFunction(data, filters);
-      setFilteredData(filtered);
-      setLoading(false); // Stop loading animation
+    useEffect(() => {
+      const fetchData = async () => {
+        setLoading(true); // Start loading animation
+        // Simulate a delay for data loading (e.g., API call)
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        setLoading(false); // Stop loading animation
+      };
+  
+      fetchData();
+    }, []);
+
+    const handleFilterChange = (filterName, value) => {
+        setFilters((prevFilters) => ({ ...prevFilters, [filterName]: value }));
     };
 
-    fetchData();
-  }, [data, filters, filterFunction]);
+    const handleRowsPerPageChange = (event) => {
+        setRowsPerPage(Number(event.target.value));
+        setCurrentPage(1); // Reset to the first page
+    };
 
-  const handleFilterChange = (newFilters) => {
-    setFilters((prev) => ({ ...prev, ...newFilters }));
-    setCurrentPage(1); // Reset to the first page
-  };
+    const handlePageChange = (newPage) => setCurrentPage(newPage);
 
-  const handleRowsPerPageChange = (newRowsPerPage) => {
-    setRowsPerPage(newRowsPerPage);
-    setCurrentPage(1); // Reset to the first page
-  };
+    // Use useMemo to filter data based on the debounced filters
+    const filteredData = useMemo(() => {
+        return filterFunction(data, debouncedFilters);
+    }, [data, debouncedFilters, filterFunction]);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const currentPageData = filteredData.slice(startIndex, startIndex + rowsPerPage);
+    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
-  const startIndex = (currentPage - 1) * rowsPerPage;
-  const currentPageData = filteredData.slice(startIndex, startIndex + rowsPerPage);
-  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-
-  return {
-    filters,
-    rowsPerPage,
-    currentPage,
-    currentPageData,
-    totalPages,
-    handleFilterChange,
-    handleRowsPerPageChange,
-    handlePageChange,
-    loading, // Expose the loading state
-  };
+    return {
+        filters,
+        rowsPerPage,
+        currentPage,
+        currentPageData,
+        totalPages,
+        handleFilterChange,
+        handleRowsPerPageChange,
+        handlePageChange,
+        loading, 
+    };
 };
 
 export default useTableData;

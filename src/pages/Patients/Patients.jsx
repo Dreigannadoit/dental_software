@@ -10,6 +10,7 @@ import AddPatients from "../../components/Forms/AddPatients";
 import RowsPerPage from "../../components/RowsPerPage";
 import useTableData from "../../hooks/useTableData";
 import Popup from "../../components/PopUps/Popup";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterPatients = (patients, filters) => {
   const safeToLowerCase = (value) =>
@@ -70,6 +71,7 @@ const Patients = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(updatedPatientInfo, initialFilters, filterPatients);
 
   const {
@@ -129,6 +131,7 @@ const Patients = () => {
         </div>
 
         <div className="table_area">
+          {loading && <TableLoadingAnimation />}
           <PatientTable data={currentPageData} />
         </div>
 
