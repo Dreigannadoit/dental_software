@@ -37,7 +37,7 @@ const ProcedureCodeTable = ({ data }) => {
         <Popup
           type="Inform"
           title="Are You Sure?"
-          message={`You are about to delete ${selectedPatient?.name}. This action cannot be undone.`}
+          message={`You are about to delete ${selectedPatient?.code}. This action cannot be undone.`}
           icon={Alert}
           onConfirm={confirmDelete}
           onCancel={closeDeletePopup}
@@ -75,20 +75,20 @@ const ProcedureCodeTable = ({ data }) => {
           </thead>
           <tbody>
             {sortedData.length > 0 ? (
-              sortedData.map((dentalcode, index) => (
+              sortedData.map((procedurecode, index) => (
                 <tr key={index} className="shadow">
-                  <td>{dentalcode.id}</td>
-                  <td>{dentalcode.code}</td>
-                  <td>{dentalcode.description}</td>
-                  <td>{dentalcode.price}</td>
+                  <td>{procedurecode.id}</td>
+                  <td>{procedurecode.code}</td>
+                  <td>{procedurecode.description}</td>
+                  <td>{procedurecode.price}</td>
                   <td
                     className={`${
-                        dentalcode.status === "Active"|| dentalcode.status === "active" ? "active" : "inactive "
+                      procedurecode.status === "Active"|| procedurecode.status === "active" ? "active" : "inactive "
                     }`}
                   >
                     <span>
-                      <button onClick={() => updateStatus(dentalcode)}>
-                        {dentalcode.status === "Active" || dentalcode.status === "active" ? "Active" : "Inactive"}
+                      <button onClick={() => updateStatus(procedurecode)}>
+                        {procedurecode.status === "Active" || procedurecode.status === "active" ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>
@@ -108,7 +108,7 @@ const ProcedureCodeTable = ({ data }) => {
                       label="Delete"
                       icon={Delete}
                       backgroundColor="#FF1A1A"
-                      method={() => openDeletePopup(dentalcode)}
+                      method={() => openDeletePopup(procedurecode)}
                     />
                   </td>
                 </tr>

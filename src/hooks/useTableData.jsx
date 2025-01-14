@@ -1,42 +1,55 @@
-import { useState, useMemo } from "react";
-import useDebounce from "./useDebounce";
+import { useState, useEffect } from "react";
 
-const useTableData = (data, initialFilters, filterFn, rowsPerPageDefault = 10) => {
-    const [filters, setFilters] = useState(initialFilters);
-    const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageDefault);
-    const [currentPage, setCurrentPage] = useState(1);
+const useTableData = (data, initialFilters, filterFunction) => {
+  const [filters, setFilters] = useState(initialFilters);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const handleFilterChange = (filterName, value) => {
-        setFilters((prevFilters) => ({ ...prevFilters, [filterName]: value }));
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true); // Start loading animation
+      // Simulate a delay for data loading (e.g., API call)
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      const filtered = filterFunction(data, filters);
+      setFilteredData(filtered);
+      setLoading(false); // Stop loading animation
     };
 
-    const handleRowsPerPageChange = (event) => {
-        setRowsPerPage(Number(event.target.value));
-        setCurrentPage(1); // Reset to the first page
-    };
+    fetchData();
+  }, [data, filters, filterFunction]);
 
-    const handlePageChange = (newPage) => setCurrentPage(newPage);
+  const handleFilterChange = (newFilters) => {
+    setFilters((prev) => ({ ...prev, ...newFilters }));
+    setCurrentPage(1); // Reset to the first page
+  };
 
-    const debouncedFilters = useDebounce(filters, 500);
+  const handleRowsPerPageChange = (newRowsPerPage) => {
+    setRowsPerPage(newRowsPerPage);
+    setCurrentPage(1); // Reset to the first page
+  };
 
-    const filteredData = useMemo(() => {
-        return filterFn(data, debouncedFilters);
-    }, [data, debouncedFilters, filterFn]);
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
-    const startIndex = (currentPage - 1) * rowsPerPage;
-    const currentPageData = filteredData.slice(startIndex, startIndex + rowsPerPage);
-    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const currentPageData = filteredData.slice(startIndex, startIndex + rowsPerPage);
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
-    return {
-        filters,
-        rowsPerPage,
-        currentPage,
-        currentPageData,
-        totalPages,
-        handleFilterChange,
-        handleRowsPerPageChange,
-        handlePageChange,
-    };
+  return {
+    filters,
+    rowsPerPage,
+    currentPage,
+    currentPageData,
+    totalPages,
+    handleFilterChange,
+    handleRowsPerPageChange,
+    handlePageChange,
+    loading, // Expose the loading state
+  };
 };
 
 export default useTableData;

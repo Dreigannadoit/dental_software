@@ -9,6 +9,7 @@
     --blue-grad: linear-gradient(153deg, rgba(185, 227, 252, 1) 0%, rgba(55, 172, 220, 1) 55%);
     --pink-grad: linear-gradient(-135deg, rgba(249, 202, 167, 1) 0%, rgba(254, 178, 168, 1) 100%);
     --green-grad: linear-gradient(325deg, rgba(30,134,49,1) 0%, rgba(0,199,36,1) 100%);
+    --red-grad: linear-gradient(135deg, rgba(250,113,113,1) 0%, rgba(199,0,39,1) 100%);
 }
 
 html{
@@ -104,6 +105,59 @@ button{
     z-index: 9999999999;
 }
 
+
+.f-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-beside {
+    display: flex;
+    flex-direction: row;
+}
+
+.auto-sizing{
+    height: auto;
+    width: 100%;
+}
+
+.shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.glassmorphism {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.dotted-bg {
+    background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
+    background-size: 15px 15px;
+}
+
+.graph {
+    width: 100%;
+    height: 350px;
+    flex-direction: column;
+    padding: 3%;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.graph.pie_chart {
+    background: var(--blue-grad);
+}
+
+.graph h1 {
+    position: absolute;
+    color: #F5F5F5;
+}
+
+
 /* --------------------- */
 /* default table styling */
 /* --------------------- */
@@ -193,61 +247,13 @@ button{
     width: 100%;
 }
 
-
-
-.f-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.table_area {
+    position: relative;
 }
 
-.f-beside {
-    display: flex;
-    flex-direction: row;
-}
-
-.auto-sizing{
-    height: auto;
-    width: 100%;
-}
-
-.shadow {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.glassmorphism {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.dotted-bg {
-    background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
-    background-size: 15px 15px;
-}
-
-.graph {
-    width: 100%;
-    height: 350px;
-    flex-direction: column;
-    padding: 3%;
-
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.graph.pie_chart {
-    background: var(--blue-grad);
-}
-
-.graph h1 {
-    position: absolute;
-    color: #F5F5F5;
-}
 
 /* ------------------------------------- */
-/* Custome Buttun Properties and Styling */
+/* Custome Button Properties and Styling */
 /* ------------------------------------- */
 
 .dental_costume_button {

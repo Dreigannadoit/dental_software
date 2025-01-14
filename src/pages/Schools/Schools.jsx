@@ -5,6 +5,7 @@ import RowsPerPage from "../../components/RowsPerPage";
 import SchoolTable from "../../components/Table/SchoolTable";
 import { schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterSchools = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -50,6 +51,7 @@ const Schools = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(schoolData, initialFilters, filterSchools);
 
   return (
@@ -69,6 +71,7 @@ const Schools = () => {
         />
       </div>
       <div className="table_area">
+        {loading && <TableLoadingAnimation />}
         <SchoolTable data={currentPageData} />
       </div>
       {totalPages > 1 && (

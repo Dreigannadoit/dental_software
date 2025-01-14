@@ -5,6 +5,7 @@ import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDradeData, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import GradeTable from "../../components/Table/gradetable";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterGrade = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -37,6 +38,7 @@ const Grade = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(listOfDradeData, { search : "" }, filterGrade);
 
   return (
@@ -54,6 +56,7 @@ const Grade = () => {
         />
       </div>
       <div className="table_area">
+        {loading && <TableLoadingAnimation />}
         <GradeTable data={currentPageData} />
       </div>
       {totalPages > 1 && (

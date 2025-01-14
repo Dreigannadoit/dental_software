@@ -5,6 +5,7 @@ import RowsPerPage from "../../components/RowsPerPage";
 import { listOfProcedureCodesData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProcedureCodeTable from "../../components/Table/ProcedureCodeTable";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -38,6 +39,7 @@ const Procedure_Codes = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(listOfProcedureCodesData, { search : "" }, filterProgram);
 
   return (
@@ -55,6 +57,7 @@ const Procedure_Codes = () => {
         />
       </div>
       <div className="table_area">
+        {loading && <TableLoadingAnimation />}
         <ProcedureCodeTable data={currentPageData} />
       </div>
       {totalPages > 1 && (

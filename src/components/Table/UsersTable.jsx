@@ -6,7 +6,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const DentalCodeTable = ({ data }) => {
+const UsersTable = ({ data }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -37,7 +37,7 @@ const DentalCodeTable = ({ data }) => {
         <Popup
           type="Inform"
           title="Are You Sure?"
-          message={`You are about to delete ${selectedPatient?.code}. This action cannot be undone.`}
+          message={`You are about to delete ${selectedPatient?.name}. This action cannot be undone.`}
           icon={Alert}
           onConfirm={confirmDelete}
           onCancel={closeDeletePopup}
@@ -66,30 +66,22 @@ const DentalCodeTable = ({ data }) => {
                   </button>
                 </div>
               </th>
-              <th>Code</th>
-              <th>Description</th>
-              <th>Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Role</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {sortedData.length > 0 ? (
-              sortedData.map((dentalcode, index) => (
+              sortedData.map((user, index) => (
                 <tr key={index} className="shadow">
-                  <td>{dentalcode.id}</td>
-                  <td>{dentalcode.code}</td>
-                  <td>{dentalcode.description}</td>
-                  <td
-                    className={`${
-                        dentalcode.status === "Active"|| dentalcode.status === "active" ? "active" : "inactive "
-                    }`}
-                  >
-                    <span>
-                      <button onClick={() => updateStatus(dentalcode)}>
-                        {dentalcode.status === "Active" || dentalcode.status === "active" ? "Active" : "Inactive"}
-                      </button>
-                    </span>
-                  </td>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.username}</td>
+                  <td>{user.role}</td>
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
@@ -106,7 +98,7 @@ const DentalCodeTable = ({ data }) => {
                       label="Delete"
                       icon={Delete}
                       backgroundColor="#FF1A1A"
-                      method={() => openDeletePopup(dentalcode)}
+                      method={() => openDeletePopup(user)}
                     />
                   </td>
                 </tr>
@@ -123,4 +115,4 @@ const DentalCodeTable = ({ data }) => {
   );
 };
 
-export default DentalCodeTable;
+export default UsersTable;

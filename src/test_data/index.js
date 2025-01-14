@@ -760,6 +760,45 @@ export const listOfProcedureCodesData = [
     },
 ];
 
+export const listOfUsersData = [
+    {
+        id: 1,
+        name: "Rexanne Bayani",
+        email: "rexanneluren@gmail.com",
+        username: "Rbayani",
+        role: "admin"
+    },
+    {
+        id: 2,
+        name: "Yhuniz Dumalagan",
+        email: "yhunizdumalagan@gmail.com",
+        username: "Edumalagan",
+        role: "VA-Admin"
+    },
+    {
+        id: 3,
+        name: "Jako Gonzales",
+        email: "jakoo.gonzalez@gmail.com",
+        username: "Jgonzales",
+        role: "VA-Admin"
+    },
+    {
+        id: 4,
+        name: "Super Admin",
+        email: "rsuperadmin@dentalapp.test",
+        username: "superadmin",
+        role: "super-admin"
+    },
+    {
+        id: 5,
+        name: "Admin",
+        email: "admin@dentalapp.test",
+        username: "admin",
+        role: "admin"
+    },
+];
+
+
 
 export const csdpsStatisticsBySchool = [
     {

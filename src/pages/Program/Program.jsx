@@ -5,6 +5,7 @@ import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDradeData, programDataList, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProgramTable from "../../components/Table/ProgramTable";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -43,6 +44,7 @@ const Program = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(programDataList, { search : "" }, filterProgram);
 
   return (
@@ -60,6 +62,7 @@ const Program = () => {
         />
       </div>
       <div className="table_area">
+        {loading && <TableLoadingAnimation />}
         <ProgramTable data={currentPageData} />
       </div>
       {totalPages > 1 && (

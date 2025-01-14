@@ -32,6 +32,9 @@ import ImportIcon from "./ImportIcon.svg"
 import Arrow_right from "./Arrow_right.svg"
 import Arrow_left from "./Arrow_left.svg"
 
+import x from "./X.png"
+import check from "./Check.png"
+
 
 export {
     Dashboard,
@@ -61,5 +64,7 @@ export {
     Alert,
     ImportIcon,
     Arrow_right,
-    Arrow_left
+    Arrow_left,
+    x,
+    check
 }

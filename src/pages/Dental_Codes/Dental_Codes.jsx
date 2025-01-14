@@ -6,6 +6,7 @@ import { listOfDentalCodesData, listOfDradeData, programDataList, schoolData } f
 import useTableData from "../../hooks/useTableData";
 import ProgramTable from "../../components/Table/ProgramTable";
 import DentalCodeTable from "../../components/Table/DentalCodeTable";
+import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -38,6 +39,7 @@ const Dental_Codes = () => {
     handleFilterChange,
     handleRowsPerPageChange,
     handlePageChange,
+    loading,
   } = useTableData(listOfDentalCodesData, { search : "" }, filterProgram);
 
   return (
@@ -55,6 +57,7 @@ const Dental_Codes = () => {
         />
       </div>
       <div className="table_area">
+        {loading && <TableLoadingAnimation />}
         <DentalCodeTable data={currentPageData} />
       </div>
       {totalPages > 1 && (
