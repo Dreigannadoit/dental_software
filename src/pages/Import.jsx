@@ -6,26 +6,26 @@ import { ImportIcon, Upload } from '../assets/icons';
 
 const Import = () => {
   const {
-    isVisible: showImportPopup,
-    isExiting,
-    openPopup: openImportPopUp,
-    closePopup: closeImportPopUp,
+    isVisible: showPatientParticipationPopup,
+    isExiting: isPatientParticipationExiting,
+    openPopup: openPatientParticipationPopUp,
+    closePopup: closePatientParticipationPopUp,
   } = usePopup();
 
   return (
     <>
       {/* Import File Popup */}
-      {showImportPopup && (
+      {showPatientParticipationPopup && (
         <Popup
           type="Import"
           title="Import Patient List"
           message={`This action can be only done once`}
           icon={ImportIcon}
-          onConfirm={closeImportPopUp}
-          onCancel={closeImportPopUp}
+          onConfirm={closePatientParticipationPopUp}
+          onCancel={closePatientParticipationPopUp}
           confirmLabel="Confirm"
           cancelLabel="Cancel"
-          isExiting={isExiting}
+          isExiting={isPatientParticipationExiting}
           customClass="import-popup"
         />
       )}
@@ -35,10 +35,12 @@ const Import = () => {
         label="Import"
         icon={Upload}
         backgroundColor="#8BE5FE"
-        method={openImportPopUp}
+        method={openPatientParticipationPopUp}
       />
     </>
   )
 }
+
+
 
 export default Import

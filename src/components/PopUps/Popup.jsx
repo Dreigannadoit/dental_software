@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import ReactDOM from "react-dom";
 
@@ -73,8 +73,20 @@ const Inform = ({
     isExiting,
     customClass
 }) => {
+    const [rendered, setRendered] = useState(false);
+
+    useEffect(() => {
+        if (!isExiting) {
+            setRendered(true);
+        }
+    }, [isExiting]);
+
     return (
-        <div className={`pop-up ${customClass} ${isExiting ? "" : "show"}`}>
+        <div
+            className={`pop-up ${customClass} ${
+                rendered ? (isExiting ? "hide" : "show") : ""
+            }`}
+        >
             <div className="pop-up-content">
                 <div>
                     {icon && <img src={icon} alt="Popup Icon" />}
@@ -92,7 +104,8 @@ const Inform = ({
             </div>
         </div>
     );
-}
+};
+
 
 const Import = ({
     title,
@@ -106,6 +119,14 @@ const Import = ({
     customClass,
     onFileChange,
 }) => {
+    const [rendered, setRendered] = useState(false);
+
+    useEffect(() => {
+        if (!isExiting) {
+            setRendered(true);
+        }
+    }, [isExiting]);
+
     const [fileName, setFileName] = useState("");
 
     const handleFileChange = (event) => {
@@ -117,7 +138,11 @@ const Import = ({
     };
 
     return (
-        <div className={`pop-up ${customClass} ${isExiting ? "" : "show"}`}>
+        <div
+            className={`pop-up ${customClass} ${
+                rendered ? (isExiting ? "hide" : "show") : ""
+            }`}
+        >
             <div className="pop-up-content">
                 <div>
                     {icon && <img src={icon} alt="Popup Icon" />}

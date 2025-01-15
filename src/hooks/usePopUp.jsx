@@ -21,7 +21,7 @@ const usePopup = () => {
     setTimeout(() => {
       setIsVisible(false);
       setPopupData(null);
-    }, 500);
+    }, 400);
   };
 
   return { isVisible, isExiting, popupData, openPopup, closePopup };

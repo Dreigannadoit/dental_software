@@ -561,29 +561,83 @@ body:has(.side_nav.open) .user_content {
 
 .pop-up {
     position: fixed;
-    top: 100%;
+    top: 0%;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 9999999999;
-    background-color: rgba(0, 0, 0, 0.35);
     opacity: 0;
-    clip-path: polygon(50% 100%, 54% 100%, 61% 100%, 41% 100%);
-    transition: all 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
-
 }
-
-.pop-up.show {
-    top: 0;
+.pop-up.show{
+    opacity: 0;
+    animation: pop_up_enter 300ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
+}
+@keyframes pop_up_enter {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.pop-up.hide {
     opacity: 1;
-    transition: all 400ms 100ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-
+    animation: pop_up_exit 300ms 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
 }
+
+@keyframes pop_up_exit {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.pop-up::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.35);clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.pop-up.show::before{
+    opacity: 1;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    animation: pop_up_backgroundenter 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
+}
+@keyframes pop_up_backgroundenter {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+}
+.pop-up.hide::before {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    animation: pop_up_backgroundexit 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
+}
+
+@keyframes pop_up_backgroundexit {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    }
+}
+
 
 .pop-up>div {
     position: absolute;
-    top: 100%;
+    top: 150%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 544px;
@@ -594,13 +648,24 @@ body:has(.side_nav.open) .user_content {
     background-size: contain;
     background-repeat: no-repeat;
     padding: 4% 4% 11% 4%;
-    transition: all 400ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
-
-.pop-up.show>div {
-    top: 50%;
+.pop-up.show>div{
+    top: 150%;
     opacity: 1;
-    transition: all 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    animation: pop_up_tooth_enter 300ms 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
+}
+@keyframes pop_up_tooth_enter {
+    0%{top: 150%;}
+    100%{top: 50%;}
+}
+.pop-up.hide > div {
+    top: 150%;
+    opacity: 1;
+    animation: pop_up_tooth_exit 300ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
+}
+@keyframes pop_up_tooth_exit {
+    0%{top: 50%;}
+    100%{top: 150%;}
 }
 
 .pop-up>div>div {
