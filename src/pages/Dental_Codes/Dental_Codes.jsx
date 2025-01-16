@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../css/dental_codes.css";
-import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDentalCodesData, listOfDradeData, programDataList, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
@@ -8,6 +7,7 @@ import ProgramTable from "../../components/Table/ProgramTable";
 import DentalCodeTable from "../../components/Table/DentalCodeTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import AddDentalCode from "../../components/Forms/AddDentalCode";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>

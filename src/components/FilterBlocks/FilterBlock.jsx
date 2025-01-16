@@ -1,7 +1,7 @@
 import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 import React, { useState } from "react";
-import AnimatedButton from "./AnimatedButton";
-import { User_Add } from "../assets/icons";
+import AnimatedButton from "../AnimatedButton";
+import { User_Add } from "../../assets/icons";
 
 const FilterBlock = ({
   filters,

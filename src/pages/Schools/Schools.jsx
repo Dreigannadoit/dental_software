@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../css/school.css";
-import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
 import SchoolTable from "../../components/Table/SchoolTable";
 import { schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import AddSchool from "../../components/Forms/AddSchool";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 
 const filterSchools = (data, filters) => {
   const safeToLowerCase = (value) =>

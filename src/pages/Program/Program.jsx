@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../css/program.css";
-import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDradeData, programDataList, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProgramTable from "../../components/Table/ProgramTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import AddProgram from "../../components/Forms/AddProgram";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>

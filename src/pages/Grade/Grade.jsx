@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../css/grade.css";
-import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDradeData, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import GradeTable from "../../components/Table/gradetable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import AddGrade from "../../components/Forms/AddGrade";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 
 const filterGrade = (data, filters) => {
   const safeToLowerCase = (value) =>

@@ -1,0 +1,53 @@
+.chart_dictionary .block_area{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.chart_dictionary .block_area .patient_card_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart_dictionary .block_area .patient_card_container .patient_card{
+    height: 250px;
+    width: calc(50% - 10px);
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    gap: 15px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.chart_dictionary .block_area .patient_card_container .patient_card>img{
+    height: 100%;
+    width: 30%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details{
+    height: 100%;
+    width:calc(70% - 15px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 12px 0;
+}
+
+.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details p{
+    margin-bottom: 15px;
+}
+
+.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details .links-controller{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

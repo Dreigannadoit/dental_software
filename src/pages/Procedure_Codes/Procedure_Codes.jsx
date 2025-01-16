@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../css/procedure_codes.css";
-import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
 import { listOfProcedureCodesData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProcedureCodeTable from "../../components/Table/ProcedureCodeTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import AddProcedureCodes from "../../components/Forms/AddProcedureCodes";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>

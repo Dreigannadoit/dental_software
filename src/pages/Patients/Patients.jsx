@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "../../css/patients.css";
-import FilterBlock from "../../components/FilterBlock";
 import { ImportIcon, Save, Upload, User_Add } from "../../assets/icons";
-import AnimatedButton from "../../components/AnimatedButton";
 import PatientTable from "../../components/Table/PatientTable";
 import { updatedPatientInfo } from "../../test_data";
 import usePopup from "../../hooks/usePopUp";
@@ -11,6 +9,8 @@ import RowsPerPage from "../../components/RowsPerPage";
 import useTableData from "../../hooks/useTableData";
 import Popup from "../../components/PopUps/Popup";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import FilterBlock from "../../components/FilterBlocks/FilterBlock";
+import AnimatedButton from "../../components/AnimatedButton";
 
 const filterPatients = (patients, filters) => {
   const safeToLowerCase = (value) =>
@@ -107,7 +107,7 @@ const Patients = () => {
       {/* Add Patient Popup */}
       {showAddPatient && <AddPatients exitUser={closeAddPatient} />}
 
-      <div className="patients auto-sizing">
+      <div className="patients">
         <FilterBlock
           filters={filters}
           onFilterChange={handleFilterChange}
