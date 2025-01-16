@@ -81,12 +81,12 @@ const DentalCodeTable = ({ data }) => {
                   <td>{dentalcode.description}</td>
                   <td
                     className={`${
-                        dentalcode.status === "Active"|| dentalcode.status === "active" ? "active" : "inactive "
+                        dentalcode.status === "Active"|| dentalcode.status === "active" || dentalcode.status === true ? "active" : "inactive "
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(dentalcode)}>
-                        {dentalcode.status === "Active" || dentalcode.status === "active" ? "Active" : "Inactive"}
+                        {dentalcode.status === "Active" || dentalcode.status === "active" || dentalcode.status === true ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>

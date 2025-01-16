@@ -7,6 +7,7 @@ const FilterBlock = ({
   filters,
   onFilterChange,
   data,
+  method = () => console.warn("The Button In the Filter Block doesn't have a method"),
   hasSchoolFilter,
   hasGradeFilter,
   hasYearFilter,
@@ -56,6 +57,7 @@ const FilterBlock = ({
             label="Add To List"
             icon={User_Add}
             backgroundColor="#8BE5FE"
+            method={method}
             url="#"
           />
         }

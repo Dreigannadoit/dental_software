@@ -38,14 +38,15 @@ const ChangeStatus = forwardRef((props, ref) => {
           } animating-${message.animating}`}
           style={{
             transform: `translateY(-${index * 5}px)`,
+            transition: `all 4000ms linear`,
           }}
         >
           <div className="progress-bar"></div>
           <div className="f-center message-container">
-            {(message.status === "Active" || message.status === "active") && (
+            {(message.status === "Active" || message.status === "active" || message.status === true) && (
               <img src={check} alt="check mark" />
             )}
-            {(message.status === "Inactive" || message.status === "inactive") && (
+            {(message.status === "Inactive" || message.status === "inactive" || message.status === false) && (
               <img src={x} alt="x mark" />
             )}
             <p>

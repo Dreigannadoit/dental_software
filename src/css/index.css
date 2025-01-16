@@ -87,6 +87,7 @@ section {
 
 a {
     text-decoration: none;
+    cursor: pointer;
     color: var(--dark-color);
 }
 
@@ -135,6 +136,14 @@ button{
 .dotted-bg {
     background-image: radial-gradient(var(--backgrounds-color) 10%, transparent 0);
     background-size: 15px 15px;
+}
+
+.form_background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    z-index: 0;
 }
 
 .graph {

@@ -65,8 +65,8 @@ const AddPatients = ({ exitUser }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className="new_patient_containter f-center">
-      <button className="background" onClick={handleCancel}></button>
+    <div className="form_containter new_patient_containter f-center glassmorphism shadow">
+      <button className="form_background" onClick={handleCancel}></button>
       <div className="new_patients glassmorphism shadow">
         <form action="">
           <h1>New Patient</h1>
@@ -406,7 +406,6 @@ const AddPatients = ({ exitUser }) => {
             <div className="medication text_input"></div>
 
             <div className="illness full">
-
               <label htmlFor="illness full">Illness</label>
               <MultiSelectField
                   closeMenuOnSelect={false}
@@ -414,7 +413,6 @@ const AddPatients = ({ exitUser }) => {
                   onChange={handleIlnessNameChange}
                   value={illnessName}
               />
-
             </div>
           </div>
 

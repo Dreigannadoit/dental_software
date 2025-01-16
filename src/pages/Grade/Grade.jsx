@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/grade.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -6,6 +6,7 @@ import { listOfDradeData, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import GradeTable from "../../components/Table/gradetable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddGrade from "../../components/Forms/AddGrade";
 
 const filterGrade = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -39,48 +40,60 @@ const Grade = () => {
     handleRowsPerPageChange,
     handlePageChange,
     loading,
-  } = useTableData(listOfDradeData, { search : "" }, filterGrade);
+  } = useTableData(listOfDradeData, { search: "" }, filterGrade);
+
+  const [showAddGrade, setShowAddGrade] = useState(false);
+
+  const openAddGrade = () => setShowAddGrade(true);
+  const closeAddGrade = () => setShowAddGrade(false);
 
   return (
-    <div className="grade auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={listOfDradeData}
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+    <>
+      {/* Add Grade Form Popup */}
+      {showAddGrade && <AddGrade exitUser={closeAddGrade} />}
+
+      <div className="grade auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={listOfDradeData}
+          hasAddToTableButton
+          method={openAddGrade}
         />
-      </div>
-      <div className="table_area">
-        {loading && <TableLoadingAnimation />}
-        <GradeTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {loading && <TableLoadingAnimation />}
+          <GradeTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
+    </>
   );
 }
 

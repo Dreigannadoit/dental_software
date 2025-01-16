@@ -83,12 +83,12 @@ const SchoolTable = ({ data }) => {
                   <td>{school.type}</td>
                   <td
                     className={`${
-                      school.status === "Active"|| school.status === "active" ? "active" : "inactive "
+                      school.status === "Active"|| school.status === "active" ? "active" : "inactive " || school.status === true
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(school)}>
-                        {school.status === "Active" || school.status === "active" ? "Active" : "Inactive"}
+                        {school.status === "Active" || school.status === "active" ? "Active" : "Inactive" || school.status === false}
                       </button>
                     </span>
                   </td>

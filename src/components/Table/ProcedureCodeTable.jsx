@@ -83,12 +83,12 @@ const ProcedureCodeTable = ({ data }) => {
                   <td>{procedurecode.price}</td>
                   <td
                     className={`${
-                      procedurecode.status === "Active"|| procedurecode.status === "active" ? "active" : "inactive "
+                      procedurecode.status === "Active"|| procedurecode.status === "active" || procedurecode.status === true ? "active" : "inactive "
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(procedurecode)}>
-                        {procedurecode.status === "Active" || procedurecode.status === "active" ? "Active" : "Inactive"}
+                        {procedurecode.status === "Active" || procedurecode.status === "active" || procedurecode.status === true ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>

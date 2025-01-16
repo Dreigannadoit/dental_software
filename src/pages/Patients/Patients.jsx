@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/patients.css";
 import FilterBlock from "../../components/FilterBlock";
 import { ImportIcon, Save, Upload, User_Add } from "../../assets/icons";
@@ -81,7 +81,7 @@ const Patients = () => {
     closePopup: closeImportPopUp,
   } = usePopup();
 
-  const [showAddPatient, setShowAddPatient] = React.useState(false);
+  const [showAddPatient, setShowAddPatient] = useState(false);
 
   const openAddPatient = () => setShowAddPatient(true);
   const closeAddPatient = () => setShowAddPatient(false);

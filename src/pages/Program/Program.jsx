@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/program.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -6,6 +6,7 @@ import { listOfDradeData, programDataList, schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProgramTable from "../../components/Table/ProgramTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddProgram from "../../components/Forms/AddProgram";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -16,7 +17,7 @@ const filterProgram = (data, filters) => {
 
     // Filter by status (only include active if "Active" is selected in filters)
     const matchesStatus =
-      !filters.status || 
+      !filters.status ||
       safeToLowerCase(program.status) === safeToLowerCase(filters.status);
 
     const matchesSearch =
@@ -45,48 +46,59 @@ const Program = () => {
     handleRowsPerPageChange,
     handlePageChange,
     loading,
-  } = useTableData(programDataList, { search : "" }, filterProgram);
+  } = useTableData(programDataList, { search: "" }, filterProgram);
+
+  const [showAddProgram, setShowAddProgram] = useState(false);
+
+  const openAddProgram = () => setShowAddProgram(true);
+  const closeAddProgram = () => setShowAddProgram(false);
 
   return (
-    <div className="program auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={programDataList}
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+    <>
+      {/* Add Program Form Popup */}
+      {showAddProgram && <AddProgram exitUser={closeAddProgram} />}
+
+      <div className="program auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={programDataList}
+          hasAddToTableButton
+          method={openAddProgram}
         />
-      </div>
-      <div className="table_area">
-        {loading && <TableLoadingAnimation />}
-        <ProgramTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {loading && <TableLoadingAnimation />}
+          <ProgramTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

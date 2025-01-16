@@ -85,12 +85,12 @@ const PatientTable = ({ data }) => {
                   <td>{patient.age}</td>
                   <td
                     className={`${
-                      patient.status === "Active" ? "active" : "inactive "
+                      patient.status === "Active" || patient.status === true ? "active" : "inactive "
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(patient)}>
-                        {patient.status === "Active" ? "Active" : "Inactive"}
+                        {patient.status === "Active" || patient.status === true ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>

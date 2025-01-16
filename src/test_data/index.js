@@ -378,7 +378,7 @@ export const schoolData = [
         address: "240 Center St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 2,
@@ -386,7 +386,7 @@ export const schoolData = [
         address: "271 West St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 3,
@@ -394,7 +394,7 @@ export const schoolData = [
         address: "105 Keith Ave, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 4,
@@ -402,7 +402,7 @@ export const schoolData = [
         address: "125 Oak St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "inactive",
+        status: "Inactive",
     },
     {
         id: 5,
@@ -410,7 +410,7 @@ export const schoolData = [
         address: "250 Crescent St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 6,
@@ -418,7 +418,7 @@ export const schoolData = [
         address: "108 Oak St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 7,
@@ -426,7 +426,7 @@ export const schoolData = [
         address: "900 Ash St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "inactive",
+        status: "Inactive",
     },
     {
         id: 8,
@@ -434,7 +434,7 @@ export const schoolData = [
         address: "75 Warren Ave, Brockton, MA",
         type: "Facility",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 9,
@@ -442,7 +442,7 @@ export const schoolData = [
         address: "125 Pearl St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 10,
@@ -450,7 +450,7 @@ export const schoolData = [
         address: "135 Belmont St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 11,
@@ -458,7 +458,7 @@ export const schoolData = [
         address: "180 Ash St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "inactive",
+        status: "Inactive",
     },
     {
         id: 12,
@@ -466,7 +466,7 @@ export const schoolData = [
         address: "155 Adams St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 13,
@@ -474,7 +474,7 @@ export const schoolData = [
         address: "200 West St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 14,
@@ -482,7 +482,7 @@ export const schoolData = [
         address: "100 North Ave, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "inactive",
+        status: "Inactive",
     },
     {
         id: 15,
@@ -490,7 +490,7 @@ export const schoolData = [
         address: "125 Baker St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 16,
@@ -498,7 +498,7 @@ export const schoolData = [
         address: "300 Central St, Brockton, MA",
         type: "School",
         grade: ["7", "8", "9", "10", "11", "12"],
-        status: "active",
+        status: "Active",
     },
     {
         id: 17,
@@ -506,7 +506,7 @@ export const schoolData = [
         address: "135 Belmont St, Brockton, MA",
         type: "School",
         grade: ["K", "1", "2", "3", "4", "5", "6"],
-        status: "active",
+        status: "Active",
     },
 ];
 
@@ -928,4 +928,21 @@ export const allergiedList = [
     { value: 'food', label: 'Food' },
     { value: 'artificial_flavoring', label: 'Artificial Flavoring' },
     { value: 'red_dye', label: 'Red Dye' },
+];
+
+export const gradelist = [
+    { value: 'preK', label: 'Pre K' },
+    { value: 'k', label: 'K' },
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' },
+    { value: '5', label: '5' },
+    { value: '6', label: '6' },
+    { value: '7', label: '7' },
+    { value: '8', label: '8' },
+    { value: '9', label: '9' },
+    { value: '10', label: '10' },
+    { value: '11', label: '11' },
+    { value: '12', label: '12' },
 ];

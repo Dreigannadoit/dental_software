@@ -85,12 +85,12 @@ const ProgramTable = ({ data }) => {
                   <td>{program.end_month}</td>
                   <td
                     className={`${
-                        program.status === "Active"|| program.status === "active" ? "active" : "inactive "
+                        program.status === "Active"|| program.status === "active" || program.status === true ? "active" : "inactive "
                     }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(program)}>
-                        {program.status === "Active" || program.status === "active" ? "Active" : "Inactive"}
+                        {program.status === "Active" || program.status === "active" || program.status === true ? "Active" : "Inactive"}
                       </button>
                     </span>
                   </td>

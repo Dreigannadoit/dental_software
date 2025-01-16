@@ -66,14 +66,6 @@
     overflow: auto;
 }
 
-.new_patient_containter>button{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    z-index: 0;
-}
-
 .new_patients{
     height: 100%;
     width: 70%;
@@ -168,14 +160,3 @@
     margin-top: 40px;
     gap: 15px;
 } 
-.new_patient_containter form .form-buttons button{
-    padding: 2% 5%;
-    font-size: 14px;
-    border-radius: 10px;
-}
-.new_patient_containter form .form-buttons button.submit-btn{
-    background-color: #ff4d4f;
-}
-.new_patient_containter form .form-buttons button.cancel-btn{
-    background-color: #ccc;
-}

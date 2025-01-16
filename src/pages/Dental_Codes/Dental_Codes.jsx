@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/dental_codes.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -7,6 +7,7 @@ import useTableData from "../../hooks/useTableData";
 import ProgramTable from "../../components/Table/ProgramTable";
 import DentalCodeTable from "../../components/Table/DentalCodeTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddDentalCode from "../../components/Forms/AddDentalCode";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -40,48 +41,60 @@ const Dental_Codes = () => {
     handleRowsPerPageChange,
     handlePageChange,
     loading,
-  } = useTableData(listOfDentalCodesData, { search : "" }, filterProgram);
+  } = useTableData(listOfDentalCodesData, { search: "" }, filterProgram);
+
+  const [showAddDentalCodes, setShowAddDentalCodes] = useState(false);
+
+  const openAddDentalCodes = () => setShowAddDentalCodes(true);
+  const closeAddDentalCodes = () => setShowAddDentalCodes(false);
 
   return (
-    <div className="dental_code auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={listOfDentalCodesData}
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+      <>
+      {/* Add DentalCodes Form Popup */}
+      {showAddDentalCodes && <AddDentalCode exitUser={closeAddDentalCodes} />}
+
+      <div className="dental_code auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={listOfDentalCodesData}
+          hasAddToTableButton
+          method={openAddDentalCodes}
         />
-      </div>
-      <div className="table_area">
-        {loading && <TableLoadingAnimation />}
-        <DentalCodeTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {loading && <TableLoadingAnimation />}
+          <DentalCodeTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
+    </>
   );
 }
 

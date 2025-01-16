@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/users.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -6,6 +6,7 @@ import { listOfUsersData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import UsersTable from "../../components/Table/UsersTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddUsers from "../../components/Forms/AddUsers";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -42,47 +43,58 @@ const Users = () => {
     loading, // Access loading state
   } = useTableData(listOfUsersData, { search: "" }, filterProgram);
 
+  const [showAddUsers, setShowAddUsers] = useState(false);
+
+  const openAddUsers = () => setShowAddUsers(true);
+  const closeAddUsers = () => setShowAddUsers(false);
+
   return (
-    <div className="users auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={listOfUsersData}
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+    <>
+      {/* Add Procedure Codes Form Popup */}
+      {showAddUsers && <AddUsers exitUser={closeAddUsers} />}
+
+      <div className="users auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={listOfUsersData}
+          hasAddToTableButton
+          method={openAddUsers}
         />
-      </div>
-      <div className="table_area">
-        {/* Show loading overlay if loading is true */}
-        {loading && <TableLoadingAnimation />}
-        <UsersTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {/* Show loading overlay if loading is true */}
+          {loading && <TableLoadingAnimation />}
+          <UsersTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

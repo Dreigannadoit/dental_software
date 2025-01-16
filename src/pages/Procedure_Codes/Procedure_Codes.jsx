@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/procedure_codes.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -6,6 +6,7 @@ import { listOfProcedureCodesData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import ProcedureCodeTable from "../../components/Table/ProcedureCodeTable";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddProcedureCodes from "../../components/Forms/AddProcedureCodes";
 
 const filterProgram = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -40,48 +41,60 @@ const Procedure_Codes = () => {
     handleRowsPerPageChange,
     handlePageChange,
     loading,
-  } = useTableData(listOfProcedureCodesData, { search : "" }, filterProgram);
+  } = useTableData(listOfProcedureCodesData, { search: "" }, filterProgram);
+
+  const [showAddProcedureCodes, setShowAddProcedureCodes] = useState(false);
+
+  const openAddProcedureCodes = () => setShowAddProcedureCodes(true);
+  const closeAddProcedureCodes= () => setShowAddProcedureCodes(false);
 
   return (
-    <div className="procedure_code auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={listOfProcedureCodesData}
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+    <>
+      {/* Add Procedure Codes Form Popup */}
+      {showAddProcedureCodes && <AddProcedureCodes exitUser={closeAddProcedureCodes} />}
+
+      <div className="procedure_code auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={listOfProcedureCodesData}
+          hasAddToTableButton
+          method={openAddProcedureCodes}
         />
-      </div>
-      <div className="table_area">
-        {loading && <TableLoadingAnimation />}
-        <ProcedureCodeTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {loading && <TableLoadingAnimation />}
+          <ProcedureCodeTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
+    </>
   );
 }
 

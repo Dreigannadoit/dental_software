@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/school.css";
 import FilterBlock from "../../components/FilterBlock";
 import RowsPerPage from "../../components/RowsPerPage";
@@ -6,6 +6,7 @@ import SchoolTable from "../../components/Table/SchoolTable";
 import { schoolData } from "../../test_data";
 import useTableData from "../../hooks/useTableData";
 import TableLoadingAnimation from "../../components/TableLoadingAnimation";
+import AddSchool from "../../components/Forms/AddSchool";
 
 const filterSchools = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -54,48 +55,60 @@ const Schools = () => {
     loading,
   } = useTableData(schoolData, initialFilters, filterSchools);
 
+  const [showAddSchool, setShowAddSchool] = useState(false);
+
+  const openAddSchool = () => setShowAddSchool(true);
+  const closeAddSchool = () => setShowAddSchool(false);
+
   return (
-    <div className="schools auto-sizing">
-      <FilterBlock 
-        filters={filters} 
-        onFilterChange={handleFilterChange} 
-        data={schoolData}
-        hasTypeFilter
-        hasStatusfilter
-        hasAddToTableButton
-      />
-      <div className="table_controls">
-        <RowsPerPage
-          rowsPerPage={rowsPerPage}
-          handleRowsPerPageChange={handleRowsPerPageChange}
+    <>
+    
+      {/* Add School Form Popup */}
+      {showAddSchool && <AddSchool exitUser={closeAddSchool} />}
+
+      <div className="schools auto-sizing">
+        <FilterBlock
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          data={schoolData}
+          hasTypeFilter
+          hasStatusfilter
+          hasAddToTableButton
+          method={openAddSchool}
         />
-      </div>
-      <div className="table_area">
-        {loading && <TableLoadingAnimation />}
-        <SchoolTable data={currentPageData} />
-      </div>
-      {totalPages > 1 && (
-        <div className="pagination">
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Back
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="shadow"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+        <div className="table_controls">
+          <RowsPerPage
+            rowsPerPage={rowsPerPage}
+            handleRowsPerPageChange={handleRowsPerPageChange}
+          />
         </div>
-      )}
-    </div>
+        <div className="table_area">
+          {loading && <TableLoadingAnimation />}
+          <SchoolTable data={currentPageData} />
+        </div>
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Back
+            </button>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="shadow"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

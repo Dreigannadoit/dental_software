@@ -329,6 +329,138 @@ body:has(.reports_subnav_show) .reports_sub_menus {
 }
 
 
+
+/* ----------- */
+/* Form Design */
+/* ----------- */
+
+.form_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(32, 5, 5, 0.5); /* Dimmed background */
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0; /* Ensure initial state aligns with animation */
+    transform: translateY(-20px);
+}
+
+/* Ensure animations align */
+.enter-animation {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 500ms forwards;
+}
+
+.exit-animation {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeOut 500ms forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+
+
+.form_container .form {
+    width: 920px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.form_container .form form,
+.form_container .form form>.container {
+    width: 100%;
+}
+
+.form_container .form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form_container .form form h1 {
+    border-bottom: 1px solid var(--dark-color);
+    padding-bottom: 10px;
+}
+
+.form_container .form form>.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form_container .form form>.container>div {
+    width: calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.form_container .form form>.container>div.full {
+    width: calc(100%);
+}
+
+.form_container .form form .form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.form_container .form form .form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+form .form-buttons button {
+    padding: 2% 5%;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+form .form-buttons button.submit-btn {
+    background-color: #ff4d4f;
+}
+
+form .form-buttons button.cancel-btn {
+    background-color: #ccc;
+}
+
 /* 
 -- Service Area --
 */
@@ -524,32 +656,39 @@ body:has(.side_nav.open) .user_content {
     z-index: 10;
 }
 
-.loading-overlay img{
+.loading-overlay img {
     height: 30px;
     transform: translateY(0px);
     animation: loadingToothAnimation 600ms cubic-bezier(0.68, -0.25, 0.27, 1.05) infinite;
 }
 
-.loading-overlay img:nth-child(1){
+.loading-overlay img:nth-child(1) {
     animation-delay: 0ms;
 }
-.loading-overlay img:nth-child(2){
+
+.loading-overlay img:nth-child(2) {
     animation-delay: 10ms;
 }
-.loading-overlay img:nth-child(3){
+
+.loading-overlay img:nth-child(3) {
     animation-delay: 20ms;
 }
-.loading-overlay img:nth-child(4){
+
+.loading-overlay img:nth-child(4) {
     animation-delay: 30ms;
 }
-.loading-overlay img:nth-child(5){
+
+.loading-overlay img:nth-child(5) {
     animation-delay: 40ms;
 }
 
 @keyframes loadingToothAnimation {
-    0%,100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-30px);
     }
@@ -568,18 +707,22 @@ body:has(.side_nav.open) .user_content {
     z-index: 9999999999;
     opacity: 0;
 }
-.pop-up.show{
+
+.pop-up.show {
     opacity: 0;
     animation: pop_up_enter 300ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
 }
+
 @keyframes pop_up_enter {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
+
 .pop-up.hide {
     opacity: 1;
     animation: pop_up_exit 300ms 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
@@ -589,11 +732,13 @@ body:has(.side_nav.open) .user_content {
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
 }
-.pop-up::before{
+
+.pop-up::before {
     content: "";
     position: absolute;
     top: 0;
@@ -603,22 +748,26 @@ body:has(.side_nav.open) .user_content {
     height: 100%;
     width: 100%;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.35);clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    background-color: rgba(0, 0, 0, 0.35);
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
 }
 
-.pop-up.show::before{
+.pop-up.show::before {
     opacity: 1;
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
     animation: pop_up_backgroundenter 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
 }
+
 @keyframes pop_up_backgroundenter {
     0% {
         clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
     }
+
     100% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
 }
+
 .pop-up.hide::before {
     opacity: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
@@ -629,6 +778,7 @@ body:has(.side_nav.open) .user_content {
     0% {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
+
     100% {
         clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
     }
@@ -649,23 +799,37 @@ body:has(.side_nav.open) .user_content {
     background-repeat: no-repeat;
     padding: 4% 4% 11% 4%;
 }
-.pop-up.show>div{
+
+.pop-up.show>div {
     top: 150%;
     opacity: 1;
     animation: pop_up_tooth_enter 300ms 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
 }
+
 @keyframes pop_up_tooth_enter {
-    0%{top: 150%;}
-    100%{top: 50%;}
+    0% {
+        top: 150%;
+    }
+
+    100% {
+        top: 50%;
+    }
 }
-.pop-up.hide > div {
+
+.pop-up.hide>div {
     top: 150%;
     opacity: 1;
     animation: pop_up_tooth_exit 300ms cubic-bezier(0.68, -0.25, 0.27, 1.05) forwards;
 }
+
 @keyframes pop_up_tooth_exit {
-    0%{top: 50%;}
-    100%{top: 150%;}
+    0% {
+        top: 50%;
+    }
+
+    100% {
+        top: 150%;
+    }
 }
 
 .pop-up>div>div {
@@ -782,9 +946,10 @@ body:has(.side_nav.open) .user_content {
     color: #fff;
     margin-top: 10px;
     opacity: 0.9;
-    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
-    transition: all 0.3s;
+    transition: all 4000ms linear;
 }
 
 .status-popup.active {
@@ -862,6 +1027,7 @@ body:has(.side_nav.open) .user_content {
     padding: 0px 10px;
     gap: 10px;
     justify-content: flex-start;
+    align-items: center;
 }
 
 
