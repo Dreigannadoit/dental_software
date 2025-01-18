@@ -13,6 +13,7 @@ const pageNames = {
     '/patients': 'Patients',
     '/patients/patient_profile': 'Patient Profile',
     '/chart': 'Chart',
+    '/chart/chartOfPatient': 'Chart',
     '/eligibility': 'Eligibility',
     '/distribution': 'Distribution',
     '/reports': 'Reports',

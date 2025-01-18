@@ -149,6 +149,8 @@ export const patientInfo = [
         consentedNotes: "The Worst teeth I have Ever seen",
         signed: false,
         signedNotes: "Has Insuarance",
+        sdf: true,
+        sdfNotes: "Has Insuarance",
     },
     {
         id: 2,

@@ -7,14 +7,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    align-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .chart_dictionary .block_area .patient_card_container .patient_card{
     height: 250px;
-    width: calc(50% - 10px);
+    width: 280px;
     background-color: aliceblue;
     display: flex;
     flex-direction: row;
@@ -33,11 +34,12 @@
 
 .chart_dictionary .block_area .patient_card_container .patient_card> .patient_details{
     height: 100%;
-    width:calc(70% - 15px);
+    /* width:calc(70% - 15px); */
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    padding: 12px 0;
+    flex-direction: column-reverse;
+    padding: 12px 5px;
 }
 
 .chart_dictionary .block_area .patient_card_container .patient_card> .patient_details p{
@@ -48,6 +50,6 @@
     width: 100%;
     display: flex;
     gap: 15px;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-end;
 }

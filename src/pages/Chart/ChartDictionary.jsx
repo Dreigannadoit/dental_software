@@ -99,7 +99,7 @@ const ChartDictionary = () => {
           {currentPageData.length > 0 ? (
             currentPageData.map((patient, index) => (
               <div className="patient_card shadow" key={index}>
-                <img src={TestStudentImg} alt="" />
+                {/* <img src={TestStudentImg} alt="" /> */}
                 <div className="patient_details">
                   <div className="info">
                     <p><strong>NAME: </strong> <br /> {patient.name}</p>
@@ -110,7 +110,7 @@ const ChartDictionary = () => {
                     <AnimatedButton
                       type="routerLink"
                       classLabel="view_patient_link"
-                      label="Details"
+                      label="Profile"
                       icon={View}
                       backgroundColor="#8BE5FE"
                       url={`patients/patient_profile/${patient.id}`}
