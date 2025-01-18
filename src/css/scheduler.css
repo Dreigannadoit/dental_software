@@ -1,11 +1,22 @@
-.scheduler {
+.user_content:has(.scheduler)>div {
+    padding: 20px;
+}
+
+/* General calendar container styles */
+.scheduler_wrapper {
+    position: relative;
     width: 100%;
-    height: auto;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.scheduler {
+    width: calc(100% - 310px) !important;
     display: flex;
     flex-direction: column;
 }
-
 
 body:has(.scheduler) .form_container .form {
     width: 600px;
@@ -15,20 +26,147 @@ body:has(.scheduler) .form_container .form {
     align-items: center;
 }
 
-.scheduler table{
-    background-color: #fff;
+/* Styling for FullCalendar table */
+.scheduler table {
+    background-color: transparent;
+    border-spacing: 2px; /* Adds gaps between rows and columns */
+    border-collapse: separate; /* Ensures gaps are visible */
 }
 
-.fc *{
+/* Style for individual calendar cells */
+.scheduler table table td {
+    background-color: #fff;
+    padding: 10px; /* Adds padding inside cells */
+    border-radius: 5px; /* Rounded corners for cells */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better design */
+}
+
+/* Style for individual calendar cells */
+.scheduler table table td.fc-day {
+    padding: 1px;
+}
+
+/* Transition effects for smoother hover interactions */
+.fc * {
     transition: all 100ms linear;
 }
 
 .fc {
-    width: 70%;
-    /* Force full width */
+    width: 100%; /* Take full width of the parent container */
     max-width: 100%;
-    height: calc(85vh - 40px);
-    overflow: scroll;
-    /* Prevent it from being constrained */
+    height: 80vh;
+    overflow: hidden; /* Avoid unnecessary scrollbars */
+    overflow-y: auto;
     box-sizing: border-box;
+}
+
+/* Style for today's date */
+.fc .fc-dayGridMonth-view .fc-day-today{
+    background: var(--pink-grad);
+    color: #fff; /* Ensures text is visible */
+    font-weight: bold;
+}
+
+.fc .fc-timegrid-col.fc-day-today,
+.fc .fc-timegrid-col.fc-day-past,
+.fc .fc-timegrid-col.fc-day-future {
+    background-color: transparent;
+    border: solid var(--dark-color) 2px;
+}
+
+.fc-scroller-harness{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+}
+
+.fc-col-header-cell-cushion{
+    font-size: 26px;
+}
+
+/* Remove default borders and add rounded corners for the table */
+.fc-theme-standard td, .fc-theme-standard th {
+    border: none !important;
+    border-radius: 5px;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border: none !important;
+}
+
+/* Styling for the controls section */
+.calendar_controls_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+
+.calendar_controls_wrapper .calendar_controls {
+    justify-content: space-between;
+    display: flex;
+    gap: 15px; /* Adds gap between control buttons */
+}
+
+.calendar_controls_wrapper .calendar_controls div {
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar_controls_wrapper .calendar_controls div button {
+    padding: 15px;
+    border-radius: 15px;
+    height: 100%;
+    background-color: var(--button-bg, #f0f0f0);
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.calendar_controls_wrapper .calendar_controls div button:hover {
+    background-color: var(--button-hover-bg, #e0e0e0);
+}
+
+.calendar_controls_wrapper .calendar_controls div button:has(img) {
+    padding: 15px;
+}
+
+.calendar_controls_wrapper .calendar_controls div button img {
+    height: 10px;
+}
+
+/* Ensure gaps appear even with dynamic height */
+.fc {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.scheduler_wrapper .side_info{
+    position: fixed;
+    height: 100%;
+    width: calc(310px) !important;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.scheduler_wrapper .mini_calendar{
+    height: 310px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.scheduler_wrapper .events_planed{
+    height: calc(100% - 370px);
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
 }

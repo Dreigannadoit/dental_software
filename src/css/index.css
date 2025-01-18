@@ -46,7 +46,7 @@ body:has(.dark-mode-active) {
 
 *::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-    visibility: hidden;
+    visibility: visible;
 }
 
 *::-webkit-scrollbar {

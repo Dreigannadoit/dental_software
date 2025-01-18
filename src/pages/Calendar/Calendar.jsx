@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "../../css/scheduler.css"; // Add responsive styles here
 import { TextField } from "@mui/material";
 import "@schedule-x/theme-default/dist/index.css";
-import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { DateCalendar, DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -11,9 +11,10 @@ import interactionPlugin from "@fullcalendar/interaction";
 import dayjs from "dayjs";
 import useAnimation from "../../hooks/useFormAnimate";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import { Arrow_left, Arrow_right } from "../../assets/icons";
 
 const Calendar = () => {
-  const [showAddEventForm, setShowAddEventForm] = useState(false);
+  const [showAddEventForm, setShowAddEventForm] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([
     {
@@ -23,8 +24,9 @@ const Calendar = () => {
       end: "2025-01-01T12:00:00",
     },
   ]);
+  const [currentTitle, setCurrentTitle] = useState(""); // To store the current view's title
+  const [currentDate, setCurrentDate] = useState(dayjs()); // Track the current displayed date
   const calendarRef = useRef(null);
-  const parentRef = useRef(null);
 
   const openAddEventForm = (date) => {
     setSelectedDate(date);
@@ -49,73 +51,83 @@ const Calendar = () => {
       setEvents((prevEvents) =>
         prevEvents.filter((event) => event.id !== clickInfo.event.id)
       );
-      clickInfo.event.remove(); // Remove from FullCalendar
+      clickInfo.event.remove();
     }
   };
 
-  // Resize logic to handle dynamic resizing
+  const updateCurrentTitleAndDate = () => {
+    if (calendarRef.current) {
+      const calendarApi = calendarRef.current.getApi();
+      if (calendarApi) {
+        setCurrentTitle(calendarApi.view.title); // Update the current view's title
+        setCurrentDate(dayjs(calendarApi.getDate())); // Sync the displayed date
+      }
+    }
+  };
+
+  const handleNavigate = (action) => {
+    const calendarApi = calendarRef.current?.getApi();
+    if (calendarApi) {
+      switch (action) {
+        case "prev":
+          calendarApi.prev();
+          break;
+        case "next":
+          calendarApi.next();
+          break;
+        case "today":
+          calendarApi.today();
+          break;
+        case "month":
+          calendarApi.changeView("dayGridMonth");
+          break;
+        case "week":
+          calendarApi.changeView("timeGridWeek");
+          break;
+        default:
+          break;
+      }
+      updateCurrentTitleAndDate(); // Update the title and date after navigation
+    }
+  };
+
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
       if (calendarRef.current) {
-        const calendarApi = calendarRef.current.getApi();
-        calendarApi.updateSize(); // Update the calendar size
+        calendarRef.current.getApi().updateSize();
       }
     });
-
-    if (parentRef.current) {
-      resizeObserver.observe(parentRef.current);
+  
+    const calendarParent = document.querySelector(".scheduler");
+    if (calendarParent) {
+      resizeObserver.observe(calendarParent);
     }
+  
+    return () => resizeObserver.disconnect();
+  }, []);  
 
-    return () => {
-      if (parentRef.current) {
-        resizeObserver.unobserve(parentRef.current);
-      }
-      resizeObserver.disconnect();
-    };
-  });
-
-  const calendarOptions = {
-    initialView: "dayGridMonth",
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "customMonthButton,customWeekButton",
-    },
-    customButtons: {
-      customMonthButton: {
-        text: "Month View",
-        click: () => calendarRef.current.getApi().changeView("dayGridMonth"),
-      },
-      customWeekButton: {
-        text: "Week View",
-        click: () => calendarRef.current.getApi().changeView("timeGridWeek"),
-      },
-    },
-    height: "auto",
-    contentHeight: "auto",
+  const handleDateChange = (newDate) => {
+    setCurrentDate(newDate); // Update the MUI DateCalendar state
+    const calendarApi = calendarRef.current?.getApi();
+    if (calendarApi) {
+      calendarApi.gotoDate(newDate.format("YYYY-MM-DD")); // Sync FullCalendar's view to the new date
+      updateCurrentTitleAndDate(); // Update title and view
+    }
   };
+
+  useEffect(() => {
+    if (calendarRef.current) {
+      const calendarApi = calendarRef.current.getApi();
+      setCurrentTitle(calendarApi.view.title); // Set initial title after component mounts
+    }
+  }, []);
 
   const handleDateClick = (info) => {
     openAddEventForm(info.dateStr);
   };
 
   return (
-    <div className="scheduler" ref={parentRef} style={{ width: "100%", overflow: "hidden" }}>
-      <div className="calendar_section">
-        <div className="controlls">
-          button.prev+button.next+.button.today+.
-        </div>
-      </div>
-      <FullCalendar
-        ref={calendarRef}
-        plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-        events={events}
-        eventClick={handleEventClick}
-        dateClick={handleDateClick}
-        height="auto"
-        contentHeight="auto"
-        {...calendarOptions}
-      />
+    <>
       {showAddEventForm && (
         <AddEventForm
           selectedDate={selectedDate}
@@ -123,9 +135,63 @@ const Calendar = () => {
           onClose={closeAddEventForm}
         />
       )}
-    </div>
+      <div className="scheduler_wrapper" style={{ width: "100%", overflow: "hidden" }}>
+        <div className="scheduler">
+          <div className="calendar_controls_wrapper">
+            <div className="calendar_controls f-center">
+              <div className="f-center">
+                <h1>{currentTitle}</h1>
+                <button className="prev f-center" onClick={() => handleNavigate("prev")}>
+                  <img src={Arrow_left} alt="" />
+                </button>
+                <button className="next f-center" onClick={() => handleNavigate("next")}>
+                  <img src={Arrow_right} alt="" />
+                </button>
+                <button className="today f-center" onClick={() => handleNavigate("today")}>Today</button>
+              </div>
+              <div className="f-center">
+                <button className="month f-center" onClick={() => handleNavigate("month")}>Month View</button>
+                <button className="week f-center" onClick={() => handleNavigate("week")}>Week View</button>
+              </div>
+            </div>
+          </div>
+          <FullCalendar
+            ref={calendarRef}
+            plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+            events={events}
+            eventClick={handleEventClick}
+            dateClick={handleDateClick}
+            initialView="dayGridMonth"
+            headerToolbar={false}
+            footerToolbar={false}
+            height="auto" // Ensures it adjusts dynamically
+            contentHeight="auto" // Matches content height
+            datesSet={updateCurrentTitleAndDate} // Sync the date on calendar navigation
+          />
+        </div>
+
+        <div className="side_info">
+          <div className="mini_calendar f-center shadow">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                value={currentDate} // Controlled component to sync date
+                onChange={handleDateChange} // Handle MUI calendar date changes
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                }}
+              />
+            </LocalizationProvider>
+          </div>
+          <div className="events_planed shadow">
+            _
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
+
 
 const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
   const { isVisible, isInitialized, triggerEnter, triggerExit } =
@@ -166,8 +232,8 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
   return ReactDOM.createPortal(
     <div
       className={`form_container dentalCode_form_container glassmorphism shadow ${!isInitialized
-          ? ""
-          : isVisible
+        ? ""
+        : isVisible
           ? "enter-animation"
           : "exit-animation"
         }`}

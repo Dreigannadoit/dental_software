@@ -516,11 +516,6 @@ body:has(.side_nav.open) .user_content {
     border-radius: 10px;
 }
 
-.user_content:has(.scheduler)>div {
-    padding: 20px;
-}
-
-
 /* 
 -- Filter Block --
 */
