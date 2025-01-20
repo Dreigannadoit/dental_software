@@ -343,6 +343,10 @@ body:has(.reports_subnav_show) .reports_sub_menus {
 /* Form Design */
 /* ----------- */
 
+body:has(.form_container){
+    overflow: hidden;
+}
+
 .form_container {
     position: fixed;
     top: 0;
@@ -353,6 +357,7 @@ body:has(.reports_subnav_show) .reports_sub_menus {
     width: 100%;
     background-color: rgba(32, 5, 5, 0.5); /* Dimmed background */
     z-index: 999;
+    overflow: auto;
 
     display: flex;
     justify-content: center;
@@ -457,24 +462,19 @@ body:has(.reports_subnav_show) .reports_sub_menus {
     gap: 15px;
 }
 
-.form_container .form form .form-buttons {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
 form .form-buttons button {
     padding: 2% 5%;
     font-size: 14px;
     border-radius: 10px;
 }
 
-form .form-buttons button.submit-btn {
+form .form-buttons button.submit-btn,
+form .form-buttons button.add_event {
     background-color: #ff4d4f;
 }
 
-form .form-buttons button.cancel-btn {
+form .form-buttons button.cancel-btn,
+form .form-buttons button.cancel_event {
     background-color: #ccc;
 }
 

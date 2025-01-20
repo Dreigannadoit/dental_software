@@ -18,27 +18,50 @@
     flex-direction: column;
 }
 
+body:has(.scheduler) .form_container {
+    padding: 50px 10px;
+
+}
+
 body:has(.scheduler) .form_container .form {
     width: 600px;
-    margin-bottom: 210px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+body:has(.scheduler) .form_container .form .pickcolor>div {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+body:has(.scheduler) .form_container .form .pickcolor input {
+    height: 30px;
+    width: 30px;
+}
+
+body:has(.scheduler) .form_container .form .pickcolor>div .css-1cpqqba-MuiFormControlLabel-root {
+    margin-left: 0;
+}
+
 /* Styling for FullCalendar table */
 .scheduler table {
     background-color: transparent;
-    border-spacing: 2px; /* Adds gaps between rows and columns */
-    border-collapse: separate; /* Ensures gaps are visible */
+    border-spacing: 2px;
+    /* Adds gaps between rows and columns */
+    border-collapse: separate;
+    /* Ensures gaps are visible */
 }
 
 /* Style for individual calendar cells */
 .scheduler table table td {
     background-color: #fff;
-    padding: 10px; /* Adds padding inside cells */
-    border-radius: 5px; /* Rounded corners for cells */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better design */
+    padding: 10px;
+    /* Adds padding inside cells */
+    border-radius: 5px;
+    /* Rounded corners for cells */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for better design */
 }
 
 /* Style for individual calendar cells */
@@ -52,18 +75,21 @@ body:has(.scheduler) .form_container .form {
 }
 
 .fc {
-    width: 100%; /* Take full width of the parent container */
+    width: 100%;
+    /* Take full width of the parent container */
     max-width: 100%;
-    height: 80vh;
-    overflow: hidden; /* Avoid unnecessary scrollbars */
+    overflow: hidden;
+    /* Avoid unnecessary scrollbars */
     overflow-y: auto;
     box-sizing: border-box;
+    height: 90vh;
 }
 
 /* Style for today's date */
-.fc .fc-dayGridMonth-view .fc-day-today{
+.fc .fc-dayGridMonth-view .fc-day-today {
     background: var(--pink-grad);
-    color: #fff; /* Ensures text is visible */
+    color: #fff;
+    /* Ensures text is visible */
     font-weight: bold;
 }
 
@@ -74,16 +100,17 @@ body:has(.scheduler) .form_container .form {
     border: solid var(--dark-color) 2px;
 }
 
-.fc-scroller-harness{
+.fc-scroller-harness {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
 }
 
-.fc-col-header-cell-cushion{
-    font-size: 26px;
+.fc-col-header-cell-cushion {
+    font-size: 16px;
 }
 
 /* Remove default borders and add rounded corners for the table */
-.fc-theme-standard td, .fc-theme-standard th {
+.fc-theme-standard td,
+.fc-theme-standard th {
     border: none !important;
     border-radius: 5px;
 }
@@ -91,6 +118,20 @@ body:has(.scheduler) .form_container .form {
 .fc-theme-standard .fc-scrollgrid {
     border: none !important;
 }
+
+.tooltip {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    pointer-events: none;
+    /* Prevent blocking mouse interactions */
+    transition: opacity 0.2s;
+    opacity: 0.9;
+}
+
 
 /* Styling for the controls section */
 .calendar_controls_wrapper {
@@ -104,7 +145,8 @@ body:has(.scheduler) .form_container .form {
 .calendar_controls_wrapper .calendar_controls {
     justify-content: space-between;
     display: flex;
-    gap: 15px; /* Adds gap between control buttons */
+    gap: 15px;
+    /* Adds gap between control buttons */
 }
 
 .calendar_controls_wrapper .calendar_controls div {
@@ -114,16 +156,30 @@ body:has(.scheduler) .form_container .form {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transition: all 400ms ease-in-out;
+}
+
+.calendar_controls_wrapper .calendar_controls div h1 {
+    transition: all 400ms ease-in-out;
+}
+
+body:has(.side_nav.open) .calendar_controls_wrapper .calendar_controls div h1 {
+    font-size: 18px;
 }
 
 .calendar_controls_wrapper .calendar_controls div button {
     padding: 15px;
     border-radius: 15px;
     height: 100%;
-    background-color: var(--button-bg, #f0f0f0);
+    background: var(--backgrounds-color);
     border: none;
     cursor: pointer;
-    transition: background-color 200ms ease-in-out;
+    transition: all 400ms ease-in-out;
+}
+
+.calendar_controls_wrapper .calendar_controls div button.add_new {
+    background: var(--green-grad);
+    color: white;
 }
 
 .calendar_controls_wrapper .calendar_controls div button:hover {
@@ -138,16 +194,7 @@ body:has(.scheduler) .form_container .form {
     height: 10px;
 }
 
-/* Ensure gaps appear even with dynamic height */
-.fc {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-.scheduler_wrapper .side_info{
+.scheduler_wrapper .side_info {
     position: fixed;
     height: 100%;
     width: calc(310px) !important;
@@ -157,14 +204,14 @@ body:has(.scheduler) .form_container .form {
     gap: 20px;
 }
 
-.scheduler_wrapper .mini_calendar{
+.scheduler_wrapper .mini_calendar {
     height: 310px;
     width: 100%;
     border-radius: 10px;
     background-color: #fff;
 }
 
-.scheduler_wrapper .events_planed{
+.scheduler_wrapper .events_planed {
     height: calc(100% - 370px);
     width: 100%;
     border-radius: 10px;

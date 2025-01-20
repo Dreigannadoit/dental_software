@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "../../css/scheduler.css"; // Add responsive styles here
-import { TextField } from "@mui/material";
+import { Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
 import "@schedule-x/theme-default/dist/index.css";
 import { DateCalendar, DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -12,9 +12,11 @@ import dayjs from "dayjs";
 import useAnimation from "../../hooks/useFormAnimate";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { Arrow_left, Arrow_right } from "../../assets/icons";
+import { Textarea } from "@mui/joy";
+import ColorPicker from 'react-pick-color';
 
 const Calendar = () => {
-  const [showAddEventForm, setShowAddEventForm] = useState(true);
+  const [showAddEventForm, setShowAddEventForm] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([
     {
@@ -22,11 +24,50 @@ const Calendar = () => {
       title: "Sample Event",
       start: "2025-01-01T10:00:00",
       end: "2025-01-01T12:00:00",
+      allDay: false, // This makes it an all-day event
+      description: 'Lecture',
+      backgroundColor: "#FE9C8F",
+      borderColor: "#FE9C8F"
+    },
+    {
+      id: "2",
+      title: "All-Day Event",
+      start: "2025-01-20",
+      end: "",
+      allDay: true, // This makes it an all-day event
+      backgroundColor: "#FE9C8F",
+      borderColor: "#FE9C8F"
     },
   ]);
   const [currentTitle, setCurrentTitle] = useState(""); // To store the current view's title
   const [currentDate, setCurrentDate] = useState(dayjs()); // Track the current displayed date
   const calendarRef = useRef(null);
+  const [hoveredEvent, setHoveredEvent] = useState(null); // Track hovered event
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 }); // Position of the tooltip
+
+  const handleEventMouseEnter = (info) => {
+    const { event, jsEvent } = info;
+
+    setHoveredEvent({
+      title: event.title,
+      description: event.extendedProps.description,
+      start: event.start,
+      end: event.end,
+      allDay: event.allDay,
+      borderColor: event.borderColor,
+    });
+
+    // Set tooltip position based on the mouse event
+    setTooltipPosition({
+      x: jsEvent.pageX,
+      y: jsEvent.pageY,
+    });
+  };
+
+  const handleEventMouseLeave = () => {
+    setHoveredEvent(null); // Clear the hovered event
+  };
+
 
   const openAddEventForm = (date) => {
     setSelectedDate(date);
@@ -97,14 +138,14 @@ const Calendar = () => {
         calendarRef.current.getApi().updateSize();
       }
     });
-  
+
     const calendarParent = document.querySelector(".scheduler");
     if (calendarParent) {
       resizeObserver.observe(calendarParent);
     }
-  
+
     return () => resizeObserver.disconnect();
-  }, []);  
+  }, []);
 
   const handleDateChange = (newDate) => {
     setCurrentDate(newDate); // Update the MUI DateCalendar state
@@ -135,23 +176,58 @@ const Calendar = () => {
           onClose={closeAddEventForm}
         />
       )}
+      {hoveredEvent && (
+        <div
+          className="tooltip"
+          style={{
+            top: tooltipPosition.y - 100, // Offset to appear above the cursor
+            left: tooltipPosition.x + 0, // Offset to appear to the right of the cursor
+            
+            border: `${hoveredEvent.borderColor} solid 3px`,
+          }}
+        >
+          <strong>{hoveredEvent.title}</strong>
+          <p>{hoveredEvent.description}</p>
+
+          {/* Check if it's an all-day event */}
+          <p>{hoveredEvent.allDay ? "Type: All Day" : ""}</p>
+
+          <small>
+            {/* If it's an all-day event, show just the date */}
+            {hoveredEvent.start
+              ? hoveredEvent.allDay
+                ? hoveredEvent.start.toLocaleDateString() // For all-day events, display date only
+                : hoveredEvent.start.toLocaleString() // For timed events, display full date and time
+              : ""}
+            {" - "}
+            {hoveredEvent.end
+              ? hoveredEvent.allDay
+                ? hoveredEvent.end.toLocaleDateString() // For all-day events, display date only
+                : hoveredEvent.end.toLocaleString() // For timed events, display full date and time
+              : ""}
+          </small>
+        </div>
+      )}
+
+
       <div className="scheduler_wrapper" style={{ width: "100%", overflow: "hidden" }}>
         <div className="scheduler">
           <div className="calendar_controls_wrapper">
             <div className="calendar_controls f-center">
               <div className="f-center">
+                <button className="add_new" onClick={() => openAddEventForm()}>Add Event</button>
                 <h1>{currentTitle}</h1>
-                <button className="prev f-center" onClick={() => handleNavigate("prev")}>
+                <button className="prev f-center shadow" onClick={() => handleNavigate("prev")}>
                   <img src={Arrow_left} alt="" />
                 </button>
-                <button className="next f-center" onClick={() => handleNavigate("next")}>
+                <button className="next f-center shadow" onClick={() => handleNavigate("next")}>
                   <img src={Arrow_right} alt="" />
                 </button>
-                <button className="today f-center" onClick={() => handleNavigate("today")}>Today</button>
+                <button className="today f-center shadow" onClick={() => handleNavigate("today")}>Today</button>
               </div>
               <div className="f-center">
-                <button className="month f-center" onClick={() => handleNavigate("month")}>Month View</button>
-                <button className="week f-center" onClick={() => handleNavigate("week")}>Week View</button>
+                <button className="month f-center shadow" onClick={() => handleNavigate("month")}>Month View</button>
+                <button className="week f-center shadow" onClick={() => handleNavigate("week")}>Week View</button>
               </div>
             </div>
           </div>
@@ -164,10 +240,42 @@ const Calendar = () => {
             initialView="dayGridMonth"
             headerToolbar={false}
             footerToolbar={false}
-            height="auto" // Ensures it adjusts dynamically
-            contentHeight="auto" // Matches content height
-            datesSet={updateCurrentTitleAndDate} // Sync the date on calendar navigation
+            height="auto"
+            contentHeight="auto"
+            datesSet={updateCurrentTitleAndDate}
+            editable={true}
+            eventMouseEnter={handleEventMouseEnter} // Hover event
+            eventMouseLeave={handleEventMouseLeave} // Leave hover
+            eventDrop={(info) => {
+              const { event } = info;
+              setEvents((prevEvents) =>
+                prevEvents.map((ev) =>
+                  ev.id === event.id
+                    ? {
+                      ...ev,
+                      start: event.start.toISOString(),
+                      end: event.end ? event.end.toISOString() : null,
+                    }
+                    : ev
+                )
+              );
+            }}
+            eventResize={(info) => {
+              const { event } = info;
+              setEvents((prevEvents) =>
+                prevEvents.map((ev) =>
+                  ev.id === event.id
+                    ? {
+                      ...ev,
+                      start: event.start.toISOString(),
+                      end: event.end ? event.end.toISOString() : null,
+                    }
+                    : ev
+                )
+              );
+            }}
           />
+
         </div>
 
         <div className="side_info">
@@ -192,14 +300,25 @@ const Calendar = () => {
   );
 };
 
+let colorsets = [
+  { value: "#d728a3" },
+  { value: "#4dd728" },
+  { value: "#e3a624" },
+  { value: "#e34724" },
+  { value: "#24e3cf" },
+  { value: "#2455e3" },
+
+]
 
 const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
-  const { isVisible, isInitialized, triggerEnter, triggerExit } =
-    useAnimation(500);
+  const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
 
   const [title, setTitle] = useState("");
   const [start, setStart] = useState(selectedDate ? dayjs(selectedDate) : null);
   const [end, setEnd] = useState(null);
+  const [colorHEX, setColorHEX] = useState("#FE9C8F");
+  const [allDay, setAllDay] = useState(false);
+  const [description, setDescription] = useState(""); // Manage description state
 
   useEffect(() => {
     triggerEnter();
@@ -207,16 +326,20 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !start || !end) {
+    if (!title || !start || (!allDay && !end) || !description) {
       alert("Please fill all fields.");
       return;
     }
 
     const newEvent = {
-      id: `${Date.now()}`, // Generate unique ID
+      id: `${Date.now()}`, // Unique ID
       title,
       start: start.toISOString(),
-      end: end.toISOString(),
+      end: allDay ? "" : end.toISOString(), // End date is empty for all-day events
+      allDay,
+      backgroundColor: colorHEX,
+      borderColor: colorHEX,
+      description, // Include the description in the event
     };
 
     onAddEvent(newEvent);
@@ -225,13 +348,13 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
 
   const handleCancel = () => {
     triggerExit(() => {
-      if (onClose) onClose(); // Execute callback after exit animation completes
+      if (onClose) onClose();
     });
   };
 
   return ReactDOM.createPortal(
     <div
-      className={`form_container dentalCode_form_container glassmorphism shadow ${!isInitialized
+      className={`form_container scheduler_form_container glassmorphism shadow ${!isInitialized
         ? ""
         : isVisible
           ? "enter-animation"
@@ -241,8 +364,9 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
       <button className="form_background" onClick={handleCancel}></button>
       <div className="form">
         <form onSubmit={handleSubmit}>
+          <h1>Add Event</h1>
           <div className="container">
-            <div className="tile full">
+            <div className="title full">
               <label>Title</label>
               <TextField
                 fullWidth
@@ -251,6 +375,19 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
                 variant="outlined"
               />
             </div>
+            <div className="all_day full">
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={allDay}
+                      onChange={(e) => setAllDay(e.target.checked)}
+                    />
+                  }
+                  label="All Day Event"
+                />
+              </FormGroup>
+            </div>
             <div className="start_date">
               <label>Start Date</label>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -258,6 +395,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
                   value={start}
                   onChange={(newValue) => setStart(newValue)}
                   label="Start Date & Time"
+                  disabled={allDay} // Disable when all-day is checked
                 />
               </LocalizationProvider>
             </div>
@@ -268,20 +406,64 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
                   value={end}
                   onChange={(newValue) => setEnd(newValue)}
                   label="End Date & Time"
+                  disabled={allDay} // Disable when all-day is checked
                 />
               </LocalizationProvider>
+            </div>
+            <div className="description full">
+              <label htmlFor="description">Description</label>
+              <Textarea
+                size="lg"
+                variant="outlined"
+                sx={{
+                  borderColor: "rgb(158, 158, 158)",
+                  borderWidth: "1px",
+                  borderRadius: "5px",
+                  background: "transparent",
+                  width: "100%",
+                }}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)} // Update description state
+              />
+            </div>
+            <div className="pickcolor full">
+              <label style={{ marginBottom: "8px", display: "block", fontWeight: "bold" }}>
+                Pick a Color
+              </label>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                {colorsets.map((colorBTN, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setColorHEX(colorBTN.value)}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundColor: colorBTN.value,
+                      borderRadius: "50%",
+                      border: colorHEX === colorBTN.value ? "3px solid #000" : "2px solid transparent",
+                      cursor: "pointer",
+                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                      transition: "transform 0.2s, box-shadow 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "scale(1.1)";
+                      e.currentTarget.style.boxShadow = "0 6px 8px rgba(0, 0, 0, 0.2)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                      e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="form-buttons">
-            <button type="submit" className="submit-btn">
-              Submit
+            <button type="submit" className="add_event">
+              Add Event
             </button>
-            <button
-              type="button"
-              className="cancel-btn"
-              onClick={handleCancel}
-            >
+            <button type="button" className="cancel_event" onClick={handleCancel}>
               Cancel
             </button>
           </div>
@@ -291,5 +473,6 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
     document.body
   );
 };
+
 
 export default Calendar;
