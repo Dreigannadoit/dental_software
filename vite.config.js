@@ -11,7 +11,7 @@ export default defineConfig({
   // TODO: REMOVE BEFORE LAUNCH !!!!!!
   server: {
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': 'http://localhost:5173'
     }
   }
 })

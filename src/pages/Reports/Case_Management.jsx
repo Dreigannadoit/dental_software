@@ -65,7 +65,7 @@ const Case_Management = () => {
   const exportCsv = useExportCsv();
 
   const handleExport = () => {
-    exportCsv(currentPageData, "grade_data.csv");
+    exportCsv(currentPageData, "Case Management.csv");
   };
 
   return (

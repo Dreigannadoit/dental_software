@@ -1045,7 +1045,6 @@ body:has(.side_nav.open) .user_content {
     align-items: center;
 }
 
-
 .status-popup .message-container img {
     height: 100%;
     padding: 10px 0px;

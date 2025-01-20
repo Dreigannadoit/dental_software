@@ -307,7 +307,8 @@ button{
 .dental_costume_button:hover {
     width: 100px;
 }
-.program .dental_costume_button:hover{
+.program .dental_costume_button:hover,
+.case_management .dental_costume_button:hover{
     height: 30px;
     width: 30px;
 }
@@ -380,7 +381,8 @@ button{
 }
 
 .program .dental_costume_button:hover button img,
-.program .dental_costume_button:hover a img{
+.program .dental_costume_button:hover a img,
+.case_management .dental_costume_button:hover button img{
     left: 50%;
 }
 
@@ -449,7 +451,8 @@ button{
     left: 115%;
 }
 .program .dental_costume_button button span,
-.program .dental_costume_button a span{
+.program .dental_costume_button a span,
+.case_management .dental_costume_button button span{
     left: 150%;
     opacity: 0;
 }
