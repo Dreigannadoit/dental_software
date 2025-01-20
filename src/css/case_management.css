@@ -1,0 +1,78 @@
+.case_management .table td,
+.case_management .table th {
+    padding: 10px 10px;
+}
+
+.case_management .table th:nth-child(1),
+.case_management .table td:nth-child(1) {
+    width: 15%;
+}
+
+.case_management .table th:nth-child(2),
+.case_management .table td:nth-child(2) {
+    width: 9%;
+    text-align: center;
+}
+
+.case_management .table th:nth-child(3),
+.case_management .table td:nth-child(3) {
+    width: 15%;
+    text-align: center;
+}
+
+.case_management .table th:nth-child(4),
+.case_management .table td:nth-child(4) {
+    width: 12%;
+    text-align: center;
+}
+
+.case_management .table th:nth-child(5),
+.case_management .table td:nth-child(5) {
+    width: 9%;
+    text-align: center;
+}
+
+.case_management .table th:nth-child(6),
+.case_management .table td:nth-child(6) {
+    width: 18%;
+}
+
+.more_info{
+    position: relative;
+    width: 100%;
+    display: table-row;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    z-index: 999999;
+    transition: all 200ms linear;
+}
+
+.collapsed-row {
+    visibility: collapse;
+    max-height: 0; 
+    transform: translate(0, -50px);
+    opacity: 0;
+}
+
+.expanded-row {
+    max-height: 200px;
+    transform: translate(0, 0px);
+    opacity: 1;
+}
+
+.patient-details {
+    padding: 10px; 
+    font-size: 14px;
+    line-height: 1.5;
+    transition: all 200ms ease;
+}
+
+.collapsed-row .patient-details {
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    font-size: 0px;
+    line-height: 0;
+}
