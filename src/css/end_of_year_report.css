@@ -1,0 +1,73 @@
+.viewing_area{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.viewing_area>div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.viewing_area>div>div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.viewing_area>div>div>div{
+    width: calc(50% - 5px);
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.viewing_area>div>div>div h3{
+    padding: 0 0 10px;
+    border-bottom: solid var(--dark-color) 1px;
+}
+
+.viewing_area>div>div>div>div{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    align-items: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.viewing_area>div>div>div>div p{
+    margin-top: 10px;
+    width: calc(33.33% - (10px));
+    padding: 10px;
+}
+.viewing_area>div>div>div>div p:nth-child(6),
+.viewing_area>div>div>div>div p:nth-child(7){
+    width: calc(50% - 5px);
+}
+
+.viewing_area>div>div>div>div p:nth-child(1){
+    background: #f8cac8;
+}
+.viewing_area>div>div>div>div p:nth-child(2){
+    background: #ffc98b;
+}
+.viewing_area>div>div>div>div p:nth-child(3){
+    background: #f18787;
+}
+.viewing_area>div>div>div>div p:nth-child(4){
+    background: #dbb3cb;
+}
+.viewing_area>div>div>div>div p:nth-child(5){
+    background: #9891b6;
+}
+.viewing_area>div>div>div>div p:nth-child(6){
+    background: var(--primary-color);
+}
+.viewing_area>div>div>div>div p:nth-child(7){
+    background: var(--blue-color);
+}

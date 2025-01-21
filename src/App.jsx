@@ -31,6 +31,8 @@ import PatientProfile from './pages/Patients/PatientProfile';
 import ChartDictionary from './pages/Chart/ChartDictionary';
 import Test from './pages/Test';
 
+// TODO: Connect to API 
+
 function App() {
   return (
     <div className="wrapper">

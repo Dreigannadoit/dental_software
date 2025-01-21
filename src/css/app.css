@@ -570,10 +570,17 @@ body:has(.side_nav.open) .user_content {
     gap: 2%;
 }
 
-.filter_block .filer_fields div {
+.filter_block .filer_fields>div {
     width: 100%;
+} 
+
+body:has(.activity_reports) .filter_block .filer_fields {
+    justify-content: flex-start;
 }
 
+body:has(.activity_reports) .filter_block .filer_fields>div {
+    width: auto;
+}
 
 .pagination {
     width: 100%;
