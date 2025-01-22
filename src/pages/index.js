@@ -1,49 +1,54 @@
-import Calendar from "./Calendar/Calendar"
-import Chart from "./Chart/Chart"
-import Dashboard from "./Dashboard/Dashboard"
-import Dental_Codes from "./Dental_Codes/Dental_Codes"
-import Distribution from "./Distribution/Distribution"
-import Eligibility from "./Eligibility/Eligibility"
-import Grade from "./Grade/Grade"
-import NoPage from "./NoPage/NoPage"
-import Patients from "./Patients/Patients"
-import Procedure_Codes from "./Procedure_Codes/Procedure_Codes"
-import Program from "./Program/Program"
-import Reports from "./Reports/Reports"
-import Case_Management from "./Reports/Case_Management"
-import Activity from "./Reports/Activity"
-import Statistics_Reports from "./Reports/Statistics_Reports"
-import State_Reports_Grade from "./Reports/State_Reports_Grade"
-import End_Of_Year_Report from "./Reports/End_Of_Year_Report"
-import Schools from "./Schools/Schools"
-import Users from "./Users/Users"
-import Login from "./Login"
-import Layout from "./Layout"
-import User_Profile from "./User_Profile"
-import Import from "./Import"
+import React, { lazy, Suspense } from 'react';
+
+// Function to create lazy components with named exports
+const createLazyComponent = (importFn) => lazy( () => importFn().then(module => ({default: module[Object.keys(module)[0]]})));
+
+const Import = createLazyComponent(() => import("./Import"));
+const User_Profile = createLazyComponent(() => import("./User_Profile"));
+const Calendar = createLazyComponent(() => import("./Calendar/Calendar"));
+const Chart = createLazyComponent(() => import("./Chart/Chart"));
+const Dashboard = createLazyComponent(() => import("./Dashboard/Dashboard"));
+const Dental_Codes = createLazyComponent(() => import("./Dental_Codes/Dental_Codes"));
+const Distribution = createLazyComponent(() => import("./Distribution/Distribution"));
+const Eligibility = createLazyComponent(() => import("./Eligibility/Eligibility"));
+const Grade = createLazyComponent(() => import("./Grade/Grade"));
+const NoPage = createLazyComponent(() => import("./NoPage/NoPage"));
+const Patients = createLazyComponent(() => import("./Patients/Patients"));
+const Procedure_Codes = createLazyComponent(() => import("./Procedure_Codes/Procedure_Codes"));
+const Program = createLazyComponent(() => import("./Program/Program"));
+const Reports = createLazyComponent(() => import("./Reports/Reports"));
+const Case_Management = createLazyComponent(() => import("./Reports/Case_Management"));
+const Statistics_Reports = createLazyComponent(() => import("./Reports/Statistics_Reports"));
+const State_Reports_Grade = createLazyComponent(() => import("./Reports/State_Reports_Grade"));
+const End_Of_Year_Report = createLazyComponent(() => import("./Reports/End_Of_Year_Report"));
+const Activity = createLazyComponent(() => import("./Reports/Activity"));
+const Schools = createLazyComponent(() => import("./Schools/Schools"));
+const Users = createLazyComponent(() => import("./Users/Users"));
+const Login = createLazyComponent(() => import("./Login"));
+const Layout = createLazyComponent(() => import("./Layout"));
 
 export {
-    Import,
-    User_Profile,
-    Calendar,
-    Chart,
-    Dashboard,
-    Dental_Codes,
-    Distribution,
-    Eligibility,
-    Grade,
-    NoPage,
-    Patients,
-    Procedure_Codes,
-    Program,
-    Reports,
-    Case_Management,
-    Statistics_Reports,
-    State_Reports_Grade,
-    End_Of_Year_Report,
-    Activity,
-    Schools,
-    Users,
-    Login,
-    Layout
+   Import,
+   User_Profile,
+   Calendar,
+   Chart,
+   Dashboard,
+   Dental_Codes,
+   Distribution,
+   Eligibility,
+   Grade,
+   NoPage,
+   Patients,
+   Procedure_Codes,
+   Program,
+   Reports,
+   Case_Management,
+   Statistics_Reports,
+   State_Reports_Grade,
+   End_Of_Year_Report,
+   Activity,
+   Schools,
+   Users,
+   Login,
+   Layout
 }

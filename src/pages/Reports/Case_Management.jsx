@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../css/grade.css";
 import RowsPerPage from "../../components/RowsPerPage";
 import { listOfDradeData, patientInfo, updatedPatientInfo } from "../../test_data";
 import useTableData from "../../hooks/useTableData";

@@ -1,0 +1,111 @@
+.table_area{
+    overflow-x: auto;
+    overflow-y: auto; 
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.table_area>.container{
+    width: 2100px;
+    max-height: 500px; 
+}
+
+.fixed-header th {
+    position: sticky;
+    top: 0;
+    /* Ensure it stays readable */
+    z-index: 1000;
+    background: var(--high-light-color);
+}
+
+.eliligibility .table th:nth-child(1),
+.eliligibility .table td:nth-child(1) {
+    width: 15%; 
+}
+
+.eliligibility .table th:nth-child(2),
+.eliligibility .table td:nth-child(2) {
+    width: 10%;
+    text-align: center;
+}
+
+.eliligibility .table th:nth-child(3),
+.eliligibility .table td:nth-child(3) {
+    width: 10%;
+}
+
+.eliligibility .table th:nth-child(4),
+.eliligibility .table td:nth-child(4) {
+    width: 6%; 
+    text-align: center;
+}
+
+.eliligibility .table th:nth-child(5),
+.eliligibility .table td:nth-child(5) {
+    width: 10%;
+}
+
+.eliligibility .table th:nth-child(6),
+.eliligibility .table td:nth-child(6) {
+    width: 7%; 
+}
+
+.eliligibility .table th:nth-child(7),
+.eliligibility .table td:nth-child(7) {
+    width: 8%; 
+}
+
+.eliligibility .table th:nth-child(8),
+.eliligibility .table td:nth-child(8) {
+    width: 7%;
+}
+
+.eliligibility .table th:nth-child(9),
+.eliligibility .table td:nth-child(9) {
+    width: 8%; 
+}
+
+.eliligibility .table th:nth-child(10),
+.eliligibility .table td:nth-child(10) {
+    width: 6%;
+    text-align: center;
+}
+
+.eliligibility .table th:nth-child(11),
+.eliligibility .table td:nth-child(11) {
+    width: 10%; 
+    
+}
+
+.eliligibility .table td:nth-child(11) .button {
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eliligibility .table td:nth-child(11) .button  button{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.eliligibility .table th:nth-child(12),
+.eliligibility .table td:nth-child(12) {
+    width: 22%; 
+    
+}
+
+.eliligibility .table th:nth-child(13),
+.eliligibility .table td:nth-child(13) {
+    width: 10%; /* Status column */
+    text-align: center;
+}
+
+.eliligibility .table td:nth-child(13) button{
+    padding: 10px;
+    background: var(--blue-color);
+    border-radius: 10px;
+}

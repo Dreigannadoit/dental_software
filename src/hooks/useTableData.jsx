@@ -25,8 +25,9 @@ const useTableData = (data, initialFilters, filterFunction, rowsPerPageDefault =
     };
 
     const handleRowsPerPageChange = (event) => {
-        setRowsPerPage(Number(event.target.value));
-        setCurrentPage(1); // Reset to the first page
+        const newValue = Number(event.target.value);
+        setRowsPerPage(newValue);
+        setCurrentPage(1); // Ensure resetting to the first page works
     };
 
     const handlePageChange = (newPage) => setCurrentPage(newPage);
