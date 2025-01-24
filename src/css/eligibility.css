@@ -1,4 +1,4 @@
-.table_area{
+.eliligibility .table_area{
     overflow-x: auto;
     overflow-y: auto; 
     width: 100%;
@@ -6,12 +6,12 @@
     margin-top: 15px;
 }
 
-.table_area>.container{
+.eliligibility .table_area>.container{
     width: 2100px;
     max-height: 500px; 
 }
 
-.fixed-header th {
+.eliligibility .fixed-header th {
     position: sticky;
     top: 0;
     /* Ensure it stays readable */

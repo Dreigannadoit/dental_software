@@ -13,11 +13,13 @@ import useAnimation from "../../hooks/useFormAnimate";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { Arrow_left, Arrow_right } from "../../assets/icons";
 import { Textarea } from "@mui/joy";
-import ColorPicker from 'react-pick-color';
 
 const Calendar = () => {
   const [showAddEventForm, setShowAddEventForm] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [showEditEventForm, setShowEditEventForm] = useState(false);
+  const [eventToEdit, setEventToEdit] = useState(null);
+
   const [events, setEvents] = useState([
     {
       id: "1",
@@ -84,16 +86,20 @@ const Calendar = () => {
   };
 
   const handleEventClick = (clickInfo) => {
-    if (
-      window.confirm(
-        `Do you want to delete the event '${clickInfo.event.title}'?`
-      )
-    ) {
-      setEvents((prevEvents) =>
-        prevEvents.filter((event) => event.id !== clickInfo.event.id)
-      );
-      clickInfo.event.remove();
+    const event = events.find((e) => e.id === clickInfo.event.id);
+    if (event) {
+      setEventToEdit(event);
+      setShowEditEventForm(true);
     }
+  };
+
+  const handleEditEvent = (updatedEvent) => {
+    setEvents((prevEvents) =>
+      prevEvents.map((event) =>
+        event.id === updatedEvent.id ? updatedEvent : event
+      )
+    );
+    setShowEditEventForm(false);
   };
 
   const updateCurrentTitleAndDate = () => {
@@ -176,34 +182,39 @@ const Calendar = () => {
           onClose={closeAddEventForm}
         />
       )}
+      {showEditEventForm && (
+        <AddEventForm
+          eventToEdit={eventToEdit}
+          onEditEvent={handleEditEvent}
+          onClose={() => setShowEditEventForm(false)}
+        />
+      )}
       {hoveredEvent && (
         <div
           className="tooltip"
           style={{
-            top: tooltipPosition.y - 100, // Offset to appear above the cursor
-            left: tooltipPosition.x + 0, // Offset to appear to the right of the cursor
-            
+            top: tooltipPosition.y - 100, // Offset to appear above the event
+            left: tooltipPosition.x + 10, // Offset to the right
             border: `${hoveredEvent.borderColor} solid 3px`,
+            maxWidth: "200px", // Optional: Limit the tooltip width
+            position: "absolute", // Ensure tooltip stays in the right position
+            zIndex: 1000, // Ensure it's above other elements
           }}
         >
           <strong>{hoveredEvent.title}</strong>
           <p>{hoveredEvent.description}</p>
-
-          {/* Check if it's an all-day event */}
           <p>{hoveredEvent.allDay ? "Type: All Day" : ""}</p>
-
           <small>
-            {/* If it's an all-day event, show just the date */}
             {hoveredEvent.start
               ? hoveredEvent.allDay
-                ? hoveredEvent.start.toLocaleDateString() // For all-day events, display date only
-                : hoveredEvent.start.toLocaleString() // For timed events, display full date and time
+                ? hoveredEvent.start.toLocaleDateString()
+                : hoveredEvent.start.toLocaleString()
               : ""}
             {" - "}
             {hoveredEvent.end
               ? hoveredEvent.allDay
-                ? hoveredEvent.end.toLocaleDateString() // For all-day events, display date only
-                : hoveredEvent.end.toLocaleString() // For timed events, display full date and time
+                ? hoveredEvent.end.toLocaleDateString()
+                : hoveredEvent.end.toLocaleString()
               : ""}
           </small>
         </div>
@@ -310,15 +321,14 @@ let colorsets = [
 
 ]
 
-const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
+const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToEdit }) => {
   const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
-
-  const [title, setTitle] = useState("");
-  const [start, setStart] = useState(selectedDate ? dayjs(selectedDate) : null);
-  const [end, setEnd] = useState(null);
-  const [colorHEX, setColorHEX] = useState("#FE9C8F");
-  const [allDay, setAllDay] = useState(false);
-  const [description, setDescription] = useState(""); // Manage description state
+  const [title, setTitle] = useState(eventToEdit?.title || "");
+  const [start, setStart] = useState(eventToEdit?.start ? dayjs(eventToEdit.start) : dayjs(selectedDate));
+  const [end, setEnd] = useState(eventToEdit?.end ? dayjs(eventToEdit.end) : null);
+  const [colorHEX, setColorHEX] = useState(eventToEdit?.backgroundColor || "#FE9C8F");
+  const [allDay, setAllDay] = useState(eventToEdit?.allDay || false);
+  const [description, setDescription] = useState(eventToEdit?.description || "");
 
   useEffect(() => {
     triggerEnter();
@@ -331,18 +341,22 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
       return;
     }
 
-    const newEvent = {
-      id: `${Date.now()}`, // Unique ID
+    const updatedEvent = {
+      id: eventToEdit ? eventToEdit.id : `${Date.now()}`, // Use existing ID for edit
       title,
       start: start.toISOString(),
-      end: allDay ? "" : end.toISOString(), // End date is empty for all-day events
+      end: allDay ? "" : end.toISOString(),
       allDay,
       backgroundColor: colorHEX,
       borderColor: colorHEX,
-      description, // Include the description in the event
+      description,
     };
 
-    onAddEvent(newEvent);
+    if (eventToEdit) {
+      onEditEvent(updatedEvent);
+    } else {
+      onAddEvent(updatedEvent);
+    }
     onClose();
   };
 
@@ -364,7 +378,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
       <button className="form_background" onClick={handleCancel}></button>
       <div className="form">
         <form onSubmit={handleSubmit}>
-          <h1>Add Event</h1>
+          <h1>{eventToEdit ? "Edit Event" : "Add Event"}</h1>
           <div className="container">
             <div className="title full">
               <label>Title</label>
@@ -461,7 +475,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
 
           <div className="form-buttons">
             <button type="submit" className="add_event">
-              Add Event
+              {eventToEdit ? "Edit Event" : "Submit"}
             </button>
             <button type="button" className="cancel_event" onClick={handleCancel}>
               Cancel
@@ -473,6 +487,8 @@ const AddEventForm = ({ selectedDate, onAddEvent, onClose }) => {
     document.body
   );
 };
+
+
 
 
 export default Calendar;

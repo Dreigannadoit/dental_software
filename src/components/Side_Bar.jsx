@@ -106,7 +106,7 @@ const Side_Bar = ({ isNavOpen }) => {
               onMouseEnter={toggleReports}
               onMouseLeave={toggleReports}
             >
-              <Link to="#">
+              <Link to="/reports/case_management">
                 <span>
                   <img src={Reports} alt="Reports" />
                   <span>Reports</span>
