@@ -2,7 +2,7 @@ import React from 'react'
 
 const PerioChart = ({ id =null }) => {
   return (
-    <div>PerioChart</div>
+    <div><center>This Feature is still under Development</center></div>
   )
 }
 

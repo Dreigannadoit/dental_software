@@ -23,15 +23,15 @@ const PatientProfile = ({ id = 1 }) => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const sections = [
-        { label: "Medical History", component: <MedicalHistory /> },
-        { label: "Program Participants", component: <ProgramParticipants /> },
-        { label: "Appointments", component: <Appointments /> },
-        { label: "Perio Chart", component: <PerioChart /> },
-        { label: "Treatment History", component: <TreatmentHistory /> },
-        { label: "Patient Details History", component: <PatientDetailsHistory /> },
-        { label: "Communications", component: <Communications /> },
+        { label: "Medical History", component: <MedicalHistory id={id} /> },
+        { label: "Program Participants", component: <ProgramParticipants id={id} /> },
+        { label: "Appointments", component: <Appointments id={id} /> },
+        { label: "Perio Chart", component: <PerioChart id={id} /> },
+        { label: "Treatment History", component: <TreatmentHistory id={id} /> },
+        { label: "Patient Details History", component: <PatientDetailsHistory id={id} /> },
+        { label: "Communications", component: <Communications id={id} /> },
         { label: "Guardians", component: <Guardians id={id}/> },
-        { label: "Attachments", component: <Attachments /> },
+        { label: "Attachments", component: <Attachments id={id} /> },
     ];
 
     const sectionsPerPage = 5; // Number of buttons to show at a time
@@ -119,14 +119,24 @@ const PatientProfile = ({ id = 1 }) => {
                 ])}
 
                 <div className="block approval_details">
-                    <h2>
-                        Consented: <span className={patient.consented ? "Yes" : "No"}>{patient.consented ? "Yes" : "No"}</span>
-                    </h2>
-                    <p>Notes: {patient.consentedNotes}</p>
-                    <h2>
-                        Signed: <span className={patient.signed ? "Yes" : "No"}>{patient.signed ? "Yes" : "No"}</span>
-                    </h2>
-                    <p>Notes: {patient.signedNotes}</p>
+                    <div className="info">
+                        <h2>Consented:</h2>
+                        <p><strong>Status:</strong></p>
+                        <span className={patient.consented ? "Yes" : "No"}>{patient.consented ? "Yes" : "No"}</span>
+                        <p>Notes: <br /> {patient.consentedNotes}</p>
+                    </div>
+                    <div className="info">
+                        <h2>Signed:</h2>
+                        <p><strong>Status:</strong></p>
+                        <span className={patient.signed ? "Yes" : "No"}>{patient.signed ? "Yes" : "No"}</span>
+                        <p>Notes: <br /> {patient.signedNotes}</p>
+                    </div>
+                    <div className="info">
+                        <h2>SDF:</h2>
+                        <p><strong>Status:</strong></p>
+                        <span className={patient.sdf ? "Yes" : "No"}>{patient.sdf ? "Yes" : "No"}</span>
+                        <p>Notes: <br /> {patient.sdfNotes}</p>
+                    </div>
                 </div>
 
                 <AnimatedButton

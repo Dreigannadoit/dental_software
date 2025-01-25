@@ -19,32 +19,46 @@
 
 .patients .table th:nth-child(1),
 .patients .table td:nth-child(1) {
-    width: 5%; /* ID column */
+    width: 5%; 
 }
 
 .patients .table th:nth-child(2),
 .patients .table td:nth-child(2) {
-    width: 25%; /* Patient Name column */
+    width: 15%; 
 }
 
 .patients .table th:nth-child(3),
 .patients .table td:nth-child(3) {
-    width: 10%; /* Gender column */
+    width: 9%; 
+    text-align: center;
 }
 
 .patients .table th:nth-child(4),
 .patients .table td:nth-child(4) {
-    width: 15%; /* Date of Birth column */
+    width: 10%;
+    text-align: center;
 }
 
 .patients .table th:nth-child(5),
 .patients .table td:nth-child(5) {
-    width: 10%; /* Age column */
+    width: 15%; 
 }
 
 .patients .table th:nth-child(6),
 .patients .table td:nth-child(6) {
-    width: 10%; /* Status column */
+    width: 12%; 
+    text-align: center;
+}
+
+.patients .table th:nth-child(7),
+.patients .table td:nth-child(7) {
+    width: 10%; 
+    text-align: center;
+}
+
+.patients .table th:nth-child(8),
+.patients .table td:nth-child(8) {
+    width: 9%; 
     text-align: center;
 }
 

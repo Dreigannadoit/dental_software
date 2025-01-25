@@ -689,19 +689,19 @@ body:has(.activity_reports) .filter_block .filer_fields>div {
 }
 
 .loading-overlay img:nth-child(2) {
-    animation-delay: 10ms;
+    animation-delay: 50ms;
 }
 
 .loading-overlay img:nth-child(3) {
-    animation-delay: 20ms;
+    animation-delay: 150ms;
 }
 
 .loading-overlay img:nth-child(4) {
-    animation-delay: 30ms;
+    animation-delay: 200ms;
 }
 
 .loading-overlay img:nth-child(5) {
-    animation-delay: 40ms;
+    animation-delay: 250ms;
 }
 
 @keyframes loadingToothAnimation {
@@ -942,12 +942,23 @@ body:has(.activity_reports) .filter_block .filer_fields>div {
 
 .status-container {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
+    top: calc(var(--head-height) + 70px);
     display: flex;
     flex-direction: column-reverse;
     z-index: 9999999;
 }
+
+.status-container:has(.status_consent){
+    left: 20px;
+}
+.status-container:has(.status_sdf){
+    left: 50%;
+    transform: translateX(-50%);
+}
+.status-container:has(.status_status){
+    right: 20px;
+}
+
 
 @keyframes status_container {
     0% {
@@ -962,7 +973,7 @@ body:has(.activity_reports) .filter_block .filer_fields>div {
 .status-popup {
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
     height: 60px;
-    width: auto;
+    width: 30vw;
     border-radius: 4px;
     overflow: hidden;
     color: #fff;

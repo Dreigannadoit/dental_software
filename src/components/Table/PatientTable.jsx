@@ -7,8 +7,16 @@ import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
 const PatientTable = ({ data }) => {
+  const [hoveredRow, setHoveredRow] = useState(null);
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
-  const { updateStatus, setChangeStatusRef } = useUpdateStatus();
+  const {
+    updateStatus,
+    setChangeStatusRef,
+    updateConsent,
+    setChangeConsentRef,
+    updateSDF,
+    setChangeSDFRef,
+  } = useUpdateStatus();
   const {
     isVisible: showDeletePopup,
     isExiting,
@@ -50,6 +58,8 @@ const PatientTable = ({ data }) => {
 
       {/* Status Popups */}
       <ChangeStatus ref={(ref) => setChangeStatusRef(ref)} />
+      <ChangeStatus ref={(ref) => setChangeConsentRef(ref)} />
+      <ChangeStatus ref={(ref) => setChangeSDFRef(ref)} />
 
       <div className="table">
         <table>
@@ -67,26 +77,65 @@ const PatientTable = ({ data }) => {
                 </div>
               </th>
               <th>Patient Name</th>
-              <th>Gender</th>
               <th>Date of Birth</th>
-              <th>Age</th>
+              <th>Grade</th>
+              <th>School</th>
+              <th>Consented</th>
+              <th>SDF</th>
               <th>Status</th>
-              <th></th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {sortedData.length > 0 ? (
               sortedData.map((patient, index) => (
-                <tr key={index} className="shadow">
+                <tr
+                  key={index}
+                  className="shadow"
+                  onMouseEnter={() => {
+                    console.log("Mouse Entered:", patient.id); // Debugging log
+                    setHoveredRow(patient.id);
+                  }}
+                  onMouseLeave={() => {
+                    console.log("Mouse Left:", patient.id); // Debugging log
+                    setHoveredRow(null);
+                  }}
+
+                >
                   <td>{patient.id}</td>
                   <td>{patient.name}</td>
-                  <td>{patient.gender}</td>
                   <td>{patient.birthdate}</td>
-                  <td>{patient.age}</td>
+                  <td>{patient.grade}</td>
+                  <td>{patient.school}</td>
+
+                  {/* Consented colunm */}
                   <td
-                    className={`${
-                      patient.status === "Active" || patient.status === true ? "active" : "inactive "
-                    }`}
+                    className={`${patient.consented === "Active" || patient.consented === true ? "active" : "inactive "
+                      }`}
+                  >
+                    <span>
+                      <button onClick={() => updateConsent(patient)}>
+                        {patient.consented === "Active" || patient.consented === true ? "Yes" : "No"}
+                      </button>
+                    </span>
+                  </td>
+
+                  {/* SDF colunm */}
+                  <td
+                    className={`${patient.sdf === "Active" || patient.sdf === true ? "active" : "inactive "
+                      }`}
+                  >
+                    <span>
+                      <button onClick={() => updateSDF(patient)}>
+                        {patient.sdf === "Active" || patient.sdf === true ? "Yes" : "No"}
+                      </button>
+                    </span>
+                  </td>
+
+                  {/* Status colunm */}
+                  <td
+                    className={`${patient.status === "Active" || patient.status === true ? "active" : "inactive "
+                      }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(patient)}>
@@ -94,6 +143,8 @@ const PatientTable = ({ data }) => {
                       </button>
                     </span>
                   </td>
+
+                  {/* Action buttons  */}
                   <td className="crud_controlls">
                     <AnimatedButton
                       type="routerLink"
@@ -103,23 +154,9 @@ const PatientTable = ({ data }) => {
                       backgroundColor="#8BE5FE"
                       url="#"
                     />
-                    {/* TODO: Replace url to naviate to edit patient */}
-                    <AnimatedButton
-                      type="routerLink"
-                      classLabel="edit_patient"
-                      label="Edit"
-                      icon={File_Edit}
-                      backgroundColor="#1E8631"
-                      url="#"
-                    />
-                    <AnimatedButton
-                      type="button"
-                      classLabel="delete_patient"
-                      label="Delete"
-                      icon={Delete}
-                      backgroundColor="#FF1A1A"
-                      method={() => openDeletePopup(patient)}
-                    />
+                    <div className={`outer_more ${hoveredRow === patient.id ? "hovered" : ""}`}>
+                      <UserActionButtons openDeletePopup={() => openDeletePopup(patient)} />
+                    </div>
                   </td>
                 </tr>
               ))
@@ -134,5 +171,32 @@ const PatientTable = ({ data }) => {
     </>
   );
 };
+
+const UserActionButtons = ({ deteleLogic }) => {
+  return (
+    <div className="action_buttons f-center">
+      {/* TODO: Replace url to naviate to edit patient */}
+      <div className=" f-center shadow">
+        <AnimatedButton
+          type="routerLink"
+          classLabel="edit_patient"
+          label="Edit"
+          icon={File_Edit}
+          backgroundColor="#1E8631"
+          url="#"
+        />
+        <AnimatedButton
+          type="button"
+          classLabel="delete_patient"
+          label="Delete"
+          icon={Delete}
+          backgroundColor="#FF1A1A"
+          method={deteleLogic}
+        />
+
+      </div>
+    </div>
+  )
+}
 
 export default PatientTable;

@@ -7,6 +7,8 @@ const Guardians = ({ id = null }) => {
 
   return (
     <div className="patient_profile_block gaurdians">
+      
+      <button className='main_btn_style'>Add New Button</button>
       <div className="table">
         <table>
           <thead>

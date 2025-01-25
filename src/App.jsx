@@ -26,14 +26,13 @@ import {
 import ProtectedLayout from './pages/ProtectedLayout';
 import MasterController from './components/MasterController';
 import './css/app.css';
-import DeleteData from './components/PopUps/Popup';
 import PatientProfile from './pages/Patients/PatientProfile';
 import ChartDictionary from './pages/Chart/ChartDictionary';
 import Test from './pages/Test';
 import { Suspense } from 'react';
 import TableLoadingAnimation from './components/TableLoadingAnimation';
 
-// TODO: Connect to API 
+// TODO: Connect to API
 
 function App() {
   return (
