@@ -33,7 +33,7 @@ const AddPatients = ({ exitUser }) => {
 
   const handleAlergieNameChange = (selected) => {
 
-    setAlergieName(alergieName);
+    setAlergieName(selected);
     
     console.log("Selected items:", alergieName);
   };
@@ -49,7 +49,7 @@ const AddPatients = ({ exitUser }) => {
   };
 
   const handleIlnessNameChange = (selected) => {
-    setIllnessName(illnessName);
+    setIllnessName(selected);
     console.log("Selected items:", illnessName);
   };
   

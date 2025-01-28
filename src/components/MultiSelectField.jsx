@@ -6,21 +6,24 @@ import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 
 const MultiSelectField = ({
-    closeMenuOnSelect,
-    options,
-    method,
-    value
+  options,
+  value,
+  onChange,
+  closeMenuOnSelect,
 }) => {
-    return (
-        <Select
-            closeMenuOnSelect={closeMenuOnSelect}
-            components={animatedComponents}
-            isMulti
-            options={options}
-            onChange={method}
-            value={value}
-        />
-    )
-}
+  // Filter out options where the value is an empty string
+  const filteredOptions = options.filter(option => option.value);
+
+  return (
+    <Select
+      isMulti
+      options={filteredOptions}
+      closeMenuOnSelect={closeMenuOnSelect}
+      components={animatedComponents}
+      onChange={onChange}
+      value={value}
+    />
+  );
+};
 
 export default MultiSelectField

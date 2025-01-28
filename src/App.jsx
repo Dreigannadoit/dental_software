@@ -57,8 +57,14 @@ function App() {
               <Route path="patients" element={<Patients />} />
               <Route path="patients/patient_profile" element={<PatientProfile />} />
 
+              {/* Use this when integrating API */}
+              {/* <Route path="patients/patient_profile/:id" element={<PatientProfile />} /> */} 
+
               <Route path="chart" element={<ChartDictionary />} />
               <Route path="chart/chartOfPatient" element={<Chart />} />
+
+              {/* Use this when integrating API */}
+              {/* <Route path="chart/chartOfPatient/:id" element={<Chart />} /> */} 
 
               <Route path="eligibility" element={<Eligibility />} />
               <Route path="distribution" element={<Distribution />} />

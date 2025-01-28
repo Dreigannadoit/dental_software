@@ -25,18 +25,10 @@ const MedicalHistory = ({ id =null }) =>{
 
   const [ alergieName, setAlergieName ] = useState([]);
   const [ illnessName, setIllnessName ] = useState([]);
-  const [ patientPhotoFile, setPatientPhotoFile ] = useState();
-
-  const handlePatientPhotoFileChange = (event) => {
-    console.log(event.target.files);
-    setPatientPhotoFile(URL.createObjectURL(event.target.files[0]));
-  }
-
+  
   const handleAlergieNameChange = (selected) => {
-
-    setAlergieName(alergieName);
-    
-    console.log("Selected items:", alergieName);
+    setAlergieName(selected);
+    console.log("Selected allergies:", selected);
   };
 
   const handleDoctorCheckupChange = (event) => {
@@ -50,8 +42,8 @@ const MedicalHistory = ({ id =null }) =>{
   };
 
   const handleIlnessNameChange = (selected) => {
-    setIllnessName(illnessName);
-    console.log("Selected items:", illnessName);
+    setIllnessName(selected);
+    console.log("Selected items:", selected);
   };
   
 
@@ -67,16 +59,6 @@ const MedicalHistory = ({ id =null }) =>{
         <form action="">
           <h1>Edit Patient</h1>
           <br />
-          <div className="patient_image set_image_container">
-            <h2>Add Image</h2>
-            <div className="set_image">
-              <label htmlFor="patient_image">200 x 200</label>
-              <input type="file" onChange={handlePatientPhotoFileChange} />
-              <img src={patientPhotoFile} />
-            </div>
-          </div>
-
-          
 
           <h3>Medical History</h3>
           <div className="medical_history container">
@@ -85,8 +67,8 @@ const MedicalHistory = ({ id =null }) =>{
               <MultiSelectField
                   closeMenuOnSelect={false}
                   options={allergiedList}
-                  value={alergieName}
                   onChange={handleAlergieNameChange}
+                  value={alergieName}
               />
             </div>
 
@@ -147,10 +129,10 @@ const MedicalHistory = ({ id =null }) =>{
             <div className="illness full">
               <label htmlFor="illness full">Illness</label>
               <MultiSelectField
-                  closeMenuOnSelect={false}
-                  options={illnessList}
-                  onChange={handleIlnessNameChange}
-                  value={illnessName}
+                closeMenuOnSelect={false}
+                options={illnessList}
+                onChange={handleIlnessNameChange}
+                value={illnessName}
               />
             </div>
           </div>
@@ -168,7 +150,7 @@ const MedicalHistory = ({ id =null }) =>{
             </div>
 
             <div className="gender">
-              <label htmlFor="lname">Gender</label>
+              <label htmlFor="gender">Gender</label>
               <FormControl fullWidth>
                 <MuiSelect
                   labelId="gender-label"
@@ -252,7 +234,7 @@ const MedicalHistory = ({ id =null }) =>{
 
           <h3>School Information</h3>
           <div className="school_info container">
-            <div className="school">
+            <div className="school_info">
               <label htmlFor="gname">School</label>
               <FormControl fullWidth>
                 <MuiSelect
@@ -272,7 +254,7 @@ const MedicalHistory = ({ id =null }) =>{
               </FormControl>
             </div>
             <div className="grade">
-              <label htmlFor="gname">Grade</label>
+              <label htmlFor="grade">Grade</label>
               <FormControl fullWidth>
                 <MuiSelect
                   labelId="race-label"
@@ -291,7 +273,7 @@ const MedicalHistory = ({ id =null }) =>{
               </FormControl>
             </div>
             <div className="teacher">
-              <label htmlFor="gname">Teacher</label>
+              <label htmlFor="teacher">Teacher</label>
               <TextField
                 id="outlined-basic"
                 label=""
@@ -301,7 +283,7 @@ const MedicalHistory = ({ id =null }) =>{
 
             </div>
             <div className="room">
-              <label htmlFor="gname">Room</label>
+              <label htmlFor="room">Room</label>
               <TextField
                 id="outlined-basic"
                 label=""
@@ -310,7 +292,7 @@ const MedicalHistory = ({ id =null }) =>{
               />
             </div>
             <div className="consented">
-              <label htmlFor="has_regular_checkup">Consented</label>
+              <label htmlFor="consented">Consented</label>
               <FormGroup>
                 <RadioGroup
                   row
@@ -327,7 +309,7 @@ const MedicalHistory = ({ id =null }) =>{
               </FormGroup>
             </div>
             <div className="signed">
-              <label htmlFor="has_regular_checkup">Signed</label>
+              <label htmlFor="signed">Signed</label>
               <FormGroup>
                 <RadioGroup
                   row
@@ -345,7 +327,7 @@ const MedicalHistory = ({ id =null }) =>{
             </div>
 
             <div className="consented_notes">
-              <label htmlFor="has_regular_checkup">Notes</label>
+              <label htmlFor="consented_notes">Notes</label>
               <Textarea 
                 size="lg"
                 variant="outlined"
@@ -359,7 +341,7 @@ const MedicalHistory = ({ id =null }) =>{
               />
             </div>
             <div className="signed_notes">
-              <label htmlFor="has_regular_checkup">Notes</label>
+              <label htmlFor="signed_notes">Notes</label>
               <Textarea 
                 size="lg"
                 variant="outlined"

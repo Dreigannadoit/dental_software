@@ -33,7 +33,7 @@
 }
 
 .patientInfo .approval_details.block .info{
-    width: calc(33% - 5px);
+    width: calc(32% - 5px);
     flex-direction: column;
     gap: 10px;
 }
@@ -219,11 +219,11 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 
 .appointments .table th:nth-child(1),
 .appointments .table td:nth-child(1) {
-    width: 23%;
+    width: 7%;
 }
 .appointments .table th:nth-child(2),
 .appointments .table td:nth-child(2) {
-    width: 20%;
+    width: 10%;
 }
 .appointments .table th:nth-child(3),
 .appointments .table td:nth-child(3) {
@@ -237,12 +237,12 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
 }
 .appointments .table th:nth-child(5),
 .appointments .table td:nth-child(5) {
-    width: 9%;
+    width: 10%;
     text-align: center;
 }
 .appointments .table th:nth-child(6),
 .appointments .table td:nth-child(6) {
-    width: 5%;
+    width: 9%;
     text-align: center;
 }
 .appointments .table th:nth-child(7),
@@ -250,8 +250,72 @@ body:has(.side_nav.open) .patientInfoAction .selector button.pag{
     width: 9%;
     text-align: center;
 }
+.appointments .table th:nth-child(8),
+.appointments .table td:nth-child(8) {
+    width: 9%;
+    text-align: center;
+}
+.appointments .table th:nth-child(9),
+.appointments .table td:nth-child(9) {
+    width: 9%;
+    text-align: center;
+}
+
+.appointment_form_container.form_container {
+    padding: 30px 0 120px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.appointment_form_container.form_container  .form {
+    border-radius: 25px 0px 0px 25px;
+}
+
+.appointment_form_container.form_container .form form h3{
+    color: var(--high-light-color);
+}
+
+.appointment_form_container.form_container .form form>.container.third>div{
+    width: calc(30% - 10px);
+}
+
+.appointment_form_container.form_container .form form>.container{
+    border-bottom: 1px dashed var(--dark-color);
+    padding-bottom: 20px;
+}
+
+.appointment_form_container.form_container .form form>.container.third .type_of_input{
+    width: calc(35% - 5px) ;
+}
+.appointment_form_container.form_container .form form>.container.third .screen_status{
+    width: calc(15% - 5px);
+}
 
 
+.appointment_form_container.form_container .auto_fill{
+    height: 60px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.appointment_form_container.form_container .auto_fill>div{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+.appointment_form_container.form_container .auto_fill>div button{
+    padding: 10px 20px;
+    color: white;
+    border-radius: 4px;
+}
+.appointment_form_container.form_container .auto_fill>div button:nth-child(1){
+    background: var(--green-grad);
+}
+.appointment_form_container.form_container .auto_fill>div button:nth-child(2){
+    background: var(--red-grad);
+}
 
 /* ----------------- */
 /* Treatment History */

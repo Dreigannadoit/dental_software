@@ -37,7 +37,7 @@ const Header = ({ toggleSideNav }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false)
 
-    const current_page = pageNames[location.pathname] || 'Page Not Found';
+    const current_page = pageNames[location.pathname] || 'Patient Profile'; // Temporary Fix
 
     const toggleDropdown = () => {
         setShowDropdown((prev) => !prev);

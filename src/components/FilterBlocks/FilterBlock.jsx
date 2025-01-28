@@ -37,7 +37,7 @@ const FilterBlock = ({
   const uniqueType = getUniqueValues("type");
 
   return (
-    <div className="filter_block">
+    <div className="filter_block shadow">
       <div className="general_fields">
         <div className="search_field">
           <p>Search</p>
