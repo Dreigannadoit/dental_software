@@ -58,7 +58,7 @@ const Patients = () => {
     school: "",
     grade: "",
     year: "",
-    status: "",
+    status: "Active" || true,
     teacher: "",
   };
 

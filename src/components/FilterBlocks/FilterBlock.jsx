@@ -7,6 +7,7 @@ const FilterBlock = ({
   filters,
   onFilterChange,
   data,
+  hasSearchBar = true,
   method = () => console.warn("The Button In the Filter Block doesn't have a method"),
   hasSchoolFilter,
   hasGradeFilter,
@@ -38,30 +39,34 @@ const FilterBlock = ({
 
   return (
     <div className="filter_block shadow">
-      <div className="general_fields">
-        <div className="search_field">
-          <p>Search</p>
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            fullWidth
-            value={filters.search}
-            onChange={(e) => onFilterChange("search", e.target.value)}
-            placeholder=""
-          />
+
+      {hasSearchBar && (
+        <div className="general_fields">
+          <div className="search_field">
+            <p>Search</p>
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              fullWidth
+              value={filters.search}
+              onChange={(e) => onFilterChange("search", e.target.value)}
+              placeholder=""
+            />
+          </div>
+          {hasAddToTableButton &&
+            <AnimatedButton
+              type="button"
+              classLabel="add_new"
+              label="Add To List"
+              icon={User_Add}
+              backgroundColor="#8BE5FE"
+              method={method}
+              url="#"
+            />
+          }
         </div>
-        {hasAddToTableButton &&
-          <AnimatedButton
-            type="button"
-            classLabel="add_new"
-            label="Add To List"
-            icon={User_Add}
-            backgroundColor="#8BE5FE"
-            method={method}
-            url="#"
-          />
-        }
-      </div>
+
+      )}
 
       <div className="filer_fields">
         {hasTypeFilter && uniqueType.length > 0 && (

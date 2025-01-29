@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const DashboardTable = ({ data }) => {
+const ProgramTrendsTable = ({data}) => {
     return (
         <div className="table">
             <table>
@@ -40,6 +40,6 @@ const DashboardTable = ({ data }) => {
             </table>
         </div>
     );
-};
+}
 
-export default DashboardTable;
+export default ProgramTrendsTable;

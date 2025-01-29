@@ -43,7 +43,7 @@ const filterEndOfYearReport = (data, filters) => {
         data: filteredSchools,
       };
     })
-    .filter((report) => report.data.length > 0); // Remove empty reports
+    .filter((report) => report.data.length > 0);
 };
 
 const End_Of_Year_Report = () => {

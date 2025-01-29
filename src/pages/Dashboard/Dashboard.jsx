@@ -28,7 +28,7 @@ const Dashboard = () => {
           <div className="line_charts f-center">
             <Dental_Charts
               chartLabel="CSDP Program Trends"
-              chartType="line"
+              chartType="area"
               series={csdpProgramTrendsSeries}
               xLabels={csdpProgramTrendsSeriesLabels}
             />

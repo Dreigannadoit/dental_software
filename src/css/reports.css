@@ -101,3 +101,41 @@
     margin-top: 40px;
     gap: 15px;
 } 
+
+.statistics_report>div{
+    margin-bottom: 20px;
+}
+
+.statistics_report .information_for_all_schools{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.statistics_report .information_for_all_schools>div{
+    width: calc(50% - 10px);
+}
+
+.statistics_report .demographic {
+    width: 100%;
+}
+
+.statistics_report .demographic .pie_charts{
+    width: 100%;
+    display: flex;
+    flex-direction: wrap;
+    gap:40px;
+}
+.statistics_report .demographic .table th,
+.statistics_report .demographic .table td{
+    text-align: center;
+}
+
+.statistics_report .demographic .table th:nth-child(1),
+.statistics_report .demographic .table td:nth-child(1){
+    width: 20%;
+    text-align: left;
+}
+ 

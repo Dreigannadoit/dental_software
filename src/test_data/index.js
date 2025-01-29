@@ -1184,7 +1184,7 @@ export const endOfYearReport = [
                 numReferals: 400,
                 numberScreenedByDentalHygienist: 400,
                 numberOfTheStudentsScreenedForOralHealth_HowManyWereInThirdGrade: 400,
-        
+
             },
             {
                 school: "ANGELO ELEMENTARY SCHOOL",
@@ -1310,7 +1310,7 @@ export const endOfYearReport = [
                 numReferals: 400,
                 numberScreenedByDentalHygienist: 400,
                 numberOfTheStudentsScreenedForOralHealth_HowManyWereInThirdGrade: 400,
-        
+
             },
             {
                 school: "ANGELO ELEMENTARY SCHOOL",
@@ -1436,7 +1436,7 @@ export const endOfYearReport = [
                 numReferals: 400,
                 numberScreenedByDentalHygienist: 400,
                 numberOfTheStudentsScreenedForOralHealth_HowManyWereInThirdGrade: 400,
-        
+
             },
             {
                 school: "ANGELO ELEMENTARY SCHOOL",
@@ -1562,7 +1562,7 @@ export const endOfYearReport = [
                 numReferals: 400,
                 numberScreenedByDentalHygienist: 400,
                 numberOfTheStudentsScreenedForOralHealth_HowManyWereInThirdGrade: 400,
-        
+
             },
             {
                 school: "ANGELO ELEMENTARY SCHOOL",
@@ -1676,6 +1676,789 @@ export const endOfYearReport = [
             }
         ]
     }
+]
+
+export const statisticsReport = [
+    {
+        year: "2021-2022",
+        gradeData: [
+            {
+                grade: "Pre K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "1",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "2",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+        ],
+    },
+    {
+        year: "2022-2023",
+        gradeData: [
+            {
+                grade: "Pre K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "1",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "2",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+        ],
+    },
+    {
+        year: "2023-2024",
+        gradeData: [
+            {
+                grade: "Pre K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "K",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "1",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+            {
+                grade: "2",
+                schoolData: [
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                    {
+                        school: "GILMORE ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ANGELO ELEMENTARY SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+                    },
+                    {
+                        school: "ARNONE SCHOOL",
+                        numStudentsServed: 400,
+                        numReceivingSealant: 400,
+                        numReceivingFlouride: 400,
+                        numReceivingPhrophy: 400,
+                        numReferals: 400,
+
+                    },
+                ]
+            },
+        ],
+    }
+]
+
+export const ethinicityList = [
+    {
+        race: "Black/African American",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
+    {
+        race: "White",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
+    {
+        race: "Hispanic/Latin",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
+    {
+        race: "Others",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
+    {
+        race: "Asian",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
+    {
+        race: "American_Indian/Alaskan",
+        pre_k: 15,
+        k: 15,
+        grade_1: 15,
+        grade_2: 15,
+        grade_3: 15,
+        grade_4: 15,
+        grade_5: 15,
+        grade_6: 15,
+        grade_7: 15,
+        grade_8: 15,
+        grade_9: 15,
+        grade_10: 15,
+        grade_11: 15,
+        grade_12: 15,
+    },
 ]
 
 export const csdpsStatisticsBySchool = [
@@ -1820,7 +2603,7 @@ export const illnessList = [
     { value: 'Heart Atteck/Heart Failure', label: 'Heart Atteck/Heart Failure' },
     { value: 'Costisone - Corticosteroid Thearapy', label: 'Costisone - Corticosteroid Thearapy' },
     { value: 'Systemic Lupus Erythematosus', label: 'Systemic Lupus Erythematosus' },
-  ];
+];
 
 export const allergiedList = [
     { value: 'none', label: 'None' },
