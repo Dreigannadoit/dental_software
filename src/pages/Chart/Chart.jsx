@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../css/Charts.css"
 
 const Chart = () => {
   return (

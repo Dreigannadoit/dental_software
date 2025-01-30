@@ -28,7 +28,7 @@ import useTableData from "../hooks/useTableData";
 import FilterBlock from "./FilterBlocks/FilterBlock";
 import TableLoadingAnimation from "./TableLoadingAnimation";
 
-const Side_Bar = ({ isNavOpen }) => {
+const Side_Bar = ({ isNavOpen, setIsNavOpen }) => {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
   const [isPatientsOpen, setIsPatientsOpen] = useState(false);
   const [isPatientProfileOpen, setIsPatientProfileOpen] = useState(false);
@@ -40,12 +40,14 @@ const Side_Bar = ({ isNavOpen }) => {
   const patientsMenuTimeoutRef = useRef(null);
 
   const { isActive } = useActiveLink();
-
-  const toggleReports = useCallback(() => {
-    setIsReportsOpen((prev) => !prev);
-  }, []);
-
   const side_nav_width = 240;
+
+
+    // Memoize callback to prevent unnecessary re-renders
+    const toggleReports = useCallback(() => {
+      setIsReportsOpen((prev) => !prev);
+    }, []);
+
   useEffect(() => {
     if (reportsRef.current) {
       const { top, left, height } =
@@ -57,24 +59,26 @@ const Side_Bar = ({ isNavOpen }) => {
     }
   }, [isReportsOpen, side_nav_width]);
 
-  const openPatientsMenu = useCallback(() => {
-    clearTimeout(patientsMenuTimeoutRef.current);
-    setIsPatientsOpen(true);
-  }, []);
 
-  const closePatientsMenu = useCallback(() => {
-    patientsMenuTimeoutRef.current = setTimeout(() => {
-      setIsPatientsOpen(false);
-      setIsPatientProfileOpen(false);
-    }, 300);
-  }, []);
+    const openPatientsMenu = useCallback(() => {
+        clearTimeout(patientsMenuTimeoutRef.current);
+        setIsPatientsOpen(true);
+    }, []);
 
-  const togglePatientProfile = useCallback((patientId, topPosition) => {
-    setSelectedPatientId(patientId);
-    setIsPatientProfileOpen(true);
-    setSidebarTopPosition(topPosition);
-    clearTimeout(patientsMenuTimeoutRef.current);
-  }, []);
+    const closePatientsMenu = useCallback(() => {
+        patientsMenuTimeoutRef.current = setTimeout(() => {
+            setIsPatientsOpen(false);
+            setIsPatientProfileOpen(false);
+        }, 300);
+    }, []);
+
+    const togglePatientProfile = useCallback((patientId, topPosition) => {
+        setSelectedPatientId(patientId);
+        setIsPatientProfileOpen(true);
+        setSidebarTopPosition(topPosition);
+        clearTimeout(patientsMenuTimeoutRef.current);
+    }, []);
+    
 
   useEffect(() => {
     return () => {
@@ -85,6 +89,8 @@ const Side_Bar = ({ isNavOpen }) => {
   return (
     <>
       <div
+        onMouseEnter={() => setIsNavOpen(false)}
+        onMouseLeave={() => setIsNavOpen(true)}
         id="side_nav"
         className={`side_nav glassmorphism shadow ${isNavOpen ? "" : "open"
           }`}
@@ -93,7 +99,7 @@ const Side_Bar = ({ isNavOpen }) => {
           <ul>
             <li>
               <Link to="#">
-                <span>Menu</span>
+                <span className="title">Menu</span>
               </Link>
             </li>
             <li className={isActive("/dashboard") ? "active" : ""}>
@@ -185,7 +191,7 @@ const Side_Bar = ({ isNavOpen }) => {
 
             <li>
               <Link to="#">
-                <span>Maintenance</span>
+                <span className="title">Maintenance</span>
               </Link>
             </li>
 
@@ -277,46 +283,43 @@ const Side_Bar = ({ isNavOpen }) => {
   );
 };
 
+
 const filterPatients = (patients, filters) => {
-  const safeToLowerCase = (value) =>
-    value ? value.toString().toLowerCase() : "";
+    if (!patients || patients.length === 0) return []; // Avoid errors on empty array
 
-  return patients.filter((patient) => {
-    const searchQuery = safeToLowerCase(filters.search || "");
-    const matchesSearch =
-      !filters.search ||
-      [
-        patient.name,
-        patient.id?.toString(),
-        patient.gender,
-        patient.age?.toString(),
-        patient.teacher,
-        patient.school,
-        patient.year,
-        patient.status,
-        patient.birthdate,
-        patient.insurance,
-      ].some((field) => safeToLowerCase(field).includes(searchQuery));
+    const safeToLowerCase = (value) => value ? String(value).toLowerCase() : "";
 
-    const matchesSchool =
-      !filters.school || patient.school === filters.school;
-    const matchesGrade =
-      !filters.grade || patient.grade?.toString() === filters.grade;
-    const matchesYear = !filters.year || patient.year === filters.year;
-    const matchesStatus =
-      !filters.status || patient.status === filters.status;
-    const matchesTeacher =
-      !filters.teacher || patient.teacher === filters.teacher;
+    return patients.filter(patient => {
+        const searchQuery = safeToLowerCase(filters.search || "");
+        const matchesSearch = !filters.search || [
+            patient.name,
+            patient.id?.toString(),
+            patient.gender,
+            patient.age?.toString(),
+            patient.teacher,
+            patient.school,
+            patient.year,
+            patient.status,
+            patient.birthdate,
+            patient.insurance
+        ].some(field => safeToLowerCase(field).includes(searchQuery));
 
-    return (
-      matchesSearch &&
-      matchesSchool &&
-      matchesGrade &&
-      matchesYear &&
-      matchesStatus &&
-      matchesTeacher
-    );
-  });
+        const matchesSchool = !filters.school || patient.school === filters.school;
+        const matchesGrade = !filters.grade || String(patient.grade) === filters.grade;
+        const matchesYear = !filters.year || patient.year === filters.year;
+        const matchesStatus = !filters.status || patient.status === filters.status;
+        const matchesTeacher = !filters.teacher || patient.teacher === filters.teacher;
+
+
+        return (
+            matchesSearch &&
+            matchesSchool &&
+            matchesGrade &&
+            matchesYear &&
+            matchesStatus &&
+            matchesTeacher
+        );
+    });
 };
 
 const PatientListSubMenus = React.memo(
@@ -329,8 +332,6 @@ const PatientListSubMenus = React.memo(
       status: "",
       teacher: "",
     }), []);
-
-
     const {
       filters,
       currentPageData,
@@ -346,14 +347,13 @@ const PatientListSubMenus = React.memo(
       [togglePatientProfile]
     );
 
-
     return (
       <div
         className={`patient_filterSubmenu ${isOpen ? "open" : ""}`}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div>
+        <div className="content">
           <FilterBlock
             filters={filters}
             onFilterChange={handleFilterChange}
@@ -389,29 +389,30 @@ const PatientListSubMenus = React.memo(
 
 const PatientProfileSidebar = React.memo(
   ({ isOpen, patientId, onMouseEnter, onMouseLeave, topPosition }) => {
-    const sidebarRef = React.useRef(null);
+    const sidebarRef = useRef(null);
 
     // Adjust position dynamically
-    const calculateTopPosition = () => {
+    const calculateTopPosition = useCallback(() => {
+        if (!sidebarRef.current) return 0;
       const viewportHeight = window.innerHeight;
-      const sidebarHeight = sidebarRef.current?.offsetHeight || 0;
+        const sidebarHeight = sidebarRef.current.offsetHeight;
+        if (topPosition < 0) {
+            return 0; // Stick to the top
+        }
+        if (topPosition + sidebarHeight > viewportHeight) {
+          return viewportHeight - sidebarHeight;
+        }
+        return topPosition;
+    }, [topPosition]);
 
-      // Ensure the sidebar doesn't exceed the top or bottom of the screen
-      if (topPosition < 0) {
-        return 0; // Stick to the top
-      } else if (topPosition + sidebarHeight > viewportHeight) {
-        return viewportHeight - sidebarHeight; // Adjust to fit within the viewport
-      }
-      return topPosition;
-    };
+    const adjustedTopPosition = useMemo(calculateTopPosition, [calculateTopPosition,topPosition]);
+    
 
-    const adjustedTopPosition = useMemo(calculateTopPosition, [topPosition]);
+      const sidebarStyle = useMemo(() => ({
+          top: `${adjustedTopPosition}px`,
+      }), [adjustedTopPosition]);
 
-    const sidebarStyle = useMemo(() => ({
-      top: `${adjustedTopPosition}px`,
-    }), [adjustedTopPosition]);
-
-    const links = [
+      const links = useMemo(() => [
       { url: "patients/patient_profile/#Medical_History", label: "Medical Records" },
       { url: "patients/patient_profile/#Program_Participants", label: "Program Participants" },
       { url: "patients/patient_profile/#Appointments", label: "Appointments" },
@@ -423,37 +424,35 @@ const PatientProfileSidebar = React.memo(
       { url: "patients/patient_profile/#Communications", label: "Communications" },
       { url: "patients/patient_profile/#Guardians", label: "Guardians" },
       { url: "patients/patient_profile/#Attachments", label: "Attachments" },
-    ];
+  ], []);
 
     return (
-      <div
-        ref={sidebarRef}
-        className={`patient_profile_sidebar glassmorphism shadow ${isOpen ? "open" : ""}`}
-        style={sidebarStyle}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        <p>{patientId}</p>
-        <ul>
-          {links.map((link, index) => (
-            <li key={index}>
-              <Link to={link.url}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div
+            ref={sidebarRef}
+            className={`patient_profile_sidebar glassmorphism shadow ${isOpen ? "open" : ""}`}
+            style={sidebarStyle}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
+            <p>{patientId}</p>
+            <ul>
+                {links.map((link, index) => (
+                    <li key={index}>
+                        <Link to={link.url}>{link.label}</Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
   }
 );
 
-
 const ReportsSubMenus = React.memo(
   ({ toggleReports, position, isOpen }) => {
     const style = useMemo(() => ({
-      top: `calc(${position.top}px) `,
-      left: `${position.left}px`,
-      opacity: isOpen ? 1 : 0,
-      pointerEvents: isOpen ? "auto" : "none",
+        top: `calc(${position.top}px)`,
+        opacity: isOpen ? 1 : 0,
+        pointerEvents: isOpen ? "auto" : "none",
     }), [position, isOpen]);
 
     return (

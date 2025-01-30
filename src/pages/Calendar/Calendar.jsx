@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo
+} from "react";
 import ReactDOM from "react-dom";
 import "../../css/scheduler.css"; // Add responsive styles here
 import { Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
@@ -14,6 +20,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { Arrow_left, Arrow_right } from "../../assets/icons";
 import { Textarea } from "@mui/joy";
 
+
 const Calendar = () => {
   const [showAddEventForm, setShowAddEventForm] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -26,7 +33,7 @@ const Calendar = () => {
       title: "Sample Event",
       start: "2025-01-01T10:00:00",
       end: "2025-01-01T12:00:00",
-      allDay: false, // This makes it an all-day event
+      allDay: false,
       description: 'Lecture',
       backgroundColor: "#FE9C8F",
       borderColor: "#FE9C8F"
@@ -36,18 +43,20 @@ const Calendar = () => {
       title: "All-Day Event",
       start: "2025-01-20",
       end: "",
-      allDay: true, // This makes it an all-day event
+      allDay: true,
       backgroundColor: "#FE9C8F",
       borderColor: "#FE9C8F"
     },
   ]);
-  const [currentTitle, setCurrentTitle] = useState(""); // To store the current view's title
-  const [currentDate, setCurrentDate] = useState(dayjs()); // Track the current displayed date
+  const [currentTitle, setCurrentTitle] = useState("");
+  const [currentDate, setCurrentDate] = useState(dayjs());
   const calendarRef = useRef(null);
-  const [hoveredEvent, setHoveredEvent] = useState(null); // Track hovered event
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 }); // Position of the tooltip
+  const [hoveredEvent, setHoveredEvent] = useState(null);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
-  const handleEventMouseEnter = (info) => {
+
+  // Use useCallback to memoize event handlers
+  const handleEventMouseEnter = useCallback((info) => {
     const { event, jsEvent } = info;
 
     setHoveredEvent({
@@ -64,55 +73,60 @@ const Calendar = () => {
       x: jsEvent.pageX,
       y: jsEvent.pageY,
     });
-  };
-
-  const handleEventMouseLeave = () => {
-    setHoveredEvent(null); // Clear the hovered event
-  };
+  }, []);
 
 
-  const openAddEventForm = (date) => {
+  const handleEventMouseLeave = useCallback(() => {
+    setHoveredEvent(null);
+  }, []);
+
+
+  const openAddEventForm = useCallback((date) => {
     setSelectedDate(date);
     setShowAddEventForm(true);
-  };
+  }, []);
 
-  const closeAddEventForm = () => {
+  const closeAddEventForm = useCallback(() => {
     setShowAddEventForm(false);
     setSelectedDate(null);
-  };
+  }, []);
 
-  const handleAddEvent = (newEvent) => {
+
+  const handleAddEvent = useCallback((newEvent) => {
     setEvents((prevEvents) => [...prevEvents, newEvent]);
-  };
+  }, []);
 
-  const handleEventClick = (clickInfo) => {
+  const handleEventClick = useCallback((clickInfo) => {
     const event = events.find((e) => e.id === clickInfo.event.id);
     if (event) {
       setEventToEdit(event);
       setShowEditEventForm(true);
     }
-  };
+  }, [events]);
 
-  const handleEditEvent = (updatedEvent) => {
+
+  const handleEditEvent = useCallback((updatedEvent) => {
     setEvents((prevEvents) =>
       prevEvents.map((event) =>
         event.id === updatedEvent.id ? updatedEvent : event
       )
     );
     setShowEditEventForm(false);
-  };
+  }, []);
 
-  const updateCurrentTitleAndDate = () => {
+
+  const updateCurrentTitleAndDate = useCallback(() => {
     if (calendarRef.current) {
       const calendarApi = calendarRef.current.getApi();
       if (calendarApi) {
-        setCurrentTitle(calendarApi.view.title); // Update the current view's title
-        setCurrentDate(dayjs(calendarApi.getDate())); // Sync the displayed date
+        setCurrentTitle(calendarApi.view.title);
+        setCurrentDate(dayjs(calendarApi.getDate()));
       }
     }
-  };
+  }, []);
 
-  const handleNavigate = (action) => {
+
+  const handleNavigate = useCallback((action) => {
     const calendarApi = calendarRef.current?.getApi();
     if (calendarApi) {
       switch (action) {
@@ -134,9 +148,10 @@ const Calendar = () => {
         default:
           break;
       }
-      updateCurrentTitleAndDate(); // Update the title and date after navigation
+      updateCurrentTitleAndDate();
     }
-  };
+  }, [updateCurrentTitleAndDate]);
+
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
@@ -153,25 +168,66 @@ const Calendar = () => {
     return () => resizeObserver.disconnect();
   }, []);
 
-  const handleDateChange = (newDate) => {
-    setCurrentDate(newDate); // Update the MUI DateCalendar state
+
+  const handleDateChange = useCallback((newDate) => {
+    setCurrentDate(newDate);
     const calendarApi = calendarRef.current?.getApi();
     if (calendarApi) {
-      calendarApi.gotoDate(newDate.format("YYYY-MM-DD")); // Sync FullCalendar's view to the new date
-      updateCurrentTitleAndDate(); // Update title and view
+      calendarApi.gotoDate(newDate.format("YYYY-MM-DD"));
+      updateCurrentTitleAndDate();
     }
-  };
+  }, [updateCurrentTitleAndDate]);
+
 
   useEffect(() => {
     if (calendarRef.current) {
       const calendarApi = calendarRef.current.getApi();
-      setCurrentTitle(calendarApi.view.title); // Set initial title after component mounts
+      setCurrentTitle(calendarApi.view.title);
     }
   }, []);
 
-  const handleDateClick = (info) => {
+  const handleDateClick = useCallback((info) => {
     openAddEventForm(info.dateStr);
-  };
+  }, [openAddEventForm]);
+
+  const handleEventDrop = useCallback((info) => {
+    const { event } = info;
+    setEvents((prevEvents) =>
+      prevEvents.map((ev) =>
+        ev.id === event.id
+          ? {
+            ...ev,
+            start: event.start.toISOString(),
+            end: event.end ? event.end.toISOString() : null,
+          }
+          : ev
+      )
+    );
+  }, []);
+
+  const handleEventResize = useCallback((info) => {
+    const { event } = info;
+    setEvents((prevEvents) =>
+      prevEvents.map((ev) =>
+        ev.id === event.id
+          ? {
+            ...ev,
+            start: event.start.toISOString(),
+            end: event.end ? event.end.toISOString() : null,
+          }
+          : ev
+      )
+    );
+  }, []);
+
+
+  const tooltipStyle = useMemo(() => ({
+    top: tooltipPosition.y - 100,
+    left: tooltipPosition.x + 10,
+    position: "absolute",
+    zIndex: 1000,
+    maxWidth: '200px'
+  }), [tooltipPosition]);
 
   return (
     <>
@@ -193,12 +249,8 @@ const Calendar = () => {
         <div
           className="tooltip"
           style={{
-            top: tooltipPosition.y - 100, // Offset to appear above the event
-            left: tooltipPosition.x + 10, // Offset to the right
+            ...tooltipStyle,
             border: `${hoveredEvent.borderColor} solid 3px`,
-            maxWidth: "200px", // Optional: Limit the tooltip width
-            position: "absolute", // Ensure tooltip stays in the right position
-            zIndex: 1000, // Ensure it's above other elements
           }}
         >
           <strong>{hoveredEvent.title}</strong>
@@ -219,7 +271,6 @@ const Calendar = () => {
           </small>
         </div>
       )}
-
 
       <div className="scheduler_wrapper" style={{ width: "100%", overflow: "hidden" }}>
         <div className="scheduler">
@@ -255,36 +306,11 @@ const Calendar = () => {
             contentHeight="auto"
             datesSet={updateCurrentTitleAndDate}
             editable={true}
-            eventMouseEnter={handleEventMouseEnter} // Hover event
-            eventMouseLeave={handleEventMouseLeave} // Leave hover
-            eventDrop={(info) => {
-              const { event } = info;
-              setEvents((prevEvents) =>
-                prevEvents.map((ev) =>
-                  ev.id === event.id
-                    ? {
-                      ...ev,
-                      start: event.start.toISOString(),
-                      end: event.end ? event.end.toISOString() : null,
-                    }
-                    : ev
-                )
-              );
-            }}
-            eventResize={(info) => {
-              const { event } = info;
-              setEvents((prevEvents) =>
-                prevEvents.map((ev) =>
-                  ev.id === event.id
-                    ? {
-                      ...ev,
-                      start: event.start.toISOString(),
-                      end: event.end ? event.end.toISOString() : null,
-                    }
-                    : ev
-                )
-              );
-            }}
+            eventMouseEnter={handleEventMouseEnter}
+            eventMouseLeave={handleEventMouseLeave}
+            eventDrop={handleEventDrop}
+            eventResize={handleEventResize}
+
           />
 
         </div>
@@ -293,8 +319,8 @@ const Calendar = () => {
           <div className="mini_calendar f-center shadow">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar
-                value={currentDate} // Controlled component to sync date
-                onChange={handleDateChange} // Handle MUI calendar date changes
+                value={currentDate}
+                onChange={handleDateChange}
                 sx={{
                   width: '100%',
                   height: '100%',
@@ -321,7 +347,7 @@ let colorsets = [
 
 ]
 
-const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToEdit }) => {
+const AddEventForm = React.memo(({ selectedDate, onAddEvent, onEditEvent, onClose, eventToEdit }) => {
   const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
   const [title, setTitle] = useState(eventToEdit?.title || "");
   const [start, setStart] = useState(eventToEdit?.start ? dayjs(eventToEdit.start) : dayjs(selectedDate));
@@ -334,7 +360,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToE
     triggerEnter();
   }, [triggerEnter]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     if (!title || !start || (!allDay && !end) || !description) {
       alert("Please fill all fields.");
@@ -342,7 +368,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToE
     }
 
     const updatedEvent = {
-      id: eventToEdit ? eventToEdit.id : `${Date.now()}`, // Use existing ID for edit
+      id: eventToEdit ? eventToEdit.id : `${Date.now()}`,
       title,
       start: start.toISOString(),
       end: allDay ? "" : end.toISOString(),
@@ -358,13 +384,13 @@ const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToE
       onAddEvent(updatedEvent);
     }
     onClose();
-  };
+  }, [title, start, allDay, end, colorHEX, description, eventToEdit, onEditEvent, onAddEvent, onClose]);
 
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     triggerExit(() => {
       if (onClose) onClose();
     });
-  };
+  }, [triggerExit, onClose]);
 
   return ReactDOM.createPortal(
     <div
@@ -486,9 +512,7 @@ const AddEventForm = ({ selectedDate, onAddEvent, onEditEvent, onClose, eventToE
     </div>,
     document.body
   );
-};
-
-
+});
 
 
 export default Calendar;

@@ -5,7 +5,8 @@ import { Outlet, useLocation } from "react-router-dom";
 
 
 function ProtectedLayout({ children }) {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(true);
+  console.log(isNavOpen)
 
   const toggleSideNav = () => {
     setIsNavOpen((prev) => !prev);
@@ -16,7 +17,7 @@ function ProtectedLayout({ children }) {
     <>
       <Header toggleSideNav={toggleSideNav} />
 
-      <Side_Bar isNavOpen={isNavOpen}  />
+      <Side_Bar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen}  />
 
       <div className={`user_content`} >
         <div className="glassmorphism shadow">
