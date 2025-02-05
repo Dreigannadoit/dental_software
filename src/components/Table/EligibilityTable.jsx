@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FormControl, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem, Select, TextField } from "@mui/material";
 
 const EligibilityTable = ({ data }) => {
   const [proStatus, setProStatus] = useState(
@@ -49,10 +49,26 @@ const EligibilityTable = ({ data }) => {
               data.map((grade, index) => (
                 <tr key={index} className="shadow">
                   <td>{grade.name}</td>
-                  <td>{grade.dob}</td>
-                  <td>{grade.m_h_num}</td>
-                  <td>{grade.sl_hx}</td>
-                  <td>{grade.sl_date}</td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
                   <td>
                     <FormControl fullWidth>
                       <Select
@@ -64,7 +80,11 @@ const EligibilityTable = ({ data }) => {
                       </Select>
                     </FormControl>
                   </td>
-                  <td>{grade.proDate}</td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
                   <td>
                     <FormControl fullWidth>
                       <Select
@@ -76,8 +96,16 @@ const EligibilityTable = ({ data }) => {
                       </Select>
                     </FormControl>
                   </td>
-                  <td>{grade.fluDate}</td>
-                  <td>{grade.fillings.join(", ")}</td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <TextField fullWidth id="outlined-basic" variant="outlined" />
+                    </div>
+                  </td>
                   <td>
                     <div className="button">
                       <button>View</button>

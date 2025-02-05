@@ -1,72 +1,90 @@
-.viewing_area{
+.viewing_area {
     width: 100%;
     margin-top: 20px;
 }
 
-.viewing_area>div{
+.viewing_area > div {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     gap: 15px;
 }
 
-.viewing_area>div>div{
+.viewing_area > div > div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; 
     gap: 10px;
 }
 
-.viewing_area>div>div>div{
-    width: calc(30% - 5px);
+.school_block {
+    width: calc(50% - 5px); 
     background-color: #fff;
     padding: 25px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.viewing_area>div>div>div h3{
+.school_block h3 {
     padding: 0 0 10px;
     border-bottom: solid var(--dark-color) 1px;
     text-align: center;
 }
 
-.viewing_area>div>div>div>div{
+.school_block > div { 
     margin-top: 10px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: space-between;
-    align-items: flex-start;
-    align-items: flex-start;
+    flex-wrap: wrap; 
     gap: 10px;
+    width: 100%;
 }
 
-.viewing_area>div>div>div>div p{
-    margin-top: 10px;
-    width: calc(100%);
-    padding: 10px;
-    text-align: center;
+.school_block > div p { 
+    width: calc(50% - 5px);
     font-size: 18px;
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-.viewing_area>div>div>div>div p:nth-child(1){
+.school_block > div p strong{
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.school_block > div p span{
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+
+/* Background Colors for Paragraphs */
+.school_block > div p:nth-child(1) {
     background: rgba(248, 202, 200, 0.50);
 }
-.viewing_area>div>div>div>div p:nth-child(2){
+.school_block > div p:nth-child(2) {
     background: rgba(255, 201, 139, 0.50);
 }
-.viewing_area>div>div>div>div p:nth-child(3){
+.school_block > div p:nth-child(3) {
     background: rgba(241, 135, 135, 0.50);
 }
-.viewing_area>div>div>div>div p:nth-child(4){
+.school_block > div p:nth-child(4) {
     background: rgba(219, 179, 203, 0.50);
 }
-.viewing_area>div>div>div>div p:nth-child(5){
+.school_block > div p:nth-child(5) {
     background: rgba(152, 145, 182, 0.459);
 }
-.viewing_area>div>div>div>div p:nth-child(6){
+.school_block > div p:nth-child(6) {
     background: var(--primary-color);
 }
-.viewing_area>div>div>div>div p:nth-child(7){
+.school_block > div p:nth-child(7) {
     background: var(--blue-color);
 }

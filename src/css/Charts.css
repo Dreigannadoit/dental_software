@@ -1,4 +1,4 @@
-.chart_dictionary .block_area{
+.chart_dictionary .block_area {
     width: 100%;
     margin-top: 20px;
 }
@@ -13,7 +13,7 @@
     gap: 20px;
 }
 
-.chart_dictionary .block_area .patient_card_container .patient_card{
+.chart_dictionary .block_area .patient_card_container .patient_card {
     height: 250px;
     width: 280px;
     background-color: aliceblue;
@@ -25,14 +25,14 @@
     padding: 10px;
 }
 
-.chart_dictionary .block_area .patient_card_container .patient_card>img{
+.chart_dictionary .block_area .patient_card_container .patient_card>img {
     height: 100%;
     width: 30%;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details{
+.chart_dictionary .block_area .patient_card_container .patient_card>.patient_details {
     height: 100%;
     /* width:calc(70% - 15px); */
     width: 100%;
@@ -42,11 +42,11 @@
     padding: 12px 5px;
 }
 
-.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details p{
+.chart_dictionary .block_area .patient_card_container .patient_card>.patient_details p {
     margin-bottom: 15px;
 }
 
-.chart_dictionary .block_area .patient_card_container .patient_card> .patient_details .links-controller{
+.chart_dictionary .block_area .patient_card_container .patient_card>.patient_details .links-controller {
     width: 100%;
     display: flex;
     gap: 15px;
@@ -56,16 +56,19 @@
 
 
 /* Chart */
-
-
-.teeth_chart_wrapper{
-    height: 100%;
+.tooth_wrapper{
+    height: 500px;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+
 }
 
-.teeth_chart_container{
+.tooth_wrapper .menu{
+    
+}
+
+.tooth_wrapper .tooth_container{
     height: 100%;
-    width: 80%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(72,74,89,1) 0%, rgba(112,115,145,1) 49%, rgba(72,74,89,1) 100%);
+    border-radius: 5px;
 }

@@ -1,6 +1,67 @@
-import React from "react";
+import { Checkbox, FormControl, MenuItem, Select, TextField } from "@mui/material";
+import React, { useState } from "react";
 
 const DistributionTable = ({ data }) => {
+  const renderTextField = () => (
+    <div>
+      <TextField fullWidth id="outlined-basic" variant="outlined" />
+    </div>
+  );
+
+  const renderTableRow = (record) => (
+    <tr>
+      <td>{record.name}</td>
+      <td>{renderTextField()}</td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>{renderTextField()}</td>
+      <td>{renderTextField()}</td>
+      <td>{renderTextField()}</td>
+      <td>{renderTextField()}</td>
+      <td>{renderTextField()}</td>
+      <td>
+        <button className="main_btn_style">save</button>
+      </td>
+    </tr>
+  );
+
+  const renderSection = (programYear, levelKey, levelName) => {
+    const records = programYear[levelKey];
+    return (
+      <React.Fragment key={levelKey}>
+        <tr>
+          <td colSpan="9" className="section-header">
+            {programYear.year} - {levelName}
+          </td>
+        </tr>
+        {records.length > 0 ? (
+          records.map((record, index) => (
+            <tr key={index} className="editable_content">
+              <td>{record.name}</td>
+              <td>{renderTextField()}</td>
+              <td>
+                <Checkbox />
+              </td>
+              <td>{renderTextField()}</td>
+              <td>{renderTextField()}</td>
+              <td>{renderTextField()}</td>
+              <td>{renderTextField()}</td>
+              <td>{renderTextField()}</td>
+              <td>
+                <button className="main_btn_style">save</button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="9">No records for {levelName}</td>
+          </tr>
+        )}
+      </React.Fragment>
+    );
+  };
+
   return (
     <div className="table">
       <table>
@@ -18,120 +79,12 @@ const DistributionTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {/* Render sections for each level */}
           {data.map((programYear, index) => (
             <React.Fragment key={index}>
-              {/* Pre K Section */}
-              <tr>
-                <td colSpan="9" className="section-header">
-                  {programYear.year} - Pre K
-                </td>
-              </tr>
-              {programYear.preK.length > 0 ? (
-                programYear.preK.map((record, index) => (
-                  <tr key={index}>
-                    <td>{record.name}</td>
-                    <td>{record.enrolled}</td>
-                    <td>{record.distribution ? "Yes" : "No"}</td>
-                    <td>{record.classroomNum}</td>
-                    <td>{record.consentPackerNum}</td>
-                    <td>{record.totalFormsDisNum}</td>
-                    <td>{record.consents}</td>
-                    <td>{record.nurse_contact_person}</td>
-                    <td>
-                        <button>save</button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9">No records for Pre K</td>
-                </tr>
-              )}
-
-              {/* K-5 Section */}
-              <tr>
-                <td colSpan="9" className="section-header">
-                  {programYear.year} - K-5
-                </td>
-              </tr>
-              {programYear.k5.length > 0 ? (
-                programYear.k5.map((record, index) => (
-                  <tr key={index}>
-                    <td>{record.name}</td>
-                    <td>{record.enrolled}</td>
-                    <td>{record.distribution ? "Yes" : "No"}</td>
-                    <td>{record.classroomNum}</td>
-                    <td>{record.consentPackerNum}</td>
-                    <td>{record.totalFormsDisNum}</td>
-                    <td>{record.consents}</td>
-                    <td>{record.nurse_contact_person}</td>
-                    <td>
-                        <button>save</button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9">No records for K-5</td>
-                </tr>
-              )}
-
-              {/* Middle 6-8 Section */}
-              <tr>
-                <td colSpan="9" className="section-header">
-                  {programYear.year} - Middle 6-8
-                </td>
-              </tr>
-              {programYear.m6_8.length > 0 ? (
-                programYear.m6_8.map((record, index) => (
-                  <tr key={index}>
-                    <td>{record.name}</td>
-                    <td>{record.enrolled}</td>
-                    <td>{record.distribution ? "Yes" : "No"}</td>
-                    <td>{record.classroomNum}</td>
-                    <td>{record.consentPackerNum}</td>
-                    <td>{record.totalFormsDisNum}</td>
-                    <td>{record.consents}</td>
-                    <td>{record.nurse_contact_person}</td>
-                    <td>
-                        <button>save</button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9">No records for Middle 6-8</td>
-                </tr>
-              )}
-
-              {/* High 9-12 Section */}
-              <tr>
-                <td colSpan="9" className="section-header">
-                  {programYear.year} - High 9-12
-                </td>
-              </tr>
-              {programYear.high9_12.length > 0 ? (
-                programYear.high9_12.map((record, index) => (
-                  <tr key={index}>
-                    <td>{record.name}</td>
-                    <td>{record.enrolled}</td>
-                    <td>{record.distribution ? "Yes" : "No"}</td>
-                    <td>{record.classroomNum}</td>
-                    <td>{record.consentPackerNum}</td>
-                    <td>{record.totalFormsDisNum}</td>
-                    <td>{record.consents}</td>
-                    <td>{record.nurse_contact_person}</td>
-                    <td>
-                        <button>save</button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9">No records for High 9-12</td>
-                </tr>
-              )}
+              {renderSection(programYear, "preK", "Pre K")}
+              {renderSection(programYear, "k5", "K-5")}
+              {renderSection(programYear, "m6_8", "Middle 6-8")}
+              {renderSection(programYear, "high9_12", "High 9-12")}
             </React.Fragment>
           ))}
         </tbody>

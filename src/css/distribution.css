@@ -51,3 +51,14 @@
     padding: 8px;
     font-weight: bold;
 }
+
+.distribution .table th:nth-child(3),
+.distribution .table td:nth-child(3){
+    width: 5%;
+}
+
+.distribution .table tr.editable_content th:last-child,
+.distribution .table tr.editable_content td:last-child{
+    display: flex;
+    justify-content: flex-end;
+}
