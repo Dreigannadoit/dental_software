@@ -577,26 +577,26 @@ body:has(.form_container){
     width: calc(100%);
 }
 
-.form_container .form form .form-buttons {
+.form-buttons {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     gap: 15px;
 }
 
-form .form-buttons button {
+.form-buttons button {
     padding: 2% 5%;
     font-size: 14px;
     border-radius: 10px;
 }
 
-form .form-buttons button.submit-btn,
-form .form-buttons button.add_event {
+.form-buttons button.submit-btn,
+.form-buttons button.add_event {
     background-color: #ff4d4f;
 }
 
-form .form-buttons button.cancel-btn,
-form .form-buttons button.cancel_event {
+.form-buttons button.cancel-btn,
+.form-buttons button.cancel_event {
     background-color: #ccc;
 }
 

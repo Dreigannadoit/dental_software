@@ -1,3 +1,4 @@
+/* Chart Dictionary Styles */
 .chart_dictionary .block_area {
     width: 100%;
     margin-top: 20px;
@@ -34,7 +35,6 @@
 
 .chart_dictionary .block_area .patient_card_container .patient_card>.patient_details {
     height: 100%;
-    /* width:calc(70% - 15px); */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -55,20 +55,253 @@
 }
 
 
-/* Chart */
-.tooth_wrapper{
-    height: 500px;
+/* Tooth Chart Styles */
+.tooth_wrapper {
+    height: 600px;
+    /* Or whatever height you need */
     width: 100%;
-
+    /* Ensure it fills the parent */
+    display: flex;
+    /* Use flexbox for overall layout */
+    flex-direction: column;
+    /* Stack menu and container vertically */
 }
 
-.tooth_wrapper .menu{
-    
+.tooth_wrapper .menu {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.tooth_wrapper .tooth_container{
+.tooth_wrapper .menu .switch_tooth_layout_button {
+    display: flex;
+    gap: 10px;
+}
+
+.tooth_wrapper .menu .switch_tooth_layout_button button {
+    padding: 15px;
+    background: white;
+    border: 3px solid rgb(28, 179, 28);
+    border-radius: 10px;
+}
+.tooth_wrapper .menu .switch_tooth_layout_button button.active {
+    background: var(--green-grad);
+    color: white;
+}
+
+.tooth_wrapper .menu .switch_tooth_layout_button button:last-child{
+    border: none;
+    background: var(--blue-grad);
+    color: white;
+}
+
+.tooth_wrapper .teeth_container {
+    position: relative;
+    height: 90%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(72, 74, 89, 1) 0%, rgba(112, 115, 145, 1) 49%, rgba(72, 74, 89, 1) 100%);
+    border-radius: 5px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tooth_wrapper .teeth_container>div,
+.tooth_wrapper .teeth_container>div table {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.tooth_wrapper .teeth_container>div table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    height: 100%;
+}
+
+.tooth_wrapper .teeth_container>div table tbody {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tooth_wrapper .teeth_container>div table tr {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+}
+
+.tooth_wrapper .teeth_container>div table tr td {
+    width: calc(100% / 10);
+    /*Updated to reflect 10 columns*/
+    flex: 1;
+    /*Make each cell grow to fill row height*/
+}
+
+.tooth_wrapper .teeth_container>div table tr td.selected{
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+.tooth_wrapper .teeth_container>div table tr td>div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /*Cells take up the entire height*/
+}
+
+.tooth_wrapper .teeth_container>div table tr td:has(img) div:hover {
+    background: rgba(255, 255, 255, 0.30);
+}
+
+.tooth_wrapper .teeth_container>div table tr td>div p {
+    height: 25px;
+    width: 25px;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    border: solid 1px white;
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tooth_wrapper .teeth_container>div table tr td img {
+    width: 50px;
+}
+
+.tooth_wrapper .teeth_container>div.primary_case table tr td img {
+    width: 40px;
+}
+
+.tooth_wrapper .teeth_container>div table tr td>div .dental_codes_inserted{
+    position: absolute;
     height: 100%;
     width: 100%;
-    background: linear-gradient(180deg, rgba(72,74,89,1) 0%, rgba(112,115,145,1) 49%, rgba(72,74,89,1) 100%);
+    z-index: 99999;
+}
+
+
+.tooth_wrapper .teeth_container>div .directions td:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tooth_wrapper .teeth_container>div .directions td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+/*Added to allow for table to fill container*/
+.tooth_wrapper .teeth_container>div {
+    width: 100%;
+    height: 100%;
+}
+
+.dentalCodeList .selection_menu {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 30px;
+}
+
+.dentalCodeList .selection_menu>div:first-child {
+    width: 60%;
+    height: 430px;
+    padding: 10px;
+}.dentalCodeList .selection_menu>div:last-child {
+    width: 40%;
+    height: 430px;
+    padding: 10px;
+}
+
+.dentalCodeList .botton_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 15px;
+    overflow: auto;
+}
+
+.dentalCodeList .botton_container button {
+    padding: 20px;
+    width: calc(50% - 7.5px);
+}
+
+.checkbox-wrapper-41 {
+    width: calc(30% - 7.5px);
+    --size: 50px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
     border-radius: 5px;
+}
+
+.checkbox-wrapper-41 input[type="checkbox"] {
+    -webkit-appearance: none;
+    width: var(--size);
+    height: calc(var(--size) / 2);
+    background-color: #fff;
+    border: 3px solid #222;
+    border-radius: 30px 100px 100px 100px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.checkbox-wrapper-41 input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--size) / 2);
+    height: calc(var(--size) / 2);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scale(0.7);
+    border: 3px solid #222;
+    border-radius: 30px 100px 100px 100px;
+    background-color: #fde881;
+    box-sizing: border-box;
+    transition: all 0.5s;
+}
+
+.checkbox-wrapper-41 input[type="checkbox"]:checked {
+    background-color: #fde881;
+    border-radius: 100px 100px 30px 100px;
+}
+
+.checkbox-wrapper-41 input[type="checkbox"]:checked::before {
+    left: 50%;
+    background-color: #fff;
+    border-radius: 100px 100px 30px 100px;
+}
+
+.dentalCodeList .selected_buttons .selected_values{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dental_symbols{
+    width: 20px;
+    height: 20px;
+    padding: 12px;
+    border-radius: 100%;
 }
