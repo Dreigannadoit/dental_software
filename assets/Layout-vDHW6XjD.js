@@ -1,0 +1,1 @@
+import{j as s,bD as a,bE as e}from"./index-DJwQgHTt.js";const t=()=>s.jsxs(s.Fragment,{children:[s.jsx(a,{current_page:"Layout"}),s.jsx(e,{}),s.jsx("div",{className:"user_content glassmorphism shadow"})]});export{t as default};
