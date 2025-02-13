@@ -131,8 +131,23 @@ const Chart = ({ patient, patientID }) => {
 
                         {chartType === 'standardMix' && (
                             <>
-                                <button onClick={handleChangeToPrimarySubmit}> Transform Selected tooth to Primary</button>
-                                <button onClick={handleChangeToPermanentSubmit}> Transform Selected tooth to Permanent</button>
+                                <AnimatedButton
+                                    type="button"
+                                    classLabel="adult_btn chart_menu_btn"
+                                    label="Adult"
+                                    icon={AdultTooth}
+                                    backgroundColor=""
+                                    method={handleChangeToPermanentSubmit}
+                                />
+                                {/* Button to turn tooth to Primary Tooth */}
+                                <AnimatedButton
+                                    type="button"
+                                    classLabel="child_btn chart_menu_btn"
+                                    label="Child"
+                                    icon={ChildTooth}
+                                    backgroundColor=""
+                                    method={handleChangeToPrimarySubmit}
+                                />
                             </>
                         )}
                         <button className='add_dental_code_btn' onClick={() => {

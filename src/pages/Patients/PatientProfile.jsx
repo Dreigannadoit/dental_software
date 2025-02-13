@@ -99,7 +99,7 @@ const PatientProfile = ({ id = 1 }) => {
                     { label: "Gender", value: patient.gender },
                     { label: "Year", value: patient.birthdate },
                     { label: "Age", value: patient.age },
-                    { label: "Status", value: patient.insurance },
+                    { label: "Insurance", value: patient.insurance },
                 ])}
 
                 {renderInfoSection("School Details", [

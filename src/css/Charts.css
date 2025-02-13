@@ -67,8 +67,9 @@
     /* Stack menu and container vertically */
 }
 
-.tooth_wrapper:has(.primary_case){
-    height: 500px;
+.tooth_wrapper:has(.primary_case),
+.tooth_wrapper:has(.standard_mix_case){
+    height: 550px;
 }
 
 .tooth_wrapper .menu {
@@ -231,12 +232,13 @@
 }
 
 .tooth_wrapper .teeth_container>div table tr td img {
-    width: 50px;
+    width: 70%;
     margin: 5px 0;
+    object-fit: contain;
 }
 
 .tooth_wrapper .teeth_container>div table tr td img.primary_tooth {
-    width:35px;
+    width: 50%;
 }
 
 .tooth_wrapper .teeth_container>div table tr td>div .dental_codes_inserted{
@@ -244,6 +246,16 @@
     height: 100%;
     width: 100%;
     z-index: 99999;
+}
+
+.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr td>div .dental_codes_inserted{
+    height: 85%;
+}
+.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr.upper_teeth  .dental_codes_inserted{
+    bottom: 0;
+}
+.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr.lower_teeth  .dental_codes_inserted{
+    top: 0;
 }
 
 .tooth_wrapper .teeth_container>div .direction{

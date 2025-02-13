@@ -4,61 +4,54 @@
     width: 100%;
     border-radius: 10px;
     margin-top: 15px;
+    scroll-behavior: smooth;
+    scrollbar-width: thin; /* Firefox */
 }
 
+.distribution .table_area::-webkit-scrollbar {
+    height: 8px;
+}
 
-.distribution .table_area>.container {
-    width: 2100px;
-    max-height: 500px;
+.distribution .table_area::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.distribution .table_area:hover {
+    scrollbar-color: #888 transparent;
 }
 
 .distribution .table {
     overflow-x: auto;
-    /* Allow horizontal scrolling */
-    white-space: nowrap;
-    /* Prevent line breaks */
+    white-space: nowrap; /* Prevent line breaks */
 }
-
-.distribution .fixed-header th {
-    position: sticky;
-    top: 0;
-    /* Ensure it stays readable */
-    z-index: 1000;
-    background: var(--high-light-color);
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
 
 .distribution thead {
     position: sticky;
     top: 0;
     background-color: white;
-    /* Optional: Add background color */
     z-index: 10;
-    /* Ensure the header stays above the content */
 }
 
 .distribution td.section-header {
     background: var(--secondary-color);
     position: sticky;
     left: 0;
-    /* Optional: Add a light background for contrast */
     z-index: 5;
-    /* Ensure it appears above content */
     padding: 8px;
     font-weight: bold;
 }
 
-.distribution .table th:nth-child(3),
-.distribution .table td:nth-child(3){
-    width: 5%;
+.distribution .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.distribution .table tr.editable_content th:last-child,
-.distribution .table tr.editable_content td:last-child{
-    display: flex;
-    justify-content: flex-end;
+.distribution .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background: var(--high-light-color);
+    cursor: pointer;
 }
