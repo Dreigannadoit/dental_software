@@ -3,30 +3,39 @@ import PropTypes from 'prop-types';
 import { Checkbox } from '@mui/material';
 import Permanent_Chart from '../../components/Charts/Permanent_Chart';
 import Primary_Chart from '../../components/Charts/Primary_Chart';
+import Standard_Mix from '../../components/Charts/Standard_Mix';
 import useAnimation from '../../hooks/useFormAnimate';
 import ReactDOM from "react-dom";
+import { AdultTooth, ChildTooth } from '../../assets/icons';
+import AnimatedButton from '../../components/AnimatedButton';
+import { teethChatContentStandardMix } from '../../constants';
 
 // Component Definition
 const Chart = ({ patient, patientID }) => {
     const [chartType, setChartType] = useState('primary');
     const [isAdult, setIsAdult] = useState(false);
+    const [isChild, setIsChild] = useState(false);
     const [addCodeForm, setAddCodeForm] = useState(false); // Only opens when adding codes
     const [selectedTeeth, setSelectedTeeth] = useState([]); // Track multiple selected teeth
     const [toothActions, setToothActions] = useState({}); // { toothIndex: [action1, action2], ... }
     const [removeMode, setRemoveMode] = useState(false);
+    const [teethData, setTeethData] = useState(
+        teethChatContentStandardMix.map(tooth => ({
+            ...tooth,
+            toothType: "primary" // Ensure all teeth are primary initially
+        }))
+    );
 
     const handlePrimaryChart = () => setChartType('primary');
     const handlePermanentChart = () => setChartType('permanent');
     const handleStandardMixChart = () => setChartType('standardMix');
-    const handleAdultChart = () => setIsAdult(true);
-    const handleChildChart = () => setIsAdult(false);
 
     const handleToothClick = (index) => {
         setSelectedTeeth(prevSelected => {
             if (prevSelected.includes(index)) {
-                return prevSelected.filter(teethIndex => teethIndex !== index); // Deselect if already selected
+                return prevSelected.filter(teethIndex => teethIndex !== index); // Deselect
             } else {
-                return [...prevSelected, index]; // Add to selected list
+                return [...prevSelected, index]; // Select
             }
         });
     };
@@ -52,30 +61,58 @@ const Chart = ({ patient, patientID }) => {
         }
     }, [selectedTeeth]);
 
+    const handleChangeToPermanentSubmit = useCallback(() => {
+        setTeethData(prevTeeth =>
+            prevTeeth.map((tooth, index) => {
+                if (selectedTeeth.includes(index)) {
+                    return {
+                        ...tooth,
+                        toothType: 'permanent',
+                        primaryImage: "#", // Hide primary
+                        primaryLabel: "",
+                        permanentImage: teethChatContentStandardMix[index].permanentImage, // Restore permanent image
+                        permanentLabel: teethChatContentStandardMix[index].permanentLabel, // Restore label
+                    };
+                }
+                return tooth;
+            })
+        );
+        setSelectedTeeth([]); // Reset selection
+    }, [selectedTeeth]);
+    
+    const handleChangeToPrimarySubmit = useCallback(() => {
+        setTeethData(prevTeeth =>
+            prevTeeth.map((tooth, index) => {
+                if (selectedTeeth.includes(index)) {
+                    return {
+                        ...tooth,
+                        toothType: 'primary',
+                        permanentImage: "#", // Hide permanent
+                        permanentLabel: "",
+                        primaryImage: teethChatContentStandardMix[index].primaryImage, // Restore primary image
+                        primaryLabel: teethChatContentStandardMix[index].primaryLabel, // Restore label
+                    };
+                }
+                return tooth;
+            })
+        );
+        setSelectedTeeth([]); // Reset selection
+    }, [selectedTeeth]);
+    
+    
+
     const handleRemoveAction = (toothIndex, actionIndex) => {
         setToothActions(prevToothActions => {
             const updatedActions = { ...prevToothActions };
             updatedActions[toothIndex] = updatedActions[toothIndex].filter((_, i) => i !== actionIndex);
-    
+
             if (updatedActions[toothIndex].length === 0) {
                 delete updatedActions[toothIndex]; // Remove the tooth if no actions left
             }
-    
+
             return updatedActions;
         });
-    };    
-
-    // const updateTeethChatContent = (toothIndex, actions) => {
-    //     // IMPORTANT: Implement this carefully, ensuring you don't directly mutate state.
-    //     // You'll likely need to create a copy of the teethChatContent array.
-    //     // This depends on how you manage your data.  Example (requires proper teethChatContent management):
-    //     // setTeethChatContent(prevContent => {
-    //     //     const newContent = [...prevContent];  // Create a copy of the array
-    //     //     newContent[toothIndex] = { ...newContent[toothIndex], actionsInputed: actions }; // Update actions
-    //     //     return newContent;
-    //     // });
-    // };
-
+    };
 
     return (
         <>
@@ -94,11 +131,11 @@ const Chart = ({ patient, patientID }) => {
 
                         {chartType === 'standardMix' && (
                             <>
-                                <button onClick={handleAdultChart}>Adult</button>
-                                <button onClick={handleChildChart}>Child</button>
+                                <button onClick={handleChangeToPrimarySubmit}> Transform Selected tooth to Primary</button>
+                                <button onClick={handleChangeToPermanentSubmit}> Transform Selected tooth to Permanent</button>
                             </>
                         )}
-                        <button onClick={() => {
+                        <button className='add_dental_code_btn' onClick={() => {
                             if (selectedTeeth.length > 0) {
                                 setAddCodeForm(true);
                             } else {
@@ -107,7 +144,6 @@ const Chart = ({ patient, patientID }) => {
                         }}>
                             Add Dental Code
                         </button>
-
                     </div>
 
                     <div className="use_case">
@@ -124,7 +160,6 @@ const Chart = ({ patient, patientID }) => {
                             <Checkbox />
                         </label>
                     </div>
-
                 </div>
                 <div className="teeth_container">
                     {chartType === 'permanent' && (
@@ -133,9 +168,8 @@ const Chart = ({ patient, patientID }) => {
                             selectedTeeth={selectedTeeth}
                             removeMode={removeMode}
                             onToothClick={handleToothClick}
-                            onRemoveAction={handleRemoveAction} // Pass handler here
+                            onRemoveAction={handleRemoveAction}
                         />
-                    
                     )}
                     {chartType === 'primary' && (
                         <Primary_Chart
@@ -143,14 +177,21 @@ const Chart = ({ patient, patientID }) => {
                             selectedTeeth={selectedTeeth}
                             removeMode={removeMode}
                             onToothClick={handleToothClick}
-                            onRemoveAction={handleRemoveAction} // Pass handler here
+                            onRemoveAction={handleRemoveAction}
                         />
-
                     )}
                     {chartType === 'standardMix' && (
-                        <div>
-                            {isAdult ? <div>Adult Mix Chart Content Here</div> : <div>Child Mix Chart Content Here</div>}
-                        </div>
+                        <Standard_Mix
+                            toothActions={toothActions}
+                            selectedTeeth={selectedTeeth}
+                            removeMode={removeMode}
+                            onToothClick={handleToothClick}
+                            onRemoveAction={handleRemoveAction}
+                            isAdult={isAdult}
+                            isChild={isChild}
+                            teethData={teethData}
+                            setTeethData={setTeethData}
+                        />
                     )}
                 </div>
             </div>
@@ -176,13 +217,32 @@ const ACTION_BUTTONS = [
 const DentalCodeList = ({ exitUser, onSubmit }) => {
     const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
     const [checkedStates, setCheckedStates] = useState(ACTION_BUTTONS.map(() => false));
+    const [isMissingSelected, setIsMissingSelected] = useState(false); // Track if "Missing" is selected
 
     const handleCheckboxClick = (index) => {
-        setCheckedStates(prevCheckedStates => {
-            const newCheckedStates = [...prevCheckedStates];
-            newCheckedStates[index] = !newCheckedStates[index];
-            return newCheckedStates;
-        });
+        const actionLabel = ACTION_BUTTONS[index].label;
+
+        if (actionLabel === "Missing") {
+            if (isMissingSelected) {
+                // If "Missing" is already selected, deselect it and allow other selections
+                setCheckedStates(ACTION_BUTTONS.map(() => false)); // Deselect all checkboxes
+                setIsMissingSelected(false); // Deselect "Missing"
+            } else {
+                // If "Missing" is selected, deselect all other checkboxes
+                setCheckedStates(ACTION_BUTTONS.map((_, i) => i === index)); // Only keep "Missing" selected
+                setIsMissingSelected(true); // Enable "Missing" selection mode
+            }
+        } else {
+            // If "Missing" is selected, prevent selecting other actions
+            if (isMissingSelected) return;
+
+            // Toggle the selected state for other checkboxes
+            setCheckedStates(prevCheckedStates => {
+                const newCheckedStates = [...prevCheckedStates];
+                newCheckedStates[index] = !newCheckedStates[index];
+                return newCheckedStates;
+            });
+        }
     };
 
     useEffect(() => {
@@ -197,12 +257,11 @@ const DentalCodeList = ({ exitUser, onSubmit }) => {
 
     const handleSubmit = () => {
         const selectedActions = ACTION_BUTTONS.filter((action, index) => checkedStates[index]);
-        onSubmit(selectedActions); // Call the onSubmit function passed from Chart
+        onSubmit(selectedActions); // Pass selected actions
         triggerExit(() => {
             if (exitUser) exitUser();
         });
     };
-
 
     return ReactDOM.createPortal(
         <div className={`form_container dentalCodeList_container glassmorphism shadow ${!isInitialized
@@ -229,6 +288,7 @@ const DentalCodeList = ({ exitUser, onSubmit }) => {
                                     id={`input_label_${index}`}
                                     checked={checkedStates[index]}
                                     readOnly
+                                    disabled={isMissingSelected && action.label !== "Missing"} // Disable other selections if "Missing" is selected
                                 />
                             </div>
                         ))}
@@ -248,7 +308,7 @@ const DentalCodeList = ({ exitUser, onSubmit }) => {
                     <button
                         type="submit"
                         className="submit-btn"
-                        onClick={handleSubmit} // Call handleSubmit
+                        onClick={handleSubmit}
                     >
                         Submit
                     </button>
@@ -265,6 +325,8 @@ const DentalCodeList = ({ exitUser, onSubmit }) => {
         document.body
     );
 };
+
+
 
 Chart.propTypes = {
     patient: PropTypes.object,

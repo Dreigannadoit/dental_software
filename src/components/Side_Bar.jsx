@@ -89,8 +89,7 @@ const Side_Bar = ({ isNavOpen, setIsNavOpen }) => {
   return (
     <>
       <div
-        onMouseEnter={() => setIsNavOpen(false)}
-        onMouseLeave={() => setIsNavOpen(true)}
+        
         id="side_nav"
         className={`side_nav glassmorphism shadow ${isNavOpen ? "" : "open"
           }`}

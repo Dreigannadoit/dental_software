@@ -1,8 +1,8 @@
 {
   "homepage": "https://dreigannadoit.github.io/dental_software/",
-  "name": "website",
+  "name": "clean-and-seal-dental-program",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.2.1",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

@@ -35,6 +35,9 @@ import Arrow_left from "./Arrow_left.svg"
 import x from "./X.png"
 import check from "./Check.png"
 
+import AdultTooth from "./AdultTooth.png"
+import ChildTooth from "./ChildTooth.png"
+
 
 export {
     Dashboard,
@@ -66,5 +69,7 @@ export {
     Arrow_right,
     Arrow_left,
     x,
-    check
+    check,
+    AdultTooth,
+    ChildTooth
 }

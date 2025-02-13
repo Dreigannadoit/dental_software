@@ -67,6 +67,10 @@
     /* Stack menu and container vertically */
 }
 
+.tooth_wrapper:has(.primary_case){
+    height: 500px;
+}
+
 .tooth_wrapper .menu {
     height: 10%;
     width: 100%;
@@ -77,6 +81,7 @@
 }
 
 .tooth_wrapper .menu .switch_tooth_layout_button {
+    height: 90%;
     display: flex;
     gap: 10px;
 }
@@ -91,11 +96,29 @@
     background: var(--green-grad);
     color: white;
 }
-
-.tooth_wrapper .menu .switch_tooth_layout_button button:last-child{
+.tooth_wrapper .menu .switch_tooth_layout_button button.add_dental_code_btn{
     border: none;
     background: var(--blue-grad);
     color: white;
+}
+
+.dental_costume_button.chart_menu_btn{
+    height: 100%;
+    width: 54px;
+}
+
+.dental_costume_button.chart_menu_btn:hover{
+    width: 100px;
+}
+
+.dental_costume_button.chart_menu_btn:hover button img{
+    left: 27%;
+}
+
+.dental_costume_button.chart_menu_btn:hover button span{
+    opacity: 1;
+    transform: translate(-50%, -40%);
+    left: 70%;
 }
 
 .tooth_wrapper .teeth_container {
@@ -117,6 +140,30 @@
     height: 100%;
 }
 
+.tooth_wrapper .teeth_container>div{
+    position: relative;
+}
+.tooth_wrapper .teeth_container>div::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url(../assets/img/GridLines.svg);
+    background-attachment: fixed;
+    background-position: 52px center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.1;
+}
+
+.tooth_wrapper .teeth_container>div table, 
+.tooth_wrapper .teeth_container>div th, 
+.tooth_wrapper .teeth_container>div td {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
 .tooth_wrapper .teeth_container>div table {
     border-collapse: collapse;
     table-layout: fixed;
@@ -137,10 +184,8 @@
 }
 
 .tooth_wrapper .teeth_container>div table tr td {
-    width: calc(100% / 10);
-    /*Updated to reflect 10 columns*/
+    width: calc(100% / 16);
     flex: 1;
-    /*Make each cell grow to fill row height*/
 }
 
 .tooth_wrapper .teeth_container>div table tr td.selected{
@@ -150,12 +195,22 @@
 
 .tooth_wrapper .teeth_container>div table tr td>div {
     position: relative;
+    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
     /*Cells take up the entire height*/
 }
+
+.tooth_wrapper .teeth_container>div table tr td .tooth {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*Cells take up the entire height*/
+}
+
 
 .tooth_wrapper .teeth_container>div table tr td:has(img) div:hover {
     background: rgba(255, 255, 255, 0.30);
@@ -177,10 +232,11 @@
 
 .tooth_wrapper .teeth_container>div table tr td img {
     width: 50px;
+    margin: 5px 0;
 }
 
-.tooth_wrapper .teeth_container>div.primary_case table tr td img {
-    width: 40px;
+.tooth_wrapper .teeth_container>div table tr td img.primary_tooth {
+    width:35px;
 }
 
 .tooth_wrapper .teeth_container>div table tr td>div .dental_codes_inserted{
@@ -190,6 +246,9 @@
     z-index: 99999;
 }
 
+.tooth_wrapper .teeth_container>div .direction{
+    height: 50px;
+}
 
 .tooth_wrapper .teeth_container>div .directions td:first-child {
     display: flex;

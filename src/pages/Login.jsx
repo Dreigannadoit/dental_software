@@ -24,12 +24,12 @@ const Login = () => {
                 <Registration_Section />
             </div>
 
-            <div className="switch_form shadow">
+            {/* <div className="switch_form shadow">
                 <button onClick={toggleForm}>
                     {isUserRegistration ? "Already Have An Account? " : "Don't Have An Account? "}
                     <b>{isUserRegistration ? "LOGIN" : "SIGN UP"}</b>
                 </button>
-            </div>
+            </div> */}
         </section>
     );
 };

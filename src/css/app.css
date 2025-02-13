@@ -64,7 +64,7 @@
     border-radius: 0px 0px 20px 20px;
 }
 
-body:has(.scheduler) .header.scrolled{
+body:has(.scheduler) .header.scrolled {
     height: calc(var(--head-height) - 5px);
 }
 
@@ -174,10 +174,10 @@ body:has(.header.show_dropdown) .user_profile_dropdown {
 }
 
 
+
 /* -----------------------------
 -- Side Bar Navigation System --
 ----------------------------- */
-
 
 .side_nav {
     position: fixed;
@@ -196,11 +196,13 @@ body:has(.header.show_dropdown) .user_profile_dropdown {
     border-radius: 10px;
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
-body:has(.scheduler):has(.header.scrolled) .side_nav{
+
+body:has(.scheduler):has(.header.scrolled) .side_nav {
     height: calc(var(--bellow-height) + 15px);
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 
 }
+
 body:has(.side_nav.open) .side_nav {
     width: var(--side-nav-width);
 }
@@ -266,11 +268,12 @@ body:has(.side_nav.open) .side_nav {
     align-items: center;
     justify-content: space-between;
 }
+
 .side_nav>nav>ul>li:hover a {
     background-color: aliceblue;
 }
 
-.side_nav>nav>ul>li>a:has(span.title){
+.side_nav>nav>ul>li>a:has(span.title) {
     transform: translateX(0px);
     font-size: 0px;
     opacity: 0;
@@ -278,7 +281,7 @@ body:has(.side_nav.open) .side_nav {
     transition: 400ms 0ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
 
-body:has(.side_nav.open) .side_nav>nav>ul>li>a:has(span.title){
+body:has(.side_nav.open) .side_nav>nav>ul>li>a:has(span.title) {
     opacity: 0.7;
     font-size: 16px;
     padding: 10px 20px;
@@ -294,6 +297,7 @@ body:has(.side_nav.open) .side_nav>nav>ul>li>a:has(span.title){
     transform: translateX(10px);
     transition: 400ms 0ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
+
 body:has(.side_nav.open) .side_nav>nav>ul>li>a span {
     transform: translateX(0px);
     flex-direction: row;
@@ -311,7 +315,8 @@ body:has(.side_nav.open) .side_nav>nav>ul>li>a span {
     font-size: 0;
     transition: 400ms cubic-bezier(0.68, -0.10, 0.27, 1.05);
 }
-body:has(.side_nav.open) .side_nav>nav>ul>li>a>span>span{
+
+body:has(.side_nav.open) .side_nav>nav>ul>li>a>span>span {
     font-size: 16px;
 }
 
@@ -329,7 +334,7 @@ body:has(.side_nav.open) .side_nav>nav>ul>li>a>span>span{
     transition: 300ms 200ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
-body:has(.side_nav.open) .reports_sub_menus  {
+body:has(.side_nav.open) .reports_sub_menus {
     left: 250px;
 }
 
@@ -364,37 +369,39 @@ body:has(.reports_subnav_show) .reports_sub_menus {
     z-index: 9999;
 }
 
-.patient_filterSubmenu{
+.patient_filterSubmenu {
     display: none;
 }
 
 body:has(.patients_subnav_show) .patient_filterSubmenu,
-.patient_filterSubmenu{
+.patient_filterSubmenu {
     display: block;
     position: fixed;
-    top: var(--head-height);;
+    top: var(--head-height);
+    ;
     z-index: 99999;
-    height:calc(100% - var(--head-height)) ;
+    height: calc(100% - var(--head-height));
     width: 330px;
     padding: 25px 15px 15px;
     clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-    
+
     transition: all 300ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
 }
 
-body:has(.side_nav.open) .patient_filterSubmenu{
+body:has(.side_nav.open) .patient_filterSubmenu {
     left: var(--side-nav-width);
 }
-.patient_filterSubmenu{
+
+.patient_filterSubmenu {
     left: var(--side-nav-width-closed);
 }
 
-body:has(.patients_subnav_show) .patient_filterSubmenu{
+body:has(.patients_subnav_show) .patient_filterSubmenu {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 
 }
 
-.patient_filterSubmenu>.content{
+.patient_filterSubmenu>.content {
     position: relative;
     height: 100%;
     width: 100%;
@@ -410,13 +417,13 @@ body:has(.patients_subnav_show) .patient_filterSubmenu{
     list-style: none;
 }
 
-.patient_filterSubmenu>div .list_data>ul>li{
+.patient_filterSubmenu>div .list_data>ul>li {
     width: 100%;
     margin-bottom: 5px;
 }
 
 .patient_filterSubmenu>div .list_data>ul>li>a,
-.patient_profile_sidebar ul>li>a{
+.patient_profile_sidebar ul>li>a {
     display: block;
     width: 100%;
     padding: 10px 10px;
@@ -424,9 +431,8 @@ body:has(.patients_subnav_show) .patient_filterSubmenu{
     border-radius: 5px;
 }
 
-.patient_profile_sidebar{
+.patient_profile_sidebar {
     position: fixed;
-    left: calc(var(--side-nav-width) + 300px);
     transform: translateY(-10%);
     height: auto;
     width: 400px;
@@ -437,15 +443,21 @@ body:has(.patients_subnav_show) .patient_filterSubmenu{
     opacity: 0;
     transition: all 300ms 300ms linear;
 }
+body:has(.side_nav.open) .patient_profile_sidebar {
+    left: calc(var(--side-nav-width) + 300px);
+}
+.patient_profile_sidebar {
+    left: calc(var(--side-nav-width-closed) + 300px);
+}
 
-body:has( .patient_filterSubmenu.open li:hover ) .patient_profile_sidebar,
-body:has( .patient_filterSubmenu.open li ) .patient_profile_sidebar:hover{
+body:has(.patient_filterSubmenu.open li:hover) .patient_profile_sidebar,
+body:has(.patient_filterSubmenu.open li) .patient_profile_sidebar:hover {
     opacity: 1;
     z-index: 999999;
     transition: all 300ms linear;
 }
 
-.patient_profile_sidebar ul{
+.patient_profile_sidebar ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
@@ -465,7 +477,7 @@ body:has( .patient_filterSubmenu.open li ) .patient_profile_sidebar:hover{
 /* Form Design */
 /* ----------- */
 
-body:has(.form_container){
+body:has(.form_container) {
     overflow: hidden;
 }
 
@@ -477,7 +489,8 @@ body:has(.form_container){
     bottom: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(32, 5, 5, 0.5); /* Dimmed background */
+    background-color: rgba(32, 5, 5, 0.5);
+    /* Dimmed background */
     z-index: 999;
     overflow: auto;
 
@@ -485,7 +498,8 @@ body:has(.form_container){
     justify-content: center;
     align-items: center;
 
-    opacity: 0; /* Ensure initial state aligns with animation */
+    opacity: 0;
+    /* Ensure initial state aligns with animation */
     transform: translateY(-20px);
 }
 
@@ -507,6 +521,7 @@ body:has(.form_container){
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -518,6 +533,7 @@ body:has(.form_container){
         opacity: 1;
         transform: translateY(0);
     }
+
     to {
         opacity: 0;
         transform: translateY(-20px);
@@ -525,7 +541,7 @@ body:has(.form_container){
 }
 
 
-.form_background{
+.form_background {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -694,7 +710,7 @@ body:has(.side_nav.open) .user_content {
 
 .filter_block .filer_fields>div {
     width: 100%;
-} 
+}
 
 body:has(.activity_reports) .filter_block .filer_fields {
     justify-content: flex-start;
@@ -1070,14 +1086,16 @@ body:has(.activity_reports) .filter_block .filer_fields>div {
     z-index: 9999999;
 }
 
-.status-container:has(.status_consent){
+.status-container:has(.status_consent) {
     left: 20px;
 }
-.status-container:has(.status_sdf){
+
+.status-container:has(.status_sdf) {
     left: 50%;
     transform: translateX(-50%);
 }
-.status-container:has(.status_status){
+
+.status-container:has(.status_status) {
     right: 20px;
 }
 

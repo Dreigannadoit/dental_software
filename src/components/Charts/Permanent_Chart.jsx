@@ -45,7 +45,7 @@ const teethChatContentPermanent = [
 
 const Permanent_Chart = ({ toothActions, selectedTeeth, removeMode, onToothClick, onRemoveAction }) => {
     return (
-        <div className='permanent_case'>
+        <div className='permanent_case dental_chart'>
             <table>
                 <tbody>
                     {/* Upper Teeth Labels */}
@@ -60,31 +60,39 @@ const Permanent_Chart = ({ toothActions, selectedTeeth, removeMode, onToothClick
                     </tr>
 
                     {/* Upper Teeth Interactive */}
-                    <tr className='upper_teeth tooth_container'>
-                        {teethChatContentPermanent.slice(0, 16).map((teeth, index) => (
-                            <td
-                                key={index}
-                                onClick={() => onToothClick(index)}
-                                className={selectedTeeth.includes(index) ? "selected" : ""}
-                            >
-                                <div className="">
-                                    <div className="dental_codes_inserted">
-                                        {toothActions[index] && toothActions[index].map((action, actionIndex) => (
-                                            <div
-                                                key={actionIndex}
-                                                className='f-center dental_symbols'
-                                                style={{ backgroundColor: action.backgroundColor, color: action.color }}
-                                                onClick={() => removeMode && onRemoveAction(index, actionIndex)} // Remove if checkbox is checked
-                                            >
-                                                {action.importValue}
-                                            </div>
-                                        ))}
+                    <tr className='upper_teeth'>
+                        {teethChatContentPermanent.slice(0, 16).map((teeth, index) => {
+                            // Check if "Missing" is applied to this tooth and set opacity
+                            const toothStyle = toothActions[index] && toothActions[index].some(action => action.importValue === "M")
+                                ? { opacity: 0 }
+                                : {};
+
+                            return (
+                                <td
+                                    key={index}
+                                    onClick={() => onToothClick(index)} // Handle tooth selection on click
+                                    className={selectedTeeth.includes(index) ? "selected" : ""} // Highlight selected tooth
+                                >
+                                    <div className="">
+                                        <div className="dental_codes_inserted">
+                                            {toothActions[index] && toothActions[index].map((action, actionIndex) => (
+                                                <div
+                                                    key={actionIndex}
+                                                    className='f-center dental_symbols'
+                                                    style={{ backgroundColor: action.backgroundColor, color: action.color }}
+                                                    onClick={() => removeMode && onRemoveAction(index, actionIndex)} // Remove action if removeMode is active
+                                                >
+                                                    {action.importValue}
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <img src={teeth.image} alt="" style={toothStyle} /> {/* Apply opacity if "Missing" is selected */}
                                     </div>
-                                    <img src={teeth.image} alt="" />
-                                </div>
-                            </td>
-                        ))}
+                                </td>
+                            );
+                        })}
                     </tr>
+
 
                     {/* Directions Row */}
                     <tr className='directions'>
@@ -95,35 +103,46 @@ const Permanent_Chart = ({ toothActions, selectedTeeth, removeMode, onToothClick
 
                     {/* Lower Teeth Interactive */}
                     <tr className='lower_teeth tooth_container'>
-                        {teethChatContentPermanent.slice(16, 32).map((teeth, index) => (
-                            <td
-                                key={index + 16}
-                                onClick={() => onToothClick(index + 16)}
-                                className={selectedTeeth.includes(index + 16) ? "selected" : ""}
-                            >
-                                <div className="">
-                                    <div className="dental_codes_inserted">
-                                        {toothActions[index + 16] && toothActions[index + 16].map((action, actionIndex) => (
-                                            <div
-                                                key={actionIndex}
-                                                className='f-center dental_symbols'
-                                                style={{ backgroundColor: action.backgroundColor, color: action.color }}
-                                                onClick={() => removeMode && onRemoveAction(index, actionIndex)} // Remove if checkbox is checked
-                                            >
-                                                {action.importValue}
-                                            </div>
-                                        ))}
+                        {teethChatContentPermanent.slice(16, 32).reverse().map((teeth, index) => {
+                            const toothIndex = 32 - index - 1;
+
+                            // Apply opacity if "Missing" is selected for this tooth
+                            const toothStyle = toothActions[toothIndex] && toothActions[toothIndex].some(action => action.importValue === "M")
+                                ? { opacity: 0 }
+                                : {};
+
+                            return (
+                                <td
+                                    key={toothIndex}
+                                    onClick={() => onToothClick(toothIndex)}
+                                    className={selectedTeeth.includes(toothIndex) ? "selected" : ""}
+                                >
+                                    <div className="">
+
+                                        <div className="dental_codes_inserted">
+                                            {toothActions[toothIndex] && toothActions[toothIndex].map((action, actionIndex) => (
+                                                <div
+                                                    key={actionIndex}
+                                                    className='f-center dental_symbols'
+                                                    style={{ backgroundColor: action.backgroundColor, color: action.color }}
+                                                    onClick={() => removeMode && onRemoveAction(toothIndex, actionIndex)} // Remove if checkbox is checked
+                                                >
+                                                    {action.importValue}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <img src={teeth.image} alt="" style={toothStyle} /> {/* Apply opacity if "Missing" is selected */}
                                     </div>
-                                    <img src={teeth.image} alt="" />
-                                </div>
-                            </td>
-                        ))}
+                                </td>
+                            );
+                        })}
                     </tr>
 
                     {/* Lower Teeth Labels */}
                     <tr className='lower_teeth'>
-                        {teethChatContentPermanent.slice(16, 32).map((teeth, index) => (
-                            <td key={index}>
+                        {teethChatContentPermanent.slice(16, 32).reverse().map((teeth, index) => (
+                            <td key={32 - index - 1}>
                                 <div className="">
                                     <p><span>{teeth.label}</span></p>
                                 </div>
