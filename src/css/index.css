@@ -91,12 +91,20 @@ a {
     color: var(--dark-color);
 }
 
+b{
+    font-weight: 600;
+}
+
 button{
     border: none;
     background-color: var(--secondary-color);
     cursor: pointer;
 }
 
+img.user_profile_img{
+    height: 50px;
+    border-radius: 10px;
+}
 
 /* The Menu item in the mui plugin does not work properly, this is the fix */
 .css-pa188r-MuiModal-root-MuiPopover-root-MuiMenu-root,

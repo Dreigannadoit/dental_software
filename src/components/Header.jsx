@@ -4,6 +4,7 @@ import { userAvatar } from '../assets/icons/INDEX.JS'
 import { navIcon } from '../assets/icons/INDEX.JS'
 import UserProfileDropdown from './UserProfileDropdown'
 import { useLocation } from 'react-router-dom'
+import { avatar } from '../assets/img'
 
 // Map route paths to readable page names
 const pageNames = {
@@ -85,10 +86,11 @@ const Header = ({ toggleSideNav }) => {
                         Dark Mode
                     </button>
                     <img 
-                        src={userAvatar} 
+                        src={avatar} 
                         alt="User Avatar" 
                         onMouseEnter={toggleDropdown}
                         onMouseLeave={toggleDropdown}
+                        className='user_profile_img'
                     />
                 </div>
             </div>

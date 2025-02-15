@@ -1,4 +1,5 @@
 import { userAvatar } from "../assets/icons/INDEX.JS"
+import { avatar } from "../assets/img";
 
 export const test_user = [
     {
@@ -8,8 +9,27 @@ export const test_user = [
         phone_number: "123-456-7890",
         password: "superadmin",
         gender: "male",
-        profilePicture: userAvatar
+        profilePicture: avatar
     }
+]
+
+export const roles = [
+    {role: "Admin"},
+    {role: "User"},
+    {role: "Guest"},
+]
+
+export const userModulePreviledge = [
+    {module: "Appointment"},
+    {module: "Calendar"},
+    {module: "Dental Code"},
+    {module: "Mass Health"},
+    {module: "Patient"},
+    {module: "School"},
+    {module: "Report"},
+    {module: "School Year"},
+    {module: "User"},
+    {module: "Import"},
 ]
 
 const servedData = [400, 300, 200];

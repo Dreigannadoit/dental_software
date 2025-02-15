@@ -1,4 +1,4 @@
-import logo from "./Logo.svg"
+import logo from "./Logo.png"
 import navIcon from "./align-left.svg"
 import userAvatar from "./avatar.png"
 import exit from "./exit_icon.svg"

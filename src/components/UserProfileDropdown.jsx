@@ -13,7 +13,7 @@ const UserProfileDropdown = ({ toggleDropdown }) => {
             <Link to="/profile">
                 {test_user.map((user, index) => (
                     <div className="user_info" key={index}>
-                        <img src={user.profilePicture} alt={`${user.username}'s profile`} />
+                        <img src={user.profilePicture} alt={`${user.username}'s profile`} className='user_profile_img' />
                         <div>
                             <p>{user.username}</p>
                             <p>{user.role}</p>

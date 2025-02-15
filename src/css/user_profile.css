@@ -1,0 +1,160 @@
+.user_content:has(.user_profile) > .glassmorphism.shadow {
+    box-shadow: rgba(0, 0, 0, 0) 0px 3px 8px; /* Restore shadow */
+    background-color: rgba(255, 255, 255, 0); /* Restore transparency */
+    backdrop-filter: blur(7px); /* Restore blur */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.user_content:has(.user_profile)>div{
+    padding: 0;
+}
+
+.user_profile {
+    position: relative;
+    width: 100%;
+    min-height: 640px; 
+    display: flex; 
+    gap: 15px;
+    --padding-size: 20px;
+}
+
+.user_profile .user_info_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 0 0 35%;
+    min-height: inherit;
+}
+
+.user_profile .user_info_container .user_info{
+    padding: var(--padding-size);
+    border-radius: 10px;
+}
+
+.user_profile .user_info_container .user_details{
+    height: calc(52% - 15px);
+    width: 100%;
+    transition: 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+    
+}
+
+.user_profile .user_info_container .user_details .details_container{
+   height: 100%;
+   width: 100%;
+   transition: 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+} 
+
+.user_profile .user_info_container .user_details .details_container img{
+    height: 150px;
+    aspect-ratio: 1/1;
+} 
+
+.user_profile .user_info_container .user_details .details_container .detail{
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+} 
+
+.user_profile .user_info_container .user_password{
+    height: 48%;
+    width: 100%;
+    transition: 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+.user_profile .user_info_container .user_password form{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user_profile .user_info_container .user_password form h3{
+    border-bottom: 1px solid black;
+}
+
+.user_profile .user_controls {
+    flex: 1; 
+    min-height: inherit; 
+    padding: var(--padding-size);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.user_profile .user_controls nav{
+    width: 100%;
+    padding: var(--padding-size);
+    border-radius: 5px;
+    background-color: aliceblue;
+}
+
+.user_profile .user_controls nav ul{
+    width: 100%;
+}
+
+.user_profile .user_controls nav ul li{
+    display: inline;
+    margin: 0 20px 0 0;
+}
+
+.user_profile .user_controls nav ul li button{
+    position: relative;
+    padding: 15px 20px;
+    background: none;
+}
+
+.user_profile .user_controls nav ul li button::before{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--pink-grad);
+    z-index: 9;
+    transition: 400ms cubic-bezier(0.68, -0.25, 0.27, 1.05);
+}
+
+.user_profile .user_controls nav ul li button.role_btn::before{
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+.user_profile .user_controls nav ul li button.access_btn::before{
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.user_profile:has(.role_table) .user_controls nav ul li button.role_btn::before,
+.user_profile:has(.access_table) .user_controls nav ul li button.access_btn::before{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+
+.user_profile .user_controls nav ul li button span{
+    position: relative;
+    z-index: 9999;
+}
+
+
+
+/* table layout */
+
+.user_profile .table th:nth-child(2),
+.user_profile .table td:nth-child(2) {
+    text-align: center;
+}
+
+.user_profile .table th:nth-child(3),
+.user_profile .table td:nth-child(3) {
+    text-align: center;
+}
+
+.user_profile .table th:nth-child(4),
+.user_profile .table td:nth-child(4) {
+    text-align: center;
+}
+
+.user_profile .table th:nth-child(5),
+.user_profile .table td:nth-child(5) {
+    text-align: center;
+}
