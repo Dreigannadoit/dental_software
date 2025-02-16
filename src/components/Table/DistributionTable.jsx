@@ -1,10 +1,20 @@
-import { Checkbox, FormControl, MenuItem, Select, TextField } from "@mui/material";
+import { Checkbox, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 const DistributionTable = ({ data }) => {
   const renderTextField = () => (
     <div>
-      <TextField fullWidth id="outlined-basic" variant="outlined" />
+      <TextField 
+        fullWidth 
+        id="outlined-basic" 
+        variant="outlined" 
+        size="small"
+        sx={{ 
+          '& .MuiOutlinedInput-root': { 
+            padding: '1px 2px', // Adjust padding to make it even smaller
+          }
+        }} 
+      />
     </div>
   );
 
@@ -49,7 +59,9 @@ const DistributionTable = ({ data }) => {
               <td>{renderTextField()}</td>
               <td>{renderTextField()}</td>
               <td>
-                <button className="main_btn_style">save</button>
+                <div>
+                  <button className="main_btn_style">save</button>
+                </div>
               </td>
             </tr>
           ))

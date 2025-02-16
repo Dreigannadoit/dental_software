@@ -79,21 +79,15 @@ const Distribution = () => {
   // Sync scrollbar position
   useEffect(() => {
     const tableContainer = tableRef.current;
-
+  
     const handleScroll = () => {
-      if (tableContainer && !isScrolling.current) {
-        isScrolling.current = true;
-        requestAnimationFrame(() => {
-          tableContainer.scrollLeft += 1;
-          isScrolling.current = false;
-        });
-      }
+      // Add any necessary scroll synchronization logic here
     };
-
+  
     if (tableContainer) {
       tableContainer.addEventListener("scroll", handleScroll);
     }
-
+  
     return () => {
       if (tableContainer) {
         tableContainer.removeEventListener("scroll", handleScroll);

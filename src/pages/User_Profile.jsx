@@ -13,7 +13,6 @@ const User_Profile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [error, setError] = useState("");
   const [selectedComponent, setSelectedComponent] = useState("Roles"); // State to track selected component
   const minLength = 12;
 
@@ -21,10 +20,8 @@ const User_Profile = () => {
     event.preventDefault(); // Prevent form submission
 
     if (newPassword !== confirmPassword) {
-      console.error("Handle mismatch password"); // testing - remove later
       setError("Passwords do not match!");
     } else {
-      setError("");
       alert("Password changed successfully!");
       // Submit form logic here
     }

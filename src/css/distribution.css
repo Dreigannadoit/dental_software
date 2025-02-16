@@ -1,57 +1,112 @@
-.distribution .table_area {
-    overflow-x: auto;
-    overflow-y: auto;
+.distribution .table_area{
+    overflow-x: scroll;
+    overflow-y: scroll; 
     width: 100%;
     border-radius: 10px;
     margin-top: 15px;
-    scroll-behavior: smooth;
-    scrollbar-width: thin; /* Firefox */
 }
 
-.distribution .table_area::-webkit-scrollbar {
-    height: 8px;
+.distribution .table_area>.container{
+    width: 2100px;
+    max-height: 500px; 
 }
 
-.distribution .table_area::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-.distribution .table_area:hover {
-    scrollbar-color: #888 transparent;
-}
-
-.distribution .table {
-    overflow-x: auto;
-    white-space: nowrap; /* Prevent line breaks */
-}
-
-.distribution thead {
+.distribution .fixed-header th {
     position: sticky;
     top: 0;
-    background-color: white;
-    z-index: 10;
-}
-
-.distribution td.section-header {
-    background: var(--secondary-color);
-    position: sticky;
-    left: 0;
-    z-index: 5;
-    padding: 8px;
-    font-weight: bold;
-}
-
-.distribution .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.distribution .pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: none;
+    /* Ensure it stays readable */
+    z-index: 1000;
     background: var(--high-light-color);
-    cursor: pointer;
+}
+
+.distribution .table td.section-header{
+    background-color: var(--primary-color);
+}
+
+.distribution .table th:nth-child(1),
+.distribution .table td:nth-child(1) {
+    width: 15%; 
+}
+
+.distribution .table th:nth-child(2),
+.distribution .table td:nth-child(2) {
+    width: 10%;
+}
+
+.distribution .table th:nth-child(3),
+.distribution .table td:nth-child(3) {
+    width: 5%;
+    text-align: center;
+}
+
+.distribution .table th:nth-child(4),
+.distribution .table td:nth-child(4) {
+    width: 9%; 
+}
+
+.distribution .table th:nth-child(5),
+.distribution .table td:nth-child(5) {
+    width: 10%;
+}
+
+.distribution .table th:nth-child(6),
+.distribution .table td:nth-child(6) {
+    width: 7%; 
+    text-align: center;
+}
+
+.distribution .table th:nth-child(7),
+.distribution .table td:nth-child(7) {
+    width: 8%; 
+}
+
+.distribution .table th:nth-child(8),
+.distribution .table td:nth-child(8) {
+    width: 9%;
+}
+
+.distribution .table th:nth-child(9),
+.distribution .table td:nth-child(9) {
+    width: 8%; 
+}
+
+.distribution .table th:nth-child(9) div,
+.distribution .table td:nth-child(9) div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.distribution .table td:nth-child(11) .button {
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.distribution .table td:nth-child(11) .button  button{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.distribution .table th:nth-child(12),
+.distribution .table td:nth-child(12) {
+    width: 22%; 
+    
+}
+
+.distribution .table th:nth-child(13),
+.distribution .table td:nth-child(13) {
+    width: 10%; /* Status column */
+    text-align: center;
+}
+
+.distribution .table td:nth-child(13) button{
+    padding: 10px;
+    background: var(--blue-color);
+    border-radius: 10px;
 }
