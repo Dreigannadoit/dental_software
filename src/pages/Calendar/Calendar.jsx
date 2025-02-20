@@ -329,7 +329,19 @@ const Calendar = () => {
             </LocalizationProvider>
           </div>
           <div className="events_planed shadow">
-            _
+            <h2>Upcoming Activities</h2>
+            <br />
+            <ul style={{ maxHeight: "300px", overflowY: "auto"}}>
+              {events
+                .filter(event => dayjs(event.start).isAfter(dayjs()))
+                .sort((a, b) => dayjs(a.start).diff(dayjs(b.start)))
+                .map(event => (
+                  <li key={event.id} style={{ marginBottom: "10px", padding: "10px", background: event.backgroundColor, borderRadius: "5px", color: "#fff" }}>
+                    <strong>{event.title}</strong>
+                    <p>{event.allDay ? `All Day Event - ${dayjs(event.start).format("MMM D, YYYY")}` : `${dayjs(event.start).format("MMM D, YYYY h:mm A")} - ${dayjs(event.end).format("MMM D, YYYY h:mm A")}`}</p>
+                  </li>
+                ))}
+            </ul>
           </div>
         </div>
       </div>

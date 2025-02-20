@@ -216,4 +216,5 @@ body:has(.side_nav.open) .calendar_controls_wrapper .calendar_controls div h1 {
     width: 100%;
     border-radius: 10px;
     background-color: #fff;
+    padding: 25px 15px;
 }

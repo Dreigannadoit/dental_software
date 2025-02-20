@@ -34,9 +34,9 @@ const Standard_Mix = ({ toothActions, selectedTeeth, removeMode, onToothClick, o
                                             ))}
                                         </div>
                                         <div className="tooth">
-                                            {teeth.toothType === "primary" && (
+                                            {teeth.showPrimary && (
                                                 <>
-                                                    <p>{teeth.primaryLabel}</p>
+                                                    <p className={teeth.primaryClass} >{teeth.primaryLabel}</p>
                                                     <img
                                                         src={teeth.primaryImage}
                                                         className={teeth.primaryClass}
@@ -45,9 +45,9 @@ const Standard_Mix = ({ toothActions, selectedTeeth, removeMode, onToothClick, o
                                                     />
                                                 </>
                                             )}
-                                            {teeth.toothType === "permanent" && (
+                                            {teeth.showPermanent && (
                                                 <>
-                                                    <p>{teeth.permanentLabel}</p>
+                                                    <p className={teeth.permanentClass} >{teeth.permanentLabel}</p>
                                                     <img
                                                         src={teeth.permanentImage}
                                                         className={teeth.permanentClass}
@@ -101,7 +101,7 @@ const Standard_Mix = ({ toothActions, selectedTeeth, removeMode, onToothClick, o
 
 
                                         <div className="tooth">
-                                            {teeth.toothType === "primary" && (
+                                            {teeth.showPrimary && (
                                                 <>
                                                     <img
                                                         src={teeth.primaryImage}
@@ -109,10 +109,10 @@ const Standard_Mix = ({ toothActions, selectedTeeth, removeMode, onToothClick, o
                                                         alt=""
                                                         style={toothStyle}
                                                     />
-                                                    <p>{teeth.primaryLabel}</p>
+                                                    <p className={teeth.primaryClass} >{teeth.primaryLabel}</p>
                                                 </>
                                             )}
-                                            {teeth.toothType === "permanent" && (
+                                            {teeth.showPermanent && (
                                                 <>
                                                     <img
                                                         src={teeth.permanentImage}
@@ -120,7 +120,7 @@ const Standard_Mix = ({ toothActions, selectedTeeth, removeMode, onToothClick, o
                                                         alt=""
                                                         style={toothStyle}
                                                     />
-                                                    <p>{teeth.permanentLabel}</p>
+                                                    <p className={teeth.permanentClass} >{teeth.permanentLabel}</p>
                                                 </>
                                             )}
                                         </div>

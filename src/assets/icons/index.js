@@ -38,6 +38,12 @@ import check from "./Check.png"
 import AdultTooth from "./AdultTooth.png"
 import ChildTooth from "./ChildTooth.png"
 
+import PermanentTooth from "./PermanentTooth.png"
+import PrimaryTooth from "./PrimaryTooth.png"
+import StandardMix from "./StandardMix.png"
+
+import PermanentToPrimary from "./PermanentToPrimary.png"
+import PrimaryToPermanent from "./PrimaryToPermanent.png"
 
 export {
     Dashboard,
@@ -71,5 +77,10 @@ export {
     x,
     check,
     AdultTooth,
-    ChildTooth
+    ChildTooth,
+    PrimaryToPermanent,
+    PermanentToPrimary,
+    PermanentTooth,
+    PrimaryTooth,
+    StandardMix
 }

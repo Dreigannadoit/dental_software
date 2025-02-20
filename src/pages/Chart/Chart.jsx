@@ -6,7 +6,7 @@ import Primary_Chart from '../../components/Charts/Primary_Chart';
 import Standard_Mix from '../../components/Charts/Standard_Mix';
 import useAnimation from '../../hooks/useFormAnimate';
 import ReactDOM from "react-dom";
-import { AdultTooth, ChildTooth } from '../../assets/icons';
+import { AdultTooth, ChildTooth, PermanentTooth, PermanentToPrimary, PrimaryTooth, PrimaryToPermanent, StandardMix } from '../../assets/icons';
 import AnimatedButton from '../../components/AnimatedButton';
 import { teethChatContentStandardMix } from '../../constants';
 
@@ -19,12 +19,36 @@ const Chart = ({ patient, patientID }) => {
     const [selectedTeeth, setSelectedTeeth] = useState([]); // Track multiple selected teeth
     const [toothActions, setToothActions] = useState({}); // { toothIndex: [action1, action2], ... }
     const [removeMode, setRemoveMode] = useState(false);
+
+    // Define the labels of teeth that should be set to true
+    const upperTeethLabels = ["3", "A", "5", "C", "7", "8", "9", "10", "H", "12", "J", "14"];
+    const lowerTeethLabels = ["19", "K", "L", "M", "23", "24", "25", "26", "R", "S", "T", "30"];
+
+    // Initialize teethData with showPrimary or showPermanent set to true for specific labels
     const [teethData, setTeethData] = useState(
-        teethChatContentStandardMix.map(tooth => ({
-            ...tooth,
-            toothType: "primary" // Ensure all teeth are primary initially
-        }))
+        teethChatContentStandardMix.map(tooth => {
+            const isUpperTooth = upperTeethLabels.includes(tooth.primaryLabel) || upperTeethLabels.includes(tooth.permanentLabel);
+            const isLowerTooth = lowerTeethLabels.includes(tooth.primaryLabel) || lowerTeethLabels.includes(tooth.permanentLabel);
+
+            if (isUpperTooth || isLowerTooth) {
+                return {
+                    ...tooth,
+                    showPrimary: tooth.type === "primary",
+                    showPermanent: tooth.type === "permanent",
+                };
+            }
+            return {
+                ...tooth,
+                showPrimary: false,
+                showPermanent: false,
+            };
+        })
     );
+
+    // **RESET TOOTH ACTIONS ON CHART TYPE CHANGE**
+    useEffect(() => {
+        setToothActions({}); // Reset all tooth actions
+    }, [chartType]);
 
     const handlePrimaryChart = () => setChartType('primary');
     const handlePermanentChart = () => setChartType('permanent');
@@ -41,25 +65,25 @@ const Chart = ({ patient, patientID }) => {
     };
 
     // Callback function to update tooth actions from DentalCodeList
-    const handleActionsSubmit = useCallback((actions) => {
-        if (selectedTeeth.length > 0) {
-            setToothActions(prevToothActions => {
-                const updatedActions = { ...prevToothActions };
+    // const handleActionsSubmit = useCallback((actions) => {
+    //     if (selectedTeeth.length > 0) {
+    //         setToothActions(prevToothActions => {
+    //             const updatedActions = { ...prevToothActions };
 
-                selectedTeeth.forEach(index => {
-                    updatedActions[index] = [
-                        ...(updatedActions[index] || []),
-                        ...actions
-                    ];
-                });
+    //             selectedTeeth.forEach(index => {
+    //                 updatedActions[index] = [
+    //                     ...(updatedActions[index] || []),
+    //                     ...actions
+    //                 ];
+    //             });
 
-                return updatedActions;
-            });
+    //             return updatedActions;
+    //         });
 
-            setSelectedTeeth([]); // Reset selected teeth after submission
-            setAddCodeForm(false); // Close form
-        }
-    }, [selectedTeeth]);
+    //         setSelectedTeeth([]); // Reset selected teeth after submission
+    //         setAddCodeForm(false); // Close form
+    //     }
+    // }, [selectedTeeth]);
 
     const handleChangeToPermanentSubmit = useCallback(() => {
         setTeethData(prevTeeth =>
@@ -67,11 +91,9 @@ const Chart = ({ patient, patientID }) => {
                 if (selectedTeeth.includes(index)) {
                     return {
                         ...tooth,
+                        showPrimary: false,
+                        showPermanent: true,
                         toothType: 'permanent',
-                        primaryImage: "#", // Hide primary
-                        primaryLabel: "",
-                        permanentImage: teethChatContentStandardMix[index].permanentImage, // Restore permanent image
-                        permanentLabel: teethChatContentStandardMix[index].permanentLabel, // Restore label
                     };
                 }
                 return tooth;
@@ -79,18 +101,16 @@ const Chart = ({ patient, patientID }) => {
         );
         setSelectedTeeth([]); // Reset selection
     }, [selectedTeeth]);
-    
+
     const handleChangeToPrimarySubmit = useCallback(() => {
         setTeethData(prevTeeth =>
             prevTeeth.map((tooth, index) => {
                 if (selectedTeeth.includes(index)) {
                     return {
                         ...tooth,
+                        showPrimary: true,
+                        showPermanent: false,
                         toothType: 'primary',
-                        permanentImage: "#", // Hide permanent
-                        permanentLabel: "",
-                        primaryImage: teethChatContentStandardMix[index].primaryImage, // Restore primary image
-                        primaryLabel: teethChatContentStandardMix[index].primaryLabel, // Restore label
                     };
                 }
                 return tooth;
@@ -98,8 +118,6 @@ const Chart = ({ patient, patientID }) => {
         );
         setSelectedTeeth([]); // Reset selection
     }, [selectedTeeth]);
-    
-    
 
     const handleRemoveAction = (toothIndex, actionIndex) => {
         setToothActions(prevToothActions => {
@@ -115,42 +133,39 @@ const Chart = ({ patient, patientID }) => {
     };
 
     return (
-        <>
-            {addCodeForm && (
-                <DentalCodeList
-                    exitUser={() => setAddCodeForm(false)}
-                    onSubmit={handleActionsSubmit} // Pass the submit function
-                />
-            )}
+        <div className='dental_chart'>
             <div className="tooth_wrapper">
                 <div className="menu">
                     <div className="switch_tooth_layout_button">
-                        <button className={`${chartType === 'primary' ? "active" : ""}`} onClick={handlePrimaryChart}>Primary</button>
-                        <button className={`${chartType === 'permanent' ? "active" : ""}`} onClick={handlePermanentChart}>Permanent</button>
-                        <button className={`${chartType === 'standardMix' ? "active" : ""}`} onClick={handleStandardMixChart}>Standard Mix</button>
+                        <div className="chart_type">
+                            <button className={chartType === 'primary' ? "active" : ""} onClick={handlePrimaryChart}>
+                                <img src={PrimaryTooth} alt="" />
+                            </button>
+                            <button className={chartType === 'permanent' ? "active" : ""} onClick={handlePermanentChart}>
+                                <img src={PermanentTooth} alt="" />
 
-                        {chartType === 'standardMix' && (
-                            <>
-                                <AnimatedButton
-                                    type="button"
-                                    classLabel="adult_btn chart_menu_btn"
-                                    label="Adult"
-                                    icon={AdultTooth}
-                                    backgroundColor=""
-                                    method={handleChangeToPermanentSubmit}
-                                />
-                                {/* Button to turn tooth to Primary Tooth */}
-                                <AnimatedButton
-                                    type="button"
-                                    classLabel="child_btn chart_menu_btn"
-                                    label="Child"
-                                    icon={ChildTooth}
-                                    backgroundColor=""
-                                    method={handleChangeToPrimarySubmit}
-                                />
-                            </>
-                        )}
-                        <button className='add_dental_code_btn' onClick={() => {
+                            </button>
+                            <button className={chartType === 'standardMix' ? "active" : ""} onClick={handleStandardMixChart}>
+                                <img src={StandardMix} alt="" />
+
+                            </button>
+                        </div>
+
+                        <div className="transform_tooth">
+                            {chartType === 'standardMix' && (
+                                <>
+                                    <button onClick={handleChangeToPermanentSubmit}>
+                                        <img src={PrimaryToPermanent} alt="" />
+                                    </button>
+                                    <button onClick={handleChangeToPrimarySubmit}>
+                                        <img src={PermanentToPrimary} alt="" />
+                                    </button>
+                                </>
+                            )}
+                        </div>
+
+
+                        {/* <button className='add_dental_code_btn' onClick={() => {
                             if (selectedTeeth.length > 0) {
                                 setAddCodeForm(true);
                             } else {
@@ -158,7 +173,7 @@ const Chart = ({ patient, patientID }) => {
                             }
                         }}>
                             Add Dental Code
-                        </button>
+                        </button> */}
                     </div>
 
                     <div className="use_case">
@@ -210,10 +225,18 @@ const Chart = ({ patient, patientID }) => {
                     )}
                 </div>
             </div>
-        </>
+
+            <DentalCodeList
+                // exitUser={() => setAddCodeForm(false)}  NO LONGER NEEDED
+                // onSubmit={handleActionsSubmit} // Pass the submit function  NO LONGER NEEDED
+                selectedTeeth={selectedTeeth}
+                setToothActions={setToothActions}
+                toothActions={toothActions}
+                setSelectedTeeth={setSelectedTeeth}
+            />
+        </div>
     );
 };
-
 // Moved the data outside the component
 const ACTION_BUTTONS = [
     { label: "Decay", importValue: "D", backgroundColor: "red", color: "black" },
@@ -229,115 +252,86 @@ const ACTION_BUTTONS = [
     { label: "Silver Diamine Flouride", importValue: "SDF", backgroundColor: "#37f7d1", color: "black" },
 ];
 
-const DentalCodeList = ({ exitUser, onSubmit }) => {
-    const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
-    const [checkedStates, setCheckedStates] = useState(ACTION_BUTTONS.map(() => false));
-    const [isMissingSelected, setIsMissingSelected] = useState(false); // Track if "Missing" is selected
+const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelectedTeeth }) => {
+    const [selectedActionIndices, setSelectedActionIndices] = useState(new Set());
 
-    const handleCheckboxClick = (index) => {
-        const actionLabel = ACTION_BUTTONS[index].label;
-
-        if (actionLabel === "Missing") {
-            if (isMissingSelected) {
-                // If "Missing" is already selected, deselect it and allow other selections
-                setCheckedStates(ACTION_BUTTONS.map(() => false)); // Deselect all checkboxes
-                setIsMissingSelected(false); // Deselect "Missing"
-            } else {
-                // If "Missing" is selected, deselect all other checkboxes
-                setCheckedStates(ACTION_BUTTONS.map((_, i) => i === index)); // Only keep "Missing" selected
-                setIsMissingSelected(true); // Enable "Missing" selection mode
-            }
-        } else {
-            // If "Missing" is selected, prevent selecting other actions
-            if (isMissingSelected) return;
-
-            // Toggle the selected state for other checkboxes
-            setCheckedStates(prevCheckedStates => {
-                const newCheckedStates = [...prevCheckedStates];
-                newCheckedStates[index] = !newCheckedStates[index];
-                return newCheckedStates;
-            });
-        }
-    };
-
+    // Auto-Submit Effect
     useEffect(() => {
-        triggerEnter();
-    }, [triggerEnter]);
+        //  Wrap the logic in a conditional to check if any actions are actually selected. Prevents execution every render.
+        if (selectedActionIndices.size > 0) {
+            // Convert the Set to an array of indices
+            const selectedIndicesArray = Array.from(selectedActionIndices);
+            const selectedActions = ACTION_BUTTONS.filter((action, index) => selectedIndicesArray.includes(index));
 
-    const handleCancel = () => {
-        triggerExit(() => {
-            if (exitUser) exitUser();
+            if (selectedTeeth.length > 0) {
+                setToothActions(prevToothActions => {
+                    const updatedActions = { ...prevToothActions };
+
+                    selectedTeeth.forEach(index => {
+                        updatedActions[index] = [
+                            ...(updatedActions[index] || []),
+                            ...selectedActions
+                        ];
+                    });
+
+                    return updatedActions;
+                });
+
+                setSelectedTeeth([]); // Reset selected teeth after submission
+            }
+            // Reset selected action indices after submitting actions
+            setSelectedActionIndices(new Set());
+        }
+    }, [selectedActionIndices, selectedTeeth, setToothActions, setSelectedTeeth]);  // Dependencies for the effect
+
+    const handleButtonClick = (index) => {
+        setSelectedActionIndices(prevSelected => {
+            const newSelected = new Set(prevSelected);
+            if (newSelected.has(index)) {
+                newSelected.delete(index); // Deselect
+            } else {
+                // Handle "Missing" logic
+                if (ACTION_BUTTONS[index].label === "Missing") {
+                    newSelected.clear(); // Deselect all other actions
+                    setIsMissingSelected(true);
+                }
+                else if (isMissingSelected) {
+                    return new Set(); // If missing is selected return the new set without changing anything
+                }
+
+                newSelected.add(index); // Select
+                setIsMissingSelected(false);
+            }
+            return newSelected;
         });
     };
 
-    const handleSubmit = () => {
-        const selectedActions = ACTION_BUTTONS.filter((action, index) => checkedStates[index]);
-        onSubmit(selectedActions); // Pass selected actions
-        triggerExit(() => {
-            if (exitUser) exitUser();
-        });
-    };
+    const [isMissingSelected, setIsMissingSelected] = useState(false);
 
-    return ReactDOM.createPortal(
-        <div className={`form_container dentalCodeList_container glassmorphism shadow ${!isInitialized
-            ? ""
-            : isVisible
-                ? "enter-animation"
-                : "exit-animation"
-            }`}>
-            <button className="form_background" onClick={handleCancel}></button>
-            <div className="form dentalCodeList glassmorphism shadow">
-                <h1>Input Dental Code</h1>
+    return (
+        <div className={` dentalCodeList_container `}>
+            <div className=" dentalCodeList ">
                 <div className="selection_menu">
                     <div className="botton_container">
                         {ACTION_BUTTONS.map((action, index) => (
-                            <div
+                            <button
                                 key={index}
-                                style={{ backgroundColor: action.backgroundColor, color: action.color }}
-                                className="checkbox-wrapper-41"
-                                onClick={() => handleCheckboxClick(index)}
+                                style={{
+                                    backgroundColor: action.backgroundColor,
+                                    color: action.color,
+                                    opacity: selectedActionIndices.has(index) ? 0.5 : 1, // Reduce opacity if selected
+                                }}
+                                className="action-button"
+                                onClick={() => handleButtonClick(index)}
+                                disabled={isMissingSelected && action.label !== "Missing"}
                             >
-                                <label htmlFor={`input_label_${index}`}>{action.label}</label>
-                                <input
-                                    type="checkbox"
-                                    id={`input_label_${index}`}
-                                    checked={checkedStates[index]}
-                                    readOnly
-                                    disabled={isMissingSelected && action.label !== "Missing"} // Disable other selections if "Missing" is selected
-                                />
-                            </div>
+                                {action.label}
+                            </button>
                         ))}
                     </div>
-                    <div className="selected_buttons">
-                        <h3>Selected Code</h3>
-                        <div className="selected_values">
-                            {ACTION_BUTTONS.filter((action, index) => checkedStates[index]).map((action, index) => (
-                                <div className='f-center dental_symbols' key={index} style={{ backgroundColor: action.backgroundColor, color: action.color }}>
-                                    {action.importValue}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-                <div className="form-buttons">
-                    <button
-                        type="submit"
-                        className="submit-btn"
-                        onClick={handleSubmit}
-                    >
-                        Submit
-                    </button>
-                    <button
-                        type="button"
-                        className="cancel-btn"
-                        onClick={handleCancel}
-                    >
-                        Cancel
-                    </button>
                 </div>
             </div>
-        </div>,
-        document.body
+        </div>
     );
 };
 

@@ -136,7 +136,7 @@ img.user_profile_img{
 }
 
 .glassmorphism {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -242,7 +242,7 @@ img.user_profile_img{
 
 .table td {
     background-color: #ffffff;
-    padding: 2px 5px;
+    padding: 10px 10px;
     
     font-family: "Montserrat", serif;
     font-weight: 500;
