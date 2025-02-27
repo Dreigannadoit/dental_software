@@ -31,7 +31,7 @@ const AddUsers = ({ exitUser }) => {
       <button className="form_background" onClick={handleCancel}></button>
       <div className="form users_form glassmorphism shadow">
         <form action="">
-          <h1>Add Code</h1>
+          <h1>Add User</h1>
           <div className="container">
             <div className="name">
               <label htmlFor="name">Name</label>

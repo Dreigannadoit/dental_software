@@ -38,7 +38,7 @@ const AddDentalCode = ({ exitUser }) => {
       <button className="form_background" onClick={handleCancel}></button>
       <div className="form procedureCodes_form glassmorphism shadow">
         <form action="">
-          <h1>Add Code</h1>
+          <h1>Add Procedure Codes</h1>
           <div className="container">
             <div className="name">
               <label htmlFor="codeName">Code</label>

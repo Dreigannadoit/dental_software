@@ -1207,3 +1207,26 @@ body:has(.activity_reports) .filter_block .filer_fields>div {
     height: 100%;
     padding: 10px 0px;
 }
+
+.importPage{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.import_btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 220px;
+    gap: 5px;
+    margin: 0px 15px 15px;
+    background-color: #ffffff;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+.import_btn p{
+    padding: 15px 15px 0;
+}
