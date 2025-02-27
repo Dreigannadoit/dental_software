@@ -25,6 +25,24 @@ body {
     font-family: "Josefin Sans", serif;
 }
 
+h1{
+    font-size: 24px;
+}
+h2{
+    font-size: 22px;
+}
+h3{
+    font-size: 20px;
+}
+h4{
+    font-size: 18px;
+}
+
+p{
+    font-size: 14px;
+}
+
+
 body {
     height: 100vh;
     width: 100vw;
@@ -232,7 +250,7 @@ img.user_profile_img{
     text-align: left;
     width: auto; /* Adjust this to customize */
     height: 100%;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .table th {

@@ -5,7 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 
 
 function ProtectedLayout({ children }) {
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   console.log(isNavOpen)
 
   const toggleSideNav = () => {

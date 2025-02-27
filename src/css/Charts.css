@@ -58,17 +58,18 @@
 /* Tooth Chart Styles */
 
 .dental_chart{
-    height: 600px;
+    height: 813px;
     display: flex;
-    flex-direction: row;
-    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
 }
 
 
 .tooth_wrapper {
-    height: 100%;
+    height: calc(550px);
     /* Or whatever height you need */
-    width: 100%;
+    width: calc(100% - (35% + 40px) );
     /* Ensure it fills the parent */
     display: flex;
     /* Use flexbox for overall layout */
@@ -169,8 +170,7 @@
     height: 100%;
     width: 100%;
     background: url(../assets/img/GridLines.svg);
-    background-attachment: fixed;
-    background-position: 52px center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.1;
@@ -314,8 +314,8 @@
 
 
 .dentalCodeList_container{
-    height: 100%;
-    width: 45%;
+    height: calc(550px);
+    width: 35%;
 }
 
 .dentalCodeList {
@@ -327,6 +327,7 @@
     display: flex;
     flex-direction: column;
     margin: 10px 0px 30px;
+    overflow-y: auto;
 }
 
 .dentalCodeList .selection_menu>div:first-child {
@@ -353,7 +354,7 @@
 
 .dentalCodeList .botton_container button {
     padding: 20px;
-    width: calc(33% - 7.5px);
+    width: calc(24% - 7.5px);
     cursor: pointer;
 }
 
@@ -420,4 +421,21 @@
     height: 20px;
     padding: 12px;
     border-radius: 100%;
+}
+
+.dentalCodeList .links{
+    display: flex;
+    gap: 10px;
+}
+
+.dentalCodeList .links .dental_costume_button.edit_patient:hover a span{
+    transform: translate(-50%, -40%);
+    left: 120%;
+    color: white;
+}
+
+.dental_chart .history {
+    height: calc(813px - 550px);
+    width: 100%;
+    overflow-y: auto;
 }

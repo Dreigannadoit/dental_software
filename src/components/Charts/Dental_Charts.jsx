@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
-const Dental_Charts = ({ chartLabel, chartType, series, xLabels }) => {
+const Dental_Charts = ({ chartLabel, chartType, series, xLabels, stacked=false }) => {
   return (
     <div aria-label={chartLabel} className="graph f-center glassmorphism shadow">
       <div style={{ width: "100%" }}>
@@ -10,14 +10,20 @@ const Dental_Charts = ({ chartLabel, chartType, series, xLabels }) => {
           chartType={chartType}
           series={series}
           xLabels={xLabels}
+          stacked={stacked}
         />
       </div>
     </div>
   );
 };
 
-const ApexChart = ({ chartLabel, chartType, series, xLabels }) => {
+const ApexChart = ({ chartLabel, chartType, series, xLabels, stacked }) => {
   const options = {
+    chart: {
+      type: {chartType},
+      stacked: stacked, // Toggle stacking
+      stackType: stacked ? "100%" : undefined, // 100% stack if true
+    },
     stroke: {
       width: 5,
       curve: "smooth",

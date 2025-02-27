@@ -44,6 +44,7 @@ import StandardMix from "./StandardMix.png"
 
 import PermanentToPrimary from "./PermanentToPrimary.png"
 import PrimaryToPermanent from "./PrimaryToPermanent.png"
+import backarrow from "./backarrow.svg"
 
 export {
     Dashboard,
@@ -82,5 +83,6 @@ export {
     PermanentToPrimary,
     PermanentTooth,
     PrimaryTooth,
-    StandardMix
+    StandardMix,
+    backarrow
 }

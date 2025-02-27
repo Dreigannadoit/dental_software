@@ -29,18 +29,77 @@ import {
     Permanent_31, Permanent_32 
 } from '../assets/img/permanent_teeth/permanent_teeth';
 
+export const teethChatContentPrimary = [
+    { image: primary_1, label: "A", class: "tooth_1 primary_tooth", actionsInputed: [{ importValue: "SDF", backgroundColor: "#37f7d1" }, { importValue: "UC", backgroundColor: "#1a5298" }, { importValue: "SS", backgroundColor: "#e2c9ab" }] },
+    { image: primary_2, label: "B", class: "tooth_2 primary_tooth", actionsInputed: [] },
+    { image: primary_3, label: "C", class: "tooth_3 primary_tooth", actionsInputed: [] },
+    { image: primary_4, label: "D", class: "tooth_4 primary_tooth", actionsInputed: [] },
+    { image: primary_5, label: "E", class: "tooth_5 primary_tooth", actionsInputed: [] },
+    { image: primary_6, label: "F", class: "tooth_6 primary_tooth", actionsInputed: [] },
+    { image: primary_7, label: "G", class: "tooth_7 primary_tooth", actionsInputed: [] },
+    { image: primary_8, label: "H", class: "tooth_8 primary_tooth", actionsInputed: [] },
+    { image: primary_9, label: "I", class: "tooth_9 primary_tooth", actionsInputed: [] },
+    { image: primary_10, label: "J", class: "tooth_10 primary_tooth", actionsInputed: [] },
+    { image: primary_11, label: "K", class: "tooth_11 primary_tooth", actionsInputed: [] },
+    { image: primary_12, label: "L", class: "tooth_12 primary_tooth", actionsInputed: [] },
+    { image: primary_13, label: "M", class: "tooth_13 primary_tooth", actionsInputed: [] },
+    { image: primary_14, label: "N", class: "tooth_14 primary_tooth", actionsInputed: [] },
+    { image: primary_15, label: "O", class: "tooth_15 primary_tooth", actionsInputed: [] },
+    { image: primary_16, label: "P", class: "tooth_16 primary_tooth", actionsInputed: [] },
+    { image: primary_17, label: "Q", class: "tooth_17 primary_tooth", actionsInputed: [] },
+    { image: primary_18, label: "R", class: "tooth_18 primary_tooth", actionsInputed: [] },
+    { image: primary_19, label: "S", class: "tooth_19 primary_tooth", actionsInputed: [] },
+    { image: primary_20, label: "T", class: "tooth_20 primary_tooth", actionsInputed: [] },
+];
+
+export const teethChatContentPermanent = [
+    { image: Permanent_1, label: "1", class: "tooth_1", actionsInputed: [{ importValue: "SDF", backgroundColor: "#37f7d1" }, { importValue: "UC", backgroundColor: "#1a5298" }, { importValue: "SS", backgroundColor: "#e2c9ab" }] },
+    { image: Permanent_2, label: "2", class: "tooth_2", actionsInputed: [] },
+    { image: Permanent_3, label: "3", class: "tooth_3", actionsInputed: [] },
+    { image: Permanent_4, label: "4", class: "tooth_4", actionsInputed: [] },
+    { image: Permanent_5, label: "5", class: "tooth_5", actionsInputed: [] },
+    { image: Permanent_6, label: "6", class: "tooth_6", actionsInputed: [] },
+    { image: Permanent_7, label: "7", class: "tooth_7", actionsInputed: [] },
+    { image: Permanent_8, label: "8", class: "tooth_8", actionsInputed: [] },
+    { image: Permanent_9, label: "9", class: "tooth_9", actionsInputed: [] },
+    { image: Permanent_10, label: "10", class: "tooth_10", actionsInputed: [] },
+    { image: Permanent_11, label: "11", class: "tooth_11", actionsInputed: [] },
+    { image: Permanent_12, label: "12", class: "tooth_12", actionsInputed: [] },
+    { image: Permanent_13, label: "13", class: "tooth_13", actionsInputed: [] },
+    { image: Permanent_14, label: "14", class: "tooth_14", actionsInputed: [] },
+    { image: Permanent_15, label: "15", class: "tooth_15", actionsInputed: [] },
+    { image: Permanent_16, label: "16", class: "tooth_16", actionsInputed: [] },
+    { image: Permanent_17, label: "17", class: "tooth_17", actionsInputed: [] },
+    { image: Permanent_18, label: "18", class: "tooth_18", actionsInputed: [] },
+    { image: Permanent_19, label: "19", class: "tooth_19", actionsInputed: [] },
+    { image: Permanent_20, label: "20", class: "tooth_20", actionsInputed: [] },
+    { image: Permanent_21, label: "21", class: "tooth_21", actionsInputed: [] },
+    { image: Permanent_22, label: "22", class: "tooth_22", actionsInputed: [] },
+    { image: Permanent_23, label: "23", class: "tooth_23", actionsInputed: [] },
+    { image: Permanent_24, label: "24", class: "tooth_24", actionsInputed: [] },
+    { image: Permanent_25, label: "25", class: "tooth_25", actionsInputed: [] },
+    { image: Permanent_26, label: "26", class: "tooth_26", actionsInputed: [] },
+    { image: Permanent_27, label: "27", class: "tooth_27", actionsInputed: [] },
+    { image: Permanent_28, label: "28", class: "tooth_28", actionsInputed: [] },
+    { image: Permanent_29, label: "29", class: "tooth_29", actionsInputed: [] },
+    { image: Permanent_30, label: "30", class: "tooth_30", actionsInputed: [] },
+    { image: Permanent_31, label: "31", class: "tooth_31", actionsInputed: [] },
+    { image: Permanent_32, label: "32", class: "tooth_32", actionsInputed: [] }
+];
+
+
 // Updated data structure for Standard Mix (Primary and Permanent Teeth)
-export const teethChatContentStandardMix = [
+export const teethChartContent = [
     // Missing Permanent Teeth with Placeholder Primary Data
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_1, permanentLabel: "1", permanentClass: "tooth_1 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_2, permanentLabel: "2", permanentClass: "tooth_2 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
@@ -107,22 +166,22 @@ export const teethChatContentStandardMix = [
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_15, permanentLabel: "15", permanentClass: "tooth_15 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_16, permanentLabel: "16", permanentClass: "tooth_16 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_17, permanentLabel: "17", permanentClass: "tooth_17 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_18, permanentLabel: "18", permanentClass: "tooth_18 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
@@ -187,11 +246,12 @@ export const teethChatContentStandardMix = [
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_31, permanentLabel: "31", permanentClass: "tooth_31 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: "#", primaryLabel: "", primaryClass: "tooth_primary_hidden", // Hide the primary tooth
         permanentImage: Permanent_32, permanentLabel: "32", permanentClass: "tooth_32 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
 ];
+

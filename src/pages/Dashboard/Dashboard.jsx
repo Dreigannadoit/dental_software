@@ -43,6 +43,7 @@ const Dashboard = () => {
               chartType="bar"
               series={childrenReceivingServiceSeries}
               xLabels={childrenReceivingServiceLabels}
+              stacked={true}
             />
           </div>
 
