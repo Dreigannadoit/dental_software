@@ -155,7 +155,9 @@ const PatientTable = ({ data }) => {
                       url="#"
                     />
                     <div className={`outer_more ${hoveredRow === patient.id ? "hovered" : ""}`}>
-                      <UserActionButtons openDeletePopup={() => openDeletePopup(patient)} />
+                      <UserActionButtons
+                        openDeletePopup={() => openDeletePopup(patient)} // 3. Pass correct prop
+                      />
                     </div>
                   </td>
                 </tr>
@@ -172,10 +174,9 @@ const PatientTable = ({ data }) => {
   );
 };
 
-const UserActionButtons = ({ deteleLogic }) => {
+const UserActionButtons = ({ openDeletePopup }) => { // 1. Fix prop name
   return (
     <div className="action_buttons f-center">
-      {/* TODO: Replace url to naviate to edit patient */}
       <div className=" f-center shadow">
         <AnimatedButton
           type="routerLink"
@@ -191,9 +192,8 @@ const UserActionButtons = ({ deteleLogic }) => {
           label="Delete"
           icon={Delete}
           backgroundColor="#FF1A1A"
-          method={deteleLogic}
+          method={openDeletePopup} // 2. Use correct prop
         />
-
       </div>
     </div>
   )
