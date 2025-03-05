@@ -186,7 +186,7 @@ img.user_profile_img{
 
 .Export_BTN{
     width: 200px;
-    padding: 15px;
+    padding: 3px;
     float: right;
     background: var(--green-grad);
     color: white;

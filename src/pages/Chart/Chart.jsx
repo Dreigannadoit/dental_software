@@ -4,7 +4,6 @@ import { Checkbox } from '@mui/material';
 import Permanent_Chart from '../../components/Charts/Permanent_Chart';
 import Primary_Chart from '../../components/Charts/Primary_Chart';
 import Standard_Mix from '../../components/Charts/Standard_Mix';
-import useAnimation from '../../hooks/useFormAnimate';
 import ReactDOM from "react-dom";
 import { AdultTooth, Alert, backarrow, ChildTooth, Delete, File_Edit, Patients, PermanentTooth, PermanentToPrimary, PrimaryTooth, PrimaryToPermanent, StandardMix } from '../../assets/icons';
 import AnimatedButton from '../../components/AnimatedButton';
@@ -91,7 +90,7 @@ const Chart = ({ patient, patientID }) => {
                     let newType;
 
                     if (!isLayoutSwitched) { // Switch to alternate layout
-                        if ([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28].includes(index)) {
+                        if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29].includes(index)) {
                             newType = 'permanent';
                         } else {
                             newType = 'primary';
@@ -278,27 +277,50 @@ const Chart = ({ patient, patientID }) => {
         }
     }, [selectedActionIndices, selectedTeeth, setToothActions, setSelectedTeeth, setHistory, logToothAction]);
 
-   const handleButtonClick = (index) => {
-        setSelectedActionIndices(prevSelected => {
-            const newSelected = new Set(prevSelected);
-            if (newSelected.has(index)) {
-                newSelected.delete(index); // Deselect
-                 setIsMissingSelected(false);
-            } else {
-                // Handle "Missing" logic
-                if (ACTION_BUTTONS[index].label === "Missing") {
-                    newSelected.clear(); // Deselect all other actions
-                    setIsMissingSelected(true);
+    const handleButtonClick = (index) => {
+        if (removeMode) {
+            // Remove the action from selected teeth
+            const actionLabel = ACTION_BUTTONS[index].label;
+            if (selectedTeeth.length === 0) return; // No teeth selected
+            
+            setToothActions(prevToothActions => {
+                const updatedActions = { ...prevToothActions };
+                selectedTeeth.forEach(toothIndex => {
+                    if (updatedActions[toothIndex]) {
+                        updatedActions[toothIndex] = updatedActions[toothIndex].filter(
+                            action => action.label !== actionLabel
+                        );
+                        if (updatedActions[toothIndex].length === 0) {
+                            delete updatedActions[toothIndex];
+                        }
+                    }
+                });
+                return updatedActions;
+            });
+    
+            // Log the removal in history
+            logToothAction(selectedTeeth, [`Removed: ${actionLabel}`]);
+            setSelectedTeeth([]); // Clear selected teeth after removal
+        } else {
+            // Existing logic for adding actions
+            setSelectedActionIndices(prevSelected => {
+                const newSelected = new Set(prevSelected);
+                if (newSelected.has(index)) {
+                    newSelected.delete(index);
+                    setIsMissingSelected(false);
+                } else {
+                    if (ACTION_BUTTONS[index].label === "Missing") {
+                        newSelected.clear();
+                        setIsMissingSelected(true);
+                    } else if (isMissingSelected) {
+                        return new Set();
+                    }
+                    newSelected.add(index);
+                    setIsMissingSelected(false);
                 }
-                else if (isMissingSelected) {
-                    return new Set(); // If missing is selected return the new set without changing anything
-                }
-
-                newSelected.add(index); // Select
-                setIsMissingSelected(false);
-            }
-            return newSelected;
-        });
+                return newSelected;
+            });
+        }
     };
 
 
@@ -432,6 +454,7 @@ const Chart = ({ patient, patientID }) => {
                     isMissingSelected={isMissingSelected}
                     setIsMissingSelected={setIsMissingSelected}
                     ACTION_BUTTONS={ACTION_BUTTONS}
+                    removeMode={removeMode}
                 />
 
                 <div className="history">
@@ -461,6 +484,13 @@ const Chart = ({ patient, patientID }) => {
     );
 };
 
+const QuickFillSettings = ({ setQuickFillSettings, quickFillSettings }) => {
+    return(
+        <>
+        
+        </>
+    );
+}
 
 
 // Moved the data outside the component
@@ -478,7 +508,7 @@ const ACTION_BUTTONS = [
     { label: "Silver Diamine Flouride", importValue: "SDF", backgroundColor: "#37f7d1", color: "black" },
 ];
 
-const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelectedTeeth, setHistory, history, getToothLabel, handleButtonClick, selectedActionIndices, setSelectedActionIndices, isMissingSelected, setIsMissingSelected, ACTION_BUTTONS }) => {
+const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelectedTeeth, setHistory, history, getToothLabel, handleButtonClick, selectedActionIndices, setSelectedActionIndices, removeMode, isMissingSelected, setIsMissingSelected, ACTION_BUTTONS }) => {
 
     // No need for a local selectedActionIndices or isMissingSelected, since they're now passed as props.
     // Remove useEffect to prevent conflicting with parent component's state updates.
@@ -517,23 +547,23 @@ const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelec
                     <p><strong>School Year:</strong> CSDP PROGRAM SY 2023-2024</p>
                 </div>
                 <div className="selection_menu">
-                    <div className="botton_container">
-                        {ACTION_BUTTONS.map((action, index) => (
-                            <button
-                                key={index}
-                                style={{
-                                    backgroundColor: action.backgroundColor,
-                                    color: action.color,
-                                    opacity: selectedActionIndices.has(index) ? 0.5 : 1, // Reduce opacity if selected
-                                }}
-                                className="action-button"
-                                onClick={() => handleButtonClick(index)}
-                                disabled={isMissingSelected && action.label !== "Missing"}
-                            >
-                                {action.label}
-                            </button>
-                        ))}
-                    </div>
+                <div className="botton_container">
+            {ACTION_BUTTONS.map((action, index) => (
+                <button
+                    key={index}
+                    style={{
+                        backgroundColor: action.backgroundColor,
+                        color: action.color,
+                        opacity: !removeMode && selectedActionIndices.has(index) ? 0.5 : 1,
+                    }}
+                    className="action-button"
+                    onClick={() => handleButtonClick(index)}
+                    disabled={!removeMode && (isMissingSelected && action.label !== "Missing")}
+                >
+                    {action.label}
+                </button>
+            ))}
+        </div>
                 </div>
             </div>
         </div>

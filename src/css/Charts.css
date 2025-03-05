@@ -354,7 +354,7 @@
 
 .dentalCodeList .botton_container button {
     padding: 20px;
-    width: calc(24% - 7.5px);
+    width: calc(32% - 7.5px);
     cursor: pointer;
 }
 

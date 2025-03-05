@@ -41,7 +41,7 @@
 
 .school_block > div p { 
     width: calc(50% - 5px);
-    font-size: 18px;
+    font-size: 14px;
     box-sizing: border-box; 
     display: flex;
     flex-direction: row;
@@ -50,20 +50,22 @@
 }
 
 .school_block > div p strong{
-    width: 60%;
+    width: 80%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
+    font-family: "Poppins", sans-serif;
 }
 
 .school_block > div p span{
-    width: 40%;
+    width: 20%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     background-color: #f1f1f1;
     padding: 10px;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Background Colors for Paragraphs */

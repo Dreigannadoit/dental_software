@@ -116,7 +116,7 @@ export const teethChartContent = [
     {
         primaryImage: primary_2, primaryLabel: "B", primaryClass: "tooth_2 primary_tooth",
         permanentImage: Permanent_5, permanentLabel: "5", permanentClass: "tooth_5 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent", showPrimary: false, showPermanent: false
+        selected: false, actionsInputed: [], type: "primary", showPrimary: false, showPermanent: false
     },
     {
         primaryImage: primary_3, primaryLabel: "C", primaryClass: "tooth_3 primary_tooth",
@@ -151,7 +151,7 @@ export const teethChartContent = [
     {
         primaryImage: primary_9, primaryLabel: "I", primaryClass: "tooth_9 primary_tooth",
         permanentImage: Permanent_12, permanentLabel: "12", permanentClass: "tooth_12 permanent_tooth",
-        selected: false, actionsInputed: [], type: "permanent"
+        selected: false, actionsInputed: [], type: "primary"
     },
     {
         primaryImage: primary_10, primaryLabel: "J", primaryClass: "tooth_10 primary_tooth",

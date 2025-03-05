@@ -1,7 +1,60 @@
-import { FormControl, MenuItem, Select, TextField } from "@mui/material";
+import { FormControl, MenuItem, Select, TextField, InputBase } from "@mui/material";
 import React, { useState } from "react";
 import AnimatedButton from "../AnimatedButton";
 import { User_Add } from "../../assets/icons";
+import { styled } from '@mui/material/styles';
+
+// Styled components for shorter height
+const CustomTextField = styled(TextField)({
+  '& .MuiInputBase-root': {
+    height: 32,
+    backgroundColor: 'white', 
+    borderRadius: 4,
+    overflow: 'hidden', // Prevents background from overflowing
+    boxShadow: 'none',
+  },
+  '& .MuiInputBase-input': {
+    padding: '6px 12px', // Ensures text doesn't touch edges
+    backgroundColor: 'white', // Ensure input area is white
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#ced4da',
+    },
+    '&:hover fieldset': {
+      borderColor: '#80bdff',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#0056b3',
+    },
+  },
+});
+
+
+const CustomSelect = styled(Select)({
+  height: 32, // Adjust this value to control the height
+});
+
+const CustomInput = styled(InputBase)({
+  'label + &': {
+    marginTop: 8,
+  },
+  '& .MuiInputBase-input': {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: "white",
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '5px px',
+    transition: 'all .2s ease-in-out',
+    height: '1em',
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+});
+
 
 const FilterBlock = ({
   filters,
@@ -44,7 +97,7 @@ const FilterBlock = ({
         <div className="general_fields">
           <div className="search_field">
             <p>Search</p>
-            <TextField
+            <CustomTextField
               id="outlined-basic"
               variant="outlined"
               fullWidth
@@ -73,9 +126,10 @@ const FilterBlock = ({
           <div className="filter_school">
             <p>Type</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.type || ""}
                 onChange={handleInputChange("type")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueType.map((type) => (
@@ -83,7 +137,7 @@ const FilterBlock = ({
                     {type}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
@@ -92,9 +146,10 @@ const FilterBlock = ({
           <div className="filter_status">
             <p>Status</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.status || ""}
                 onChange={handleInputChange("status")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueStatuses.map((status) => (
@@ -102,7 +157,7 @@ const FilterBlock = ({
                     {status}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
@@ -111,9 +166,10 @@ const FilterBlock = ({
           <div className="filter_school">
             <p>School</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.school || ""}
                 onChange={handleInputChange("school")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueSchools.map((school) => (
@@ -121,7 +177,7 @@ const FilterBlock = ({
                     {school}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
@@ -130,9 +186,10 @@ const FilterBlock = ({
           <div className="filter_grade">
             <p>Grade</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.grade || ""}
                 onChange={handleInputChange("grade")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueGrades.map((grade) => (
@@ -140,7 +197,7 @@ const FilterBlock = ({
                     {grade}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
@@ -149,9 +206,10 @@ const FilterBlock = ({
           <div className="filter_year">
             <p>Year</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.year || ""}
                 onChange={handleInputChange("year")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueYears.map((year) => (
@@ -159,7 +217,7 @@ const FilterBlock = ({
                     {year}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
@@ -168,9 +226,10 @@ const FilterBlock = ({
           <div className="filter_teacher">
             <p>Teacher</p>
             <FormControl fullWidth>
-              <Select
+              <CustomSelect
                 value={filters.teacher || ""}
                 onChange={handleInputChange("teacher")}
+                input={<CustomInput />}
               >
                 <MenuItem value="">All</MenuItem>
                 {uniqueTeachers.map((teacher) => (
@@ -178,7 +237,7 @@ const FilterBlock = ({
                     {teacher}
                   </MenuItem>
                 ))}
-              </Select>
+              </CustomSelect>
             </FormControl>
           </div>
         )}
