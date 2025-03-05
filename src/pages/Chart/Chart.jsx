@@ -7,7 +7,7 @@ import Standard_Mix from '../../components/Charts/Standard_Mix';
 import ReactDOM from "react-dom";
 import { AdultTooth, Alert, backarrow, ChildTooth, Delete, File_Edit, Patients, PermanentTooth, PermanentToPrimary, PrimaryTooth, PrimaryToPermanent, StandardMix } from '../../assets/icons';
 import AnimatedButton from '../../components/AnimatedButton';
-import { teethChartContent } from '../../constants';
+import { labelToIndexMap, teethChartContent } from '../../constants';
 import Popup from '../../components/PopUps/Popup';
 import usePopup from '../../hooks/usePopUp';
 
@@ -35,7 +35,7 @@ const Chart = ({ patient, patientID }) => {
         showPrimary: tooth.type === "primary",
         showPermanent: tooth.type === "permanent",
     })));
-    
+
 
     const {
         isVisible: showSwitchToothLayoutPopup,
@@ -132,7 +132,7 @@ const Chart = ({ patient, patientID }) => {
 
     const logToothConversion = (teeth, toType) => {
         const toothLabels = teeth.map(index => {
-             const tooth = teethData[index];
+            const tooth = teethData[index];
             let label;
 
             if (chartType === 'primary') {
@@ -140,11 +140,11 @@ const Chart = ({ patient, patientID }) => {
             } else if (chartType === 'permanent') {
                 label = tooth.permanentLabel;
             } else { // chartType === 'standardMix'
-               
-                if(tooth.showPrimary) {
-                   label = tooth.primaryLabel || tooth.permanentLabel || String(index + 1);
+
+                if (tooth.showPrimary) {
+                    label = tooth.primaryLabel || tooth.permanentLabel || String(index + 1);
                 } else {
-                   label = tooth.permanentLabel || tooth.primaryLabel || String(index + 1);
+                    label = tooth.permanentLabel || tooth.primaryLabel || String(index + 1);
                 }
             }
 
@@ -219,7 +219,7 @@ const Chart = ({ patient, patientID }) => {
         });
     };
 
-     const handleChartTypeChange = (newChartType) => {
+    const handleChartTypeChange = (newChartType) => {
         setPendingChartType(newChartType); // Store the chart type for later use
         openSwitchToothLayoutPopup(newChartType + ' Chart');
     };
@@ -227,7 +227,7 @@ const Chart = ({ patient, patientID }) => {
     const getToothLabel = (index) => {
         const tooth = teethData[index];
         if (!tooth) return String(index + 1);  // Fallback in case of error
-    
+
         if (chartType === 'primary') {
             // For primary chart, use the primaryLabel or fallback to a letter (A, B, C, etc.)
             return tooth.primaryLabel || String.fromCharCode(65 + index); // A = 65 in ASCII
@@ -273,7 +273,7 @@ const Chart = ({ patient, patientID }) => {
                 setSelectedTeeth([]);
             }
             setSelectedActionIndices(new Set());
-             setIsMissingSelected(false);
+            setIsMissingSelected(false);
         }
     }, [selectedActionIndices, selectedTeeth, setToothActions, setSelectedTeeth, setHistory, logToothAction]);
 
@@ -282,7 +282,7 @@ const Chart = ({ patient, patientID }) => {
             // Remove the action from selected teeth
             const actionLabel = ACTION_BUTTONS[index].label;
             if (selectedTeeth.length === 0) return; // No teeth selected
-            
+
             setToothActions(prevToothActions => {
                 const updatedActions = { ...prevToothActions };
                 selectedTeeth.forEach(toothIndex => {
@@ -297,7 +297,7 @@ const Chart = ({ patient, patientID }) => {
                 });
                 return updatedActions;
             });
-    
+
             // Log the removal in history
             logToothAction(selectedTeeth, [`Removed: ${actionLabel}`]);
             setSelectedTeeth([]); // Clear selected teeth after removal
@@ -341,6 +341,12 @@ const Chart = ({ patient, patientID }) => {
                     customClass="delete-popup"
                 />
             )}
+
+            <QuickFillSettings
+                setSelectedTeeth={setSelectedTeeth}
+                setSelectedActionIndices={setSelectedActionIndices}
+            />
+
             <div className='dental_chart'>
                 <div className="tooth_wrapper">
                     <div className="menu">
@@ -400,7 +406,7 @@ const Chart = ({ patient, patientID }) => {
                             </label>
                         </div>
                     </div>
-                     {renderChart && (
+                    {renderChart && (
                         <div className="teeth_container">
                             {chartType === 'permanent' && (
                                 <Permanent_Chart
@@ -484,15 +490,6 @@ const Chart = ({ patient, patientID }) => {
     );
 };
 
-const QuickFillSettings = ({ setQuickFillSettings, quickFillSettings }) => {
-    return(
-        <>
-        
-        </>
-    );
-}
-
-
 // Moved the data outside the component
 const ACTION_BUTTONS = [
     { label: "Decay", importValue: "D", backgroundColor: "red", color: "black" },
@@ -508,13 +505,48 @@ const ACTION_BUTTONS = [
     { label: "Silver Diamine Flouride", importValue: "SDF", backgroundColor: "#37f7d1", color: "black" },
 ];
 
-const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelectedTeeth, setHistory, history, getToothLabel, handleButtonClick, selectedActionIndices, setSelectedActionIndices, removeMode, isMissingSelected, setIsMissingSelected, ACTION_BUTTONS }) => {
+const QuickFillSettings = ({ setSelectedTeeth, setSelectedActionIndices }) => {
+    const handleQuickFill = (labels, actionLabel) => {
+        // Convert labels (e.g., "A", "3") to tooth indices
+        const toothIndices = labels
+            .map(label => labelToIndexMap[label.toUpperCase()]) // Handle case
+            .filter(index => index !== undefined); // Ignore invalid labels
 
-    // No need for a local selectedActionIndices or isMissingSelected, since they're now passed as props.
-    // Remove useEffect to prevent conflicting with parent component's state updates.
+        // Find the action index (e.g., "Decay" → 0)
+        const actionIndex = ACTION_BUTTONS.findIndex(
+            action => action.label === actionLabel
+        );
 
+        if (actionIndex === -1) return; // Invalid action
 
+        // Update state to trigger the effect in Chart
+        setSelectedTeeth(toothIndices);
+        setSelectedActionIndices(new Set([actionIndex]));
+    };
 
+    return ReactDOM.createPortal(
+        <div className='QucikFill shadow'>
+            <h1>Quick Add</h1>
+            <div className="btn_container">
+                <button onClick={() => handleQuickFill(['A', 'B', 'I', 'J', 'K', 'L', 'S', 'T'], 'Decay')}>
+                    Decay
+                </button>
+                <button onClick={() => handleQuickFill(['A', 'B', 'I', 'K', 'L', 'S', 'T'], 'Stainless Steel Crown')}>
+                    Stainless Crown
+                </button>
+                <button onClick={() => handleQuickFill(['3', '14', '19', '30'], 'Sealant')}>
+                    4 Sealant
+                </button>
+                <button onClick={() => handleQuickFill(['2', '3', '14', '19', '30', '31', '15', '18'], 'Sealant')}>
+                    8 Sealants
+                </button>
+            </div>
+        </div>,
+        document.body
+    );
+};
+
+const DentalCodeList = ({ handleButtonClick, selectedActionIndices, removeMode, isMissingSelected, ACTION_BUTTONS }) => {
     return (
         <div className={` dentalCodeList_container `}>
             <div className=" dentalCodeList ">
@@ -547,30 +579,30 @@ const DentalCodeList = ({ selectedTeeth, setToothActions, toothActions, setSelec
                     <p><strong>School Year:</strong> CSDP PROGRAM SY 2023-2024</p>
                 </div>
                 <div className="selection_menu">
-                <div className="botton_container">
-            {ACTION_BUTTONS.map((action, index) => (
-                <button
-                    key={index}
-                    style={{
-                        backgroundColor: action.backgroundColor,
-                        color: action.color,
-                        opacity: !removeMode && selectedActionIndices.has(index) ? 0.5 : 1,
-                    }}
-                    className="action-button"
-                    onClick={() => handleButtonClick(index)}
-                    disabled={!removeMode && (isMissingSelected && action.label !== "Missing")}
-                >
-                    {action.label}
-                </button>
-            ))}
-        </div>
+                    <div className="botton_container">
+                        {ACTION_BUTTONS.map((action, index) => (
+                            <button
+                                key={index}
+                                style={{
+                                    backgroundColor: action.backgroundColor,
+                                    color: action.color,
+                                    opacity: !removeMode && selectedActionIndices.has(index) ? 0.5 : 1,
+                                }}
+                                className="action-button"
+                                onClick={() => handleButtonClick(index)}
+                                disabled={!removeMode && (isMissingSelected && action.label !== "Missing")}
+                            >
+                                {action.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
- 
+
 
 Chart.propTypes = {
     patient: PropTypes.object,

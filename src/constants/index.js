@@ -26,7 +26,7 @@ import {
     Permanent_13, Permanent_14, Permanent_15, Permanent_16, Permanent_17, Permanent_18,
     Permanent_19, Permanent_20, Permanent_21, Permanent_22, Permanent_23, Permanent_24,
     Permanent_25, Permanent_26, Permanent_27, Permanent_28, Permanent_29, Permanent_30,
-    Permanent_31, Permanent_32 
+    Permanent_31, Permanent_32
 } from '../assets/img/permanent_teeth/permanent_teeth';
 
 export const teethChatContentPrimary = [
@@ -255,3 +255,15 @@ export const teethChartContent = [
     },
 ];
 
+export const labelToIndexMap = {};
+
+teethChartContent.forEach((tooth, index) => {
+    // Map primary labels (letters)
+    if (tooth.primaryLabel) {
+        labelToIndexMap[tooth.primaryLabel.toUpperCase()] = index; // Case-insensitive
+    }
+    // Map permanent labels (numbers)
+    if (tooth.permanentLabel) {
+        labelToIndexMap[tooth.permanentLabel] = index;
+    }
+});

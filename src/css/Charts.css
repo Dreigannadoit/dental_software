@@ -352,10 +352,39 @@
     overflow: auto;
 }
 
-.dentalCodeList .botton_container button {
+.dentalCodeList .botton_container button,
+.QucikFill button {
     padding: 20px;
     width: calc(32% - 7.5px);
     cursor: pointer;
+}
+
+.QucikFill{
+    position: fixed;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    height: auto;
+    width: 200px;
+    background-color: #fff;
+    z-index: 99999;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.QucikFill h1{
+    margin-bottom: 10px;
+}
+
+.QucikFill .btn_container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.QucikFill button{
+    width: 100%;
 }
 
 /* .checkbox-wrapper-41 {
