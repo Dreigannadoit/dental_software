@@ -1,2 +1,0 @@
-import{r as p}from"./index-CpieBdCD.js";const v=()=>p.useCallback((o,n="data.csv")=>{if(!o||!o.length){console.warn("No data available to export.");return}try{const e=Object.keys(o[0]),c=[e.join(","),...o.map(a=>e.map(l=>`"${a[l]||""}"`).join(","))].join(`
-`),s=new Blob([c],{type:"text/csv"}),r=window.URL.createObjectURL(s),t=document.createElement("a");t.href=r,t.download=n,t.click(),window.URL.revokeObjectURL(r)}catch(e){console.error("Error exporting CSV:",e)}},[]);export{v as u};
