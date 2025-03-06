@@ -272,13 +272,13 @@
     z-index: 99999;
 }
 
-.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr td>div .dental_codes_inserted{
+.tooth_wrapper .teeth_container>div table tr td>div .dental_codes_inserted{
     height: 85%;
 }
-.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr.upper_teeth  .dental_codes_inserted{
+.tooth_wrapper .teeth_container>div table tr.upper_teeth  .dental_codes_inserted{
     bottom: 0;
 }
-.tooth_wrapper:has(.standard_mix_case) .teeth_container>div table tr.lower_teeth  .dental_codes_inserted{
+.tooth_wrapper .teeth_container>div table tr.lower_teeth  .dental_codes_inserted{
     top: 0;
 }
 
@@ -359,17 +359,52 @@
     cursor: pointer;
 }
 
-.QucikFill{
+.QuickFillContainer {
     position: fixed;
     top: 50%;
-    right: 15px;
+    right: calc(-170px);
     transform: translateY(-50%);
     height: auto;
-    width: 200px;
-    background-color: #fff;
+    width: 210px;
     z-index: 99999;
-    padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    
+    transition: all 0.5s;
+}
+
+.QuickFillContainer.active{
+    right: calc(15px);
+
+}
+
+.QuickFillContainer .toggler{
+    width: 22px;
+    background: var(--high-light-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.QuickFillContainer .toggler div{
+    text-align: center;
+    color: white;
+}
+
+.QuickFillContainer .toggler p{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.QucikFill{
+    width: calc(100% - 22px);
+    width: 100%;
+    padding: 20px;
 }
 
 .QucikFill h1{

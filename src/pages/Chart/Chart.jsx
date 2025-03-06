@@ -383,7 +383,6 @@ const Chart = ({ patient, patientID }) => {
                             </div>
 
                             <div className="transform_tooth">
-                                {chartType === 'standardMix' && (
                                     <>
                                         <button onClick={handleChangeToPermanentSubmit} disabled={isSwitchingLayout}>
                                             <img src={PrimaryToPermanent} alt="" />
@@ -392,7 +391,6 @@ const Chart = ({ patient, patientID }) => {
                                             <img src={PermanentToPrimary} alt="" />
                                         </button>
                                     </>
-                                )}
                             </div>
                         </div>
 
@@ -506,6 +504,8 @@ const ACTION_BUTTONS = [
 ];
 
 const QuickFillSettings = ({ setSelectedTeeth, setSelectedActionIndices }) => {
+    const [containerClicked, setContainerClicked] = useState(false);
+
     const handleQuickFill = (labels, actionLabel) => {
         // Convert labels (e.g., "A", "3") to tooth indices
         const toothIndices = labels
@@ -524,23 +524,48 @@ const QuickFillSettings = ({ setSelectedTeeth, setSelectedActionIndices }) => {
         setSelectedActionIndices(new Set([actionIndex]));
     };
 
+    const handleContainerClick = () => {
+        setContainerClicked(prevState => !prevState);
+    };
+    
+
+    const containerClass = `QuickFillContainer shadow ${containerClicked ? 'active' : ''}`;
+
     return ReactDOM.createPortal(
-        <div className='QucikFill shadow'>
-            <h1>Quick Add</h1>
-            <div className="btn_container">
-                <button onClick={() => handleQuickFill(['A', 'B', 'I', 'J', 'K', 'L', 'S', 'T'], 'Decay')}>
-                    Decay
-                </button>
-                <button onClick={() => handleQuickFill(['A', 'B', 'I', 'K', 'L', 'S', 'T'], 'Stainless Steel Crown')}>
-                    Stainless Crown
-                </button>
-                <button onClick={() => handleQuickFill(['3', '14', '19', '30'], 'Sealant')}>
-                    4 Sealant
-                </button>
-                <button onClick={() => handleQuickFill(['2', '3', '14', '19', '30', '31', '15', '18'], 'Sealant')}>
-                    8 Sealants
-                </button>
+        <div className={containerClass} onClick={handleContainerClick}>
+            <div className="toggler">
+                <div>
+                    <p>Q</p>
+                    <p>U</p>
+                    <p>I</p>
+                    <p>C</p>
+                    <p>K</p>
+                </div>
+                <br />
+                <div>
+                    <p>A</p>
+                    <p>D</p>
+                    <p>D</p>
+                    <p>S</p>
+                </div>
             </div>
+            <div className='QucikFill'>
+                <div className="btn_container">
+                    <button onClick={() => handleQuickFill(['A', 'B', 'I', 'J', 'K', 'L', 'S', 'T'], 'Decay')}>
+                        Decay
+                    </button>
+                    <button onClick={() => handleQuickFill(['A', 'B', 'I', 'K', 'L', 'S', 'T'], 'Stainless Steel Crown')}>
+                        Stainless Crown
+                    </button>
+                    <button onClick={() => handleQuickFill(['3', '14', '19', '30'], 'Sealant')}>
+                        4 Sealant
+                    </button>
+                    <button onClick={() => handleQuickFill(['2', '3', '14', '19', '30', '31', '15', '18'], 'Sealant')}>
+                        8 Sealants
+                    </button>
+                </div>
+            </div>
+
         </div>,
         document.body
     );

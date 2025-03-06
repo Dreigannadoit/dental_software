@@ -40,11 +40,23 @@
 
 .dashboard .welcome_block>div .greetings{
     width: 100%;
+    height: 100%;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.dashboard .welcome_block>div .greetings>div{
     display: flex;
     flex-direction: column;
     gap: 20px;
     line-height: 100%;
-    z-index: 9;
+}
+
+.dashboard .welcome_block>div .greetings>div:last-child{
+    width: 300px;
 }
 
 .dashboard .welcome_block>div .greetings p{

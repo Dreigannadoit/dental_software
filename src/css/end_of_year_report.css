@@ -13,12 +13,12 @@
 .viewing_area > div > div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: center; 
     gap: 10px;
 }
 
 .school_block {
-    width: calc(50% - 5px); 
+    width: calc(25% - 5px); 
     background-color: #fff;
     padding: 25px;
     border-radius: 5px;
@@ -40,7 +40,7 @@
 }
 
 .school_block > div p { 
-    width: calc(50% - 5px);
+    width: 100%;
     font-size: 14px;
     box-sizing: border-box; 
     display: flex;

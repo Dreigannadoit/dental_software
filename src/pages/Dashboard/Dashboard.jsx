@@ -3,10 +3,10 @@ import { csdpProgramTrendsSeries, test_user, csdpProgramTrendsSeriesLabels, oral
 import "../../css/dashboard.css";
 import DateTime from "../../components/DateTime";
 import { bannerFull } from "../../assets/img";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
-
-const Dental_Charts  = lazy(() => import("../../components/Charts/Dental_Charts"));
-const Pie_Dental_Charts  = lazy(() => import("../../components/Charts/Pie_Dental_Charts"));
+const Dental_Charts = lazy(() => import("../../components/Charts/Dental_Charts"));
+const Pie_Dental_Charts = lazy(() => import("../../components/Charts/Pie_Dental_Charts"));
 const DashboardTable = lazy(() => import("../../components/Table/DashboardTable"));
 
 const Dashboard = () => {
@@ -65,23 +65,42 @@ const Dashboard = () => {
         <Suspense fallback={<div>Loading Table...</div>}>
           <h1>CSDP's Statistics By School</h1>
           <br />
-          <DashboardTable tableTitle="CSDP's Statistics By Facilities" data={csdpsStatisticsBySchool}/>
+          <DashboardTable tableTitle="CSDP's Statistics By Facilities" data={csdpsStatisticsBySchool} />
         </Suspense>
       </div>
     </div>
   );
 };
 
+
 const Welcome_Block = () => {
+  const [year, setYear] = React.useState('Feature not Completed');
+
   return (
     <div className="welcome_block shadow ">
       {test_user.map((user, index) => (
         <div key={index} className='dotted-bg'>
           <img src={bannerFull} alt="" />
           <div className="greetings">
-            <DateTime />
-            <h1>Welcome Back!</h1>
-            <h2>{user.username}</h2>
+            <div>
+              <DateTime />
+              <h1>Welcome Back!</h1>
+              <h2>{user.username}</h2>
+            </div>
+            <div>
+              <FormControl variant="filled" fullWidth>
+                <InputLabel>Year</InputLabel>
+                <Select
+                  value={year}
+                  label="Year"
+                  onChange={(e) => setYear(e.target.value)}
+                >
+                  <MenuItem value="Feature not Completed">Feature not Completed</MenuItem>
+                  <MenuItem value="CSDP 2023-2024">CSDP 2023-2024</MenuItem>
+                  <MenuItem value="CSDP 2024-2025">CSDP 2024-2025</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </div>
         </div>
       ))}
