@@ -14,16 +14,12 @@ import usePopup from '../../hooks/usePopUp';
 // Component Definition
 const Chart = ({ patient, patientID }) => {
     const [chartType, setChartType] = useState('primary');
-    const [isAdult, setIsAdult] = useState(false);
-    const [isChild, setIsChild] = useState(false);
-    const [addCodeForm, setAddCodeForm] = useState(false); // Only opens when adding codes
     const [selectedTeeth, setSelectedTeeth] = useState([]); // Track multiple selected teeth
     const [toothActions, setToothActions] = useState({}); // { toothIndex: [toothIndex: action, toothIndex: action] ... }
     const [removeMode, setRemoveMode] = useState(false);
     const [isLayoutSwitched, setIsLayoutSwitched] = useState(false);
     const [history, setHistory] = useState([]); // Array to store history entries
     const [isSwitchingLayout, setIsSwitchingLayout] = useState(false); // Add state to track switching layout
-    const [renderChart, setRenderChart] = useState(true); // initially render chart
     const [pendingChartType, setPendingChartType] = useState(null); // Store the chart type selected before confirmation
     const [selectedActionIndices, setSelectedActionIndices] = useState(new Set());
     const [isMissingSelected, setIsMissingSelected] = useState(false);
@@ -66,6 +62,28 @@ const Chart = ({ patient, patientID }) => {
     };
 
     useEffect(() => {
+        if (chartType === 'primary') {
+            setTeethData(prevData => 
+                prevData.map(tooth => ({
+                    ...tooth,
+                    type: 'primary',
+                    showPrimary: true,
+                    showPermanent: false
+                }))
+            );
+        } else if (chartType === 'permanent') {
+            setTeethData(prevData => 
+                prevData.map(tooth => ({
+                    ...tooth,
+                    type: 'permanent',
+                    showPrimary: false,
+                    showPermanent: true
+                }))
+            );
+        }
+    }, [chartType]);
+
+    useEffect(() => {
         if (chartType === 'standardMix') {
             // Ensure that the initial state for standardMix chart is correctly populated
             setTeethData(prevData => {
@@ -88,7 +106,6 @@ const Chart = ({ patient, patientID }) => {
             setTeethData(prevData => {
                 return prevData.map((tooth, index) => {
                     let newType;
-
                     if (!isLayoutSwitched) { // Switch to alternate layout
                         if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29].includes(index)) {
                             newType = 'permanent';
@@ -106,7 +123,6 @@ const Chart = ({ patient, patientID }) => {
                             newType = tooth.type
                         }
                     }
-
                     return {
                         ...tooth,
                         type: newType,
@@ -161,42 +177,30 @@ const Chart = ({ patient, patientID }) => {
 
 
     const handleChangeToPermanentSubmit = useCallback(() => {
-        setTeethData(prevTeeth => {
-            const updatedTeeth = prevTeeth.map((tooth, index) => {
-                if (selectedTeeth.includes(index)) {
-                    return {
-                        ...tooth,
-                        showPrimary: false,
-                        showPermanent: true,
-                        type: 'permanent',
-                    };
-                }
-                return tooth;
-            });
-            logToothConversion(selectedTeeth, "Permanent");
-            return updatedTeeth;
-        });
-        setSelectedTeeth([]); // Reset selection
-    }, [selectedTeeth, teethData, chartType, setHistory]);
+        setTeethData(prev => prev.map((tooth, i) =>
+            selectedTeeth.includes(i) ? {
+                ...tooth,
+                showPrimary: false,
+                showPermanent: true,
+                type: 'permanent'
+            } : tooth
+        ));
+        logToothConversion(selectedTeeth, "Permanent");
+        setSelectedTeeth([]);
+    }, [selectedTeeth]);
 
     const handleChangeToPrimarySubmit = useCallback(() => {
-        setTeethData(prevTeeth => {
-            const updatedTeeth = prevTeeth.map((tooth, index) => {
-                if (selectedTeeth.includes(index)) {
-                    return {
-                        ...tooth,
-                        showPrimary: true,
-                        showPermanent: false,
-                        type: 'primary',
-                    };
-                }
-                return tooth;
-            });
-            logToothConversion(selectedTeeth, "Primary");
-            return updatedTeeth;
-        });
-        setSelectedTeeth([]); // Reset selection
-    }, [selectedTeeth, teethData, chartType, setHistory]);
+        setTeethData(prev => prev.map((tooth, i) =>
+            selectedTeeth.includes(i) ? {
+                ...tooth,
+                showPrimary: true,
+                showPermanent: false,
+                type: 'primary'
+            } : tooth
+        ));
+        logToothConversion(selectedTeeth, "Primary");
+        setSelectedTeeth([]);
+    }, [selectedTeeth]);
 
     const handleRemoveAction = (toothIndex, actionIndex) => {
         const removedAction = toothActions[toothIndex][actionIndex].label; //Get the action label before remove
@@ -383,14 +387,12 @@ const Chart = ({ patient, patientID }) => {
                             </div>
 
                             <div className="transform_tooth">
-                                    <>
-                                        <button onClick={handleChangeToPermanentSubmit} disabled={isSwitchingLayout}>
-                                            <img src={PrimaryToPermanent} alt="" />
-                                        </button>
-                                        <button onClick={handleChangeToPrimarySubmit} disabled={isSwitchingLayout}>
-                                            <img src={PermanentToPrimary} alt="" />
-                                        </button>
-                                    </>
+                                <button onClick={handleChangeToPermanentSubmit} disabled={isSwitchingLayout}>
+                                    <img src={PrimaryToPermanent} alt="" />
+                                </button>
+                                <button onClick={handleChangeToPrimarySubmit} disabled={isSwitchingLayout}>
+                                    <img src={PermanentToPrimary} alt="" />
+                                </button>
                             </div>
                         </div>
 
@@ -404,43 +406,38 @@ const Chart = ({ patient, patientID }) => {
                             </label>
                         </div>
                     </div>
-                    {renderChart && (
-                        <div className="teeth_container">
-                            {chartType === 'permanent' && (
-                                <Permanent_Chart
-                                    toothActions={toothActions}
-                                    selectedTeeth={selectedTeeth}
-                                    removeMode={removeMode}
-                                    onToothClick={handleToothClick}
-                                    onRemoveAction={handleRemoveAction}
-                                    teethData={teethData}
-                                />
-                            )}
-                            {chartType === 'primary' && (
-                                <Primary_Chart
-                                    toothActions={toothActions}
-                                    selectedTeeth={selectedTeeth}
-                                    removeMode={removeMode}
-                                    onToothClick={handleToothClick}
-                                    onRemoveAction={handleRemoveAction}
-                                    teethData={teethData}
-                                />
-                            )}
-                            {chartType === 'standardMix' && (
-                                <Standard_Mix
-                                    toothActions={toothActions}
-                                    selectedTeeth={selectedTeeth}
-                                    removeMode={removeMode}
-                                    onToothClick={handleToothClick}
-                                    onRemoveAction={handleRemoveAction}
-                                    isAdult={isAdult}
-                                    isChild={isChild}
-                                    teethData={teethData}
-                                    setTeethData={setTeethData}
-                                />
-                            )}
-                        </div>
-                    )}
+                    <div className="teeth_container">
+                        {chartType === 'permanent' && (
+                            <Permanent_Chart
+                                toothActions={toothActions}
+                                selectedTeeth={selectedTeeth}
+                                removeMode={removeMode}
+                                onToothClick={handleToothClick}
+                                onRemoveAction={handleRemoveAction}
+                                teethData={teethData}
+                            />
+                        )}
+                        {chartType === 'primary' && (
+                            <Primary_Chart
+                                toothActions={toothActions}
+                                selectedTeeth={selectedTeeth}
+                                removeMode={removeMode}
+                                onToothClick={handleToothClick}
+                                onRemoveAction={handleRemoveAction}
+                                teethData={teethData}
+                            />
+                        )}
+                        {chartType === 'standardMix' && (
+                            <Standard_Mix
+                                toothActions={toothActions}
+                                selectedTeeth={selectedTeeth}
+                                removeMode={removeMode}
+                                onToothClick={handleToothClick}
+                                onRemoveAction={handleRemoveAction}
+                                teethData={teethData}
+                            />
+                        )}
+                    </div>
 
                 </div>
 
@@ -527,7 +524,7 @@ const QuickFillSettings = ({ setSelectedTeeth, setSelectedActionIndices }) => {
     const handleContainerClick = () => {
         setContainerClicked(prevState => !prevState);
     };
-    
+
 
     const containerClass = `QuickFillContainer shadow ${containerClicked ? 'active' : ''}`;
 

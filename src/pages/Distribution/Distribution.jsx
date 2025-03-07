@@ -73,7 +73,7 @@ const Distribution = () => {
     };
 
     const processedData = flattenData(distributionData);
-    exportCsv(processedData, "Eligibility.csv");
+    exportCsv(processedData, "Distribution.csv");
   };
 
   // Sync scrollbar position

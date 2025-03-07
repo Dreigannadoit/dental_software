@@ -23,6 +23,15 @@
     background-color: var(--primary-color);
 }
 
+.distribution .table td {
+    height: 40px !important;
+    min-height: 40px;
+    max-height: 40px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    padding: 4px 8px !important;
+}
+
 .distribution .table th:nth-child(1),
 .distribution .table td:nth-child(1) {
     width: 15%; 
@@ -88,7 +97,6 @@
 }
 
 .distribution .table td:nth-child(11) .button  button{
-    padding: 10px;
     border-radius: 10px;
 }
 
@@ -109,4 +117,20 @@
     padding: 10px;
     background: var(--blue-color);
     border-radius: 10px;
+}
+
+/* Fix for Material-UI components */
+.distribution .table td .MuiOutlinedInput-root {
+    height: 32px !important; /* Leave 8px for vertical padding */
+    margin: 4px 0; /* Centers the field vertically */
+}
+
+.distribution .table td .MuiCheckbox-root {
+    padding: 8px !important;
+    margin: -8px 0 !important;
+}
+
+.distribution .table button.main_btn_style {
+    padding: 6px 12px;
+    margin: 2px 0;
 }

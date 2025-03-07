@@ -4,16 +4,19 @@ import React, { useState } from "react";
 const DistributionTable = ({ data }) => {
   const renderTextField = () => (
     <div>
-      <TextField 
-        fullWidth 
-        id="outlined-basic" 
-        variant="outlined" 
+      <TextField
+        fullWidth
+        variant="outlined"
         size="small"
-        sx={{ 
-          '& .MuiOutlinedInput-root': { 
-            padding: '1px 2px', // Adjust padding to make it even smaller
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            height: 28,
+            fontSize: '0.75rem',  // 12px
+          },
+          '& .MuiOutlinedInput-input': {
+            padding: '4px 6px',
           }
-        }} 
+        }}
       />
     </div>
   );

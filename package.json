@@ -36,6 +36,8 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
     "dayjs": "^1.11.13",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.0",
     "mui-tel-input": "^7.0.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.1",
