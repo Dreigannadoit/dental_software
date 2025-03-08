@@ -44,7 +44,7 @@ const Chart = ({ patient, patientID }) => {
     // **RESET TOOTH ACTIONS ON CHART TYPE CHANGE**
     useEffect(() => {
         setToothActions({}); // Reset all tooth actions
-        setSelectedTeeth([]); // Clear selected teeth when chart type changes
+        // setSelectedTeeth([]); // Clear selected teeth when chart type changes
     }, [chartType]);
 
     const confirmSwitchToothLayout = () => {
@@ -259,11 +259,11 @@ const Chart = ({ patient, patientID }) => {
         if (selectedActionIndices.size > 0) {
             const selectedIndicesArray = Array.from(selectedActionIndices);
             const selectedActions = ACTION_BUTTONS.filter((action, index) => selectedIndicesArray.includes(index));
-
+    
             if (selectedTeeth.length > 0) {
                 setToothActions(prevToothActions => {
                     const updatedActions = { ...prevToothActions };
-
+    
                     selectedTeeth.forEach(index => {
                         updatedActions[index] = [
                             ...(updatedActions[index] || []),
@@ -272,9 +272,9 @@ const Chart = ({ patient, patientID }) => {
                     });
                     return updatedActions;
                 });
-
+    
                 logToothAction(selectedTeeth, selectedActions.map(action => action.label))
-                setSelectedTeeth([]);
+                // Removed: setSelectedTeeth([]); // Keep teeth selected after action
             }
             setSelectedActionIndices(new Set());
             setIsMissingSelected(false);
@@ -304,7 +304,7 @@ const Chart = ({ patient, patientID }) => {
 
             // Log the removal in history
             logToothAction(selectedTeeth, [`Removed: ${actionLabel}`]);
-            setSelectedTeeth([]); // Clear selected teeth after removal
+            // setSelectedTeeth([]); // Clear selected teeth after removal
         } else {
             // Existing logic for adding actions
             setSelectedActionIndices(prevSelected => {
