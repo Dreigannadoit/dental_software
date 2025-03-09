@@ -83,58 +83,48 @@ const Chart = ({ patient, patientID }) => {
         }
     }, [chartType]);
 
+    // Add this useEffect for initial StandardMix setup
     useEffect(() => {
         if (chartType === 'standardMix') {
-            // Ensure that the initial state for standardMix chart is correctly populated
-            setTeethData(prevData => {
-                return prevData.map(tooth => ({
-                    ...tooth,
-                    showPrimary: tooth.type === "primary",
-                    showPermanent: tooth.type === "permanent",
-                }));
-            });
+            setTeethData(prevData => updateTeethLayout(prevData, isLayoutSwitched));
         }
-    }, [chartType]);
+    }, [chartType]); // Only run when chartType changes
 
     const confirmStandardMixLayout = () => {
-        setIsSwitchingLayout(true); // Set flag before switching
+        setIsSwitchingLayout(true);
         closeSwitchToothLayoutPopup();
 
-        // Delay to ensure popup closes before layout switch happens
         setTimeout(() => {
-            setIsLayoutSwitched(prev => !prev);
-            setTeethData(prevData => {
-                return prevData.map((tooth, index) => {
-                    let newType;
-                    if (!isLayoutSwitched) { // Switch to alternate layout
-                        if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29].includes(index)) {
-                            newType = 'permanent';
-                        } else {
-                            newType = 'primary';
-                        }
-                    } else { // Switch back to original layout
-                        if ([2, 6, 7, 8, 9, 13, 18, 22, 23, 24, 25, 29].includes(index)) {
-                            newType = 'permanent'
-                        }
-                        else if ([0, 1, 3, 4, 5, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 26, 27, 28, 30, 31].includes(index)) {
-                            newType = 'primary'
-                        }
-                        else {
-                            newType = tooth.type
-                        }
-                    }
-                    return {
-                        ...tooth,
-                        type: newType,
-                        showPrimary: newType === 'primary',
-                        showPermanent: newType === 'permanent',
-                    };
-                });
-            });
-            setIsSwitchingLayout(false);  // Reset flag after switching
-        }, 500); //  Adjust the timeout value based on your popup animation duration
+            const newLayoutState = !isLayoutSwitched;
+            setIsLayoutSwitched(newLayoutState);
+            setTeethData(prevData => updateTeethLayout(prevData, newLayoutState));
+            setIsSwitchingLayout(false);
+        }, 500);
     };
 
+    // Helper function to update teeth layout
+    const updateTeethLayout = (teethData, useAlternateLayout) => {
+        return teethData.map((tooth, index) => ({
+            ...tooth,
+            type: getToothType(index, useAlternateLayout),
+            showPrimary: getToothType(index, useAlternateLayout) === 'primary',
+            showPermanent: getToothType(index, useAlternateLayout) === 'permanent',
+        }));
+    };
+
+    // Enhanced tooth type determination with correct indices
+    const getToothType = (index, useAlternateLayout) => {
+        const alternatePermanent = [2,3,4,5,6,7,8,9,10,11,12,13,18,19,20,21,22,23,24,25,26,27,28,29];
+        const originalPermanent = [2,6,7,8,9,13,18,22,23,24,25,29];
+        const originalPrimary = [0,1,3,4,5,10,11,12,14,15,16,17,19,20,21,26,27,28,30,31];
+
+        if (useAlternateLayout) {
+            return alternatePermanent.includes(index) ? 'permanent' : 'primary';
+        }
+        if (originalPermanent.includes(index)) return 'permanent';
+        if (originalPrimary.includes(index)) return 'primary';
+        return 'primary'; // Fallback
+    };
 
     const handleToothClick = (index) => {
         setSelectedTeeth(prevSelected => {
