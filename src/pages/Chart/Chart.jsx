@@ -63,7 +63,7 @@ const Chart = ({ patient, patientID }) => {
 
     useEffect(() => {
         if (chartType === 'primary') {
-            setTeethData(prevData => 
+            setTeethData(prevData =>
                 prevData.map(tooth => ({
                     ...tooth,
                     type: 'primary',
@@ -72,7 +72,7 @@ const Chart = ({ patient, patientID }) => {
                 }))
             );
         } else if (chartType === 'permanent') {
-            setTeethData(prevData => 
+            setTeethData(prevData =>
                 prevData.map(tooth => ({
                     ...tooth,
                     type: 'permanent',
@@ -114,9 +114,9 @@ const Chart = ({ patient, patientID }) => {
 
     // Enhanced tooth type determination with correct indices
     const getToothType = (index, useAlternateLayout) => {
-        const alternatePermanent = [2,3,4,5,6,7,8,9,10,11,12,13,18,19,20,21,22,23,24,25,26,27,28,29];
-        const originalPermanent = [2,6,7,8,9,13,18,22,23,24,25,29];
-        const originalPrimary = [0,1,3,4,5,10,11,12,14,15,16,17,19,20,21,26,27,28,30,31];
+        const alternatePermanent = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29];
+        const originalPermanent = [2, 6, 7, 8, 9, 13, 18, 22, 23, 24, 25, 29];
+        const originalPrimary = [0, 1, 3, 4, 5, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 26, 27, 28, 30, 31];
 
         if (useAlternateLayout) {
             return alternatePermanent.includes(index) ? 'permanent' : 'primary';
@@ -249,11 +249,11 @@ const Chart = ({ patient, patientID }) => {
         if (selectedActionIndices.size > 0) {
             const selectedIndicesArray = Array.from(selectedActionIndices);
             const selectedActions = ACTION_BUTTONS.filter((action, index) => selectedIndicesArray.includes(index));
-    
+
             if (selectedTeeth.length > 0) {
                 setToothActions(prevToothActions => {
                     const updatedActions = { ...prevToothActions };
-    
+
                     selectedTeeth.forEach(index => {
                         updatedActions[index] = [
                             ...(updatedActions[index] || []),
@@ -262,7 +262,7 @@ const Chart = ({ patient, patientID }) => {
                     });
                     return updatedActions;
                 });
-    
+
                 logToothAction(selectedTeeth, selectedActions.map(action => action.label))
                 // Removed: setSelectedTeeth([]); // Keep teeth selected after action
             }
@@ -317,8 +317,6 @@ const Chart = ({ patient, patientID }) => {
         }
     };
 
-
-
     return (
         <>
             {showSwitchToothLayoutPopup && (
@@ -346,42 +344,64 @@ const Chart = ({ patient, patientID }) => {
                     <div className="menu">
                         <div className="switch_tooth_layout_button">
                             <div className="chart_type">
+                                {/* Primary Tooth Chart Button */}
                                 <button
                                     className={chartType === 'primary' ? "active" : ""}
                                     onClick={() => handleChartTypeChange('primary')}
                                     disabled={isSwitchingLayout}
+                                    title="Switch to Primary Tooth Chart"
                                 >
-                                    <img src={PrimaryTooth} alt="" />
+                                    <img src={PrimaryTooth} alt="Primary teeth layout" />
                                 </button>
+
+                                {/* Permanent Tooth Chart Button */}
                                 <button
                                     className={chartType === 'permanent' ? "active" : ""}
                                     onClick={() => handleChartTypeChange('permanent')}
                                     disabled={isSwitchingLayout}
+                                    title="Switch to Permanent Tooth Chart"
                                 >
-                                    <img src={PermanentTooth} alt="" />
+                                    <img src={PermanentTooth} alt="Permanent teeth layout" />
                                 </button>
+
+                                {/* Standard Mix Chart Button */}
                                 <button
                                     className={chartType === 'standardMix' ? "active" : ""}
                                     onClick={() => handleChartTypeChange('standardMix')}
                                     disabled={isSwitchingLayout}
+                                    title="Switch to Standard Mix Chart"
                                 >
-                                    <img src={StandardMix} alt="" />
+                                    <img src={StandardMix} alt="Standard mix layout" />
                                 </button>
+
                                 {chartType === 'standardMix' && (
-                                    <>
-                                        <button disabled={isSwitchingLayout} onClick={confirmStandardMixLayout}>
-                                            Switch Layout
-                                        </button>
-                                    </>
+                                    <button
+                                        disabled={isSwitchingLayout}
+                                        onClick={confirmStandardMixLayout}
+                                        title="Toggle between standard mix layouts"
+                                    >
+                                        Switch Layout
+                                    </button>
                                 )}
                             </div>
 
                             <div className="transform_tooth">
-                                <button onClick={handleChangeToPermanentSubmit} disabled={isSwitchingLayout}>
-                                    <img src={PrimaryToPermanent} alt="" />
+                                {/* Convert to Permanent Button */}
+                                <button
+                                    onClick={handleChangeToPermanentSubmit}
+                                    disabled={isSwitchingLayout}
+                                    title="Convert selected teeth to Permanent"
+                                >
+                                    <img src={PrimaryToPermanent} alt="Convert to permanent" />
                                 </button>
-                                <button onClick={handleChangeToPrimarySubmit} disabled={isSwitchingLayout}>
-                                    <img src={PermanentToPrimary} alt="" />
+
+                                {/* Convert to Primary Button */}
+                                <button
+                                    onClick={handleChangeToPrimarySubmit}
+                                    disabled={isSwitchingLayout}
+                                    title="Convert selected teeth to Primary"
+                                >
+                                    <img src={PermanentToPrimary} alt="Convert to primary" />
                                 </button>
                             </div>
                         </div>
