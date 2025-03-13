@@ -38,8 +38,8 @@ function App() {
   return (
     <div className="wrapper">
       <BrowserRouter basename="/dental_software/">
-      <MasterController />
-      <Suspense fallback={<TableLoadingAnimation />}>
+        <MasterController />
+        <Suspense fallback={<TableLoadingAnimation />}>
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Login />} />
@@ -58,13 +58,13 @@ function App() {
               <Route path="patients/patient_profile" element={<PatientProfile />} />
 
               {/* Use this when integrating API */}
-              {/* <Route path="patients/patient_profile/:id" element={<PatientProfile />} /> */} 
+              {/* <Route path="patients/patient_profile/:id" element={<PatientProfile />} /> */}
 
               <Route path="chart" element={<ChartDictionary />} />
               <Route path="chart/chartOfPatient" element={<Chart />} />
 
               {/* Use this when integrating API */}
-              {/* <Route path="chart/chartOfPatient/:id" element={<Chart />} /> */} 
+              {/* <Route path="chart/chartOfPatient/:id" element={<Chart />} /> */}
 
               <Route path="eligibility" element={<Eligibility />} />
               <Route path="distribution" element={<Distribution />} />

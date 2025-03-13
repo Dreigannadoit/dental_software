@@ -14,22 +14,22 @@ export const test_user = [
 ]
 
 export const roles = [
-    {role: "Admin"},
-    {role: "User"},
-    {role: "Guest"},
+    { role: "Admin" },
+    { role: "User" },
+    { role: "Guest" },
 ]
 
 export const userModulePreviledge = [
-    {module: "Appointment"},
-    {module: "Calendar"},
-    {module: "Dental Code"},
-    {module: "Mass Health"},
-    {module: "Patient"},
-    {module: "School"},
-    {module: "Report"},
-    {module: "School Year"},
-    {module: "User"},
-    {module: "Import"},
+    { module: "Appointment" },
+    { module: "Calendar" },
+    { module: "Dental Code" },
+    { module: "Mass Health" },
+    { module: "Patient" },
+    { module: "School" },
+    { module: "Report" },
+    { module: "School Year" },
+    { module: "User" },
+    { module: "Import" },
 ]
 
 const servedData = [400, 300, 200];
@@ -3030,3 +3030,100 @@ export const distributionData = [
         ],
     }
 ];
+
+export const demoSchoolData = {
+    schools: {
+        "Lincoln High School": {
+            massHealth: generateSchoolData(),
+            private: generateSchoolData(),
+            noInsurance: generateSchoolData(),
+            inActive: generateSchoolData(),
+            unknownInsurance: generateSchoolData(),
+            withDentistRecord: generateSchoolData(),
+            withoutDentistRecord: generateSchoolData(),
+            referralsWith: generateSchoolData(),
+            referralsWithout: generateSchoolData(),
+            alaska: generateSchoolData(5),
+            asian: generateSchoolData(15),
+            black: generateSchoolData(20),
+            spanish: generateSchoolData(25),
+            white: generateSchoolData(30),
+            others: generateSchoolData(10),
+            notDoc: generateSchoolData(5),
+            flouride: generateSchoolData(80, 100),
+            prophy: generateSchoolData(70, 100),
+            sealant: generateSchoolData(60, 100),
+            firstMolar: generateSchoolData(50, 100),
+            secondMolar: generateSchoolData(40, 100),
+            caries: generateSchoolData(0, 30),
+            untreated: generateSchoolData(0, 20),
+            urgent: generateSchoolData(0, 10),
+            othersDental: generateSchoolData(0, 15)
+        },
+        "Roosevelt Middle School": {
+            massHealth: generateSchoolData(10, 50),
+            private: generateSchoolData(20, 60),
+            noInsurance: generateSchoolData(5, 40),
+            inActive: generateSchoolData(0, 30),
+            unknownInsurance: generateSchoolData(2, 25),
+            withDentistRecord: generateSchoolData(60, 90),
+            withoutDentistRecord: generateSchoolData(10, 40),
+            referralsWith: generateSchoolData(50, 80),
+            referralsWithout: generateSchoolData(20, 50),
+            alaska: generateSchoolData(2),
+            asian: generateSchoolData(10),
+            black: generateSchoolData(15),
+            spanish: generateSchoolData(20),
+            white: generateSchoolData(25),
+            others: generateSchoolData(8),
+            notDoc: generateSchoolData(3),
+            flouride: generateSchoolData(70, 90),
+            prophy: generateSchoolData(60, 80),
+            sealant: generateSchoolData(50, 70),
+            firstMolar: generateSchoolData(40, 60),
+            secondMolar: generateSchoolData(30, 50),
+            caries: generateSchoolData(5, 25),
+            untreated: generateSchoolData(2, 15),
+            urgent: generateSchoolData(0, 8),
+            othersDental: generateSchoolData(0, 10)
+        },
+        "Jefferson Elementary": {
+            massHealth: generateSchoolData(20, 70),
+            private: generateSchoolData(10, 40),
+            noInsurance: generateSchoolData(15, 50),
+            inActive: generateSchoolData(5, 25),
+            unknownInsurance: generateSchoolData(5, 20),
+            withDentistRecord: generateSchoolData(40, 80),
+            withoutDentistRecord: generateSchoolData(20, 60),
+            referralsWith: generateSchoolData(30, 70),
+            referralsWithout: generateSchoolData(15, 40),
+            alaska: generateSchoolData(1),
+            asian: generateSchoolData(5),
+            black: generateSchoolData(10),
+            spanish: generateSchoolData(15),
+            white: generateSchoolData(20),
+            others: generateSchoolData(5),
+            notDoc: generateSchoolData(2),
+            flouride: generateSchoolData(50, 80),
+            prophy: generateSchoolData(40, 70),
+            sealant: generateSchoolData(30, 60),
+            firstMolar: generateSchoolData(20, 50),
+            secondMolar: generateSchoolData(10, 40),
+            caries: generateSchoolData(10, 30),
+            untreated: generateSchoolData(5, 20),
+            urgent: generateSchoolData(2, 10),
+            othersDental: generateSchoolData(1, 8)
+        }
+    }
+};
+
+// Helper function to generate grade data
+function generateSchoolData(min = 0, max = 100) {
+    return Array(15).fill().map((_, i) => ({
+        value: i === 0 ?
+            Math.floor(Math.random() * (max - min + 1)) + min : // Total value
+            Math.floor(Math.random() * (max - min + 1)) + min,
+        grade: i === 0 ? "Total" : `${i}th Grade`
+    }));
+}
+
