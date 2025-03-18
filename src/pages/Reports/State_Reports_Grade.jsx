@@ -6,8 +6,9 @@ import TableLoadingAnimation from "../../components/TableLoadingAnimation";
 import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 import useExportCsv from "../../hooks/useExportCsv";
 import "../../css/state_report_grade.css";
-import StateReportsGradeTable from "../../components/Table/StateReportsGradeTable";
-import StateReportsGradeTable_v2 from "../../components/Table/StateReportsGradeTable_v2";
+
+import StateReportsGradeTable_School from "../../components/Table/StateReportsGradeTable_School";
+import StateReportsGradeTable_Facilities from "../../components/Table/StateReportsGradeTable_Facilities";
 
 const filterCaseMangement = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -50,6 +51,14 @@ const filterCaseMangement = (data, filters) => {
 };
 
 const State_Reports_Grade = () => {
+  // Add state to track which table to show
+  const [showFacilitiesTable, setShowFacilitiesTable] = useState(false);
+
+  // Toggle function for the button
+  const toggleTable = () => {
+    setShowFacilitiesTable(!showFacilitiesTable);
+  };
+
   const {
     filters,
     rowsPerPage,
@@ -80,19 +89,33 @@ const State_Reports_Grade = () => {
         />
 
         <div className="table_controls">
+          {/* Updated switch button */}
+          <button 
+            className="switch shadow" 
+            onClick={toggleTable}
+          >
+            {showFacilitiesTable ? "Switch to School" : "Switch to Facilities"}
+          </button>
+          
           <button className="Export_BTN shadow" onClick={handleExport}>Export</button>
           <RowsPerPage
             rowsPerPage={rowsPerPage}
             handleRowsPerPageChange={handleRowsPerPageChange}
           />
         </div>
+        
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <StateReportsGradeTable_v2 data={currentPageData} />
+          
+          {/* Conditionally render tables */}
+          {showFacilitiesTable ? (
+            <StateReportsGradeTable_Facilities data={currentPageData} />
+          ) : (
+            <StateReportsGradeTable_School data={currentPageData} />
+          )}
         </div>
       </div>
     </>
   );
 };
-
 export default State_Reports_Grade;

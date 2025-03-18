@@ -6,131 +6,132 @@ const TestData = [
         total_num_of_students_screens: [
             {
                 massHealth:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 private:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 no_insurance:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 in_active:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 unknown_insurance:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
         dental_home_statues: [
             {
                 student_seen_with_dentist_record:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 student_seen_with_out_dentist_record:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
         referals: [
             {
                 student_seen_with_dentist_record:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 student_seen_with_out_dentist_record:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
         race: [
             {
                 alaska:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 asian:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 black:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 spanish:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 white:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 others:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 no_documentation:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             }
         ],
-        flouride: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
-        prophy: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
-        sealant: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
-        total_num_of_students_sealed: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
-        first_Molar: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
-        second_Molar: {
-            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
-        },
+        flouride:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        prophy:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        sealant:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        total_num_of_students_sealed:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        first_Molar:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        second_Molar:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
 
         core_exp_and_other_dental_needs: [
             {
                 caries:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 untreated:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 Urgent:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 others:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
-        sum_total: {
-            preK: 600, kinder: 610, grd1: 460, grd2: 490, grd3: 500, grd4: 420, grd5: 600, grd6: 610, grd7: 500, grd8: 406, grd9: 0, grd10: 120, grd11: 140, grd12: 90, total: 2400
-        },
+        sum_total:
+            { lessThanOrEqualTo18: 350, lessThan26_or_lgreaterThanOrEqualTo26: 200, lessThan65_or_lgreaterThanOrEqualTo65: 400, total: 900 },
 
     },
 ];
 
-const StateReportsGradeTable_v2 = ({ data = TestData }) => {
-    const grades = ["preK", "kinder", "grd1", "grd2", "grd3", "grd4", "grd5", "grd6", "grd7", "grd8", "grd9", "grd10", "grd11", "grd12", "total"];
+const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
+    const grades = [
+        "lessThanOrEqualTo18",
+        "lessThan26_or_lgreaterThanOrEqualTo26",
+        "lessThan65_or_lgreaterThanOrEqualTo65",
+        "total"
+    ];
 
     return (
-        <div className="table-container-wrapper">
+        <div className="table-container-wrapper adult">
             <div className="table-container">
                 <table border="1" cellPadding="5" style={{ borderCollapse: "collapse", width: "100%" }}>
                     <thead>
                         <tr>
                             <th>Category</th>
                             {grades.map((grade) => (
-                                <th key={grade}>{grade.toUpperCase()}</th>
+                                <th key={grade}>
+                                    {grade === "lessThanOrEqualTo18" ? "≥ 18": grade === "lessThan26_or_lgreaterThanOrEqualTo26" ? "< 26 Years Old ≥ 26"
+                                            : grade === "lessThan65_or_lgreaterThanOrEqualTo65" ? "≥ 65 Years Old" : "total"}
+                                </th>
                             ))}
                         </tr>
                     </thead>
@@ -293,4 +294,4 @@ const StateReportsGradeTable_v2 = ({ data = TestData }) => {
     );
 }
 
-export default StateReportsGradeTable_v2
+export default StateReportsGradeTable_Facilities

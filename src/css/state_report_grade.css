@@ -99,6 +99,12 @@
 } */
 
 
+.State_Reports_Grade .switch{
+    margin-right: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
 .State_Reports_Grade .table-container-wrapper{
     height: 570px;
     min-height: 570px;
@@ -119,6 +125,13 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+.State_Reports_Grade .table-container-wrapper.adult table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensures equal column widths */
+}
+
 .State_Reports_Grade .table-container thead {
     background: var(--pink-grad);
     color: var(--dark-color);
@@ -129,7 +142,13 @@
     padding: 12px 15px;
     text-align: center;
     font-size: 14px;
+    word-wrap: break-word; /
     /* border-bottom: 1px solid var(--primary-color); */
+}
+
+.State_Reports_Grade .table-container-wrapper.adult table th,
+.State_Reports_Grade .table-container-wrapper.adult table td{
+    width: calc(100% / 4);
 }
 
 .State_Reports_Grade .table-container tbody tr:nth-child(even) {
