@@ -1,6 +1,187 @@
 import React from 'react';
 
-const StateReportsGradeTable = ({ data }) => {
+const TestData = [
+    {
+        schoolname: "Elementary Elementary School",
+        total_num_of_students_screens: [
+            {massHealth:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {private:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {no_insuarcane:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {in_active:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {unknown_insuarace:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        dental_home_statues: [
+            {student_seen_with_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {student_seen_with_out_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        referals: [
+            {student_seen_with_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {student_seen_with_out_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        race: [
+            {alaska:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {asian:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {black:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {spanish:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {white:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {others:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {no_documentation:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        flouride: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        prophy: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        sealant: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        total_num_of_students_sealed: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        first_Molar: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        second_Molar: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        
+        core_exp_and_other_dental_needs: [
+            {num_caries:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {num_untreated:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {others:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+        ],
+    },
+    {
+        schoolname: "Another Elementary School",
+        total_num_of_students_screens: [
+            {massHealth:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {private:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {no_insuarcane:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {in_active:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {unknown_insuarace:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        dental_home_statues: [
+            {student_seen_with_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {student_seen_with_out_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        referals: [
+            {student_seen_with_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {student_seen_with_out_dentist_record:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        race: [
+            {alaska:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {asian:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {black:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {spanish:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {white:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {others:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]},
+            {no_documentation:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total: 140}
+            ]}
+        ],
+        flouride: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        prophy: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        sealant: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        total_num_of_students_sealed: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        first_Molar: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        second_Molar: [
+            {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+        ],
+        
+        core_exp_and_other_dental_needs: [
+            {num_caries:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {num_untreated:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+            {others:[
+                {preK: 60}, {kinder: 61}, {grd1: 46}, {grd2: 49}, {grd3: 50}, {grd4: 42}, {grd5: 60}, {Pre6: 61}, {grd7: 50}, {grd8: 46}, {grd9: 0}, {grd10: 12}, {grd11: 14}, {grd12: 9}, {total:140}
+            ]},
+        ],
+    }
+]
+
+const StateReportsGradeTable = ({ data  = TestData }) => {
     const labels = [
         { label: "School Name", class: "school_name" },
         { label: "Date:", class: "school_name" },
@@ -55,7 +236,7 @@ const StateReportsGradeTable = ({ data }) => {
                 <div className="school_info">
 
                     <div className="top_labels">
-                        <div className="row full">
+                        <div className="row full school_year">
                             <div className="block"><p>School Year</p></div>
                         </div>
                         <div className="row row_top_labels">

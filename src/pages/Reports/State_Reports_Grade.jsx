@@ -7,6 +7,7 @@ import FilterBlock from "../../components/FilterBlocks/FilterBlock";
 import useExportCsv from "../../hooks/useExportCsv";
 import "../../css/state_report_grade.css";
 import StateReportsGradeTable from "../../components/Table/StateReportsGradeTable";
+import StateReportsGradeTable_v2 from "../../components/Table/StateReportsGradeTable_v2";
 
 const filterCaseMangement = (data, filters) => {
   const safeToLowerCase = (value) =>
@@ -69,7 +70,7 @@ const State_Reports_Grade = () => {
 
   return (
     <>
-      <div className="case_management auto-sizing">
+      <div className="State_Reports_Grade auto-sizing">
         <FilterBlock
           filters={filters}
           onFilterChange={handleFilterChange}
@@ -87,7 +88,7 @@ const State_Reports_Grade = () => {
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <StateReportsGradeTable data={currentPageData} />
+          <StateReportsGradeTable_v2 data={currentPageData} />
         </div>
       </div>
     </>

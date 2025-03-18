@@ -1,7 +1,7 @@
-.StateReportsGradeTable_wrapper {
+/* .StateReportsGradeTable_wrapper {
     max-height: 610px;
     width: 100%;
-    overflow: auto; /* Allow scrolling */
+    overflow: auto; 
     margin-top: 20px;
     position: relative;
 }
@@ -24,7 +24,7 @@
     position: sticky;
     left: 0;
     z-index: 999;
-    background-color: white; /* Ensure it remains visible */
+    background-color: white;
 }
 .StateReportsGradeTable .colunm_side_labels .block.school_name{
     background-color: var(--high-light-color);
@@ -34,30 +34,41 @@
     height: 25px;
     width: 100%;
     padding: 15px;
-    border: 0.5px solid black;
+    border: 0.5px solid white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     background-color: antiquewhite;
 }
 
-
-
 .StateReportsGradeTable .top_labels {
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: white; /* Ensure it remains visible */
+    background-color: white; 
 }
-/* Adjust blocks to match sticky labels */
+
 .StateReportsGradeTable .colunm_side_labels .block,
 .StateReportsGradeTable .top_labels .block {
     background-color: antiquewhite;
-    border: 0.5px solid black;
+    border: 0.5px solid white;
+    border-radius: 10px;
 }
 .StateReportsGradeTable .top_labels .block {
     background-color: var(--blue-color);
 }
+
+.StateReportsGradeTable .top_labels .school_year {
+    position: relative;
+}
+.StateReportsGradeTable .top_labels .school_year .block p{
+    position: fixed;
+    left: 60%;
+    transform: translateX(-50%);
+}
+
+
+
 
 .StateReportsGradeTable .school_info{
     width: calc(100% - 320px);
@@ -77,11 +88,68 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    border: 0.5px solid black;
+    border: 0.5px solid white;
+    border-radius: 10px;
 }
 .StateReportsGradeTable .school_info .row .block:first-child{
     width: 50%;
 }
 .StateReportsGradeTable .school_info .row.full .block{
     width: 100%;
+} */
+
+
+.State_Reports_Grade .table-container-wrapper{
+    height: 570px;
+    min-height: 570px;
+    overflow-y: scroll;
+    margin-top: 15px;
+}
+
+.State_Reports_Grade .table-container {
+    overflow-x: auto; /* Enables horizontal scroll on small screens */
+}
+
+.State_Reports_Grade .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--backgrounds-color);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.State_Reports_Grade .table-container thead {
+    background: var(--pink-grad);
+    color: var(--dark-color);
+    text-transform: uppercase;
+}
+
+.State_Reports_Grade .table-container th, .table-container td {
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 14px;
+    /* border-bottom: 1px solid var(--primary-color); */
+}
+
+.State_Reports_Grade .table-container tbody tr:nth-child(even) {
+    background: var(--blue-color);
+}
+.State_Reports_Grade .table-container tbody tr:nth-child(odd) {
+    background: var(--primary-color);
+}
+
+.State_Reports_Grade .table-container tbody tr.full{
+    background: #ccc;
+
+}
+
+.State_Reports_Grade .table-container tbody tr:hover {
+    background: var(--high-light-color);
+    transition: background 0.3s ease-in-out;
+}
+
+.State_Reports_Grade .table-container td:first-child {
+    font-weight: bold;
+    text-align: left;
 }
