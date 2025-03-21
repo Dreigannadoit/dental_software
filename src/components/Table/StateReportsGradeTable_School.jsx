@@ -3,9 +3,19 @@ import React from 'react'
 const TestData = [
     {
         schoolname: "Elementary Elementary School",
+        total_number_of_consent_forms_received_and_returned_at_this_site: [
+            {
+                distributed_forms: 
+                { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                positive_consent: 
+                { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+        ],
         total_num_of_students_screens: [
             {
-                massHealth:
+                mass_Health:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
@@ -27,22 +37,30 @@ const TestData = [
         ],
         dental_home_statues: [
             {
-                student_seen_with_dentist_record:
+                with_a_dentist_of_record:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                student_seen_with_out_dentist_record:
+                without_a_dentist_of_record:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                unknown:
+                    { preK: "", kinder: "", grd1: "", grd2: "", grd3: "", grd4: "", grd5: "", grd6: "", grd7: "", grd8: "", grd9: "", grd10: "", grd11: "", grd12: "", total: "" }
             },
         ],
         referals: [
             {
-                student_seen_with_dentist_record:
+                with_a_dentist_of_record:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                student_seen_with_out_dentist_record:
+                without_a_dentist_of_record:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                unknown:
+                    { preK: "", kinder: "", grd1: "", grd2: "", grd3: "", grd4: "", grd5: "", grd6: "", grd7: "", grd8: "", grd9: "", grd10: "", grd11: "", grd12: "", total: "" }
             },
         ],
         race: [
@@ -78,7 +96,7 @@ const TestData = [
         flouride: {
             preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
         },
-        prophy: {
+        oral_prophylaxis: {
             preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
         },
         sealant: {
@@ -87,28 +105,30 @@ const TestData = [
         total_num_of_students_sealed: {
             preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
         },
-        first_Molar: {
+        permanent_first_Molar_sealed: {
             preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
         },
-        second_Molar: {
+        permanent_second_Molar_sealed: {
             preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
         },
-
+        other_teeth_sealed: {
+            preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140
+        },
         core_exp_and_other_dental_needs: [
             {
-                caries:
+                caries_experience:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                untreated:
+                untreated_dental_caries:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                Urgent:
+                ugent_dental_needs:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                others:
+                other_dental_needs:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
         ],
@@ -118,6 +138,8 @@ const TestData = [
 
     },
 ];
+
+// D1 and D2 is missing
 
 const StateReportsGradeTable_School = ({ data = TestData }) => {
     const grades = ["preK", "kinder", "grd1", "grd2", "grd3", "grd4", "grd5", "grd6", "grd7", "grd8", "grd9", "grd10", "grd11", "grd12", "total"];
@@ -135,6 +157,22 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr className='full'>
+                            <td colSpan="16">
+                                Total # of Consent Forms Received and Returned at This Site
+                            </td>
+                        </tr>
+                        {TestData[0].total_number_of_consent_forms_received_and_returned_at_this_site.map((categoryObj, index) => {
+                            const [category, data] = Object.entries(categoryObj)[0];
+                            return (
+                                <tr key={index}>
+                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    {grades.map((grade) => (
+                                        <td key={grade}>{data[grade]}</td>
+                                    ))}
+                                </tr>
+                            );
+                        })}
                         <tr className='full'>
                             <td colSpan="16">
                                 Total # of Students Screens:
@@ -185,7 +223,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             <td colSpan="16">
-                                Race:
+                                Race/Etnicity:
                             </td>
                         </tr>
                         {TestData[0].race.map((categoryObj, index) => {
@@ -215,7 +253,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].prophy[grade]}
+                                    {TestData[0].oral_prophylaxis[grade]}
                                 </td>
                             ))}
                         </tr>
@@ -245,7 +283,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].first_Molar[grade]}
+                                    {TestData[0].permanent_first_Molar_sealed[grade]}
                                 </td>
                             ))}
                         </tr>
@@ -255,7 +293,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].second_Molar[grade]}
+                                    {TestData[0].permanent_second_Molar_sealed[grade]}
                                 </td>
                             ))}
                         </tr>

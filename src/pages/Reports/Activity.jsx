@@ -15,28 +15,28 @@ const testList = [
     amount: 58
   },
   {
-    label: "Student Sealed",
-    amount: 14
+    label: "Prophy",
+    amount: 34
   },
   {
     label: "Flouride",
     amount: 56
   },
   {
-    label: "SDF Placed",
-    amount: 0
-  },
-  {
-    label: "Referred",
-    amount: 20
+    label: "Student Sealed",
+    amount: 14
   },
   {
     label: "Sealants Placed",
     amount: 52
   },
   {
-    label: "Prophy",
-    amount: 34
+    label: "SDF Placed",
+    amount: 0
+  },
+  {
+    label: "Referral",
+    amount: 20
   },
 ]
 
@@ -104,7 +104,7 @@ const Activity = () => {
       </div>
 
       <div className="activty_block shadow">
-        <h3>Activity</h3>
+        <h1>Activity</h1>
         <div>
           {testList.map((activity, index) => (
             <div className="blocks shadow" key={index}>

@@ -169,7 +169,10 @@
     transition: background 0.3s ease-in-out;
 }
 
-.State_Reports_Grade .table-container td:first-child {
-    font-weight: bold;
+.State_Reports_Grade .table-container td{
     text-align: left;
+}
+
+.State_Reports_Grade .table-container .full td {
+    font-weight: bold;
 }
