@@ -6,7 +6,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const ProcedureCodeTable = ({ data }) => {
+const ProcedureCodeTable = ({ data, onEditProcedureCode }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -82,9 +82,8 @@ const ProcedureCodeTable = ({ data }) => {
                   <td>{procedurecode.description}</td>
                   <td>{procedurecode.price}</td>
                   <td
-                    className={`${
-                      procedurecode.status === "Active"|| procedurecode.status === "active" || procedurecode.status === true ? "active" : "inactive "
-                    }`}
+                    className={`${procedurecode.status === "Active" || procedurecode.status === "active" || procedurecode.status === true ? "active" : "inactive "
+                      }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(procedurecode)}>
@@ -95,12 +94,12 @@ const ProcedureCodeTable = ({ data }) => {
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
-                      type="routerLink"
+                      type="button"
                       classLabel="edit_patient"
                       label="Edit"
                       icon={File_Edit}
                       backgroundColor="#1E8631"
-                      url="#"
+                      method={() => onEditProcedureCode(procedurecode)}
                     />
                     <AnimatedButton
                       type="button"

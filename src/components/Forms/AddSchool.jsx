@@ -5,9 +5,12 @@ import { gradelist } from '../../test_data'
 import ReactDOM from "react-dom";
 import useAnimation from '../../hooks/useFormAnimate';
 
-const AddSchool = ({ exitUser }) => {
-    const [type, setType] = useState()
-    const [grade, setGrade] = useState()
+const AddSchool = ({ exitUser, school, isEdit }) => {
+    const [name, setName] = useState('');
+    const [type, setType] = useState('');
+    const [grade, setGrade] = useState([]);
+    const [address, setAddress] = useState('');
+
     const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
 
     useEffect(() => {
@@ -15,9 +18,39 @@ const AddSchool = ({ exitUser }) => {
         triggerEnter();
     }, [triggerEnter]);
 
+    // Initialize form with school data when in edit mode
+    useEffect(() => {
+        if (school) {
+            setName(school.name || '');
+            setType(school.type || '');
+            setGrade(school.grade || []);
+            setAddress(school.address || '');
+        } else {
+            // Reset form for add mode
+            setName('');
+            setType('');
+            setGrade([]);
+            setAddress('');
+        }
+    }, [school]);
+
     const handleGradeChange = (selected) => {
-        setGrade(grade);
-        console.log("Selected items:", grade);
+        setGrade(selected); // Correctly update grade selection
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = { name, type, grade, address };
+
+        if (isEdit) {
+            // Handle edit logic (e.g., API call)
+            console.log('Editing school:', formData);
+        } else {
+            // Handle add logic
+            console.log('Adding school:', formData);
+        }
+
+        exitUser();
     };
 
     const handleCancel = () => {
@@ -27,15 +60,15 @@ const AddSchool = ({ exitUser }) => {
     };
     return ReactDOM.createPortal(
         <div className={`form_container school_form_container glassmorphism shadow ${!isInitialized
-                ? "" // No animation class applied until initialization
-                : isVisible
-                    ? "enter-animation"
-                    : "exit-animation"
+            ? "" // No animation class applied until initialization
+            : isVisible
+                ? "enter-animation"
+                : "exit-animation"
             }`}>
             <button className="form_background" onClick={handleCancel}></button>
             <div className="form school_form glassmorphism shadow">
-                <form action="">
-                    <h1>Add School</h1>
+                <form action={handleSubmit}>
+                    <h1>{isEdit ? "Edit School" : "Add School"}</h1>
                     <div className="container">
                         <div className="name">
                             <label htmlFor="schooName">Name</label>

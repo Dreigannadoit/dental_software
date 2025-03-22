@@ -44,14 +44,30 @@ const Dental_Codes = () => {
   } = useTableData(listOfDentalCodesData, { search: "" }, filterProgram);
 
   const [showAddDentalCodes, setShowAddDentalCodes] = useState(false);
+  const [editingDentalCode, setEditingDentalCode] = useState(null);
 
   const openAddDentalCodes = () => setShowAddDentalCodes(true);
-  const closeAddDentalCodes = () => setShowAddDentalCodes(false);
+  const closeAddDentalCodes = () => {
+    setShowAddDentalCodes(false);
+    setEditingDentalCode(null);
+  };
+
+  const handleEditDentalCode = (dentalCode) => {
+    setEditingDentalCode(dentalCode);
+    setShowAddDentalCodes(true);
+  };
 
   return (
       <>
       {/* Add DentalCodes Form Popup */}
-      {showAddDentalCodes && <AddDentalCode exitUser={closeAddDentalCodes} />}
+      {showAddDentalCodes && (
+        <AddDentalCode 
+          exitUser={closeAddDentalCodes}
+          dentalCode={editingDentalCode}
+          isEdit={!!editingDentalCode}
+        />
+      )}
+
 
       <div className="dental_code auto-sizing">
         <FilterBlock
@@ -69,7 +85,7 @@ const Dental_Codes = () => {
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <DentalCodeTable data={currentPageData} />
+          <DentalCodeTable data={currentPageData} onEditDentalCode={handleEditDentalCode} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">

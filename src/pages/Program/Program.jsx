@@ -49,14 +49,29 @@ const Program = () => {
   } = useTableData(programDataList, { search: "" }, filterProgram);
 
   const [showAddProgram, setShowAddProgram] = useState(false);
+  const [editingProgram, setEditingProgram] = useState(null);
 
   const openAddProgram = () => setShowAddProgram(true);
-  const closeAddProgram = () => setShowAddProgram(false);
+  const closeAddProgram = () => {
+    setShowAddProgram(false);
+    setEditingProgram(null);
+  };
+
+  const handleEditProgram = (program) => {
+    setEditingProgram(program);
+    setShowAddProgram(true);
+  };
 
   return (
     <>
       {/* Add Program Form Popup */}
-      {showAddProgram && <AddProgram exitUser={closeAddProgram} />}
+      {showAddProgram && (
+        <AddProgram 
+          exitUser={closeAddProgram} 
+          program={editingProgram}
+          isEdit={!!editingProgram}
+        />
+      )}
 
       <div className="program auto-sizing">
         <FilterBlock
@@ -74,7 +89,7 @@ const Program = () => {
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <ProgramTable data={currentPageData} />
+          <ProgramTable data={currentPageData} onEditProgram={handleEditProgram} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">

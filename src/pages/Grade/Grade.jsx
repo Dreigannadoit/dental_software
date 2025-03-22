@@ -43,14 +43,29 @@ const Grade = () => {
   } = useTableData(listOfDradeData, { search: "" }, filterGrade);
 
   const [showAddGrade, setShowAddGrade] = useState(false);
+  const [editingGrade, setEditingGrade] = useState(null);
 
   const openAddGrade = () => setShowAddGrade(true);
-  const closeAddGrade = () => setShowAddGrade(false);
+  const closeAddGrade = () => {
+    setShowAddGrade(false);
+    setEditingGrade(null); // Reset editing grade on close
+  };
+
+  const handleEditGrade = (grade) => {
+    setEditingGrade(grade);
+    setShowAddGrade(true);
+  };
 
   return (
     <>
       {/* Add Grade Form Popup */}
-      {showAddGrade && <AddGrade exitUser={closeAddGrade} />}
+      {showAddGrade && (
+        <AddGrade
+          exitUser={closeAddGrade}
+          grade={editingGrade}
+          isEdit={!!editingGrade}
+        />
+      )}
 
       <div className="grade auto-sizing">
         <FilterBlock
@@ -68,7 +83,7 @@ const Grade = () => {
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <GradeTable data={currentPageData} />
+          <GradeTable data={currentPageData} onEditGrade={handleEditGrade} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">

@@ -5,15 +5,17 @@ const TestData = [
         schoolname: "Elementary Elementary School",
         total_number_of_consent_forms_received_and_returned_at_this_site: [
             {
-                distributed_forms: 
-                { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+                distributed_forms:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
-                positive_consent: 
-                { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+                positive_consent:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
-        total_num_of_students_screens: [
+        total_num_of_Adults_screens:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        total_num_of_Adults_screens_insurance: [
             {
                 mass_Health:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
@@ -46,7 +48,7 @@ const TestData = [
             },
             {
                 unknown:
-                { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
         referals: [
@@ -60,7 +62,7 @@ const TestData = [
             },
             {
                 unknown:
-                { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
         race: [
@@ -93,19 +95,27 @@ const TestData = [
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             }
         ],
-        flouride:
+        flouride_varnish:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        full_partial_dental_cleaning:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        minor_denture_adjustments:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        oral_cancer_screening:
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        oral_hygiene_instruction:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
         oral_prophylaxis:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
-        sealant:
+        quadrant_scaling:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
-        total_num_of_students_sealed:
+        radiographs:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
-        permanent_first_Molar_sealed:
+        perform_dietary_screening_for_dental_disease_prevention_and_control:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
-        permanent_second_Molar_sealed:
+        apply_carries_arresting_medicament:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
-        other_teeth_sealed: 
+        place_temporary_restoration:
             { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
 
         core_exp_and_other_dental_needs: [
@@ -123,6 +133,10 @@ const TestData = [
             },
             {
                 other_dental_needs:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+            },
+            {
+                atypical_soft_tissue_lesions:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
         ],
@@ -147,9 +161,10 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                     <thead>
                         <tr>
                             <th>Category</th>
-                            {grades.map((grade) => (
-                                <th key={grade}>{grade.toUpperCase()}</th>
-                            ))}
+                            <th>{"≥ 18 - < 26 years old"}</th>
+                            <th>{"≥ 26 - < 65 years old"}</th>
+                            <th>{"≥ 65 years old"}</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -169,12 +184,25 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                                 </tr>
                             );
                         })}
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>Total # of Adults screens:</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].total_num_of_Adults_screens[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
                         <tr className='full'>
                             <td colSpan="16">
-                                Total # of Students Screens:
+                                Insurance Info
                             </td>
                         </tr>
-                        {TestData[0].total_num_of_students_screens.map((categoryObj, index) => {
+
+                        {TestData[0].total_num_of_Adults_screens_insurance.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
@@ -233,19 +261,65 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                                 </tr>
                             );
                         })}
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>FLUORIDE</td>
+                            <td>Flouride Varnish</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].flouride[grade]}
+                                    {TestData[0].flouride_varnish[grade]}
                                 </td>
                             ))}
                         </tr>
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>PROPHY</td>
+                            <td>Full/Partial Dental Cleaning</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].flouride_varnish[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>minor denture adjustments</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].minor_denture_adjustments[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>oral cancer screening</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].oral_cancer_screening[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>oral hygiene instruction</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].oral_hygiene_instruction[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>oral prophylaxis</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -253,43 +327,58 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                                 </td>
                             ))}
                         </tr>
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>SEALANT</td>
+                            <td>quadrant scaling</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].sealant[grade]}
+                                    {TestData[0].quadrant_scaling[grade]}
                                 </td>
                             ))}
                         </tr>
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>TOTAL # OF STUDENT SEALED:</td>
+                            <td>radiographs</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].sealant[grade]}
+                                    {TestData[0].radiographs[grade]}
                                 </td>
                             ))}
                         </tr>
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>1ST MOLAR:</td>
+                            <td>perform dietary screening for dental disease prevention and control</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].permanent_first_Molar_sealed[grade]}
+                                    {TestData[0].perform_dietary_screening_for_dental_disease_prevention_and_control[grade]}
                                 </td>
                             ))}
                         </tr>
+
                         <tr className='full'>
                             {/* Category name */}
-                            <td>2ND MOLAR:</td>
+                            <td>apply carries arresting medicament</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].permanent_second_Molar_sealed[grade]}
+                                    {TestData[0].apply_carries_arresting_medicament[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>place temporary restoration</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].place_temporary_restoration[grade]}
                                 </td>
                             ))}
                         </tr>

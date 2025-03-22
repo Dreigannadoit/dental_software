@@ -6,15 +6,57 @@ import ReactDOM from "react-dom";
 import { Textarea } from '@mui/joy';
 import useAnimation from '../../hooks/useFormAnimate';
 
-const AddProgram = ({ exitUser }) => {
-  const [startMonth, setStartMonth] = useState()
-  const [endMonth, setEndMonth] = useState()
+const AddProgram = ({ exitUser, program, isEdit }) => {
+  const [name, setName] = useState('');
+  const [startMonth, setStartMonth] = useState('');
+  const [startYear, setStartYear] = useState('');
+  const [endMonth, setEndMonth] = useState('');
+  const [endYear, setEndYear] = useState('');
+  const [description, setDescription] = useState('');
   const { isVisible, isInitialized, triggerEnter, triggerExit } = useAnimation(500);
 
   useEffect(() => {
     // Trigger enter animation when component mounts
     triggerEnter();
   }, [triggerEnter]);
+
+  useEffect(() => {
+    if (program) {
+      setName(program.name || '');
+      setStartMonth(program.start_month || '');
+      setStartYear(program.start_year || '');
+      setEndMonth(program.end_month || '');
+      setEndYear(program.end_year || '');
+      setDescription(program.description || '');
+    } else {
+      setName('');
+      setStartMonth('');
+      setStartYear('');
+      setEndMonth('');
+      setEndYear('');
+      setDescription('');
+    }
+  }, [program]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      name,
+      start_month: startMonth,
+      start_year: startYear,
+      end_month: endMonth,
+      end_year: endYear,
+      description
+    };
+
+    if (isEdit) {
+      console.log('Editing program:', formData);
+    } else {
+      console.log('Adding program:', formData);
+    }
+
+    exitUser();
+  };
 
   const handleCancel = () => {
     triggerExit(() => {
@@ -23,17 +65,16 @@ const AddProgram = ({ exitUser }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className={`form_container program_form_container glassmorphism shadow ${
-      !isInitialized
+    <div className={`form_container program_form_container glassmorphism shadow ${!isInitialized
         ? "" // No animation class applied until initialization
         : isVisible
-        ? "enter-animation"
-        : "exit-animation"
-    }`}>
+          ? "enter-animation"
+          : "exit-animation"
+      }`}>
       <button className="form_background" onClick={handleCancel}></button>
       <div className="form program_form glassmorphism shadow">
-        <form action="">
-          <h1>Add Program</h1>
+        <form onSubmit={handleSubmit}>
+          <h1>{isEdit ? "Edit Program" : "Add Program"}</h1>
           <div className="container">
             <div className="name full">
               <label htmlFor="schooName">Name</label>

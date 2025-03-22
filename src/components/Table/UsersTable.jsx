@@ -6,7 +6,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const UsersTable = ({ data }) => {
+const UsersTable = ({ data, onEditUser  }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -85,12 +85,12 @@ const UsersTable = ({ data }) => {
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
-                      type="routerLink"
+                      type="button"
                       classLabel="edit_patient"
                       label="Edit"
                       icon={File_Edit}
                       backgroundColor="#1E8631"
-                      url="#"
+                      method={() => onEditUser(user)}
                     />
                     <AnimatedButton
                       type="button"

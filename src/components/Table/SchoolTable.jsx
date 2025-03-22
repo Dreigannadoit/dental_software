@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import AnimatedButton from "../AnimatedButton";
 import { Delete, File_Edit, View, Alert } from "../../assets/icons";
 import ChangeStatus from "../PopUps/ChangeStatus";
@@ -6,7 +7,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const SchoolTable = ({ data }) => {
+const SchoolTable = ({ data, onEditSchool }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -30,6 +31,7 @@ const SchoolTable = ({ data }) => {
     return isAscending ? a.id - b.id : b.id - a.id;
   });
 
+
   return (
     <>
       {/* Delete Popup */}
@@ -47,6 +49,7 @@ const SchoolTable = ({ data }) => {
           customClass="delete-popup"
         />
       )}
+
 
       {/* Status Popups */}
       <ChangeStatus ref={(ref) => setChangeStatusRef(ref)} />
@@ -82,9 +85,8 @@ const SchoolTable = ({ data }) => {
                   <td>{school.address}</td>
                   <td>{school.type}</td>
                   <td
-                    className={`${
-                      school.status === "Active"|| school.status === "active" ? "active" : "inactive " || school.status === true
-                    }`}
+                    className={`${school.status === "Active" || school.status === "active" ? "active" : "inactive " || school.status === true
+                      }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(school)}>
@@ -95,12 +97,12 @@ const SchoolTable = ({ data }) => {
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
-                      type="routerLink"
+                      type="button"
                       classLabel="edit_patient"
                       label="Edit"
                       icon={File_Edit}
                       backgroundColor="#1E8631"
-                      url="#"
+                      method={() => onEditSchool(school)} 
                     />
                     <AnimatedButton
                       type="button"
@@ -124,5 +126,7 @@ const SchoolTable = ({ data }) => {
     </>
   );
 };
+
+
 
 export default SchoolTable;

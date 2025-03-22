@@ -13,7 +13,9 @@ const TestData = [
                 { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
         ],
-        total_num_of_students_screens: [
+        total_num_of_Adults_screens: 
+            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        total_num_of_students_screens_insurance: [
             {
                 mass_Health:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
@@ -174,11 +176,22 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                             );
                         })}
                         <tr className='full'>
+                            {/* Category name */}
+                            <td>Total # of Students screens:</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].total_num_of_Adults_screens[grade]}
+                                </td>
+                            ))}
+                        </tr>
+
+                        <tr className='full'>
                             <td colSpan="16">
-                                Total # of Students Screens:
+                                Insurance Info
                             </td>
                         </tr>
-                        {TestData[0].total_num_of_students_screens.map((categoryObj, index) => {
+                        {TestData[0].total_num_of_students_screens_insurance.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
@@ -279,7 +292,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                         <tr className='full'>
                             {/* Category name */}
-                            <td>1ST MOLAR:</td>
+                            <td>Permanent 1st Molar Sealed:</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -289,7 +302,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                         <tr className='full'>
                             {/* Category name */}
-                            <td>2ND MOLAR:</td>
+                            <td>Permanent 2nd Molar Sealed</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>

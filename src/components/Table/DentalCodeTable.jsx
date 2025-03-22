@@ -6,7 +6,7 @@ import useUpdateStatus from "../../hooks/useUpdateStatus";
 import usePopup from "../../hooks/usePopUp";
 import Popup from "../PopUps/Popup";
 
-const DentalCodeTable = ({ data }) => {
+const DentalCodeTable = ({ data, onEditDentalCode }) => {
   const [isAscending, setIsAscending] = useState(true); // State for sorting order
   const { updateStatus, setChangeStatusRef } = useUpdateStatus();
   const {
@@ -80,9 +80,8 @@ const DentalCodeTable = ({ data }) => {
                   <td>{dentalcode.code}</td>
                   <td>{dentalcode.description}</td>
                   <td
-                    className={`${
-                        dentalcode.status === "Active"|| dentalcode.status === "active" || dentalcode.status === true ? "active" : "inactive "
-                    }`}
+                    className={`${dentalcode.status === "Active" || dentalcode.status === "active" || dentalcode.status === true ? "active" : "inactive "
+                      }`}
                   >
                     <span>
                       <button onClick={() => updateStatus(dentalcode)}>
@@ -93,12 +92,12 @@ const DentalCodeTable = ({ data }) => {
                   <td className="crud_controlls">
                     {/* TODO: Replace url to naviate to edit patient */}
                     <AnimatedButton
-                      type="routerLink"
+                      type="button"
                       classLabel="edit_patient"
                       label="Edit"
                       icon={File_Edit}
                       backgroundColor="#1E8631"
-                      url="#"
+                      method={() => onEditDentalCode(dentalcode)}
                     />
                     <AnimatedButton
                       type="button"

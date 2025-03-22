@@ -44,14 +44,30 @@ const Users = () => {
   } = useTableData(listOfUsersData, { search: "" }, filterProgram);
 
   const [showAddUsers, setShowAddUsers] = useState(false);
+  const [editingUser, setEditingUser] = useState(null);
 
   const openAddUsers = () => setShowAddUsers(true);
-  const closeAddUsers = () => setShowAddUsers(false);
+  const closeAddUsers = () => {
+    setShowAddUsers(false);
+    setEditingUser(null);
+  };
+
+  const handleEditUser = (user) => {
+    setEditingUser(user);
+    setShowAddUsers(true);
+  };
 
   return (
     <>
       {/* Add Procedure Codes Form Popup */}
-      {showAddUsers && <AddUsers exitUser={closeAddUsers} />}
+      {showAddUsers && (
+        <AddUsers
+          exitUser={closeAddUsers}
+          user={editingUser}
+          isEdit={!!editingUser}
+        />
+      )}
+
 
       <div className="users auto-sizing">
         <FilterBlock
@@ -70,7 +86,7 @@ const Users = () => {
         <div className="table_area">
           {/* Show loading overlay if loading is true */}
           {loading && <TableLoadingAnimation />}
-          <UsersTable data={currentPageData} />
+          <UsersTable data={currentPageData} onEditUser={handleEditUser} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">

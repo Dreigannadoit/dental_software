@@ -56,16 +56,28 @@ const Schools = () => {
   } = useTableData(schoolData, initialFilters, filterSchools);
 
   const [showAddSchool, setShowAddSchool] = useState(false);
+  const [editingSchool, setEditingSchool] = useState(null);
 
   const openAddSchool = () => setShowAddSchool(true);
-  const closeAddSchool = () => setShowAddSchool(false);
+  const closeAddSchool = () => {
+    setShowAddSchool(false);
+    setEditingSchool(null); // Reset editing school on close
+  };
+
+  const handleEditSchool = (school) => {
+    setEditingSchool(school);
+    setShowAddSchool(true);
+  };
 
   return (
     <>
-    
-      {/* Add School Form Popup */}
-      {showAddSchool && <AddSchool exitUser={closeAddSchool} />}
-
+      {showAddSchool && (
+        <AddSchool
+          exitUser={closeAddSchool}
+          school={editingSchool}
+          isEdit={!!editingSchool}
+        />
+      )}
       <div className="schools auto-sizing">
         <FilterBlock
           filters={filters}
@@ -77,32 +89,19 @@ const Schools = () => {
           method={openAddSchool}
         />
         <div className="table_controls">
-          <RowsPerPage
-            rowsPerPage={rowsPerPage}
-            handleRowsPerPageChange={handleRowsPerPageChange}
-          />
+          <RowsPerPage rowsPerPage={rowsPerPage} handleRowsPerPageChange={handleRowsPerPageChange} />
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <SchoolTable data={currentPageData} />
+          <SchoolTable data={currentPageData} onEditSchool={handleEditSchool} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">
-            <button
-              className="shadow"
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
+            <button className="shadow" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
               Back
             </button>
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              className="shadow"
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
+            <span>Page {currentPage} of {totalPages}</span>
+            <button className="shadow" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
               Next
             </button>
           </div>

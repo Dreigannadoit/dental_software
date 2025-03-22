@@ -44,14 +44,29 @@ const Procedure_Codes = () => {
   } = useTableData(listOfProcedureCodesData, { search: "" }, filterProgram);
 
   const [showAddProcedureCodes, setShowAddProcedureCodes] = useState(false);
+  const [editingProcedureCode, setEditingProcedureCode] = useState(null);
 
   const openAddProcedureCodes = () => setShowAddProcedureCodes(true);
-  const closeAddProcedureCodes= () => setShowAddProcedureCodes(false);
+  const closeAddProcedureCodes = () => {
+    setShowAddProcedureCodes(false);
+    setEditingProcedureCode(null);
+  };
+
+  const handleEditProcedureCode = (procedureCode) => {
+    setEditingProcedureCode(procedureCode);
+    setShowAddProcedureCodes(true);
+  };
 
   return (
     <>
       {/* Add Procedure Codes Form Popup */}
-      {showAddProcedureCodes && <AddProcedureCodes exitUser={closeAddProcedureCodes} />}
+      {showAddProcedureCodes && (
+        <AddProcedureCodes 
+          exitUser={closeAddProcedureCodes}
+          procedureCode={editingProcedureCode}
+          isEdit={!!editingProcedureCode}
+        />
+      )}
 
       <div className="procedure_code auto-sizing">
         <FilterBlock
@@ -69,7 +84,7 @@ const Procedure_Codes = () => {
         </div>
         <div className="table_area">
           {loading && <TableLoadingAnimation />}
-          <ProcedureCodeTable data={currentPageData} />
+          <ProcedureCodeTable data={currentPageData} onEditProcedureCode={handleEditProcedureCode} />
         </div>
         {totalPages > 1 && (
           <div className="pagination">
