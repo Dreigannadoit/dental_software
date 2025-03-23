@@ -21,15 +21,15 @@ const TestData = [
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
-                private:
+                dds_idd:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+            },
+            {
+                private_insurance:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 no_insurance:
-                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
-            },
-            {
-                in_active:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
@@ -67,19 +67,23 @@ const TestData = [
         ],
         race: [
             {
-                alaska:
+                american_indian_alaska:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+            },
+            {
+                hispanic_latino:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+            },
+            {
+                african_american_black_non_hispanic:
+                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+            },
+            {
+                native_hawaiian_or_other_pacific_islander:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
                 asian:
-                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
-            },
-            {
-                black:
-                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
-            },
-            {
-                spanish:
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
@@ -91,8 +95,8 @@ const TestData = [
                     { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
             },
             {
-                no_documentation:
-                    { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 }
+                unknown_left_blank_on_form:
+                    { lessThanOrEqualTo18: "35", lessThan26_or_lgreaterThanOrEqualTo26: "20", lessThan65_or_lgreaterThanOrEqualTo65: 40, total: "90" }
             }
         ],
         flouride_varnish:
@@ -186,8 +190,14 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                         })}
 
                         <tr className='full'>
+                            <td colSpan="16">
+                                Total # of Adults screens:
+                            </td>
+                        </tr>
+
+                        <tr>
                             {/* Category name */}
-                            <td>Total # of Adults screens:</td>
+                            <td>Number of Adults screens:</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -198,7 +208,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
 
                         <tr className='full'>
                             <td colSpan="16">
-                                Insurance Info
+                                Total # of Adults screens by Insurance
                             </td>
                         </tr>
 
@@ -206,7 +216,14 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{
+                                        category == "mass_Health" ? "Mass Health (Medicaid)" :
+                                            category == "dds_idd" ? "dds / idd (Optional)" :
+                                                category == "private_insurance" ? "private insurance" :
+                                                    category == "no_insurance" ? "no insurance" :
+                                                        category == "unknown_insurance" ? "unknown / left blank on form" : ""
+
+                                    }</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -215,14 +232,14 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             <td colSpan="16">
-                                Dental Home Statues:
+                                Total # of Adults Seen by dental home
                             </td>
                         </tr>
                         {TestData[0].dental_home_statues.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{category == "unknown" ? "unknown / left blank on form" : category.replace(/_/g, " ").toUpperCase()}</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -231,14 +248,14 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             <td colSpan="16">
-                                Referrals:
+                                Total # of Adults that were REFERRED:
                             </td>
                         </tr>
                         {TestData[0].referals.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{category == "unknown" ? "unknown / left blank on form" : category.replace(/_/g, " ").toUpperCase()}</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -254,7 +271,17 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{
+                                        category == "american_indian_alaska" ? "american indian / alaska" :
+                                            category == "hispanic_latino" ? "hispanic / latino" :
+                                                category == "african_american_black_non_hispanic" ? "african america / black / non hispanic" :
+                                                    category == "native_hawaiian_or_other_pacific_islander" ? "native hawaiian or other pacific islander" :
+                                                        category == "asian" ? "asian" :
+                                                            category == "white" ? "white" :
+                                                                category == "others" ? "others" :
+                                                                    category == "unknown_left_blank_on_form" ? "unknown / left blank on form" : ""
+
+                                    }</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -263,6 +290,12 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                         })}
 
                         <tr className='full'>
+                            <td colSpan="16">
+                                Total Number of Adults Receiving Services
+                            </td>
+                        </tr>
+
+                        <tr className=''>
                             {/* Category name */}
                             <td>Flouride Varnish</td>
                             {/* Map each grade to display the corresponding value */}
@@ -273,7 +306,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>Full/Partial Dental Cleaning</td>
                             {/* Map each grade to display the corresponding value */}
@@ -284,7 +317,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>minor denture adjustments</td>
                             {/* Map each grade to display the corresponding value */}
@@ -295,7 +328,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>oral cancer screening</td>
                             {/* Map each grade to display the corresponding value */}
@@ -306,7 +339,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>oral hygiene instruction</td>
                             {/* Map each grade to display the corresponding value */}
@@ -317,7 +350,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>oral prophylaxis</td>
                             {/* Map each grade to display the corresponding value */}
@@ -328,7 +361,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>quadrant scaling</td>
                             {/* Map each grade to display the corresponding value */}
@@ -339,7 +372,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>radiographs</td>
                             {/* Map each grade to display the corresponding value */}
@@ -350,7 +383,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>perform dietary screening for dental disease prevention and control</td>
                             {/* Map each grade to display the corresponding value */}
@@ -361,7 +394,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>apply carries arresting medicament</td>
                             {/* Map each grade to display the corresponding value */}
@@ -372,7 +405,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
                             ))}
                         </tr>
 
-                        <tr className='full'>
+                        <tr className=''>
                             {/* Category name */}
                             <td>place temporary restoration</td>
                             {/* Map each grade to display the corresponding value */}
@@ -385,7 +418,7 @@ const StateReportsGradeTable_Facilities = ({ data = TestData }) => {
 
                         <tr className='full'>
                             <td colSpan="16">
-                                Core Exp. & other dental needs
+                                Total # of Adults Having Caries Experience and Other Dental Needs
                             </td>
                         </tr>
                         {TestData[0].core_exp_and_other_dental_needs.map((categoryObj, index) => {

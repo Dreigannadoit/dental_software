@@ -1,35 +1,36 @@
 import React from 'react'
 
+
 const TestData = [
     {
         schoolname: "Elementary Elementary School",
         total_number_of_consent_forms_received_and_returned_at_this_site: [
             {
-                distributed_forms: 
-                { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                distributed_forms:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                positive_consent: 
-                { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+                positive_consent:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
         ],
-        total_num_of_Adults_screens: 
-            { lessThanOrEqualTo18: 35, lessThan26_or_lgreaterThanOrEqualTo26: 20, lessThan65_or_lgreaterThanOrEqualTo65: 40, total: 90 },
+        total_num_of_students_screens:
+            { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 },
         total_num_of_students_screens_insurance: [
             {
                 mass_Health:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                private:
+                dds_idd:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                private_insurance:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
                 no_insurance:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
-            },
-            {
-                in_active:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
@@ -67,19 +68,23 @@ const TestData = [
         ],
         race: [
             {
-                alaska:
+                american_indian_alaska:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                hispanic_latino:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                african_american_black_non_hispanic:
+                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
+            },
+            {
+                native_hawaiian_or_other_pacific_islander:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
                 asian:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
-            },
-            {
-                black:
-                    { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
-            },
-            {
-                spanish:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
@@ -91,7 +96,7 @@ const TestData = [
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             },
             {
-                no_documentation:
+                unknown_left_blank_on_form:
                     { preK: 60, kinder: 61, grd1: 46, grd2: 49, grd3: 50, grd4: 42, grd5: 60, grd6: 61, grd7: 50, grd8: 46, grd9: 0, grd10: 12, grd11: 14, grd12: 9, total: 140 }
             }
         ],
@@ -175,27 +180,41 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                                 </tr>
                             );
                         })}
+
                         <tr className='full'>
+                            <td colSpan="16">
+                                Total # of Students screens:
+                            </td>
+                        </tr>
+
+                        <tr>
                             {/* Category name */}
-                            <td>Total # of Students screens:</td>
+                            <td>Number of Students screens:</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].total_num_of_Adults_screens[grade]}
+                                    {TestData[0].total_num_of_students_screens[grade]}
                                 </td>
                             ))}
                         </tr>
 
                         <tr className='full'>
                             <td colSpan="16">
-                                Insurance Info
+                                Total # of Students by Insurance
                             </td>
                         </tr>
                         {TestData[0].total_num_of_students_screens_insurance.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{
+                                        category == "mass_Health" ? "Mass Health (Medicaid)" :
+                                            category == "dds_idd" ? "dds / idd (Optional)" :
+                                                category == "private_insurance" ? "private insurance" :
+                                                    category == "no_insurance" ? "no insurance" :
+                                                        category == "unknown_insurance" ? "unknown / left blank on form" : ""
+
+                                    }</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -204,14 +223,14 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             <td colSpan="16">
-                                Dental Home Statues:
+                                Total # of Students Seen w/o dental home
                             </td>
                         </tr>
                         {TestData[0].dental_home_statues.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{category == "unknown" ? "unknown / left blank on form" : category.replace(/_/g, " ").toUpperCase()}</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -220,14 +239,14 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             <td colSpan="16">
-                                Referrals:
+                                Total # of Students that were REFERRED:
                             </td>
                         </tr>
                         {TestData[0].referals.map((categoryObj, index) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{category == "unknown" ? "unknown / left blank on form" : category.replace(/_/g, " ").toUpperCase()}</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -243,7 +262,17 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                             const [category, data] = Object.entries(categoryObj)[0];
                             return (
                                 <tr key={index}>
-                                    <td>{category.replace(/_/g, " ").toUpperCase()}</td>
+                                    <td>{
+                                        category == "american_indian_alaska" ? "american indian / alaska" :
+                                            category == "hispanic_latino" ? "hispanic / latino" :
+                                                category == "african_american_black_non_hispanic" ? "african america / black / non hispanic" :
+                                                    category == "native_hawaiian_or_other_pacific_islander" ? "native hawaiian or other pacific islander" :
+                                                        category == "asian" ? "asian" :
+                                                            category == "white" ? "white" :
+                                                                category == "others" ? "others" :
+                                                                    category == "unknown_left_blank_on_form" ? "unknown / left blank on form" : ""
+
+                                    }</td>
                                     {grades.map((grade) => (
                                         <td key={grade}>{data[grade]}</td>
                                     ))}
@@ -252,7 +281,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         })}
                         <tr className='full'>
                             {/* Category name */}
-                            <td>FLUORIDE</td>
+                            <td>FLUORIDE VARNISH</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -262,7 +291,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                         <tr className='full'>
                             {/* Category name */}
-                            <td>PROPHY</td>
+                            <td>ORAL PROPHYLAXIS</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -272,7 +301,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                         <tr className='full'>
                             {/* Category name */}
-                            <td>SEALANT</td>
+                            <td>SEALANTs</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
@@ -282,11 +311,11 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                         </tr>
                         <tr className='full'>
                             {/* Category name */}
-                            <td>TOTAL # OF STUDENT SEALED:</td>
+                            <td>Total # of Students Sealed</td>
                             {/* Map each grade to display the corresponding value */}
                             {grades.map((grade) => (
                                 <td key={grade}>
-                                    {TestData[0].sealant[grade]}
+                                    {TestData[0].total_num_of_students_sealed[grade]}
                                 </td>
                             ))}
                         </tr>
@@ -310,10 +339,20 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
                                 </td>
                             ))}
                         </tr>
+                        <tr className='full'>
+                            {/* Category name */}
+                            <td>Other Teeth Sealed (Other than 1st and 2nd Molar):</td>
+                            {/* Map each grade to display the corresponding value */}
+                            {grades.map((grade) => (
+                                <td key={grade}>
+                                    {TestData[0].other_teeth_sealed[grade]}
+                                </td>
+                            ))}
+                        </tr>
 
                         <tr className='full'>
                             <td colSpan="16">
-                                Core Exp. & other dental needs
+                                Core Experience & Other Dental Needs
                             </td>
                         </tr>
                         {TestData[0].core_exp_and_other_dental_needs.map((categoryObj, index) => {
