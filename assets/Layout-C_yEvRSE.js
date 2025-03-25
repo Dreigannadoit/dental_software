@@ -1,1 +1,0 @@
-import{j as s,c5 as a,c6 as e}from"./index-Bv4EZULt.js";const t=()=>s.jsxs(s.Fragment,{children:[s.jsx(a,{current_page:"Layout"}),s.jsx(e,{}),s.jsx("div",{className:"user_content glassmorphism shadow"})]});export{t as default};
