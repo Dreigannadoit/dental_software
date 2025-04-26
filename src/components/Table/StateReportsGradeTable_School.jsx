@@ -352,7 +352,7 @@ const StateReportsGradeTable_School = ({ data = TestData }) => {
 
                         <tr className='full'>
                             <td colSpan="16">
-                                Core Experience & Other Dental Needs
+                                Caries Experience and Other Dental Needs
                             </td>
                         </tr>
                         {TestData[0].core_exp_and_other_dental_needs.map((categoryObj, index) => {

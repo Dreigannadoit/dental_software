@@ -168,7 +168,7 @@ export const patientInfo = [
         school: "Gilbert Mary School",
         year: "2023-2024",
         grade: 7,
-        status: "Active",
+        status: "Archive",
         birthdate: "05/14/2015",
         gender: "Male",
         insurance: "Mass Health / 100223570365",
