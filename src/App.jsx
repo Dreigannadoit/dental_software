@@ -1,5 +1,3 @@
-// WARNING TO FUTURE DEV'S, FAITH DOES NOT FOLLOW UP ON HER PAYMENT!!! BE CAUTIOUS 
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   Activity,
